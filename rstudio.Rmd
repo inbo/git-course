@@ -207,7 +207,7 @@ In your File explorer, search for your project folder and check the content. Doe
 
 ---
 
-### `.gitignore`
+## `.gitignore`
 
 When starting a new project in RStudio, it will always add a file `.gitignore` if it does not already exists (you can actually also create one in the online setup). A `gitignore` file defines all those files that should not be taken into account by Git. An example is the `myprojectname.Rproj` file, as this is a user/computer specific file.
 
@@ -234,7 +234,7 @@ Check the content of the `.gitignore` file. If satisfied, click `Save`:
 
 ---
 
-### Make commits
+## Make commits
 
 As the `.gitignore` is a newly added file (or at least adapted), we can `commit` this change and provide a commit message:
 
@@ -285,7 +285,7 @@ Remark the reporting of the changed lines linked to this commit with green and r
 
 ---
 
-### Push the changes to GitHub
+## Push the changes to GitHub
 
 Note that the `git` pane displays *your branch is ahead of 'origin/master' by 2 commits*. This is actually providing you a warning message that there is no backup of these two commits! In order to store these changes on GitHub as well, we have to `push` our changes to GitHub:
 
@@ -309,7 +309,7 @@ Is the `README.md` adapted? Where do you find the Commits overview online?
 
 ---
 
-### Additional configuration - store your password
+## Additional configuration - store your password
 
 It is a tedious task to retype the password each time you want to `push` anything to GitHub. Luckily, you can store your credentials when using https:
 
@@ -331,7 +331,7 @@ The more button has a `wheel` symbol:
 
 ---
 
-### Create logical commits
+## Create logical commits
 
 As mentioned earlier, you should commit often and make sure each commit links to a specific change/problem. Sometimes, this means that you have to split the additions in a single file into two individual commits. Rstudio provides the interface to include specific lines of code into a commit message:
 
@@ -365,7 +365,7 @@ and `xyz` can be
 
 ---
 
-### Create a conflict!
+## Create a conflict!
 
 Sometimes, conflicts will appear. Maybe because a collaborator was working on exactly the same lines of code or because of a mistake in your workflow,... No worries, we'll learn you how to fix conflicts by initiating one.
 
@@ -446,7 +446,7 @@ If you encounter a conflict in the future, repeat this procedure.
 
 ---
 
-### Add a new file
+## Add a new file
 
 1. Add a `fruits.csv` file in a `/data` directory
 2. Link to this file in the `README.md`
