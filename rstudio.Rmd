@@ -6,21 +6,12 @@ author:
 - Thierry Onkelinx
 date: "`r Sys.Date()`"
 output:
-  html_document:
-    toc: true
-    toc_depth: 3
-    toc_float: true
-    number_sections: true
-    fig_caption: false
-    theme: yeti
-    df_print: paged
-    keep_md: true
   revealjs::revealjs_presentation:
     theme: white
     highlight: zenburn
     keep_md: true
     transition: none
-    center: true
+    center: false
     fig_caption: false
     fig_width: 5
     fig_height: 4
@@ -43,6 +34,14 @@ knit: (function(input_file, encoding) { rmarkdown::render(input_file, encoding =
     	font-family: monospace;
     	color: #1a1a1a;
     	background: ##ececec;
+        }
+    .reveal p {
+        font-size: 80%;
+        text-align: left;
+        }
+    .reveal li {
+        font-size: 80%;
+        text-align: left;
         }
     .exercise {
        background-color: #ffffcc;
@@ -116,6 +115,8 @@ Just to make sure, in case you did not already installed Git and Rstudio:
 1. [Download](https://git-scm.com/downloads) and install Git
 1. Install [RStudio](https://inbo.github.io/tutorials/installation-RStudio-admin.html)
 </div>
+
+---
 
 When installed properly:
 
