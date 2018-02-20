@@ -14,9 +14,11 @@ output:
     fig_caption: false
     theme: yeti
     df_print: paged
+    keep_md: true
   revealjs::revealjs_presentation:
     theme: white
     highlight: zenburn
+    keep_md: true
     transition: none
     center: true
     fig_caption: false
@@ -41,6 +43,22 @@ knit: (function(input_file, encoding) { rmarkdown::render(input_file, encoding =
     	font-family: monospace;
     	color: #1a1a1a;
     	background: ##ececec;
+        }
+    .exercise {
+       background-color: #ffffcc;
+       border-left: 6px solid #ffeb3b;
+       margin-top: 15px;
+       padding-top: 10px;
+       padding-bottom: 10px;
+       padding-left: 16px;
+       font-weight: bold;
+        }
+    .exercise-content {
+       border-left: 6px solid #ffeb3b;
+       margin-bottom: 15px;
+       padding-top: 10px;
+       padding-bottom: 10px;
+       padding-left: 16px;
         }
 </style>
 
