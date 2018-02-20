@@ -62,225 +62,370 @@ knit: (function(input_file, encoding) { rmarkdown::render(input_file, encoding =
         }
 </style>
 
+# Setup
+
+When starting this tutorial, we assume:
+
+* you have [R](https://lib.ugent.be/CRAN/) and [Rstudio](https://www.rstudio.com/products/rstudio/download/) installed on your computer
+* you have [git](https://git-scm.com/) installed on your computer
+
+---
+
 # Working on your own {data-background=#c2c444}
 
+We start with you working on a repository, without interference of colleagues
+
 ---
 
-## Create a repo
+## Create a repository
 
+A new project starts with a new repository, which can be easily setup using [GitHub.com](https://github.com).
+
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
 1. Go to [GitHub](https://github.com) and login
 2. Follow [this tutorial](https://help.github.com/articles/create-a-repo/) to create a repo and [create your first (online) commit](https://help.github.com/articles/create-a-repo/#commit-your-first-change) to your repository
+</div>
 
 ---
 
-For this first exercise, we've chosen to create a dummy repository (you do not have to stick to the example):
+For this first exercise, we have chosen to create a dummy repository:
 
 ![Create a repo](images/create-a-repo.png)
+(*you do not have to copy the example, choose any name :-)*)
 
 ---
 
 The resulting repository layout will look like this:
 
 ![Result of creating a repo](images/create-repo-result.png)
+(*Remember that there is a `Clone or Download` button on this page!*)
 
 ---
 
-### Git for RStudio setup
+## Git for RStudio configuration
 
+As we will mainly use Git(Hub) to manage R/Rmarkdown scripts, the existing integration of Rstudio and Git provides a convenient way to add version control. 
+
+### Installation
+
+Just to make sure, in case you did not already installed Git and Rstudio:
+
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
 1. [Download](https://git-scm.com/downloads) and install Git
 1. Install [RStudio](https://inbo.github.io/tutorials/installation-RStudio-admin.html)
+</div>
+
+When installed properly:
+
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
 1. Open [RStudio](https://inbo.github.io/tutorials/installation-RStudio-user.html)
+</div>
 
 ---
 
-### Git for RStudio setup
+### Configuration
 
-Tell RStudio where to find the Git installation. 
+In order to start using version control in Rstudio, we have to do some configuration the first time. You only leed to do this configuration once.
 
+First of all, tell RStudio where to find the Git installation. 
+
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
 1. Go to `Tools > Global Options`
-1. Click on `Git/SVN`. 
+1. Click on `Git/SVN`.
+1. Check *Enable version control interface for RStudio projects*
+1. Set the path to the Git executable that you installed*
+1. Check *use Git bash as shell for Git projects*
+</div>
+
+---
+
+*If you do not know where Git is installed, open your command line (`cmd` in Start for Windows user). When the cmd is open, type `where git` and hit enter. The path should be something like: `C:/Program Files (x86)/Git/bin/git.exe`. Still in trouble? Check [this out](http://happygitwithr.com/rstudio-see-git.html#tell-rstudio-where-to-find-git).
 
 ![RStudio setup for git](images/RStudio-setup-git.png){width=50%}
 
 ---
 
-### Git for RStudio setup
+Next, we have to tell Github who we actually are, in order to make the connection to the online account. To do so, Git requires the configuration of your Github (!) username and GitHub email:
 
-Check Enable version control interface for RStudio projects. Set the path to the Git executable that you just installed. Open a shell, if you don't know where Git is installed. Type `where git` and hit enter (Windows users). 
-
-The path should be something like: `C:/Program Files (x86)/Git/bin/git.exe`
-
----
-
-### Git for RStudio setup: git configuration
-
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
 1. Go to `Tools > Shell` to open the Git Shell
-1. Tell Git your Github (!) username and GitHub email
-
-![RStudio setup git shell](images/Rstudio-GitShell.png)
-
----
-
-### Git for RStudio setup: git configuration
-
-1. Go to `Tools > Shell` to open the Git Shell
-1. Tell Git your Github (!) username and GitHub email:
-
-In the shell, type the following two commands:
-
+1. In the shell, type the following command and enter:
 ```
-git config --global user.email "my.name@inbo.be"
 git config --global user.name "mygithubusername"
 ```
-Use your GitHub username!
+1. Still in the shell, type the following command and enter:
+```
+git config --global user.email "my.name@inbo.be"
+```
+</div>
 
 ---
 
-### Clone a repo to work locally
+![RStudio setup git shell](images/Rstudio-GitShell.png){width=75%}
 
-1. Copy the repository HTTPS url
+Use your **GitHub username**! You can check if you’re set up correctly by typing  `git config --global --list` in the same shell.
 
-![Copy the https link of a repo](images/copy-repo-link.png){width=30%}
-
-2. `File > New Project...`, select `Version Control`, choose `Git`
-3. Provide the repository HTTPS link, select desired directory
-
-![Clone a repo in RStudio](images/create-project-rstudio.png){width=30%}
+When successful, the configuration is done. Congratulations!
 
 ---
 
-### .gitignore
+## Clone a repo to work locally
 
-1. RStudio will always add `.gitignore` if it doesn't exists
-1. Go to `git` pane, right click `.Proj` and select `Ìgnore`
-1. Update `.gitignore` and click `Save`. More details later.
+We have initiated a repository online and a working Git within Rstudio. Hence, we can start working on the code locally by downloading the repository to our computer. Rstudio provides a convenient way to start a new project as a Git repository.
 
-![Ignore a file](images/gitignore-rstudio1.png){width=30%}
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
+1. On your GitHub repository page, copy the repository **HTTPS** url (*remember the green button?*)
+1. In Rstudio, `File > New Project...`, select `Version Control`, choose `Git`
+1. Provide the repository HTTPS link you just copied (the project name will be filled in as well)
+1. Browse to desired directory where you will manage your project/code
+</div>
 
-![Update .gitignore](images/gitignore-rstudio2.png){width=20%}
+--- 
 
----
+To get the https link, you need to click the green button and make sure to copy paste the link with as title `Clone with HTTPS`:
 
-### Make a commit
-
-1. Update the `README.md`
-1. Commit your changes
-1. Go to `git` pane, check `.gitignore` and click commit
-
-![Local commit](images/commit-rstudio1.png)                            
+![Copy the https link of a repo](images/copy-repo-link.png){width=75%}
 
 ---
 
-### Make a commit
+An example of the project setup using an existing Git repsoitory:
 
-1. Add a commit message and click commit
-
-![Local commit](images/commit-rstudio2.png)
+![Clone a repo in RStudio](images/create-project-rstudio.png){width=75%}
 
 ---
 
-### Make a commit
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
+In your File explorer, search for your project folder and check the content. Does this corresponds to what is shown online on your repository website?
+</div>
 
+---
+
+### `.gitignore`
+
+When starting a new project in RStudio, it will always add a file `.gitignore` if it does not already exists (you can actually also create one in the online setup). A `gitignore` file defines all those files that should not be taken into account by Git. An example is the `myprojectname.Rproj` file, as this is a user/computer specific file.
+
+Hence, we can ignore the `myprojectname.Rproj` file by adding the file to the `.gitignore` text-file. We can d this inside Rstudio:
+
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
+1. Go to `git` pane (the tab that says Git), 
+1. right click on `....Proj` and select `Ignore...`
+1. Check if the content of `.gitignore` is correctly updated and click `Save`.
+</div>
+
+---
+
+As our dummy project is called `favourite-fruit-color`, the `.Rproj` file is called `favourite-fruit-color.Rproj`. We right click on the file and select `Ignore...`:
+
+![Ignore a file](images/gitignore-rstudio1.png){width=75%}
+
+---
+
+Check the content of the `.gitignore` file. If satisfied, click `Save`:
+
+![Update .gitignore](images/gitignore-rstudio2.png){width=75%}
+
+---
+
+### Make commits
+
+As the `.gitignore` is a newly added file (or at least adapted), we can `commit` this change and provide a commit message:
+
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
+1. Go to `git` pane
+1. Check the box next to `.gitignore`
+1. Click `Commit`
+1. Add a `commit message` and click commit
 1. Click `Close` to remove the commit summary
-
-![Local commit](images/commit-rstudio3.png)
+</div>
 
 ---
 
-### Make a commit
+The status of the `.gitignore` file before the file was committed, with the yellow question mark saying that the file is yet unknown to Git:
 
-1. Add a commit message and click commit
+![Local commit](images/commit-rstudio1.png){width=75%}
 
-![Local commit](images/commit-rstudio4.png)
+---
+
+By checking the box and clicking commit, we add the file and commit this addition with a commit message:
+
+![Local commit](images/commit-rstudio2.png){width=75%}
+
+---
+
+We get a small technical overview of the alterations we provided with this commit: 
+
+![Local commit](images/commit-rstudio3.png){width=75%}
+
+---
+
+It is good practice to **commit often**, so you will do this a lot. Each commit should only contain changes related to a single problem/element/... Each commit is a snapshot of your project and the messages describe the story of your project.
+
+As documentation is crucial, providing some more information in the `README.md` file will help others (and yourself in a couple of months/years) to understand the aim of the project. Just as we adapted the `README.md` file online earlier, we can do the same locally:
+
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
+1. Update the `README.md` inside Rstudio
+1. Commit your changes
+</div>
+
+---
+
+Remark the reporting of the changed lines linked to this commit with green and red colors:
+
+![Local commit](images/commit-rstudio4.png){width=75%}
 
 ---
 
 ### Push the changes to GitHub
 
-1. Note that the `git` pane displays _your branch is ahead of 'origin/master' by 2 commits_
+Note that the `git` pane displays *your branch is ahead of 'origin/master' by 2 commits*. This is actually providing you a warning message that there is no backup of these two commits! In order to store these changes on GitHub as well, we have to `push` our changes to GitHub:
+
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
 1. Click `push` in the `git` pane
-
-![Push](images/push-rstudio1.png)
-
----
-
-### Go to your repo on GitHub to verify
-
-![Verify your commits on GitHub](images/local-commit-on-github.png)
+1. Go to your repository on GitHub to verify the commits and file contents
+</div>
 
 ---
 
-### Store your credentials when using https
+Rstudio gives you a warning about the status of your local commits versus those stored on GitHub:
 
-1. Click on the `more` button in the `git pane` and select `shell`
+![Push](images/push-rstudio1.png){width=75%}
+
+---
+
+Is the `README.md` adapted? Where do you find the Commits overview online?
+
+![Verify your commits on GitHub](images/local-commit-on-github.png){width=75%}
+
+---
+
+### Additional configuration - store your password
+
+It is a tedious task to retype the password each time you want to `push` anything to GitHub. Luckily, you can store your credentials when using https:
+
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
+1. Click on the `more` button in the `git` pane and select `Shell`
 1. Type `git config --global credential.helper store`
 1. Type `exit` to quit the shell
-1. The next time `git` needs your credentials, it will ask them one more time and store them
+</div>
 
-![Store credentials](images/https-credentials-rstudio1.png)
+The next time `git` needs your credentials, it will ask them **one more time and store them**!
+
+---
+
+The more button has a `wheel` symbol:
+
+![Store credentials](images/https-credentials-rstudio1.png){width=75%}
 
 
 ---
 
 ### Create logical commits
 
-1. Make 2 unrelated changes to your `README.md` locally
-2. Create one commit for each change.
-3. Do NOT push (yet)
+As mentioned earlier, you should commit often and make sure each commit links to a specific change/problem. Sometimes, this means that you have to split the additions in a single file into two individual commits. Rstudio provides the interface to include specific lines of code into a commit message:
+
+![Logical commit 1](images/logical-commit-rstudio.png){width=75%}
 
 ---
 
-### Create logical commits
-
-1. Click `Commit` in the `git` pane
-1. Select the changes you want to commit and click `stage selection`
-1. Add a `commit message` and click `Commit`
-
-![Logical commit 1](images/logical-commit-rstudio.png){width=80%}
-
----
-
-### Create logical commits
+To summarize, the following actions can be executed:
 
 - `stage xyz`: add the xyz from the commit
 - `unstage xyz`: remove the xyz from the commit
-- `discard xyz`: revert the changes in the xyz (can't be undone!!!)
-- `xyz` can be
-    - a single `line`
-    - a `selection` of lines
-    - a `chunk`
-        - RStudio will automatically split the changes in chunks
-        - chunks are defined by 10 unchanged lines between changes
+- `discard xyz`: revert the changes in the xyz (be careful, can't be undone!)
+
+and `xyz` can be
+- a single `line`
+- a `selection` of lines
+- a `chunk`
+    - RStudio will automatically split the changes in chunks
+    - chunks are defined by 10 unchanged lines between changes
 
 ---
 
-### Create a conflict
-
-Update your `README.md` on GitHub,<br/>
-on a line you also edited locally
-
-![Commit to create conflict](images/commit-to-create-conflict.png)
-
----
-
-### Conflict!
-
-Try to push (click `push`) your local changes
-
-![Conflict](images/conflict-rstudio1.png)
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
+1. Make 2 unrelated changes to your `README.md` locally
+1. Create one `commit` for each change:
+    1. Select the changes you want to commit and click `stage selection`
+    1. Add a `commit message` and click `Commit`
+1. Do NOT push (yet)
+</div>
 
 ---
 
-### Keep calm and resolve conflict
+### Create a conflict!
 
-1. Click `Pull` to download the changes from Github
+Sometimes, conflicts will appear. Maybe because a collaborator was working on exactly the same lines of code or because of a mistake in your workflow,... No worries, we'll learn you how to fix conflicts by initiating one.
 
-![Conflict](images/conflict-rstudio2.png)
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
+Update your `README.md` online on GitHub, on the exact same line you just edited locally in the previous exercise.
+</div>
 
 ---
 
-### Keep calm and resolve conflict
+If you do not remember how to change files online, check again [this online tutorial](https://help.github.com/articles/create-a-repo/#commit-your-first-change). Check the result of your online commit, similar to:
 
+![Commit to create conflict](images/commit-to-create-conflict.png){width=75%}
+
+---
+
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
+Back in Rstudio, try to push (click `push`) your local changes.
+</div>
+
+---
+
+Git provides a warning about the remote changes on the same repository:
+
+![Conflict](images/conflict-rstudio1.png){width=75%}
+
+---
+
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
+Click `Pull` to download the changes from Github
+</div>
+
+Git notices the **CONFLICT** and demands you what to do next:
+
+1. Fix conflicts
+1. Commit the result after fixing the conflict
+
+![Conflict](images/conflict-rstudio2.png){width=75%}
+
+---
+
+Keep calm and resolve conflict!
+
+Each conflict is always marked by the combination of the following elements:
+```
+<<<<<<< HEAD
+your local code
+=======
+the code as it exists on Github
+>>>>>>> origin/master
+```
+
+To solve a conflict, you have to decide which version of the code you want to keep. 
+
+---
+
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
 1. Open `README.md` in RStudio:
 
         <<<<<<< HEAD
@@ -289,15 +434,19 @@ Try to push (click `push`) your local changes
         A simple analysis to discover my favourite fruit color.
         >>>>>>> origin/master
 
-2. Choose what you want to keep:
+2. Choose what you want to keep and only keep that code in the file:
 
         A simple analysis to discover my favourite fruit colour.
 
-3. Commit and click `push`
+3. Commit the adaptation with a commit message
+4. Click `Push` to update GitHub
+</div>
+
+If you encounter a conflict in the future, repeat this procedure.
 
 ---
 
-### Add a file
+### Add a new file
 
 1. Add a `fruits.csv` file in a `/data` directory
 2. Link to this file in the `README.md`
