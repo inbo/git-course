@@ -61,8 +61,15 @@ knit: (function(input_file, encoding) { rmarkdown::render(input_file, encoding =
        padding-left: 16px;
        font-weight: bold;
         }
-    .exercise-content {
-       border-left: 6px solid #ffeb3b;
+    .panel-warning .panel-body {
+       border-left: 6px solid #e99002;
+       margin-bottom: 15px;
+       padding-top: 10px;
+       padding-bottom: 10px;
+       padding-left: 16px;
+        }
+    .panel-danger .panel-body {
+       border-left: 6px solid #f04124;
        margin-bottom: 15px;
        padding-top: 10px;
        padding-bottom: 10px;
@@ -89,11 +96,12 @@ We start with you working on a repository, without interference of colleagues
 
 A new project starts with a new repository, which can be easily setup using [GitHub.com](https://github.com).
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 1. Go to [GitHub](https://github.com) and login
 2. Follow [this tutorial](https://help.github.com/articles/create-a-repo/) to create a repo and [create your first (online) commit](https://help.github.com/articles/create-a-repo/#commit-your-first-change) to your repository
-</div>
+</div></div>
 
 ---
 
@@ -119,18 +127,20 @@ As we will mainly use Git(Hub) to manage R/Rmarkdown scripts, the existing integ
 
 Just to make sure, in case you did not already installed Git and Rstudio:
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 1. [Download](https://git-scm.com/downloads) and install Git
 1. Install [RStudio](https://inbo.github.io/tutorials/installation-RStudio-admin.html)
-</div>
+</div></div>
 
 When installed properly:
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 1. Open [RStudio](https://inbo.github.io/tutorials/installation-RStudio-user.html)
-</div>
+</div></div>
 
 ---
 
@@ -140,14 +150,15 @@ In order to start using version control in Rstudio, we have to do some configura
 
 First of all, tell RStudio where to find the Git installation. 
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 1. Go to `Tools > Global Options`
 1. Click on `Git/SVN`.
 1. Check *Enable version control interface for RStudio projects*
 1. Set the path to the Git executable that you installed*
 1. Check *use Git bash as shell for Git projects*
-</div>
+</div></div>
 
 ---
 
@@ -159,8 +170,9 @@ First of all, tell RStudio where to find the Git installation.
 
 Next, we have to tell Github who we actually are, in order to make the connection to the online account. To do so, Git requires the configuration of your Github (!) username and GitHub email:
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 1. Go to `Tools > Shell` to open the Git Shell
 1. In the shell, type the following command and enter:
 ```
@@ -170,7 +182,7 @@ git config --global user.name "mygithubusername"
 ```
 git config --global user.email "my.name@inbo.be"
 ```
-</div>
+</div></div>
 
 ---
 
@@ -186,13 +198,14 @@ When successful, the configuration is done. Congratulations!
 
 We have initiated a repository online and a working Git within Rstudio. Hence, we can start working on the code locally by downloading the repository to our computer. Rstudio provides a convenient way to start a new project as a Git repository.
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 1. On your GitHub repository page, copy the repository **HTTPS** url (*remember the green button?*)
 1. In Rstudio, `File > New Project...`, select `Version Control`, choose `Git`
 1. Provide the repository HTTPS link you just copied (the project name will be filled in as well)
 1. Browse to desired directory where you will manage your project/code
-</div>
+</div></div>
 
 --- 
 
@@ -208,10 +221,11 @@ An example of the project setup using an existing Git repsoitory:
 
 ---
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 In your File explorer, search for your project folder and check the content. Does this corresponds to what is shown online on your repository website?
-</div>
+</div></div>
 
 ---
 
@@ -221,12 +235,13 @@ When starting a new project in RStudio, it will always add a file `.gitignore` i
 
 Hence, we can ignore the `myprojectname.Rproj` file by adding the file to the `.gitignore` text-file. We can d this inside Rstudio:
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 1. Go to `git` pane (the tab that says Git), 
 1. right click on `....Proj` and select `Ignore...`
 1. Check if the content of `.gitignore` is correctly updated and click `Save`.
-</div>
+</div></div>
 
 ---
 
@@ -246,14 +261,15 @@ Check the content of the `.gitignore` file. If satisfied, click `Save`:
 
 As the `.gitignore` is a newly added file (or at least adapted), we can `commit` this change and provide a commit message:
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 1. Go to `git` pane
 1. Check the box next to `.gitignore`
 1. Click `Commit`
 1. Add a `commit message` and click commit
 1. Click `Close` to remove the commit summary
-</div>
+</div></div>
 
 ---
 
@@ -279,11 +295,12 @@ It is good practice to **commit often**, so you will do this a lot. Each commit 
 
 As documentation is crucial, providing some more information in the `README.md` file will help others (and yourself in a couple of months/years) to understand the aim of the project. Just as we adapted the `README.md` file online earlier, we can do the same locally:
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 1. Update the `README.md` inside Rstudio
 1. Commit your changes
-</div>
+</div></div>
 
 ---
 
@@ -297,11 +314,12 @@ Remark the reporting of the changed lines linked to this commit with green and r
 
 Note that the `git` pane displays *your branch is ahead of 'origin/master' by 2 commits*. This is actually providing you a warning message that there is no backup of these two commits! In order to store these changes on GitHub as well, we have to `push` our changes to GitHub:
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 1. Click `push` in the `git` pane
 1. Go to your repository on GitHub to verify the commits and file contents
-</div>
+</div></div>
 
 ---
 
@@ -321,12 +339,13 @@ Is the `README.md` adapted? Where do you find the Commits overview online?
 
 It is a tedious task to retype the password each time you want to `push` anything to GitHub. Luckily, you can store your credentials when using https:
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 1. Click on the `more` button in the `git` pane and select `Shell`
 1. Type `git config --global credential.helper store`
 1. Type `exit` to quit the shell
-</div>
+</div></div>
 
 The next time `git` needs your credentials, it will ask them **one more time and store them**!
 
@@ -362,14 +381,15 @@ and `xyz` can be
 
 ---
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 1. Make 2 unrelated changes to your `README.md` locally
 1. Create one `commit` for each change:
     1. Select the changes you want to commit and click `stage selection`
     1. Add a `commit message` and click `Commit`
 1. Do NOT push (yet)
-</div>
+</div></div>
 
 ---
 
@@ -377,10 +397,11 @@ and `xyz` can be
 
 Sometimes, conflicts will appear. Maybe because a collaborator was working on exactly the same lines of code or because of a mistake in your workflow,... No worries, we'll learn you how to fix conflicts by initiating one.
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 Update your `README.md` online on GitHub, on the exact same line you just edited locally in the previous exercise.
-</div>
+</div></div>
 
 ---
 
@@ -390,10 +411,11 @@ If you do not remember how to change files online, check again [this online tuto
 
 ---
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 Back in Rstudio, try to push (click `push`) your local changes.
-</div>
+</div></div>
 
 ---
 
@@ -403,10 +425,11 @@ Git provides a warning about the remote changes on the same repository:
 
 ---
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 Click `Pull` to download the changes from Github
-</div>
+</div></div>
 
 Git notices the **CONFLICT** and demands you what to do next:
 
@@ -432,8 +455,9 @@ To solve a conflict, you have to decide which version of the code you want to ke
 
 ---
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 1. Open `README.md` in RStudio:
 
         <<<<<<< HEAD
@@ -448,7 +472,7 @@ To solve a conflict, you have to decide which version of the code you want to ke
 
 3. Commit the adaptation with a commit message
 4. Click `Push` to update GitHub
-</div>
+</div></div>
 
 If you encounter a conflict in the future, repeat this procedure.
 
@@ -460,12 +484,13 @@ DUring a project, new files will be added to the project folder, which need to b
 
 By clicking the box next to a file, the file is staged (i.e. ready to be committed). Staging a new directory will stage all files in the directory. However, you can not stage empty directories!
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 1. Add a `fruits.csv` file in a `/data` subdirectory
 1. Link to this file in the `README.md` (use relative paths), mentioning the purpose of the file 
 1. Commit both changes (new data file and the `README.md` adaptation) in a single commit message
-</div>
+</div></div>
 ---
 
 Rstudio provides information about the status of the file:
@@ -487,11 +512,12 @@ Clicking both will make them ready to be committed. Remark, the `data/fruits.csv
 
 Sometimes, you just did a commit of some adaptations, but you see that you missed some lines of code that should be included in the same commit. Git provides the ability to `amend` a previous commit with some additional adaptations.
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 1. Make a change in `fruits.csv`
 1. `Commit` as usual but **check** `amend previous commit` in the commit message box
-</div>
+</div></div>
 
 **Warning:** don't do this on commits that have been pushed. That would result in conflicts.
 
@@ -507,11 +533,12 @@ Next to the `Commit` box, the `amend` option is available:
 
 One of the advantages of using version control with regular commits is that you get a history of your project. You can check the history (the series of commits) both online on GitHub as well as in Rstudio:
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 1. Within Rstudio, click on `history` in the `git` pane
 1. On the webpage of your repository, chek the commit list
-</div>
+</div></div>
 
 ---
 
@@ -536,8 +563,9 @@ You can click on each of the commits to verify the adaptations that were part of
 
 It is good practice to ALWAYS work on (short-living) branches. It allows you to freely experiment until you are satisfied of the result and it ensures your `master` provides the last stable version of your analysis/project.
 
-<div class="exercise">Exercise:</div>
-<div class="exercise-content">
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 1. Open the git shell
 1. Create a branch by a `checkout` to new `branch`:
     ```
@@ -546,7 +574,7 @@ It is good practice to ALWAYS work on (short-living) branches. It allows you to 
 1. Get an overview of your branches: `git branch`
 1. Add an analysis file in a `/src` directory
 1. `Commit` the adaptation to the branch
-</div>
+</div></div>
 
 ---
 
@@ -556,75 +584,139 @@ For this example, we decided to use the name `analysis-script` for the branch na
 
 ---
 
-### Effect of changing switching branches
+<div class="panel-danger">
+<div class="panel-heading">Remark!</div>
+<div class="panel-body">
+The new versions of Rstudio provide the functionality to create a branch directly!
+</div></div>
 
-The first time you switch branches and you see files... TODO 
-
-Add a file to the repository in a `src`-directory (see earlier)
-
-1. Go back to the status of the `master` branch
-1. Click on `analysis-script` in the `git` pane and select `(LOCAL BRANCHES) -> master`
-![Switch branch](images/branch-rstudio1.png)
-
-![Switch branch](images/branch-rstudio2.png)
+![Create branch](images/branch-rstudio3.png){width=75%}
 
 ---
 
-1. Verify your local directory structure: where are your files?
-1. Go back to the status of the new branch (e.g. `analysis-script`)
-1. Verify your local directory structure again: where are your files?
+### Effect of switching branches
+
+The first time you switch branches and you see files disappearing, you might be wondering what is happening. No worries, Git is just making sure you only see those files relevant for the active branch. In the next exercise, we will explore this feature in more detail:
+
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
+1. Click on the right-top dropdown in the `git` pane
+1. Switch to the status of the `master` branch by selecting `(LOCAL BRANCHES) -> master`
+1. Verify your local directory structure in file explorer: where are your files?
+1. Switch back to the status of the new branch (in the example i.e. `analysis-script`)
+1. Verify your local directory structure in file explorer again: where are your files?
+</div></div>
+
+---
+
+As in our example, the branch name is `analysis-script`, the dropdown defines this as the currently active branch. Clicking on the dropdown provides an overview of all branches:
+
+![Switch branch](images/branch-rstudio1.png){width=75%}
+
+---
+
+Rstudio provides you information about the switch to the `master` branch:
+
+![Switch branch](images/branch-rstudio2.png){width=75%}
 
 ---
 
 ### First push of a new branch
 
-1. Notice that the `pull` and `push` buttons in the `git` pane are grayed out
+Notice that the `pull` and `push` buttons in the `git` pane are grayed out. When working on a branch, we have to activate these buttons:
+
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 1. Open the Git Shell
 1. Type `git push -u origin analysis-script`
+1. On GitHub website, look for your branch and check the adaptations to the branch
+</div></div>
 
-This will also activate the `pull` and `push` buttons
+---
 
-![First push branch](images/branch-first-push-rstudio.png)
+<div class="panel-danger">
+<div class="panel-heading">Remark!</div>
+<div class="panel-body">
+When using the interface of Rstudio to create a branch, this functionality is already included by checking the box `Sync branch with remote`.
+</div></div>
 
+![Create branch](images/branch-rstudio3.png){width=75%}
+
+---
+
+This will also activate the `pull` and `push` buttons. From now on, you can commit as many times as you want/need to this branch and push the commits to GitHub, where it will be stored under the same branch name:
+
+![First push branch](images/branch-first-push-rstudio.png){width=75%}
 
 ---
 
 ## Pull requests
 
-### Create a pull request to include your work 
-
-1. Click `push` 
-2. At [Github](https://github.com/), browse to you repo...
-3. Create a `pull request`
+When satisfied about the work done in a branch, it is time to bring these adaptations to the `master` branch as part of the *stable* analysis. NEVER merge locally on your machine, we will ALWAYS merge a branch online, by making use of a `Pull request`!
 
 ---
 
-![Check Github message pull request](images/pull-request-intro.png)
+### Create a pull request
+
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
+1. Click `push` (if not already done)
+2. At [Github](https://github.com/), browse to your repository.
+3. Create a `pull request` online
+</div></div>
 
 ---
 
-![Adapt Github message and start pull request](images/pull-request_message.png)
+Github actually suggests you to `Compare & Pull request` on the webpage in a new yellow box. If you do not see the messag, you can still initiate a `Pull request`. The `Pull request` aims to insert the adaptations in your branch into the `master` branch. 
+
+![Check Github message pull request](images/pull-request-intro.png){width=75%}
+
+---
+
+In a new dialog, you can provide a short summary line about the `Pull request` with the option to add additional information. By clicking the `Create pull request` button, you actually propose the merge into the `master` branch.
+
+![Adapt Github message and start pull request](images/pull-request_message.png){width=75%}
 
 ---
 
 ### Review your pull request
 
-![See pull request](images/pr.png)
+While working on your own and you are sure about the changes, you can actually merge the `Pull request` yourself. Although, this is the ideal moment for revision of the code (you can ask people to review your code, but automated checks can be added as well).
+
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
+1. Review your own code!
+2. If OK, merge the `Pull request`. 
+3. Do not forget to delete the branch online (Github asks you to)
+</div></div>
 
 ---
 
-1. Review
-2. If OK, merge pull request
-3. Delete branch
+![See pull request](images/pr.png){width=75%}
+
 
 ---
 
 ### Include your accepted work to local master
 
-1. Switch to `master` branch
-2. Click `pull`.
+For the moment, your adaptations are integrated into the `master` branch online, but not yet on your local computer. So, you have to update the local `master` branch:
 
-![git pull](images/pull-rstudio.png)
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
+1. In Rstudio, sitch to the `master` branch (right top in `Git` pane)
+1. Click `Pull`
+1. Remove the local branch as well (otherwise you will have a lot of them after a while). You need to open the Shell:
+    ```
+    git branch -D analysis-script
+    ```
+</div></div>
+
+![git pull](images/pull-rstudio.png){width=75%}
 
 ---
 
@@ -660,11 +752,11 @@ Note that you can use wild cards e.g. `*.Rproj`
 
 ## Invite collaborators
 
-![Invite collaborator](images/invite-collaborator.png)
+![Invite collaborator](images/invite-collaborator.png){width=75%}
 
 ---
 
-![react to collaborator](images/react-collaborator.png)
+![react to collaborator](images/react-collaborator.png){width=75%}
 
 ---
 
