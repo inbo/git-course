@@ -6,12 +6,21 @@ author:
 - Thierry Onkelinx
 date: "`r Sys.Date()`"
 output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+    fig_caption: false
+    theme: yeti
+    df_print: paged
+    keep_md: true
   revealjs::revealjs_presentation:
     theme: white
     highlight: zenburn
     keep_md: true
     transition: none
-    center: false
+    center: true
     fig_caption: false
     fig_width: 5
     fig_height: 4
@@ -115,8 +124,6 @@ Just to make sure, in case you did not already installed Git and Rstudio:
 1. [Download](https://git-scm.com/downloads) and install Git
 1. Install [RStudio](https://inbo.github.io/tutorials/installation-RStudio-admin.html)
 </div>
-
----
 
 When installed properly:
 
@@ -449,68 +456,109 @@ If you encounter a conflict in the future, repeat this procedure.
 
 ## Add a new file
 
-1. Add a `fruits.csv` file in a `/data` directory
-2. Link to this file in the `README.md`
+DUring a project, new files will be added to the project folder, which need to be version controlled as well. New directories and files can be added and committed, just like any other adaptation. 
 
-![Add a file](images/add-file-rstudio1.png)
+By clicking the box next to a file, the file is staged (i.e. ready to be committed). Staging a new directory will stage all files in the directory. However, you can not stage empty directories!
+
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
+1. Add a `fruits.csv` file in a `/data` subdirectory
+1. Link to this file in the `README.md` (use relative paths), mentioning the purpose of the file 
+1. Commit both changes (new data file and the `README.md` adaptation) in a single commit message
+</div>
+---
+
+Rstudio provides information about the status of the file:
+
+- `README.md` file is adapted (blue *Modified* box)
+- `data/` is currently unknown to Git (yellow *Question mark* box)
+
+![Add a file](images/add-file-rstudio1.png){width=75%}
 
 ---
 
-### Add a file within a directory
+Clicking both will make them ready to be committed. Remark, the `data/fruits.csv` file gets a green *Added* box:
 
-- Staging a new directory will stage all files in the directory
-- You can't stage empty directories
-
-![Add a file](images/add-file-rstudio2.png)
+![Add a file](images/add-file-rstudio2.png){width=75%}
 
 ---
 
-### Adapt last commit
+## Adapt last commit
 
-- **Warning:** don't do this on commits that have been pushed. That would result in conflicts.
-- Make a change in `fruits.csv`
-- `Commit` as usual but **check** `amend previous commit` under the commit message box
+Sometimes, you just did a commit of some adaptations, but you see that you missed some lines of code that should be included in the same commit. Git provides the ability to `amend` a previous commit with some additional adaptations.
 
-![Add a file](images/amend-commit-rstudio.png){width=60%}
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
+1. Make a change in `fruits.csv`
+1. `Commit` as usual but **check** `amend previous commit` in the commit message box
+</div>
 
----
-
-### View history
-
-- Click on `history` in the `git` pane
-![View history](images/history-rstudio1.png)
+**Warning:** don't do this on commits that have been pushed. That would result in conflicts.
 
 ---
 
-### View history
+Next to the `Commit` box, the `amend` option is available:
 
-![View history](images/history-rstudio2.png)
-
----
-
-### Create a branch to experiment
-
-1. Create a NEW branch
-2. Add an analysis file in a `/src` directory
-3. Commit
-4. Switch between branches
+![Add a file](images/amend-commit-rstudio.png){width=75%}
 
 ---
 
-### Create a branch to experiment
+## View history
 
+One of the advantages of using version control with regular commits is that you get a history of your project. You can check the history (the series of commits) both online on GitHub as well as in Rstudio:
+
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
+1. Within Rstudio, click on `history` in the `git` pane
+1. On the webpage of your repository, chek the commit list
+</div>
+
+---
+
+Notice the presence of `History` twice in the following image: 
+
+- As a separate pane (your R command history): this has nothing to do with Git
+- Within the `git` pane (the history of your commit messages)
+
+![View history](images/history-rstudio1.png){width=75%}
+
+---
+
+You can click on each of the commits to verify the adaptations that were part of the specific commit:
+
+![View history](images/history-rstudio2.png){width=75%}
+
+---
+
+## Create a branch to experiment
+
+### How to make a new branch?
+
+It is good practice to ALWAYS work on (short-living) branches. It allows you to freely experiment until you are satisfied of the result and it ensures your `master` provides the last stable version of your analysis/project.
+
+<div class="exercise">Exercise:</div>
+<div class="exercise-content">
 1. Open the git shell
-1. Create a branch by a checkout to new branch 
+1. Create a branch by a `checkout` to new `branch`:
     ```
     git checkout -b analysis-script
     ```
 1. Get an overview of your branches: `git branch`
+1. Add an analysis file in a `/src` directory
+1. `Commit` the adaptation to the branch
+</div>
 
-![Create branch](images/create-branch-rstudio.png)
+---
+
+For this example, we decided to use the name `analysis-script` for the branch name. Make sure your branch name makes sense for the work you are planning to do. Use lower case characters and `-` in between words (NO spaces!).
+
+![Create branch](images/create-branch-rstudio.png){width=75%}
 
 ---
 
 ### Effect of changing switching branches
+
+The first time you switch branches and you see files... TODO 
 
 Add a file to the repository in a `src`-directory (see earlier)
 
@@ -521,8 +569,6 @@ Add a file to the repository in a `src`-directory (see earlier)
 ![Switch branch](images/branch-rstudio2.png)
 
 ---
-
-### Effect of changing switching branches
 
 1. Verify your local directory structure: where are your files?
 1. Go back to the status of the new branch (e.g. `analysis-script`)
@@ -543,6 +589,8 @@ This will also activate the `pull` and `push` buttons
 
 ---
 
+## Pull requests
+
 ### Create a pull request to include your work 
 
 1. Click `push` 
@@ -551,13 +599,9 @@ This will also activate the `pull` and `push` buttons
 
 ---
 
-### Create a pull request to include your work 
-
 ![Check Github message pull request](images/pull-request-intro.png)
 
 ---
-
-### Create a pull request to include your work 
 
 ![Adapt Github message and start pull request](images/pull-request_message.png)
 
@@ -568,8 +612,6 @@ This will also activate the `pull` and `push` buttons
 ![See pull request](images/pr.png)
 
 ---
-
-### Review your pull request
 
 1. Review
 2. If OK, merge pull request
@@ -586,7 +628,7 @@ This will also activate the `pull` and `push` buttons
 
 ---
 
-### Exclude files
+## Exclude files
 
 * in any programming language, some files are _derivatives_
 * sensitive information (passwords,...)
@@ -597,8 +639,6 @@ This will also activate the `pull` and `push` buttons
 
 ---
 
-### Exclude files
-
 ![Ignore a file](images/gitignore-rstudio1.png){width=30%}
 
 Note that you can use wild cards e.g. `*.Rproj`
@@ -607,30 +647,28 @@ Note that you can use wild cards e.g. `*.Rproj`
 
 ---
 
-## Working together {data-background=#c2c444}
+# Working together {data-background=#c2c444}
 
 ---
 
-### Teaming up
+## Teaming up
 
 * Team up with two or three persons
 * Let one person invite the others, provide them with read/write access as explained in [this tutorial](https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/)
 
 ---
 
-### Invite collaborators
+## Invite collaborators
 
 ![Invite collaborator](images/invite-collaborator.png)
 
 ---
 
-### Invite collaborators
-
 ![react to collaborator](images/react-collaborator.png)
 
 ---
 
-### Collaboration: issues
+## Collaboration: issues
 
 * Raise an **issue** online
 * Provide issues with an appropriate label
@@ -638,7 +676,7 @@ Note that you can use wild cards e.g. `*.Rproj`
 
 ---
 
-### Collaboration: online adaptations
+## Collaboration: online adaptations
 
 * Make an adaptation to an online file
 * Propose a **pull request** and assign your collaborator
@@ -646,7 +684,7 @@ Note that you can use wild cards e.g. `*.Rproj`
 
 ---
 
-### Collaboration: local adaptations
+## Collaboration: local adaptations
 
 **Working local - merging online**
 
@@ -664,7 +702,7 @@ Note that you can use wild cards e.g. `*.Rproj`
 
 ---
 
-### Release
+## Release
 
 Once you are satisfied with the status of your analysis, it makes sense to create a release:
 
@@ -676,7 +714,7 @@ Follow [this tutorial](https://help.github.com/articles/creating-releases/) to c
 
 ---
 
-### Some more advice:
+# Some more advice:
 
 * Commit often, make small commits
 * Don’t mix changes in 1 commit
