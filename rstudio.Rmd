@@ -786,13 +786,15 @@ When there is no coding involved, e.g. you just need to update a few text lines 
 <div class="panel-heading">Exercise:</div>
 <div class="panel-body">
 * Make an adaptation to an online file
-* Propose a **pull request** and assign your collaborator
+* Propose a `pull request` and assign your collaborator
 * Merge the adaptation to the `master` branch
 </div></div>
 
 ---
 
 ## Local adaptations
+
+In this section, all the individual steps come together to collaborate on the code of your project. First, we will start with a rehearsel of the individual steps as an exercise. Afterwards, we will try out a workflow that can be used as a step by step procedure in the future.
 
 <div class="panel-danger">
 <div class="panel-heading">Remember:</div>
@@ -817,6 +819,12 @@ When there is no coding involved, e.g. you just need to update a few text lines 
 </div></div>
 
 **Tip**: All functionalities are available in the previous sections
+
+---
+
+## Step by step workflow
+
+The steps of the previous exercise provide the main building blocks. Nevertheless, when working on a project, a step by step procedure can help in the beginning to remember the workflow. A dedicated version for Rstudio is available at this repo as a separate [markdown file](https://github.com/inbo/git-course/blob/master/workflow_rstudio.md).
 
 ---
 
