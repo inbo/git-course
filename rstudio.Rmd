@@ -251,6 +251,21 @@ As our dummy project is called `favourite-fruit-color`, the `.Rproj` file is cal
 
 ---
 
+When to use `.gitignore`:
+
+* in any programming language, some files are _derivatives_
+* sensitive information (passwords,...)
+* a folder with large data files that should not be in the history (and backuped elsewhere!)
+* a _temp/_ folder for just garbage you create/...
+
+---
+
+Note that you can use wild cards e.g. `*.Rproj` to exclude a group of files from the version control:
+
+![Update .gitignore](images/gitignore-rstudio2.png){width=75%}
+
+---
+
 Check the content of the `.gitignore` file. If satisfied, click `Save`:
 
 ![Update .gitignore](images/gitignore-rstudio2.png){width=75%}
@@ -720,68 +735,78 @@ For the moment, your adaptations are integrated into the `master` branch online,
 
 ---
 
-## Exclude files
-
-* in any programming language, some files are _derivatives_
-* sensitive information (passwords,...)
-* a folder with large data files that should not be in the history (and backuped elsewhere!)
-* a _temp/_ folder for just garbage you create/...
-
-`.gitignore` to the rescue!
-
----
-
-![Ignore a file](images/gitignore-rstudio1.png){width=30%}
-
-Note that you can use wild cards e.g. `*.Rproj`
-
-![Update .gitignore](images/gitignore-rstudio2.png){width=30%}
-
----
-
 # Working together {data-background=#c2c444}
-
----
-
-## Teaming up
-
-* Team up with two or three persons
-* Let one person invite the others, provide them with read/write access as explained in [this tutorial](https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/)
 
 ---
 
 ## Invite collaborators
 
+You now have experienced all the major steps to effectively use version control with Git. We can now apply these same steps when working together.
+
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
+* Team up with two or three persons
+* Let one person invite the others, provide them with read/write access as explained in [this tutorial](https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/)
+</div></div>
+
+---
+
+On your own repository, you have all admin rights to add `Collaborators` in the `Settings` section of GitHub:
+
 ![Invite collaborator](images/invite-collaborator.png){width=75%}
 
 ---
+
+When invited to collaborate, you have to `Accept invitation` in order to start working on the repository:
 
 ![react to collaborator](images/react-collaborator.png){width=75%}
 
 ---
 
-## Collaboration: issues
+## Issues
 
-* Raise an **issue** online
-* Provide issues with an appropriate label
+Issues can be used for multiple purposes: alerting colleagues about a bug in the code, proposing new features, discussing specific steps in the analysis,...
+
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
+* Raise an `issue` online
+* Provide issues with an appropriate `label`
 * Assign your colleague to the issue
+</div></div>
 
 ---
 
-## Collaboration: online adaptations
+## Online adaptations
 
+When there is no coding involved, e.g. you just need to update a few text lines in a markdown file, the usage of the online GitHub features could be sufficient enough: 
+
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 * Make an adaptation to an online file
 * Propose a **pull request** and assign your collaborator
 * Merge the adaptation to the `master` branch
+</div></div>
 
 ---
 
-## Collaboration: local adaptations
+## Local adaptations
 
-**Working local - merging online**
+<div class="panel-danger">
+<div class="panel-heading">Remember:</div>
+<div class="panel-body">
+**Working on a local branch - merging online**
+</div></div>
 
+---
+
+<div class="panel-warning">
+<div class="panel-heading">Exercise:</div>
+<div class="panel-body">
 * As collaborator, `clone` the other repository to your local computer
-* Create a new `branch` with a different name
+* Create a new `branch` locally with a different name
 * Adapt the content of a file
 * `commit` your adaptation
 * `push` your `branch` to the remote repository
@@ -789,6 +814,7 @@ Note that you can use wild cards e.g. `*.Rproj`
 * Revise the work and `merge` online when appropriate
 * Update your local work
 * Check if all adaptations are represented in your local files
+</div></div>
 
 **Tip**: All functionalities are available in the previous sections
 
@@ -833,7 +859,7 @@ Follow [this tutorial](https://help.github.com/articles/creating-releases/) to c
 
 ---
 
-Information combined at [INBO Tutorials website](https://inbo.github.io/tutorials/). <br/>You're welcome to provide issues, pull requests,...
+Information combined at [INBO Git course](https://github.com/inbo/git-course). <br/>You're welcome to provide issues, pull requests,...
 
 
 
