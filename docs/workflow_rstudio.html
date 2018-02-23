@@ -231,17 +231,17 @@ $(document).ready(function () {
 <div id="option-1a-ill-make-a-new-branch-to-work-with" class="section level3">
 <h3>OPTION 1A: <em>I’ll make a new branch to work with</em></h3>
 <p>Create a new topic branch from master</p>
-<p>Make sure you are working on the master branch: <img src="../images/workflow_rstudio_1.png" /></p>
-<p>Update the master branch to make sure it is aligned with the remote master: Click <code>Pull</code>: <img src="../images/workflow_rstudio_2.png" /></p>
-<p>Create a new branch: click on <code>New branch</code> and fill in a branch name: <img src="../images/workflow_rstudio_2b.png" /></p>
+<p>Make sure you are working on the master branch: <img src="images/workflow_rstudio_1.png" /></p>
+<p>Update the master branch to make sure it is aligned with the remote master: Click <code>Pull</code>: <img src="images/workflow_rstudio_2.png" /></p>
+<p>Create a new branch: click on <code>New branch</code> and fill in a branch name: <img src="images/workflow_rstudio_2b.png" /></p>
 </div>
 <div id="option-1b-i-already-have-a-branch-i-want-to-continue-working-on" class="section level3">
 <h3><strong>OPTION 1B</strong>: <em>I already have a branch I want to continue working on</em>:</h3>
-<p>Switch to existing topic branch: <img src="../images/workflow_rstudio_3.png" /></p>
+<p>Switch to existing topic branch: <img src="images/workflow_rstudio_3.png" /></p>
 <p>Update the topic branch to make sure is is aligned with the remote master: In the Git shell, type:</p>
 <pre><code>git pull origin master</code></pre>
 <div class="figure">
-<img src="../images/workflow_rstudio_4.png" />
+<img src="images/workflow_rstudio_4.png" />
 
 </div>
 </div>
@@ -253,61 +253,61 @@ $(document).ready(function () {
 <h2>STEP 2.x: adapt in md, R-code,… (multiple times!)</h2>
 <div id="add-new-files" class="section level3">
 <h3>Add new files</h3>
-<p>Stage the new file with checkbox and click <code>Commit</code> <img src="../images/workflow_rstudio_5.png" /></p>
-<p>Provide clear and understandable message about adaptations <img src="../images/workflow_rstudio_6.png" /></p>
+<p>Stage the new file with checkbox and click <code>Commit</code> <img src="images/workflow_rstudio_5.png" /></p>
+<p>Provide clear and understandable message about adaptations <img src="images/workflow_rstudio_6.png" /></p>
 </div>
 <div id="change-files" class="section level3">
 <h3>Change files:</h3>
-<p>Stage the adaptations with checkbox and click <code>Commit</code> <img src="../images/workflow_rstudio_7.png" /></p>
-<p>Provide clear and understandable message about adaptations <img src="../images/workflow_rstudio_8.png" /></p>
+<p>Stage the adaptations with checkbox and click <code>Commit</code> <img src="images/workflow_rstudio_7.png" /></p>
+<p>Provide clear and understandable message about adaptations <img src="images/workflow_rstudio_8.png" /></p>
 </div>
 </div>
 <div id="step-3-push-your-changes-to-github." class="section level2">
 <h2>STEP 3: Push your changes to GitHub.</h2>
-<p>Update the remote version of the topic branch. Click <code>Push</code>: <img src="../images/workflow_rstudio_9.png" /></p>
+<p>Update the remote version of the topic branch. Click <code>Push</code>: <img src="images/workflow_rstudio_9.png" /></p>
 </div>
 </div>
 <div id="edits-on-branch-are-ready" class="section level1">
 <h1>EDITS ON BRANCH ARE READY</h1>
 <div id="step-4-pull-request-to-add-your-changes-to-the-current-master." class="section level2">
 <h2>STEP 4: Pull request to add your changes to the current master.</h2>
-<p>Update the remote version of the topic branch. Click <code>Push</code>: <img src="../images/workflow_rstudio_9.png" /></p>
+<p>Update the remote version of the topic branch. Click <code>Push</code>: <img src="images/workflow_rstudio_9.png" /></p>
 <p>Go to your repo on Github.com and click the <code>Compare &amp; pull request</code> button.</p>
 <div class="figure">
-<img src="../images/workflow_rstudio_github_1.png" />
+<img src="images/workflow_rstudio_github_1.png" />
 
 </div>
-<p>Add information about the Pull request, add reviewers, labels,… Finally, <code>Create pull request</code>: <img src="../images/workflow_rstudio_github_2.png" /></p>
+<p>Add information about the Pull request, add reviewers, labels,… Finally, <code>Create pull request</code>: <img src="images/workflow_rstudio_github_2.png" /></p>
 </div>
 <div id="step-5-code-review" class="section level2">
 <h2>STEP 5: Code review!</h2>
 <p>You and collaborators can make comments about the edits, review the code and adapt if required (create additional commits and <code>Push</code> them to GitHub) .</p>
 <p>If everything is ok, click the <code>Merge pull request</code>:</p>
 <div class="figure">
-<img src="../images/workflow_rstudio_github_3.png" />
+<img src="images/workflow_rstudio_github_3.png" />
 
 </div>
 <p>followed by <code>Confirm merge</code>:</p>
 <div class="figure">
-<img src="../images/workflow_rstudio_github_4.png" />
+<img src="images/workflow_rstudio_github_4.png" />
 
 </div>
 <p>Delete the online branch after merge, since obsolete, click <code>Delete branch</code></p>
 <div class="figure">
-<img src="../images/workflow_rstudio_github_5.png" />
+<img src="images/workflow_rstudio_github_5.png" />
 
 </div>
 </div>
 <div id="step-6-update-the-master-branch-on-my-pc" class="section level2">
 <h2>STEP 6: Update the master branch on my PC</h2>
-<p>Make sure you are working on the master branch: <img src="../images/workflow_rstudio_1.png" /></p>
+<p>Make sure you are working on the master branch: <img src="images/workflow_rstudio_1.png" /></p>
 <p>Remove the local branch, since obsolete. In the Git shell, type:</p>
 <pre><code>git branch -d analysis-script</code></pre>
 <div class="figure">
-<img src="../images/workflow_rstudio_4.png" />
+<img src="images/workflow_rstudio_4.png" />
 
 </div>
-<p>Update the local master branch: Click <code>Pull</code>: <img src="../images/workflow_rstudio_2.png" /></p>
+<p>Update the local master branch: Click <code>Pull</code>: <img src="images/workflow_rstudio_2.png" /></p>
 </div>
 </div>
 
