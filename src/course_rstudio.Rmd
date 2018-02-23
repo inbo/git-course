@@ -91,14 +91,14 @@ A new project starts with a new repository, which can be easily setup using [Git
 
 For this first exercise, we have chosen to create a dummy repository:
 
-![Create a repo](../images/create-a-repo.png)
+![Create a repo](./images/create-a-repo.png)
 (*you do not have to copy the example, choose any name :-)*)
 
 ---
 
 The resulting repository layout will look like this:
 
-![Result of creating a repo](../images/create-repo-result.png)
+![Result of creating a repo](./images/create-repo-result.png)
 (*Remember that there is a `Clone or Download` button on this page!*)
 
 ---
@@ -148,7 +148,7 @@ First of all, tell RStudio where to find the Git installation.
 
 *If you do not know where Git is installed, open your command line (`cmd` in Start for Windows user). When the cmd is open, type `where git` and hit enter. The path should be something like: `C:/Program Files (x86)/Git/bin/git.exe`. Still in trouble? Check [this out](http://happygitwithr.com/rstudio-see-git.html#tell-rstudio-where-to-find-git).
 
-![RStudio setup for git](../images/RStudio-setup-git.png){width=50%}
+![RStudio setup for git](./images/RStudio-setup-git.png){width=50%}
 
 ---
 
@@ -170,7 +170,7 @@ git config --global user.email "my.name@inbo.be"
 
 ---
 
-![RStudio setup git shell](../images/Rstudio-GitShell.png){width=75%}
+![RStudio setup git shell](./images/Rstudio-GitShell.png){width=75%}
 
 Use your **GitHub username**! You can check if you’re set up correctly by typing  `git config --global --list` in the same shell.
 
@@ -195,13 +195,13 @@ We have initiated a repository online and a working Git within Rstudio. Hence, w
 
 To get the https link, you need to click the green button and make sure to copy paste the link with as title `Clone with HTTPS`:
 
-![Copy the https link of a repo](../images/copy-repo-link.png){width=75%}
+![Copy the https link of a repo](./images/copy-repo-link.png){width=75%}
 
 ---
 
 An example of the project setup using an existing Git repsoitory:
 
-![Clone a repo in RStudio](../images/create-project-rstudio.png){width=75%}
+![Clone a repo in RStudio](./images/create-project-rstudio.png){width=75%}
 
 ---
 
@@ -231,7 +231,7 @@ Hence, we can ignore the `myprojectname.Rproj` file by adding the file to the `.
 
 As our dummy project is called `favourite-fruit-color`, the `.Rproj` file is called `favourite-fruit-color.Rproj`. We right click on the file and select `Ignore...`:
 
-![Ignore a file](../images/gitignore-rstudio1.png){width=75%}
+![Ignore a file](./images/gitignore-rstudio1.png){width=75%}
 
 ---
 
@@ -246,13 +246,13 @@ When to use `.gitignore`:
 
 Note that you can use wild cards e.g. `*.Rproj` to exclude a group of files from the version control:
 
-![Update .gitignore](../images/gitignore-rstudio2.png){width=75%}
+![Update .gitignore](./images/gitignore-rstudio2.png){width=75%}
 
 ---
 
 Check the content of the `.gitignore` file. If satisfied, click `Save`:
 
-![Update .gitignore](../images/gitignore-rstudio2.png){width=75%}
+![Update .gitignore](./images/gitignore-rstudio2.png){width=75%}
 
 ---
 
@@ -274,19 +274,19 @@ As the `.gitignore` is a newly added file (or at least adapted), we can `commit`
 
 The status of the `.gitignore` file before the file was committed, with the yellow question mark saying that the file is yet unknown to Git:
 
-![Local commit](../images/commit-rstudio1.png){width=75%}
+![Local commit](./images/commit-rstudio1.png){width=75%}
 
 ---
 
 By checking the box and clicking commit, we add the file and commit this addition with a commit message:
 
-![Local commit](../images/commit-rstudio2.png){width=75%}
+![Local commit](./images/commit-rstudio2.png){width=75%}
 
 ---
 
 We get a small technical overview of the alterations we provided with this commit: 
 
-![Local commit](../images/commit-rstudio3.png){width=75%}
+![Local commit](./images/commit-rstudio3.png){width=75%}
 
 ---
 
@@ -305,7 +305,7 @@ As documentation is crucial, providing some more information in the `README.md` 
 
 Remark the reporting of the changed lines linked to this commit with green and red colors:
 
-![Local commit](../images/commit-rstudio4.png){width=75%}
+![Local commit](./images/commit-rstudio4.png){width=75%}
 
 ---
 
@@ -324,13 +324,13 @@ Note that the `git` pane displays *your branch is ahead of 'origin/master' by 2 
 
 Rstudio gives you a warning about the status of your local commits versus those stored on GitHub:
 
-![Push](../images/push-rstudio1.png){width=75%}
+![Push](./images/push-rstudio1.png){width=75%}
 
 ---
 
 Is the `README.md` adapted? Where do you find the Commits overview online?
 
-![Verify your commits on GitHub](../images/local-commit-on-github.png){width=75%}
+![Verify your commits on GitHub](./images/local-commit-on-github.png){width=75%}
 
 ---
 
@@ -352,7 +352,7 @@ The next time `git` needs your credentials, it will ask them **one more time and
 
 The more button has a `wheel` symbol:
 
-![Store credentials](../images/https-credentials-rstudio1.png){width=75%}
+![Store credentials](./images/https-credentials-rstudio1.png){width=75%}
 
 
 ---
@@ -361,7 +361,7 @@ The more button has a `wheel` symbol:
 
 As mentioned earlier, you should commit often and make sure each commit links to a specific change/problem. Sometimes, this means that you have to split the additions in a single file into two individual commits. Rstudio provides the interface to include specific lines of code into a commit message:
 
-![Logical commit 1](../images/logical-commit-rstudio.png){width=75%}
+![Logical commit 1](./images/logical-commit-rstudio.png){width=75%}
 
 ---
 
@@ -406,7 +406,7 @@ Update your `README.md` online on GitHub, on the exact same line you just edited
 
 If you do not remember how to change files online, check again [this online tutorial](https://help.github.com/articles/create-a-repo/#commit-your-first-change). Check the result of your online commit, similar to:
 
-![Commit to create conflict](../images/commit-to-create-conflict.png){width=75%}
+![Commit to create conflict](./images/commit-to-create-conflict.png){width=75%}
 
 ---
 
@@ -420,7 +420,7 @@ Back in Rstudio, try to push (click `push`) your local changes.
 
 Git provides a warning about the remote changes on the same repository:
 
-![Conflict](../images/conflict-rstudio1.png){width=75%}
+![Conflict](./images/conflict-rstudio1.png){width=75%}
 
 ---
 
@@ -435,7 +435,7 @@ Git notices the **CONFLICT** and demands you what to do next:
 1. Fix conflicts
 1. Commit the result after fixing the conflict
 
-![Conflict](../images/conflict-rstudio2.png){width=75%}
+![Conflict](./images/conflict-rstudio2.png){width=75%}
 
 ---
 
@@ -497,13 +497,13 @@ Rstudio provides information about the status of the file:
 - `README.md` file is adapted (blue *Modified* box)
 - `data/` is currently unknown to Git (yellow *Question mark* box)
 
-![Add a file](../images/add-file-rstudio1.png){width=75%}
+![Add a file](./images/add-file-rstudio1.png){width=75%}
 
 ---
 
 Clicking both will make them ready to be committed. Remark, the `data/fruits.csv` file gets a green *Added* box:
 
-![Add a file](../images/add-file-rstudio2.png){width=75%}
+![Add a file](./images/add-file-rstudio2.png){width=75%}
 
 ---
 
@@ -524,7 +524,7 @@ Sometimes, you just did a commit of some adaptations, but you see that you misse
 
 Next to the `Commit` box, the `amend` option is available:
 
-![Add a file](../images/amend-commit-rstudio.png){width=75%}
+![Add a file](./images/amend-commit-rstudio.png){width=75%}
 
 ---
 
@@ -546,13 +546,13 @@ Notice the presence of `History` twice in the following image:
 - As a separate pane (your R command history): this has nothing to do with Git
 - Within the `git` pane (the history of your commit messages)
 
-![View history](../images/history-rstudio1.png){width=75%}
+![View history](./images/history-rstudio1.png){width=75%}
 
 ---
 
 You can click on each of the commits to verify the adaptations that were part of the specific commit:
 
-![View history](../images/history-rstudio2.png){width=75%}
+![View history](./images/history-rstudio2.png){width=75%}
 
 ---
 
@@ -579,7 +579,7 @@ It is good practice to ALWAYS work on (short-living) branches. It allows you to 
 
 For this example, we decided to use the name `analysis-script` for the branch name. Make sure your branch name makes sense for the work you are planning to do. Use lower case characters and `-` in between words (NO spaces!).
 
-![Create branch](../images/create-branch-rstudio.png){width=75%}
+![Create branch](./images/create-branch-rstudio.png){width=75%}
 
 ---
 
@@ -589,7 +589,7 @@ For this example, we decided to use the name `analysis-script` for the branch na
 The new versions of Rstudio provide the functionality to create a branch directly!
 </div></div>
 
-![Create branch](../images/branch-rstudio3.png){width=75%}
+![Create branch](./images/branch-rstudio3.png){width=75%}
 
 ---
 
@@ -611,13 +611,13 @@ The first time you switch branches and you see files disappearing, you might be 
 
 As in our example, the branch name is `analysis-script`, the dropdown defines this as the currently active branch. Clicking on the dropdown provides an overview of all branches:
 
-![Switch branch](../images/branch-rstudio1.png){width=75%}
+![Switch branch](./images/branch-rstudio1.png){width=75%}
 
 ---
 
 Rstudio provides you information about the switch to the `master` branch:
 
-![Switch branch](../images/branch-rstudio2.png){width=75%}
+![Switch branch](./images/branch-rstudio2.png){width=75%}
 
 ---
 
@@ -641,13 +641,13 @@ Notice that the `pull` and `push` buttons in the `git` pane are grayed out. When
 When using the interface of Rstudio to create a branch, this functionality is already included by checking the box `Sync branch with remote`.
 </div></div>
 
-![Create branch](../images/branch-rstudio3.png){width=75%}
+![Create branch](./images/branch-rstudio3.png){width=75%}
 
 ---
 
 This will also activate the `pull` and `push` buttons. From now on, you can commit as many times as you want/need to this branch and push the commits to GitHub, where it will be stored under the same branch name:
 
-![First push branch](../images/branch-first-push-rstudio.png){width=75%}
+![First push branch](./images/branch-first-push-rstudio.png){width=75%}
 
 ---
 
@@ -671,13 +671,13 @@ When satisfied about the work done in a branch, it is time to bring these adapta
 
 Github actually suggests you to `Compare & Pull request` on the webpage in a new yellow box. If you do not see the messag, you can still initiate a `Pull request`. The `Pull request` aims to insert the adaptations in your branch into the `master` branch. 
 
-![Check Github message pull request](../images/pull-request-intro.png){width=75%}
+![Check Github message pull request](./images/pull-request-intro.png){width=75%}
 
 ---
 
 In a new dialog, you can provide a short summary line about the `Pull request` with the option to add additional information. By clicking the `Create pull request` button, you actually propose the merge into the `master` branch.
 
-![Adapt Github message and start pull request](../images/pull-request_message.png){width=75%}
+![Adapt Github message and start pull request](./images/pull-request_message.png){width=75%}
 
 ---
 
@@ -695,7 +695,7 @@ While working on your own and you are sure about the changes, you can actually m
 
 ---
 
-![See pull request](../images/pr.png){width=75%}
+![See pull request](./images/pr.png){width=75%}
 
 
 ---
@@ -715,7 +715,7 @@ For the moment, your adaptations are integrated into the `master` branch online,
     ```
 </div></div>
 
-![git pull](../images/pull-rstudio.png){width=75%}
+![git pull](./images/pull-rstudio.png){width=75%}
 
 ---
 
@@ -738,13 +738,13 @@ You now have experienced all the major steps to effectively use version control 
 
 On your own repository, you have all admin rights to add `Collaborators` in the `Settings` section of GitHub:
 
-![Invite collaborator](../images/invite-collaborator.png){width=75%}
+![Invite collaborator](./images/invite-collaborator.png){width=75%}
 
 ---
 
 When invited to collaborate, you have to `Accept invitation` in order to start working on the repository:
 
-![react to collaborator](../images/react-collaborator.png){width=75%}
+![react to collaborator](./images/react-collaborator.png){width=75%}
 
 ---
 
