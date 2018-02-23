@@ -30,7 +30,7 @@ Update the master branch to make sure it is aligned with the remote master: Clic
 Create a new branch: click on `New branch` and fill in a branch name:
 ![](./static/images/workflow_rstudio_2b.png)
 
-### **OPTION 1B**:  *I already have a branch I want to continue working on*:  
+### OPTION 1B:  *I already have a branch I want to continue working on*:  
 
 Switch to existing topic branch:
 ![](./static/images/workflow_rstudio_3.png)
