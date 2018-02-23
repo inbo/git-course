@@ -840,13 +840,15 @@ Follow [this tutorial](https://help.github.com/articles/creating-releases/) to c
 
 ---
 
-# Some more advice:
+# Some more *Rules for collaboration*:
 
 * Commit often, make small commits
 * Don’t mix changes in 1 commit
 * Think about your commit messages
-* Keep your code clean, avoid huge one-liners
-* Use branches (!)
+* Always commit into a feature branch, never in the `master` branch.
+* Always start features branches from the `master` branch.
+* Only work in your own branches.
+* Never merge someone else’s `pull request` without their consent.
 * Don’t keep long-lived branches (form of technical debt)
 
 ---
