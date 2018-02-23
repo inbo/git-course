@@ -690,7 +690,7 @@ For the moment, your adaptations are integrated into the `master` branch online,
 1. Click `Pull`
 1. Remove the local branch as well (otherwise you will have a lot of them after a while). You need to open the Shell:
     ```
-    git branch -D analysis-script
+    git branch -d analysis-script
     ```
 </div></div>
 
