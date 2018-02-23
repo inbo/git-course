@@ -15,27 +15,6 @@ output:
 ---
 
 <style type="text/css">
-    .reveal section img { 
-        border:none; 
-        box-shadow:none; 
-        }
-    .reveal code {
-    	font-family: monospace;
-    	color: #c04384;
-        }
-    .reveal pre code {
-    	font-family: monospace;
-    	color: #1a1a1a;
-    	background: ##ececec;
-        }
-    .reveal p {
-        font-size: 80%;
-        text-align: left;
-        }
-    .reveal li {
-        font-size: 80%;
-        text-align: left;
-        }
     .exercise {
        background-color: #ffffcc;
        border-left: 6px solid #ffeb3b;

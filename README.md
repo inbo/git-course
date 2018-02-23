@@ -15,7 +15,7 @@ A workshop typically takes a whole day, with the morning session focused on gett
 ### Morning session
 
 We explain the main terminology of Git based on 5 important tasks:
-1. Tell the story of your project
+1. Tell the story of your project 
 1. Travel back in time
 1. Experiment with changes
 1. Backup your work
