@@ -168,6 +168,101 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -226,10 +321,12 @@ $(document).ready(function () {
 </div>
 
 
+<hr />
 <div id="before-i-start-working" class="section level1">
 <h1>BEFORE I START WORKING</h1>
-<div id="step-1" class="section level2">
-<h2>STEP 1:</h2>
+<hr />
+<div id="step-1-update-your-code" class="section level2">
+<h2>STEP 1: Update your code</h2>
 <p><strong>Choose your option:</strong></p>
 <div id="option-1a-ill-make-a-new-branch-to-work-with" class="section level3">
 <h3>OPTION 1A: <em>I’ll make a new branch to work with</em></h3>
@@ -247,11 +344,13 @@ $(document).ready(function () {
 <img src="images/workflow_rstudio_4.png" />
 
 </div>
+<hr />
 </div>
 </div>
 </div>
 <div id="while-editing" class="section level1">
 <h1>WHILE EDITING</h1>
+<hr />
 <div id="step-2.x-adapt-in-md-r-code-multiple-times" class="section level2">
 <h2>STEP 2.x: adapt in md, R-code,… (multiple times!)</h2>
 <div id="add-new-files" class="section level3">
@@ -268,10 +367,12 @@ $(document).ready(function () {
 <div id="step-3-push-your-changes-to-github." class="section level2">
 <h2>STEP 3: Push your changes to GitHub.</h2>
 <p>Update the remote version of the topic branch. Click <code>Push</code>: <img src="images/workflow_rstudio_9.png" /></p>
+<hr />
 </div>
 </div>
 <div id="edits-on-branch-are-ready" class="section level1">
 <h1>EDITS ON BRANCH ARE READY</h1>
+<hr />
 <div id="step-4-pull-request-to-add-your-changes-to-the-current-master." class="section level2">
 <h2>STEP 4: Pull request to add your changes to the current master.</h2>
 <p>Update the remote version of the topic branch. Click <code>Push</code>: <img src="images/workflow_rstudio_9.png" /></p>
@@ -316,6 +417,8 @@ $(document).ready(function () {
 
 
 
+</div>
+</div>
 
 </div>
 

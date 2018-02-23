@@ -1,11 +1,20 @@
 ---
 description: "Git collaborative workflow for Rstudio"
 title: Workflow Rstudio
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
 ---
+
+------------------------
 
 # BEFORE I START WORKING
 
-## STEP 1: 
+------------------------
+
+## STEP 1: Update your code
 
 **Choose your option:**
 
@@ -34,7 +43,11 @@ git pull origin master
 ![](./images/workflow_rstudio_4.png)
 
 
+------------------------
+
 # WHILE EDITING
+
+------------------------
 
 ## STEP 2.x: adapt in md, R-code,... (multiple times!)
 
@@ -60,7 +73,11 @@ Provide clear and understandable message about adaptations
 Update the remote version of the topic branch. Click `Push`:
 ![](./images/workflow_rstudio_9.png) 
 
+------------------------
+
 # EDITS ON BRANCH ARE READY
+
+------------------------
 
 ## STEP 4: Pull request to add your changes to the current master. 
 

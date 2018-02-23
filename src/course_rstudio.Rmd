@@ -458,7 +458,7 @@ If you encounter a conflict in the future, repeat this procedure.
 
 ## Add a new file
 
-DUring a project, new files will be added to the project folder, which need to be version controlled as well. New directories and files can be added and committed, just like any other adaptation. 
+During a project, new files will be added to the project folder, which need to be version controlled as well. New directories and files can be added and committed, just like any other adaptation. 
 
 By clicking the box next to a file, the file is staged (i.e. ready to be committed). Staging a new directory will stage all files in the directory. However, you can not stage empty directories!
 
@@ -759,7 +759,7 @@ When there is no coding involved, e.g. you just need to update a few text lines 
 
 In this section, all the individual steps come together to collaborate on the code of your project. First, we will start with a rehearsel of the individual steps as an exercise. Afterwards, we will try out a workflow that can be used as a step by step procedure in the future.
 
-<div class="panel-danger">
+<div class="panel-info">
 <div class="panel-heading">Remember:</div>
 <div class="panel-body">
 **Working on a local branch - merging online**
