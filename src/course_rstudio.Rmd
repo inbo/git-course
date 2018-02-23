@@ -787,7 +787,7 @@ In this section, all the individual steps come together to collaborate on the co
 
 ## Step by step workflow
 
-The steps of the previous exercise provide the main building blocks. Nevertheless, when working on a project, a step by step procedure can help in the beginning to remember the workflow. A dedicated version for Rstudio is available at this repo as a separate [workflow overview](./workflow_rstudio.md).
+The steps of the previous exercise provide the main building blocks. Nevertheless, when working on a project, a step by step procedure can help in the beginning to remember the workflow. A dedicated version for Rstudio is available at this repo as a separate [workflow overview](./workflow_rstudio.html).
 
 ---
 

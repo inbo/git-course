@@ -32,9 +32,9 @@ We like to thank Alice Bartlett, as her `git-for-humans` talk, https://speakerde
 
 The content of the hands-on session in the afternoon depends on the audience of the workshop. Most of the people mainly work in Rstudio and it makes sense to use the integrated git-tools of Rstudio. Others are used to work in the command line or prefer Github Desktop to handle version control. As such, we have three similar sessions, targeted at the different audiences:
 
-* Using git through GitHub desktop
-* Using git through RStudio
-* Using git through the command line
+* Using Git with GitHub desktop
+* Using Git with [RStudio](./course_rstudio.html)
+* Using Git with the command line
 
 ## Setup
 
