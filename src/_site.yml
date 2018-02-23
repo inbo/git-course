@@ -13,6 +13,9 @@ navbar:
       menu:
         - text: "Workflow Rstudio"
           href: workflow_rstudio.html
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/inbo/git-course
 output:
   html_document:
     theme: yeti
