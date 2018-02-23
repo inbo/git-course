@@ -1,5 +1,4 @@
 ---
-date: 2017-10-18T14:42:43+02:00
 description: "Git collaborative workflow for Rstudio"
 title: Workflow Rstudio
 ---
