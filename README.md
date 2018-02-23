@@ -1,4 +1,6 @@
-# git-course
+
+
+# INBO Git workshop
 
 ## Introduction
 
@@ -19,7 +21,8 @@ We explain the main terminology of Git based on 5 important tasks:
 1. Backup your work
 1. Collaborate on projects
 
-The morning session is provided using slideshows, split in two main sections: 
+The morning session is provided using slideshows, split in two main sections:
+
 * [Git ](https://docs.google.com/presentation/d/1JqlFSqFFzUdY6uSMMv7tkO4uDjGok0J-6xI4CsfI_64)
 * [GitHub](https://docs.google.com/presentation/d/1sOAmEw8zpovPy5kyszBmsrMJUW7rzJhqhac4zfULQ0o) 
 

@@ -1,0 +1,19 @@
+name: "INBO Git workshop"
+output_dir: "../docs"
+navbar:
+  title: "INBO Git workshop"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Sessions"
+      menu:
+        - text: "Rstudio"
+          href: course_rstudio.html
+    - text: "Workflows"
+      menu:
+        - text: "Workflow Rstudio"
+          href: workflow_rstudio.html
+output:
+  html_document:
+    theme: yeti
+    df_print: paged

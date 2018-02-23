@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Stijn Van Hoey" />
+<meta name="author" content="Peter Desmet" />
+<meta name="author" content="Thierry Onkelinx" />
+
+<meta name="date" content="2018-02-23" />
+
+<title>Git hands-on session within RStudio</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 45px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+
+.section h2 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h3 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h4 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h5 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h6 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">INBO Git workshop</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Sessions
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="course_rstudio.html">Rstudio</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Workflows
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="workflow_rstudio.html">Workflow Rstudio</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Git hands-on session within RStudio</h1>
+<h4 class="author"><em>Stijn Van Hoey</em></h4>
+<h4 class="author"><em>Peter Desmet</em></h4>
+<h4 class="author"><em>Thierry Onkelinx</em></h4>
+<h4 class="date"><em>2018-02-23</em></h4>
+
+</div>
+
+
+<style type="text/css">
+    .reveal section img { 
+        border:none; 
+        box-shadow:none; 
+        }
+    .reveal code {
+        font-family: monospace;
+        color: #c04384;
+        }
+    .reveal pre code {
+        font-family: monospace;
+        color: #1a1a1a;
+        background: ##ececec;
+        }
+    .reveal p {
+        font-size: 80%;
+        text-align: left;
+        }
+    .reveal li {
+        font-size: 80%;
+        text-align: left;
+        }
+    .exercise {
+       background-color: #ffffcc;
+       border-left: 6px solid #ffeb3b;
+       margin-top: 15px;
+       padding-top: 10px;
+       padding-bottom: 10px;
+       padding-left: 16px;
+       font-weight: bold;
+        }
+    .panel-warning .panel-body {
+       border-left: 6px solid #e99002;
+       margin-bottom: 15px;
+       padding-top: 10px;
+       padding-bottom: 10px;
+       padding-left: 16px;
+        }
+    .panel-danger .panel-body {
+       border-left: 6px solid #f04124;
+       margin-bottom: 15px;
+       padding-top: 10px;
+       padding-bottom: 10px;
+       padding-left: 16px;
+        }
+</style>
+<div id="setup" class="section level1">
+<h1><span class="header-section-number">1</span> Setup</h1>
+<p>When starting this tutorial, we assume:</p>
+<ul>
+<li>you have <a href="https://lib.ugent.be/CRAN/">R</a> and <a href="https://www.rstudio.com/products/rstudio/download/">Rstudio</a> installed on your computer</li>
+<li>you have <a href="https://git-scm.com/">git</a> installed on your computer</li>
+</ul>
+<hr />
+</div>
+<div id="working-on-your-own" class="section level1" data-background="#c2c444">
+<h1><span class="header-section-number">2</span> Working on your own</h1>
+<p>We start with you working on a repository, without interference of colleagues</p>
+<hr />
+<div id="create-a-repository" class="section level2">
+<h2><span class="header-section-number">2.1</span> Create a repository</h2>
+<p>A new project starts with a new repository, which can be easily setup using <a href="https://github.com">GitHub.com</a>.</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Go to <a href="https://github.com">GitHub</a> and login</li>
+<li>Follow <a href="https://help.github.com/articles/create-a-repo/">this tutorial</a> to create a repo and <a href="https://help.github.com/articles/create-a-repo/#commit-your-first-change">create your first (online) commit</a> to your repository</li>
+</ol>
+</div>
+</div>
+<hr />
+<p>For this first exercise, we have chosen to create a dummy repository:</p>
+<p><img src="../images/create-a-repo.png" alt="Create a repo" /> (<em>you do not have to copy the example, choose any name :-)</em>)</p>
+<hr />
+<p>The resulting repository layout will look like this:</p>
+<p><img src="../images/create-repo-result.png" alt="Result of creating a repo" /> (<em>Remember that there is a <code>Clone or Download</code> button on this page!</em>)</p>
+<hr />
+</div>
+<div id="git-for-rstudio-configuration" class="section level2">
+<h2><span class="header-section-number">2.2</span> Git for RStudio configuration</h2>
+<p>As we will mainly use Git(Hub) to manage R/Rmarkdown scripts, the existing integration of Rstudio and Git provides a convenient way to add version control.</p>
+<div id="installation" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Installation</h3>
+<p>Just to make sure, in case you did not already installed Git and Rstudio:</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li><a href="https://git-scm.com/downloads">Download</a> and install Git</li>
+<li>Install <a href="https://inbo.github.io/tutorials/installation-RStudio-admin.html">RStudio</a></li>
+</ol>
+</div>
+</div>
+<p>When installed properly:</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Open <a href="https://inbo.github.io/tutorials/installation-RStudio-user.html">RStudio</a></li>
+</ol>
+</div>
+</div>
+<hr />
+</div>
+<div id="configuration" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Configuration</h3>
+<p>In order to start using version control in Rstudio, we have to do some configuration the first time. You only leed to do this configuration once.</p>
+<p>First of all, tell RStudio where to find the Git installation.</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Go to <code>Tools &gt; Global Options</code></li>
+<li>Click on <code>Git/SVN</code>.</li>
+<li>Check <em>Enable version control interface for RStudio projects</em></li>
+<li>Set the path to the Git executable that you installed*</li>
+<li>Check <em>use Git bash as shell for Git projects</em></li>
+</ol>
+</div>
+</div>
+<hr />
+<p>*If you do not know where Git is installed, open your command line (<code>cmd</code> in Start for Windows user). When the cmd is open, type <code>where git</code> and hit enter. The path should be something like: <code>C:/Program Files (x86)/Git/bin/git.exe</code>. Still in trouble? Check <a href="http://happygitwithr.com/rstudio-see-git.html#tell-rstudio-where-to-find-git">this out</a>.</p>
+<p><img src="../images/RStudio-setup-git.png" alt="RStudio setup for git" style="width:50.0%" /></p>
+<hr />
+<p>Next, we have to tell Github who we actually are, in order to make the connection to the online account. To do so, Git requires the configuration of your Github (!) username and GitHub email:</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Go to <code>Tools &gt; Shell</code> to open the Git Shell</li>
+<li><p>In the shell, type the following command and enter:</p>
+<pre><code>git config --global user.name &quot;mygithubusername&quot;</code></pre></li>
+<li><p>Still in the shell, type the following command and enter:</p>
+<pre><code>git config --global user.email &quot;my.name@inbo.be&quot;</code></pre></li>
+</ol>
+</div>
+</div>
+<hr />
+<p><img src="../images/Rstudio-GitShell.png" alt="RStudio setup git shell" style="width:75.0%" /></p>
+<p>Use your <strong>GitHub username</strong>! You can check if you’re set up correctly by typing <code>git config --global --list</code> in the same shell.</p>
+<p>When successful, the configuration is done. Congratulations!</p>
+<hr />
+</div>
+</div>
+<div id="clone-a-repo-to-work-locally" class="section level2">
+<h2><span class="header-section-number">2.3</span> Clone a repo to work locally</h2>
+<p>We have initiated a repository online and a working Git within Rstudio. Hence, we can start working on the code locally by downloading the repository to our computer. Rstudio provides a convenient way to start a new project as a Git repository.</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>On your GitHub repository page, copy the repository <strong>HTTPS</strong> url (<em>remember the green button?</em>)</li>
+<li>In Rstudio, <code>File &gt; New Project...</code>, select <code>Version Control</code>, choose <code>Git</code></li>
+<li>Provide the repository HTTPS link you just copied (the project name will be filled in as well)</li>
+<li>Browse to desired directory where you will manage your project/code</li>
+</ol>
+</div>
+</div>
+<hr />
+<p>To get the https link, you need to click the green button and make sure to copy paste the link with as title <code>Clone with HTTPS</code>:</p>
+<p><img src="../images/copy-repo-link.png" alt="Copy the https link of a repo" style="width:75.0%" /></p>
+<hr />
+<p>An example of the project setup using an existing Git repsoitory:</p>
+<p><img src="../images/create-project-rstudio.png" alt="Clone a repo in RStudio" style="width:75.0%" /></p>
+<hr />
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<p>In your File explorer, search for your project folder and check the content. Does this corresponds to what is shown online on your repository website?</p>
+</div>
+</div>
+<hr />
+</div>
+<div id="gitignore" class="section level2">
+<h2><span class="header-section-number">2.4</span> <code>.gitignore</code></h2>
+<p>When starting a new project in RStudio, it will always add a file <code>.gitignore</code> if it does not already exists (you can actually also create one in the online setup). A <code>gitignore</code> file defines all those files that should not be taken into account by Git. An example is the <code>myprojectname.Rproj</code> file, as this is a user/computer specific file.</p>
+<p>Hence, we can ignore the <code>myprojectname.Rproj</code> file by adding the file to the <code>.gitignore</code> text-file. We can d this inside Rstudio:</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Go to <code>git</code> pane (the tab that says Git),</li>
+<li>right click on <code>....Proj</code> and select <code>Ignore...</code></li>
+<li>Check if the content of <code>.gitignore</code> is correctly updated and click <code>Save</code>.</li>
+</ol>
+</div>
+</div>
+<hr />
+<p>As our dummy project is called <code>favourite-fruit-color</code>, the <code>.Rproj</code> file is called <code>favourite-fruit-color.Rproj</code>. We right click on the file and select <code>Ignore...</code>:</p>
+<p><img src="../images/gitignore-rstudio1.png" alt="Ignore a file" style="width:75.0%" /></p>
+<hr />
+<p>When to use <code>.gitignore</code>:</p>
+<ul>
+<li>in any programming language, some files are <em>derivatives</em></li>
+<li>sensitive information (passwords,…)</li>
+<li>a folder with large data files that should not be in the history (and backuped elsewhere!)</li>
+<li>a <em>temp/</em> folder for just garbage you create/…</li>
+</ul>
+<hr />
+<p>Note that you can use wild cards e.g. <code>*.Rproj</code> to exclude a group of files from the version control:</p>
+<p><img src="../images/gitignore-rstudio2.png" alt="Update .gitignore" style="width:75.0%" /></p>
+<hr />
+<p>Check the content of the <code>.gitignore</code> file. If satisfied, click <code>Save</code>:</p>
+<p><img src="../images/gitignore-rstudio2.png" alt="Update .gitignore" style="width:75.0%" /></p>
+<hr />
+</div>
+<div id="make-commits" class="section level2">
+<h2><span class="header-section-number">2.5</span> Make commits</h2>
+<p>As the <code>.gitignore</code> is a newly added file (or at least adapted), we can <code>commit</code> this change and provide a commit message:</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Go to <code>git</code> pane</li>
+<li>Check the box next to <code>.gitignore</code></li>
+<li>Click <code>Commit</code></li>
+<li>Add a <code>commit message</code> and click commit</li>
+<li>Click <code>Close</code> to remove the commit summary</li>
+</ol>
+</div>
+</div>
+<hr />
+<p>The status of the <code>.gitignore</code> file before the file was committed, with the yellow question mark saying that the file is yet unknown to Git:</p>
+<p><img src="../images/commit-rstudio1.png" alt="Local commit" style="width:75.0%" /></p>
+<hr />
+<p>By checking the box and clicking commit, we add the file and commit this addition with a commit message:</p>
+<p><img src="../images/commit-rstudio2.png" alt="Local commit" style="width:75.0%" /></p>
+<hr />
+<p>We get a small technical overview of the alterations we provided with this commit:</p>
+<p><img src="../images/commit-rstudio3.png" alt="Local commit" style="width:75.0%" /></p>
+<hr />
+<p>It is good practice to <strong>commit often</strong>, so you will do this a lot. Each commit should only contain changes related to a single problem/element/… Each commit is a snapshot of your project and the messages describe the story of your project.</p>
+<p>As documentation is crucial, providing some more information in the <code>README.md</code> file will help others (and yourself in a couple of months/years) to understand the aim of the project. Just as we adapted the <code>README.md</code> file online earlier, we can do the same locally:</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Update the <code>README.md</code> inside Rstudio</li>
+<li>Commit your changes</li>
+</ol>
+</div>
+</div>
+<hr />
+<p>Remark the reporting of the changed lines linked to this commit with green and red colors:</p>
+<p><img src="../images/commit-rstudio4.png" alt="Local commit" style="width:75.0%" /></p>
+<hr />
+</div>
+<div id="push-the-changes-to-github" class="section level2">
+<h2><span class="header-section-number">2.6</span> Push the changes to GitHub</h2>
+<p>Note that the <code>git</code> pane displays <em>your branch is ahead of ‘origin/master’ by 2 commits</em>. This is actually providing you a warning message that there is no backup of these two commits! In order to store these changes on GitHub as well, we have to <code>push</code> our changes to GitHub:</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Click <code>push</code> in the <code>git</code> pane</li>
+<li>Go to your repository on GitHub to verify the commits and file contents</li>
+</ol>
+</div>
+</div>
+<hr />
+<p>Rstudio gives you a warning about the status of your local commits versus those stored on GitHub:</p>
+<p><img src="../images/push-rstudio1.png" alt="Push" style="width:75.0%" /></p>
+<hr />
+<p>Is the <code>README.md</code> adapted? Where do you find the Commits overview online?</p>
+<p><img src="../images/local-commit-on-github.png" alt="Verify your commits on GitHub" style="width:75.0%" /></p>
+<hr />
+</div>
+<div id="additional-configuration---store-your-password" class="section level2">
+<h2><span class="header-section-number">2.7</span> Additional configuration - store your password</h2>
+<p>It is a tedious task to retype the password each time you want to <code>push</code> anything to GitHub. Luckily, you can store your credentials when using https:</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Click on the <code>more</code> button in the <code>git</code> pane and select <code>Shell</code></li>
+<li>Type <code>git config --global credential.helper store</code></li>
+<li>Type <code>exit</code> to quit the shell</li>
+</ol>
+</div>
+</div>
+<p>The next time <code>git</code> needs your credentials, it will ask them <strong>one more time and store them</strong>!</p>
+<hr />
+<p>The more button has a <code>wheel</code> symbol:</p>
+<p><img src="../images/https-credentials-rstudio1.png" alt="Store credentials" style="width:75.0%" /></p>
+<hr />
+</div>
+<div id="create-logical-commits" class="section level2">
+<h2><span class="header-section-number">2.8</span> Create logical commits</h2>
+<p>As mentioned earlier, you should commit often and make sure each commit links to a specific change/problem. Sometimes, this means that you have to split the additions in a single file into two individual commits. Rstudio provides the interface to include specific lines of code into a commit message:</p>
+<p><img src="../images/logical-commit-rstudio.png" alt="Logical commit 1" style="width:75.0%" /></p>
+<hr />
+<p>To summarize, the following actions can be executed:</p>
+<ul>
+<li><code>stage xyz</code>: add the xyz from the commit</li>
+<li><code>unstage xyz</code>: remove the xyz from the commit</li>
+<li><code>discard xyz</code>: revert the changes in the xyz (be careful, can’t be undone!)</li>
+</ul>
+<p>and <code>xyz</code> can be - a single <code>line</code> - a <code>selection</code> of lines - a <code>chunk</code> - RStudio will automatically split the changes in chunks - chunks are defined by 10 unchanged lines between changes</p>
+<hr />
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Make 2 unrelated changes to your <code>README.md</code> locally</li>
+<li>Create one <code>commit</code> for each change:
+<ol style="list-style-type: decimal">
+<li>Select the changes you want to commit and click <code>stage selection</code></li>
+<li>Add a <code>commit message</code> and click <code>Commit</code></li>
+</ol></li>
+<li>Do NOT push (yet)</li>
+</ol>
+</div>
+</div>
+<hr />
+</div>
+<div id="create-a-conflict" class="section level2">
+<h2><span class="header-section-number">2.9</span> Create a conflict!</h2>
+<p>Sometimes, conflicts will appear. Maybe because a collaborator was working on exactly the same lines of code or because of a mistake in your workflow,… No worries, we’ll learn you how to fix conflicts by initiating one.</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<p>Update your <code>README.md</code> online on GitHub, on the exact same line you just edited locally in the previous exercise.</p>
+</div>
+</div>
+<hr />
+<p>If you do not remember how to change files online, check again <a href="https://help.github.com/articles/create-a-repo/#commit-your-first-change">this online tutorial</a>. Check the result of your online commit, similar to:</p>
+<p><img src="../images/commit-to-create-conflict.png" alt="Commit to create conflict" style="width:75.0%" /></p>
+<hr />
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<p>Back in Rstudio, try to push (click <code>push</code>) your local changes.</p>
+</div>
+</div>
+<hr />
+<p>Git provides a warning about the remote changes on the same repository:</p>
+<p><img src="../images/conflict-rstudio1.png" alt="Conflict" style="width:75.0%" /></p>
+<hr />
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<p>Click <code>Pull</code> to download the changes from Github</p>
+</div>
+</div>
+<p>Git notices the <strong>CONFLICT</strong> and demands you what to do next:</p>
+<ol style="list-style-type: decimal">
+<li>Fix conflicts</li>
+<li>Commit the result after fixing the conflict</li>
+</ol>
+<p><img src="../images/conflict-rstudio2.png" alt="Conflict" style="width:75.0%" /></p>
+<hr />
+<p>Keep calm and resolve conflict!</p>
+<p>Each conflict is always marked by the combination of the following elements:</p>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+your local code
+=======
+the code as it exists on Github
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master</code></pre>
+<p>To solve a conflict, you have to decide which version of the code you want to keep.</p>
+<hr />
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li><p>Open <code>README.md</code> in RStudio:</p>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+A simple analysis to visualize my favourite fruit colour.
+=======
+A simple analysis to discover my favourite fruit color.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master</code></pre></li>
+<li><p>Choose what you want to keep and only keep that code in the file:</p>
+<pre><code>A simple analysis to discover my favourite fruit colour.</code></pre></li>
+<li>Commit the adaptation with a commit message</li>
+<li>Click <code>Push</code> to update GitHub</li>
+</ol>
+</div>
+</div>
+<p>If you encounter a conflict in the future, repeat this procedure.</p>
+<hr />
+</div>
+<div id="add-a-new-file" class="section level2">
+<h2><span class="header-section-number">2.10</span> Add a new file</h2>
+<p>DUring a project, new files will be added to the project folder, which need to be version controlled as well. New directories and files can be added and committed, just like any other adaptation.</p>
+<p>By clicking the box next to a file, the file is staged (i.e. ready to be committed). Staging a new directory will stage all files in the directory. However, you can not stage empty directories!</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Add a <code>fruits.csv</code> file in a <code>/data</code> subdirectory</li>
+<li>Link to this file in the <code>README.md</code> (use relative paths), mentioning the purpose of the file</li>
+<li>Commit both changes (new data file and the <code>README.md</code> adaptation) in a single commit message</li>
+</ol>
+</div>
+</div>
+<hr />
+<p>Rstudio provides information about the status of the file:</p>
+<ul>
+<li><code>README.md</code> file is adapted (blue <em>Modified</em> box)</li>
+<li><code>data/</code> is currently unknown to Git (yellow <em>Question mark</em> box)</li>
+</ul>
+<p><img src="../images/add-file-rstudio1.png" alt="Add a file" style="width:75.0%" /></p>
+<hr />
+<p>Clicking both will make them ready to be committed. Remark, the <code>data/fruits.csv</code> file gets a green <em>Added</em> box:</p>
+<p><img src="../images/add-file-rstudio2.png" alt="Add a file" style="width:75.0%" /></p>
+<hr />
+</div>
+<div id="adapt-last-commit" class="section level2">
+<h2><span class="header-section-number">2.11</span> Adapt last commit</h2>
+<p>Sometimes, you just did a commit of some adaptations, but you see that you missed some lines of code that should be included in the same commit. Git provides the ability to <code>amend</code> a previous commit with some additional adaptations.</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Make a change in <code>fruits.csv</code></li>
+<li><code>Commit</code> as usual but <strong>check</strong> <code>amend previous commit</code> in the commit message box</li>
+</ol>
+</div>
+</div>
+<p><strong>Warning:</strong> don’t do this on commits that have been pushed. That would result in conflicts.</p>
+<hr />
+<p>Next to the <code>Commit</code> box, the <code>amend</code> option is available:</p>
+<p><img src="../images/amend-commit-rstudio.png" alt="Add a file" style="width:75.0%" /></p>
+<hr />
+</div>
+<div id="view-history" class="section level2">
+<h2><span class="header-section-number">2.12</span> View history</h2>
+<p>One of the advantages of using version control with regular commits is that you get a history of your project. You can check the history (the series of commits) both online on GitHub as well as in Rstudio:</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Within Rstudio, click on <code>history</code> in the <code>git</code> pane</li>
+<li>On the webpage of your repository, chek the commit list</li>
+</ol>
+</div>
+</div>
+<hr />
+<p>Notice the presence of <code>History</code> twice in the following image:</p>
+<ul>
+<li>As a separate pane (your R command history): this has nothing to do with Git</li>
+<li>Within the <code>git</code> pane (the history of your commit messages)</li>
+</ul>
+<p><img src="../images/history-rstudio1.png" alt="View history" style="width:75.0%" /></p>
+<hr />
+<p>You can click on each of the commits to verify the adaptations that were part of the specific commit:</p>
+<p><img src="../images/history-rstudio2.png" alt="View history" style="width:75.0%" /></p>
+<hr />
+</div>
+<div id="create-a-branch-to-experiment" class="section level2">
+<h2><span class="header-section-number">2.13</span> Create a branch to experiment</h2>
+<div id="how-to-make-a-new-branch" class="section level3">
+<h3><span class="header-section-number">2.13.1</span> How to make a new branch?</h3>
+<p>It is good practice to ALWAYS work on (short-living) branches. It allows you to freely experiment until you are satisfied of the result and it ensures your <code>master</code> provides the last stable version of your analysis/project.</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Open the git shell</li>
+<li><p>Create a branch by a <code>checkout</code> to new <code>branch</code>:</p>
+<pre><code>git checkout -b analysis-script</code></pre></li>
+<li>Get an overview of your branches: <code>git branch</code></li>
+<li>Add an analysis file in a <code>/src</code> directory</li>
+<li><code>Commit</code> the adaptation to the branch</li>
+</ol>
+</div>
+</div>
+<hr />
+<p>For this example, we decided to use the name <code>analysis-script</code> for the branch name. Make sure your branch name makes sense for the work you are planning to do. Use lower case characters and <code>-</code> in between words (NO spaces!).</p>
+<p><img src="../images/create-branch-rstudio.png" alt="Create branch" style="width:75.0%" /></p>
+<hr />
+<div class="panel-danger">
+<div class="panel-heading">
+Remark!
+</div>
+<div class="panel-body">
+<p>The new versions of Rstudio provide the functionality to create a branch directly!</p>
+</div>
+</div>
+<p><img src="../images/branch-rstudio3.png" alt="Create branch" style="width:75.0%" /></p>
+<hr />
+</div>
+<div id="effect-of-switching-branches" class="section level3">
+<h3><span class="header-section-number">2.13.2</span> Effect of switching branches</h3>
+<p>The first time you switch branches and you see files disappearing, you might be wondering what is happening. No worries, Git is just making sure you only see those files relevant for the active branch. In the next exercise, we will explore this feature in more detail:</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Click on the right-top dropdown in the <code>git</code> pane</li>
+<li>Switch to the status of the <code>master</code> branch by selecting <code>(LOCAL BRANCHES) -&gt; master</code></li>
+<li>Verify your local directory structure in file explorer: where are your files?</li>
+<li>Switch back to the status of the new branch (in the example i.e. <code>analysis-script</code>)</li>
+<li>Verify your local directory structure in file explorer again: where are your files?</li>
+</ol>
+</div>
+</div>
+<hr />
+<p>As in our example, the branch name is <code>analysis-script</code>, the dropdown defines this as the currently active branch. Clicking on the dropdown provides an overview of all branches:</p>
+<p><img src="../images/branch-rstudio1.png" alt="Switch branch" style="width:75.0%" /></p>
+<hr />
+<p>Rstudio provides you information about the switch to the <code>master</code> branch:</p>
+<p><img src="../images/branch-rstudio2.png" alt="Switch branch" style="width:75.0%" /></p>
+<hr />
+</div>
+<div id="first-push-of-a-new-branch" class="section level3">
+<h3><span class="header-section-number">2.13.3</span> First push of a new branch</h3>
+<p>Notice that the <code>pull</code> and <code>push</code> buttons in the <code>git</code> pane are grayed out. When working on a branch, we have to activate these buttons:</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Open the Git Shell</li>
+<li>Type <code>git push -u origin analysis-script</code></li>
+<li>On GitHub website, look for your branch and check the adaptations to the branch</li>
+</ol>
+</div>
+</div>
+<hr />
+<div class="panel-danger">
+<div class="panel-heading">
+Remark!
+</div>
+<div class="panel-body">
+<p>When using the interface of Rstudio to create a branch, this functionality is already included by checking the box <code>Sync branch with remote</code>.</p>
+</div>
+</div>
+<p><img src="../images/branch-rstudio3.png" alt="Create branch" style="width:75.0%" /></p>
+<hr />
+<p>This will also activate the <code>pull</code> and <code>push</code> buttons. From now on, you can commit as many times as you want/need to this branch and push the commits to GitHub, where it will be stored under the same branch name:</p>
+<p><img src="../images/branch-first-push-rstudio.png" alt="First push branch" style="width:75.0%" /></p>
+<hr />
+</div>
+</div>
+<div id="pull-requests" class="section level2">
+<h2><span class="header-section-number">2.14</span> Pull requests</h2>
+<p>When satisfied about the work done in a branch, it is time to bring these adaptations to the <code>master</code> branch as part of the <em>stable</em> analysis. NEVER merge locally on your machine, we will ALWAYS merge a branch online, by making use of a <code>Pull request</code>!</p>
+<hr />
+<div id="create-a-pull-request" class="section level3">
+<h3><span class="header-section-number">2.14.1</span> Create a pull request</h3>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Click <code>push</code> (if not already done)</li>
+<li>At <a href="https://github.com/">Github</a>, browse to your repository.</li>
+<li>Create a <code>pull request</code> online</li>
+</ol>
+</div>
+</div>
+<hr />
+<p>Github actually suggests you to <code>Compare &amp; Pull request</code> on the webpage in a new yellow box. If you do not see the messag, you can still initiate a <code>Pull request</code>. The <code>Pull request</code> aims to insert the adaptations in your branch into the <code>master</code> branch.</p>
+<p><img src="../images/pull-request-intro.png" alt="Check Github message pull request" style="width:75.0%" /></p>
+<hr />
+<p>In a new dialog, you can provide a short summary line about the <code>Pull request</code> with the option to add additional information. By clicking the <code>Create pull request</code> button, you actually propose the merge into the <code>master</code> branch.</p>
+<p><img src="../images/pull-request_message.png" alt="Adapt Github message and start pull request" style="width:75.0%" /></p>
+<hr />
+</div>
+<div id="review-your-pull-request" class="section level3">
+<h3><span class="header-section-number">2.14.2</span> Review your pull request</h3>
+<p>While working on your own and you are sure about the changes, you can actually merge the <code>Pull request</code> yourself. Although, this is the ideal moment for revision of the code (you can ask people to review your code, but automated checks can be added as well).</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>Review your own code!</li>
+<li>If OK, merge the <code>Pull request</code>.</li>
+<li>Do not forget to delete the branch online (Github asks you to)</li>
+</ol>
+</div>
+</div>
+<hr />
+<p><img src="../images/pr.png" alt="See pull request" style="width:75.0%" /></p>
+<hr />
+</div>
+<div id="include-your-accepted-work-to-local-master" class="section level3">
+<h3><span class="header-section-number">2.14.3</span> Include your accepted work to local master</h3>
+<p>For the moment, your adaptations are integrated into the <code>master</code> branch online, but not yet on your local computer. So, you have to update the local <code>master</code> branch:</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ol style="list-style-type: decimal">
+<li>In Rstudio, sitch to the <code>master</code> branch (right top in <code>Git</code> pane)</li>
+<li>Click <code>Pull</code></li>
+<li><p>Remove the local branch as well (otherwise you will have a lot of them after a while). You need to open the Shell:</p>
+<pre><code>git branch -D analysis-script</code></pre></li>
+</ol>
+</div>
+</div>
+<p><img src="../images/pull-rstudio.png" alt="git pull" style="width:75.0%" /></p>
+<hr />
+</div>
+</div>
+</div>
+<div id="working-together" class="section level1" data-background="#c2c444">
+<h1><span class="header-section-number">3</span> Working together</h1>
+<hr />
+<div id="invite-collaborators" class="section level2">
+<h2><span class="header-section-number">3.1</span> Invite collaborators</h2>
+<p>You now have experienced all the major steps to effectively use version control with Git. We can now apply these same steps when working together.</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ul>
+<li>Team up with two or three persons</li>
+<li>Let one person invite the others, provide them with read/write access as explained in <a href="https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/">this tutorial</a></li>
+</ul>
+</div>
+</div>
+<hr />
+<p>On your own repository, you have all admin rights to add <code>Collaborators</code> in the <code>Settings</code> section of GitHub:</p>
+<p><img src="../images/invite-collaborator.png" alt="Invite collaborator" style="width:75.0%" /></p>
+<hr />
+<p>When invited to collaborate, you have to <code>Accept invitation</code> in order to start working on the repository:</p>
+<p><img src="../images/react-collaborator.png" alt="react to collaborator" style="width:75.0%" /></p>
+<hr />
+</div>
+<div id="issues" class="section level2">
+<h2><span class="header-section-number">3.2</span> Issues</h2>
+<p>Issues can be used for multiple purposes: alerting colleagues about a bug in the code, proposing new features, discussing specific steps in the analysis,…</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ul>
+<li>Raise an <code>issue</code> online</li>
+<li>Provide issues with an appropriate <code>label</code></li>
+<li>Assign your colleague to the issue</li>
+</ul>
+</div>
+</div>
+<hr />
+</div>
+<div id="online-adaptations" class="section level2">
+<h2><span class="header-section-number">3.3</span> Online adaptations</h2>
+<p>When there is no coding involved, e.g. you just need to update a few text lines in a markdown file, the usage of the online GitHub features could be sufficient enough:</p>
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ul>
+<li>Make an adaptation to an online file</li>
+<li>Propose a <code>pull request</code> and assign your collaborator</li>
+<li>Merge the adaptation to the <code>master</code> branch</li>
+</ul>
+</div>
+</div>
+<hr />
+</div>
+<div id="local-adaptations" class="section level2">
+<h2><span class="header-section-number">3.4</span> Local adaptations</h2>
+<p>In this section, all the individual steps come together to collaborate on the code of your project. First, we will start with a rehearsel of the individual steps as an exercise. Afterwards, we will try out a workflow that can be used as a step by step procedure in the future.</p>
+<div class="panel-danger">
+<div class="panel-heading">
+Remember:
+</div>
+<div class="panel-body">
+<p><strong>Working on a local branch - merging online</strong></p>
+</div>
+</div>
+<hr />
+<div class="panel-warning">
+<div class="panel-heading">
+Exercise:
+</div>
+<div class="panel-body">
+<ul>
+<li>As collaborator, <code>clone</code> the other repository to your local computer</li>
+<li>Create a new <code>branch</code> locally with a different name</li>
+<li>Adapt the content of a file</li>
+<li><code>commit</code> your adaptation</li>
+<li><code>push</code> your <code>branch</code> to the remote repository</li>
+<li>Go to GitHub and make a <code>pull request</code></li>
+<li>Revise the work and <code>merge</code> online when appropriate</li>
+<li>Update your local work</li>
+<li>Check if all adaptations are represented in your local files</li>
+</ul>
+</div>
+</div>
+<p><strong>Tip</strong>: All functionalities are available in the previous sections</p>
+<hr />
+</div>
+<div id="step-by-step-workflow" class="section level2">
+<h2><span class="header-section-number">3.5</span> Step by step workflow</h2>
+<p>The steps of the previous exercise provide the main building blocks. Nevertheless, when working on a project, a step by step procedure can help in the beginning to remember the workflow. A dedicated version for Rstudio is available at this repo as a separate <a href="./workflow_rstudio.md">workflow overview</a>.</p>
+<hr />
+</div>
+<div id="release" class="section level2">
+<h2><span class="header-section-number">3.6</span> Release</h2>
+<p>Once you are satisfied with the status of your analysis, it makes sense to create a release:</p>
+<ul>
+<li>For publications (DOI)</li>
+<li>For code/software development versions</li>
+<li>For course notes</li>
+</ul>
+<p>Follow <a href="https://help.github.com/articles/creating-releases/">this tutorial</a> to create a release.</p>
+<hr />
+</div>
+</div>
+<div id="some-more-rules-for-collaboration" class="section level1">
+<h1><span class="header-section-number">4</span> Some more <em>Rules for collaboration</em>:</h1>
+<ul>
+<li>Commit often, make small commits</li>
+<li>Don’t mix changes in 1 commit</li>
+<li>Think about your commit messages</li>
+<li>Always commit into a feature branch, never in the <code>master</code> branch.</li>
+<li>Always start features branches from the <code>master</code> branch.</li>
+<li>Only work in your own branches.</li>
+<li>Never merge someone else’s <code>pull request</code> without their consent.</li>
+<li>Don’t keep long-lived branches (form of technical debt)</li>
+</ul>
+<hr />
+<p><strong>There’s no such thing, as a free lunch…</strong></p>
+<hr />
+<p>…but if you’re hungry:</p>
+<ul>
+<li>Webinars
+<ul>
+<li><a href="https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/">Github and Rstudio management</a></li>
+<li><a href="https://www.rstudio.com/resources/webinars/collaboration-and-time-travel-version-control-with-git-github-and-rstudio/">Collaboration and time travel: version control with git, github and RStudio</a></li>
+</ul></li>
+<li>Tutorials
+<ul>
+<li><a href="http://r-pkgs.had.co.nz/git.html">Hadley Wickham R packages book</a></li>
+<li><a href="http://happygitwithr.com/index.html">Happy Git and GitHub for the useR</a></li>
+</ul></li>
+</ul>
+<hr />
+<p>Information combined at <a href="https://github.com/inbo/git-course">INBO Git course</a>. <br/>You’re welcome to provide issues, pull requests,…</p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

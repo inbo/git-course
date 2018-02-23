@@ -12,22 +12,6 @@ output:
     toc_float: true
     number_sections: true
     fig_caption: false
-    theme: yeti
-    df_print: paged
-    keep_md: true
-  revealjs::revealjs_presentation:
-    theme: white
-    highlight: zenburn
-    keep_md: true
-    transition: none
-    center: true
-    fig_caption: false
-    fig_width: 5
-    fig_height: 4
-    reveal_options:
-      slideNumber: true
-      previewLinks: true      
-knit: (function(input_file, encoding) { rmarkdown::render(input_file, encoding = encoding, output_file = paste0("./docs/", sub(".Rmd", ".html", basename(input_file))))})  
 ---
 
 <style type="text/css">
@@ -824,7 +808,7 @@ In this section, all the individual steps come together to collaborate on the co
 
 ## Step by step workflow
 
-The steps of the previous exercise provide the main building blocks. Nevertheless, when working on a project, a step by step procedure can help in the beginning to remember the workflow. A dedicated version for Rstudio is available at this repo as a separate [markdown file](https://github.com/inbo/git-course/blob/master/src/workflow_rstudio.md).
+The steps of the previous exercise provide the main building blocks. Nevertheless, when working on a project, a step by step procedure can help in the beginning to remember the workflow. A dedicated version for Rstudio is available at this repo as a separate [workflow overview](./workflow_rstudio.md).
 
 ---
 
