@@ -78,6 +78,7 @@ h6 {
 }
 </style>
 
+<link rel="stylesheet" href="static/css/inbo.css" type="text/css" />
 
 </head>
 
@@ -389,10 +390,10 @@ Exercise:
 </div>
 <hr />
 <p>For this first exercise, we have chosen to create a dummy repository:</p>
-<p><img src="images/create-a-repo.png" alt="Create a repo" /> (<em>you do not have to copy the example, choose any name :-)</em>)</p>
+<p><img src="static/images/create-a-repo.png" alt="Create a repo" /> (<em>you do not have to copy the example, choose any name :-)</em>)</p>
 <hr />
 <p>The resulting repository layout will look like this:</p>
-<p><img src="images/create-repo-result.png" alt="Result of creating a repo" /> (<em>Remember that there is a <code>Clone or Download</code> button on this page!</em>)</p>
+<p><img src="static/images/create-repo-result.png" alt="Result of creating a repo" /> (<em>Remember that there is a <code>Clone or Download</code> button on this page!</em>)</p>
 <hr />
 </div>
 <div id="git-for-rstudio-configuration" class="section level2">
@@ -445,7 +446,7 @@ Exercise:
 </div>
 <hr />
 <p>*If you do not know where Git is installed, open your command line (<code>cmd</code> in Start for Windows user). When the cmd is open, type <code>where git</code> and hit enter. The path should be something like: <code>C:/Program Files (x86)/Git/bin/git.exe</code>. Still in trouble? Check <a href="http://happygitwithr.com/rstudio-see-git.html#tell-rstudio-where-to-find-git">this out</a>.</p>
-<p><img src="images/RStudio-setup-git.png" alt="RStudio setup for git" style="width:50.0%" /></p>
+<p><img src="static/images/RStudio-setup-git.png" alt="RStudio setup for git" style="width:50.0%" /></p>
 <hr />
 <p>Next, we have to tell Github who we actually are, in order to make the connection to the online account. To do so, Git requires the configuration of your Github (!) username and GitHub email:</p>
 <div class="panel-warning">
@@ -463,7 +464,7 @@ Exercise:
 </div>
 </div>
 <hr />
-<p><img src="images/Rstudio-GitShell.png" alt="RStudio setup git shell" style="width:75.0%" /></p>
+<p><img src="static/images/Rstudio-GitShell.png" alt="RStudio setup git shell" style="width:75.0%" /></p>
 <p>Use your <strong>GitHub username</strong>! You can check if you’re set up correctly by typing <code>git config --global --list</code> in the same shell.</p>
 <p>When successful, the configuration is done. Congratulations!</p>
 <hr />
@@ -487,10 +488,10 @@ Exercise:
 </div>
 <hr />
 <p>To get the https link, you need to click the green button and make sure to copy paste the link with as title <code>Clone with HTTPS</code>:</p>
-<p><img src="images/copy-repo-link.png" alt="Copy the https link of a repo" style="width:75.0%" /></p>
+<p><img src="static/images/copy-repo-link.png" alt="Copy the https link of a repo" style="width:75.0%" /></p>
 <hr />
 <p>An example of the project setup using an existing Git repsoitory:</p>
-<p><img src="images/create-project-rstudio.png" alt="Clone a repo in RStudio" style="width:75.0%" /></p>
+<p><img src="static/images/create-project-rstudio.png" alt="Clone a repo in RStudio" style="width:75.0%" /></p>
 <hr />
 <div class="panel-warning">
 <div class="panel-heading">
@@ -520,7 +521,7 @@ Exercise:
 </div>
 <hr />
 <p>As our dummy project is called <code>favourite-fruit-color</code>, the <code>.Rproj</code> file is called <code>favourite-fruit-color.Rproj</code>. We right click on the file and select <code>Ignore...</code>:</p>
-<p><img src="images/gitignore-rstudio1.png" alt="Ignore a file" style="width:75.0%" /></p>
+<p><img src="static/images/gitignore-rstudio1.png" alt="Ignore a file" style="width:75.0%" /></p>
 <hr />
 <p>When to use <code>.gitignore</code>:</p>
 <ul>
@@ -531,10 +532,10 @@ Exercise:
 </ul>
 <hr />
 <p>Note that you can use wild cards e.g. <code>*.Rproj</code> to exclude a group of files from the version control:</p>
-<p><img src="images/gitignore-rstudio2.png" alt="Update .gitignore" style="width:75.0%" /></p>
+<p><img src="static/images/gitignore-rstudio2.png" alt="Update .gitignore" style="width:75.0%" /></p>
 <hr />
 <p>Check the content of the <code>.gitignore</code> file. If satisfied, click <code>Save</code>:</p>
-<p><img src="images/gitignore-rstudio2.png" alt="Update .gitignore" style="width:75.0%" /></p>
+<p><img src="static/images/gitignore-rstudio2.png" alt="Update .gitignore" style="width:75.0%" /></p>
 <hr />
 </div>
 <div id="make-commits" class="section level2">
@@ -556,13 +557,13 @@ Exercise:
 </div>
 <hr />
 <p>The status of the <code>.gitignore</code> file before the file was committed, with the yellow question mark saying that the file is yet unknown to Git:</p>
-<p><img src="images/commit-rstudio1.png" alt="Local commit" style="width:75.0%" /></p>
+<p><img src="static/images/commit-rstudio1.png" alt="Local commit" style="width:75.0%" /></p>
 <hr />
 <p>By checking the box and clicking commit, we add the file and commit this addition with a commit message:</p>
-<p><img src="images/commit-rstudio2.png" alt="Local commit" style="width:75.0%" /></p>
+<p><img src="static/images/commit-rstudio2.png" alt="Local commit" style="width:75.0%" /></p>
 <hr />
 <p>We get a small technical overview of the alterations we provided with this commit:</p>
-<p><img src="images/commit-rstudio3.png" alt="Local commit" style="width:75.0%" /></p>
+<p><img src="static/images/commit-rstudio3.png" alt="Local commit" style="width:75.0%" /></p>
 <hr />
 <p>It is good practice to <strong>commit often</strong>, so you will do this a lot. Each commit should only contain changes related to a single problem/element/… Each commit is a snapshot of your project and the messages describe the story of your project.</p>
 <p>As documentation is crucial, providing some more information in the <code>README.md</code> file will help others (and yourself in a couple of months/years) to understand the aim of the project. Just as we adapted the <code>README.md</code> file online earlier, we can do the same locally:</p>
@@ -579,7 +580,7 @@ Exercise:
 </div>
 <hr />
 <p>Remark the reporting of the changed lines linked to this commit with green and red colors:</p>
-<p><img src="images/commit-rstudio4.png" alt="Local commit" style="width:75.0%" /></p>
+<p><img src="static/images/commit-rstudio4.png" alt="Local commit" style="width:75.0%" /></p>
 <hr />
 </div>
 <div id="push-the-changes-to-github" class="section level2">
@@ -598,10 +599,10 @@ Exercise:
 </div>
 <hr />
 <p>Rstudio gives you a warning about the status of your local commits versus those stored on GitHub:</p>
-<p><img src="images/push-rstudio1.png" alt="Push" style="width:75.0%" /></p>
+<p><img src="static/images/push-rstudio1.png" alt="Push" style="width:75.0%" /></p>
 <hr />
 <p>Is the <code>README.md</code> adapted? Where do you find the Commits overview online?</p>
-<p><img src="images/local-commit-on-github.png" alt="Verify your commits on GitHub" style="width:75.0%" /></p>
+<p><img src="static/images/local-commit-on-github.png" alt="Verify your commits on GitHub" style="width:75.0%" /></p>
 <hr />
 </div>
 <div id="additional-configuration---store-your-password" class="section level2">
@@ -622,13 +623,13 @@ Exercise:
 <p>The next time <code>git</code> needs your credentials, it will ask them <strong>one more time and store them</strong>!</p>
 <hr />
 <p>The more button has a <code>wheel</code> symbol:</p>
-<p><img src="images/https-credentials-rstudio1.png" alt="Store credentials" style="width:75.0%" /></p>
+<p><img src="static/images/https-credentials-rstudio1.png" alt="Store credentials" style="width:75.0%" /></p>
 <hr />
 </div>
 <div id="create-logical-commits" class="section level2">
 <h2><span class="header-section-number">2.8</span> Create logical commits</h2>
 <p>As mentioned earlier, you should commit often and make sure each commit links to a specific change/problem. Sometimes, this means that you have to split the additions in a single file into two individual commits. Rstudio provides the interface to include specific lines of code into a commit message:</p>
-<p><img src="images/logical-commit-rstudio.png" alt="Logical commit 1" style="width:75.0%" /></p>
+<p><img src="static/images/logical-commit-rstudio.png" alt="Logical commit 1" style="width:75.0%" /></p>
 <hr />
 <p>To summarize, the following actions can be executed:</p>
 <ul>
@@ -669,7 +670,7 @@ Exercise:
 </div>
 <hr />
 <p>If you do not remember how to change files online, check again <a href="https://help.github.com/articles/create-a-repo/#commit-your-first-change">this online tutorial</a>. Check the result of your online commit, similar to:</p>
-<p><img src="images/commit-to-create-conflict.png" alt="Commit to create conflict" style="width:75.0%" /></p>
+<p><img src="static/images/commit-to-create-conflict.png" alt="Commit to create conflict" style="width:75.0%" /></p>
 <hr />
 <div class="panel-warning">
 <div class="panel-heading">
@@ -681,7 +682,7 @@ Exercise:
 </div>
 <hr />
 <p>Git provides a warning about the remote changes on the same repository:</p>
-<p><img src="images/conflict-rstudio1.png" alt="Conflict" style="width:75.0%" /></p>
+<p><img src="static/images/conflict-rstudio1.png" alt="Conflict" style="width:75.0%" /></p>
 <hr />
 <div class="panel-warning">
 <div class="panel-heading">
@@ -696,7 +697,7 @@ Exercise:
 <li>Fix conflicts</li>
 <li>Commit the result after fixing the conflict</li>
 </ol>
-<p><img src="images/conflict-rstudio2.png" alt="Conflict" style="width:75.0%" /></p>
+<p><img src="static/images/conflict-rstudio2.png" alt="Conflict" style="width:75.0%" /></p>
 <hr />
 <p>Keep calm and resolve conflict!</p>
 <p>Each conflict is always marked by the combination of the following elements:</p>
@@ -751,10 +752,10 @@ Exercise:
 <li><code>README.md</code> file is adapted (blue <em>Modified</em> box)</li>
 <li><code>data/</code> is currently unknown to Git (yellow <em>Question mark</em> box)</li>
 </ul>
-<p><img src="images/add-file-rstudio1.png" alt="Add a file" style="width:75.0%" /></p>
+<p><img src="static/images/add-file-rstudio1.png" alt="Add a file" style="width:75.0%" /></p>
 <hr />
 <p>Clicking both will make them ready to be committed. Remark, the <code>data/fruits.csv</code> file gets a green <em>Added</em> box:</p>
-<p><img src="images/add-file-rstudio2.png" alt="Add a file" style="width:75.0%" /></p>
+<p><img src="static/images/add-file-rstudio2.png" alt="Add a file" style="width:75.0%" /></p>
 <hr />
 </div>
 <div id="adapt-last-commit" class="section level2">
@@ -774,7 +775,7 @@ Exercise:
 <p><strong>Warning:</strong> don’t do this on commits that have been pushed. That would result in conflicts.</p>
 <hr />
 <p>Next to the <code>Commit</code> box, the <code>amend</code> option is available:</p>
-<p><img src="images/amend-commit-rstudio.png" alt="Add a file" style="width:75.0%" /></p>
+<p><img src="static/images/amend-commit-rstudio.png" alt="Add a file" style="width:75.0%" /></p>
 <hr />
 </div>
 <div id="view-history" class="section level2">
@@ -797,10 +798,10 @@ Exercise:
 <li>As a separate pane (your R command history): this has nothing to do with Git</li>
 <li>Within the <code>git</code> pane (the history of your commit messages)</li>
 </ul>
-<p><img src="images/history-rstudio1.png" alt="View history" style="width:75.0%" /></p>
+<p><img src="static/images/history-rstudio1.png" alt="View history" style="width:75.0%" /></p>
 <hr />
 <p>You can click on each of the commits to verify the adaptations that were part of the specific commit:</p>
-<p><img src="images/history-rstudio2.png" alt="View history" style="width:75.0%" /></p>
+<p><img src="static/images/history-rstudio2.png" alt="View history" style="width:75.0%" /></p>
 <hr />
 </div>
 <div id="create-a-branch-to-experiment" class="section level2">
@@ -825,7 +826,7 @@ Exercise:
 </div>
 <hr />
 <p>For this example, we decided to use the name <code>analysis-script</code> for the branch name. Make sure your branch name makes sense for the work you are planning to do. Use lower case characters and <code>-</code> in between words (NO spaces!).</p>
-<p><img src="images/create-branch-rstudio.png" alt="Create branch" style="width:75.0%" /></p>
+<p><img src="static/images/create-branch-rstudio.png" alt="Create branch" style="width:75.0%" /></p>
 <hr />
 <div class="panel-danger">
 <div class="panel-heading">
@@ -835,7 +836,7 @@ Remark!
 <p>The new versions of Rstudio provide the functionality to create a branch directly!</p>
 </div>
 </div>
-<p><img src="images/branch-rstudio3.png" alt="Create branch" style="width:75.0%" /></p>
+<p><img src="static/images/branch-rstudio3.png" alt="Create branch" style="width:75.0%" /></p>
 <hr />
 </div>
 <div id="effect-of-switching-branches" class="section level3">
@@ -857,10 +858,10 @@ Exercise:
 </div>
 <hr />
 <p>As in our example, the branch name is <code>analysis-script</code>, the dropdown defines this as the currently active branch. Clicking on the dropdown provides an overview of all branches:</p>
-<p><img src="images/branch-rstudio1.png" alt="Switch branch" style="width:75.0%" /></p>
+<p><img src="static/images/branch-rstudio1.png" alt="Switch branch" style="width:75.0%" /></p>
 <hr />
 <p>Rstudio provides you information about the switch to the <code>master</code> branch:</p>
-<p><img src="images/branch-rstudio2.png" alt="Switch branch" style="width:75.0%" /></p>
+<p><img src="static/images/branch-rstudio2.png" alt="Switch branch" style="width:75.0%" /></p>
 <hr />
 </div>
 <div id="first-push-of-a-new-branch" class="section level3">
@@ -887,10 +888,10 @@ Remark!
 <p>When using the interface of Rstudio to create a branch, this functionality is already included by checking the box <code>Sync branch with remote</code>.</p>
 </div>
 </div>
-<p><img src="images/branch-rstudio3.png" alt="Create branch" style="width:75.0%" /></p>
+<p><img src="static/images/branch-rstudio3.png" alt="Create branch" style="width:75.0%" /></p>
 <hr />
 <p>This will also activate the <code>pull</code> and <code>push</code> buttons. From now on, you can commit as many times as you want/need to this branch and push the commits to GitHub, where it will be stored under the same branch name:</p>
-<p><img src="images/branch-first-push-rstudio.png" alt="First push branch" style="width:75.0%" /></p>
+<p><img src="static/images/branch-first-push-rstudio.png" alt="First push branch" style="width:75.0%" /></p>
 <hr />
 </div>
 </div>
@@ -914,10 +915,10 @@ Exercise:
 </div>
 <hr />
 <p>Github actually suggests you to <code>Compare &amp; Pull request</code> on the webpage in a new yellow box. If you do not see the messag, you can still initiate a <code>Pull request</code>. The <code>Pull request</code> aims to insert the adaptations in your branch into the <code>master</code> branch.</p>
-<p><img src="images/pull-request-intro.png" alt="Check Github message pull request" style="width:75.0%" /></p>
+<p><img src="static/images/pull-request-intro.png" alt="Check Github message pull request" style="width:75.0%" /></p>
 <hr />
 <p>In a new dialog, you can provide a short summary line about the <code>Pull request</code> with the option to add additional information. By clicking the <code>Create pull request</code> button, you actually propose the merge into the <code>master</code> branch.</p>
-<p><img src="images/pull-request_message.png" alt="Adapt Github message and start pull request" style="width:75.0%" /></p>
+<p><img src="static/images/pull-request_message.png" alt="Adapt Github message and start pull request" style="width:75.0%" /></p>
 <hr />
 </div>
 <div id="review-your-pull-request" class="section level3">
@@ -936,7 +937,7 @@ Exercise:
 </div>
 </div>
 <hr />
-<p><img src="images/pr.png" alt="See pull request" style="width:75.0%" /></p>
+<p><img src="static/images/pr.png" alt="See pull request" style="width:75.0%" /></p>
 <hr />
 </div>
 <div id="include-your-accepted-work-to-local-master" class="section level3">
@@ -955,7 +956,7 @@ Exercise:
 </ol>
 </div>
 </div>
-<p><img src="images/pull-rstudio.png" alt="git pull" style="width:75.0%" /></p>
+<p><img src="static/images/pull-rstudio.png" alt="git pull" style="width:75.0%" /></p>
 <hr />
 </div>
 </div>
@@ -979,10 +980,10 @@ Exercise:
 </div>
 <hr />
 <p>On your own repository, you have all admin rights to add <code>Collaborators</code> in the <code>Settings</code> section of GitHub:</p>
-<p><img src="images/invite-collaborator.png" alt="Invite collaborator" style="width:75.0%" /></p>
+<p><img src="static/images/invite-collaborator.png" alt="Invite collaborator" style="width:75.0%" /></p>
 <hr />
 <p>When invited to collaborate, you have to <code>Accept invitation</code> in order to start working on the repository:</p>
-<p><img src="images/react-collaborator.png" alt="react to collaborator" style="width:75.0%" /></p>
+<p><img src="static/images/react-collaborator.png" alt="react to collaborator" style="width:75.0%" /></p>
 <hr />
 </div>
 <div id="issues" class="section level2">

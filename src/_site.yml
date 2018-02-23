@@ -1,5 +1,6 @@
 name: "INBO Git workshop"
 output_dir: "../docs"
+include: ["static/"]
 navbar:
   title: "INBO Git workshop"
   left:
@@ -20,3 +21,4 @@ output:
   html_document:
     theme: yeti
     df_print: paged
+    css: "static/css/inbo.css"
