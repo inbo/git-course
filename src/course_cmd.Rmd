@@ -54,32 +54,78 @@ The resulting repository layout will look like this:
 
 ---
 
-### Clone a repo to work locally
+### Installation
 
+Just to make sure, in case you did not already installed Git:
+
+<div class="bs-callout bs-callout-exercise">
+<h4>Exercise:</h4>
 1. Install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-2. [Configure git](https://help.github.com/articles/set-up-git/)
-3. Follow [this tutorial](https://help.github.com/articles/cloning-a-repository/) to clone your repo
+</div>
+
+---
+
+### Configuration
+
+In order to start using version control, we have to do some configuration the first time. You only leed to do this configuration once, as explained on [Configure git](https://help.github.com/articles/set-up-git/#setting-up-git).
+
+<div class="bs-callout bs-callout-exercise">
+<h4>Exercise:</h4>
+1. [Set your username in Git](https://help.github.com/articles/setting-your-username-in-git).
+1. [Set your commit email address in Git](https://help.github.com/articles/setting-your-commit-email-address-in-git).
+1. Consider to provide authentification with [https](https://help.github.com/articles/set-up-git/#connecting-over-https-recommended) or (if you're familiar with SSH keys ) [ssh](https://help.github.com/articles/set-up-git/#connecting-over-ssh).
+</div>
+
+Use your **GitHub username**! You can check if you’re set up correctly by typing  `git config --global --list` in the same shell.
+
+When successful, the configuration is done. Congratulations!
+
+---
 
 __Tip__: [adapt git configuration](https://git-scm.com/docs/git-config.html#git-config-coreeditor) to use your favourite editor
 
 ```
-git config --global core.editor gedit
+git config --global core.editor vim
 ```
 
 ---
 
-### Make a commit
+## Clone a repo to work locally
 
-1. Open your favourite text editor
-2. Update the `README.md`
-3. Commit your changes
+We have initiated a repository online and a working Git installation. Hence, we can start working on the code locally by downloading the repository to our computer.
+
+<div class="bs-callout bs-callout-exercise">
+<h4>Exercise:</h4>
+1. Follow [this tutorial](https://help.github.com/articles/cloning-a-repository/) to clone your repo
+</div>
+
+---
+
+To get the https link, you need to click the green button and make sure to copy paste the link with as title `Clone with HTTPS`:
+
+![Copy the https link of a repo](./static/images/copy-repo-link.png){width=75%}
+
+---
+
+<div class="bs-callout bs-callout-exercise">
+<h4>Exercise:</h4>
+In your File explorer, search for your project folder and check the content. Does this corresponds to what is shown online on your repository website?
+</div>
 
 ---
 
 ### Make a commit
 
-1. Check the differences: `git status` and `git diff`
-2. Commit your changes with `git commit`: 
+It is good practice to **commit often**, so you will do this a lot. Each commit should only contain changes related to a single problem/element/... Each commit is a snapshot of your project and the messages describe the story of your project.
+
+As documentation is crucial, providing some more information in the `README.md` file will help others (and yourself in a couple of months/years) to understand the aim of the project. Just as we adapted the `README.md` file online earlier, we can do the same locally:
+
+<div class="bs-callout bs-callout-exercise">
+<h4>Exercise:</h4>
+1. Open your favourite text editor
+1. Update the `README.md`
+1. Check the differences: use the commands `git status` and `git diff`
+1. Commit your changes with `git commit`: 
     * Write commit message in editor: 
     ```
     git commit README.md
@@ -88,106 +134,152 @@ git config --global core.editor gedit
     ```
     git commit -m 'Proper commit message README.md'
     ```
+</div>
 
 ---
 
-### Push your changes to backup your work
+## Push the changes to GitHub
 
-* Command `git push`: 
-```
-git push origin master
-```
+Note that the `git status` replies *your branch is ahead of 'origin/master' by 2 commits*. This is actually providing you a warning message that there is no backup of these two commits! In order to store these changes on GitHub as well, we have to `push` our changes to GitHub:
+
+<div class="bs-callout bs-callout-exercise">
+<h4>Exercise:</h4>
+1. Command `git push`: 
+    ```
+    git push origin master
+    ```
+1. Go to your repository on GitHub to verify the commits and file contents
+</div>
 
 ---
 
-### Go to your repo on GitHub to verify
+Is the `README.md` adapted? Where do you find the Commits overview online?
 
-![Verify your commits on GitHub](images/local-commit-on-github.png)
+![Verify your commits on GitHub](./static/images/local-commit-on-github.png){width=75%}
 
 ---
 
-### Create logical commits
+## Create logical commits
 
+As mentioned earlier, you should commit often and make sure each commit links to a specific change/problem. Sometimes, this means that you have to split the additions in a single file into two individual commits. 
+
+<div class="bs-callout bs-callout-exercise">
+<h4>Exercise:</h4>
 1. Make 2 unrelated changes to your `README.md` locally
-2. Create one commit for each change.
-3. Do not push (yet)
+1. Create one commit for each change using the `-p` (patch*) option when staging the changes:
+    ```
+    git add -p README.md
+    ```
+1. Do not push (yet)!
+</div>
+
+*check the [Git documentation](https://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging#_staging_patches) for more information on interactive staging
 
 ---
 
 ### Create logical commits
 
-```
-git add -p README.md
-```
-
-![Logical commit cmd 1](images/logical-commit-1-cmd.png)
+![Logical commit cmd 1](./static/images/logical-commit-1-cmd.png){width=75%}
 
 ---
 
 ### Create a conflict
 
-Update your `README.md` on GitHub,<br/>
-on a line you also edited locally
+Sometimes, conflicts will appear. Maybe because a collaborator was working on exactly the same lines of code or because of a mistake in your workflow,... No worries, we'll learn you how to fix conflicts by initiating one.
 
-![Commit to create conflict](images/commit-to-create-conflict.png)
+<div class="bs-callout bs-callout-exercise">
+<h4>Exercise:</h4>
+Update your `README.md` online on GitHub, on the exact same line you just edited locally in the previous exercise.
+</div>
+
+---
+
+If you do not remember how to change files online, check again [this online tutorial](https://help.github.com/articles/create-a-repo/#commit-your-first-change). Check the result of your online commit, similar to:
+
+![Commit to create conflict](./static/images/commit-to-create-conflict.png){width=75%}
 
 ---
 
 ### Conflict!
 
-```
-git pull origin master
-```
+<div class="bs-callout bs-callout-exercise">
+<h4>Exercise:</h4>
+1. try to push (click `git push origin master`) your local changes to GitHub.
+1. try to pull (click `git pull origin master`) the changes from GitHub to your local machine.
+</div>
+
+---
+
+* Git provides a warning about the remote changes on the same repository
+* Git notices the **CONFLICT** and demands you what to do next
 
 ![Conflict cmd](images/conflict-cmd.png)
 
 ---
 
-### Keep calm and resolve conflict
+Keep calm and resolve conflict!
 
-1. Open `README.md` in text editor:
+Each conflict is always marked by the combination of the following elements:
+```
+<<<<<<< HEAD
+your local code
+=======
+the code as it exists on Github
+>>>>>>> origin/master
+```
 
-        <<<<<<< HEAD
-        A simple analysis to visualize my favourite fruit colour.
-        =======
-        A simple analysis to discover my favourite fruit color.
-        >>>>>>> origin/master
-
-2. Choose what you want to keep:
-
-        A simple analysis to discover my favourite fruit colour.
-
-3. Commit and push
-
-        git add <fixed files>
-        git commit
-        git push origin master
+To solve a conflict, you have to decide which version of the code you want to keep. 
 
 ---
 
-### Resolve conflict
+<div class="bs-callout bs-callout-exercise">
+<h4>Exercise:</h4>
+1. Open `README.md` in text editor:
+    ```
+    <<<<<<< HEAD
+    A simple analysis to visualize my favourite fruit colour.
+    =======
+    A simple analysis to discover my favourite fruit color.
+    >>>>>>> origin/master
+    ```
+2. Choose what you want to keep:
+    ```
+    A simple analysis to discover my favourite fruit colour.
+    ```
+3. Commit and push
+    ```
+    git add <fixed files>
+    git commit
+    git push origin master
+    ```
+</div>
+
+---
+
+Resolve conflict:
 
 ![Conflict resolve cmd](images/resolve-conflict-cmd.png)
-
 ---
 
 ### Add a file
 
-1. Add a `fruits.csv` file in a `/data` directory
-2. Link to this file in the `README.md`
+During a project, new files will be added to the project folder, which need to be version controlled as well. New directories and files can be added and committed, just like any other adaptation. 
 
----
+With the `git add` command, the file is staged (i.e. ready to be committed). Staging a new directory will stage all files in the directory. However, you can not stage/commit empty directories!
 
-### Add a file
+<div class="bs-callout bs-callout-exercise">
+<h4>Exercise:</h4>
+1. Add a `fruits.csv` file in a `/data` subdirectory
+1. Link to this file in the `README.md` (use relative paths), mentioning the purpose of the file.
+1. `git add data/fruits.csv` the new file
+1. Commit both changes (new data file and the `README.md` adaptation) in a single commit message by using the `-a` (all*) option:
+    ```
+    git commit -am 'Your commit message'
+    ```
+1. `git push origin master` the changes to GitHub
+</div>
 
-`git commit -am "My message"` <br/>
-takes all changes in a single commit
-
-```
-git add data/fruits.csv
-git commit -am "Add data file"
-git push origin master
-```
+* `git commit -am "My message"` takes all changes in a single commit
 
 ---
 
@@ -210,24 +302,47 @@ git revert HEAD
 
 ### View history
 
+One of the advantages of using version control with regular commits is that you get a history of your project. You can check the history (the series of commits) both online on GitHub as well as in the Terminal:
+
+<div class="bs-callout bs-callout-exercise">
+<h4>Exercise:</h4>
+1. In the terminal: `git log` to see the Git history
+1. On the webpage of your repository, chek the commit list
+</div>
+
+**Tip**: The `git log`command can be highly customized to provide more detail, for example:
+```
+git log --graph --pretty=format:'%C(bold)%h%Creset%C(magenta)%d%Creset %s %C(yellow)<%an> %C(cyan)(%cr)%Creset' --abbrev-commit --date=relative
+```
+
+---
+
+### Effect of switching to older commit:
+
+<div class="bs-callout bs-callout-exercise">
+<h4>Exercise:</h4>
 1. `git log`
 2. Copy a HASH
 3. `git checkout HASH`
 4. Check the local directory and files on your computer
-5. `git checkout master`
+5. `git checkout master` again to the master
+</div>
 
 ---
 
 ### Create a branch to experiment
 
+It is good practice to ALWAYS work on (short-living) branches. It allows you to freely experiment until you are satisfied of the result and it ensures your `master` provides the last stable version of your analysis/project.
+
+<div class="bs-callout bs-callout-exercise">
+<h4>Exercise:</h4>
 1. Create a branch
 2. Add an analysis file in a `/src` directory
 3. Commit
 4. Switch between branches
+</div>
 
 ---
-
-### Create a branch to experiment: command line
 
 1. Create a branch by a checkout to new branch, `git checkout -b`: 
     ```
