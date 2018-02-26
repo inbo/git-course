@@ -516,11 +516,10 @@ For this example, we decided to use the name `analysis-script` for the branch na
 
 ---
 
-<div class="panel-danger">
-<div class="panel-heading">Remark!</div>
-<div class="panel-body">
+<div class="alert alert-danger">
+<h4>Remark!</h4>
 The new versions of Rstudio provide the functionality to create a branch directly!
-</div></div>
+</div>
 
 ![Create branch](./static/images/branch-rstudio3.png){width=75%}
 
@@ -566,11 +565,10 @@ Notice that the `pull` and `push` buttons in the `git` pane are grayed out. When
 
 ---
 
-<div class="panel-danger">
-<div class="panel-heading">Remark!</div>
-<div class="panel-body">
+<div class="alert alert-danger">
+<h4>Remark!</h4>
 When using the interface of Rstudio to create a branch, this functionality is already included by checking the box `Sync branch with remote`.
-</div></div>
+</div>
 
 ![Create branch](./static/images/branch-rstudio3.png){width=75%}
 
@@ -706,11 +704,6 @@ When there is no coding involved, e.g. you just need to update a few text lines 
 In this section, all the individual steps come together to collaborate on the code of your project. First, we will start with a rehearsel of the individual steps as an exercise. Afterwards, we will try out a workflow that can be used as a step by step procedure in the future.
 
 <div class="alert alert-danger">
-<h4>Remember!</h4>
-**Working on a local branch - merging online**
-</div>
-
-<div class="bs-callout bs-callout-danger">
 <h4>Remember!</h4>
 **Working on a local branch - merging online**
 </div>
