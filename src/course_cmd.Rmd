@@ -1,55 +1,56 @@
 ---
 title: "Git hands-on session with command line"
-author: "Stijn Van Hoey, Peter Desmet"
+author: 
+  - Stijn Van Hoey
+  - Peter Desmet
+date: "`r Sys.Date()`"
 output:
-  revealjs::revealjs_presentation:
-    theme: solarized
-    highlight: zenburn
-    transition: none
-    center: true
-    fig_caption: false
-    fig_width: 5
-    fig_height: 4
-    reveal_options:
-      slideNumber: true
-      previewLinks: true    
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+    fig_caption: false   
 ---
 
-<style type="text/css">
-    .reveal section img { 
-        border:none; 
-        box-shadow:none; 
-        }
-    .reveal code {
-    	font-family: monospace;
-    	color: #c04384;
-        }
-    .reveal pre code {
-    	font-family: monospace;
-    	color: #1a1a1a;
-    	background: ##ececec;
-        }
-</style>
+# Setup
 
+When starting this tutorial, we assume:
 
-
-## Working on your own {data-background=#c2c444}
+* you have [Git](https://git-scm.com/) installed on your computer
+* you are able to run Git from the command line
 
 ---
 
-### Create a repo
+# Working on your own {data-background=#c2c444}
 
+We start with you working on a repository, without interference of colleagues
+
+---
+
+## Create a repository
+
+A new project starts with a new repository, which can be easily setup using [GitHub.com](https://github.com).
+
+<div class="bs-callout bs-callout-exercise">
+<h4>Exercise:</h4>
 1. Go to [GitHub](https://github.com) and login
-2. Follow [this tutorial](https://help.github.com/articles/create-a-repo/) to create a repo
+2. Follow [this tutorial](https://help.github.com/articles/create-a-repo/) to create a repo and [create your first (online) commit](https://help.github.com/articles/create-a-repo/#commit-your-first-change) to your repository
+</div>
 
 ---
 
-![Create a repo](images/create-a-repo.png)
-    
+For this first exercise, we have chosen to create a dummy repository:
+
+![Create a repo](./static/images/create-a-repo.png)
+(*you do not have to copy the example, choose any name :-)*)
 
 ---
 
-![Result of creating a repo](images/create-repo-result.png)
+The resulting repository layout will look like this:
+
+![Result of creating a repo](./static/images/create-repo-result.png)
+(*Remember that there is a `Clone or Download` button on this page!*)
 
 ---
 
