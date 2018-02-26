@@ -714,14 +714,16 @@ In this section, all the individual steps come together to collaborate on the co
 
 ---
 
+You can interpret the following exercise as a wrap-up of the steps learnt in the previous section:
+
 <div class="bs-callout bs-callout-exercise">
 <h4>Exercise:</h4>
 * As collaborator, `clone` the other repository to your local computer
 * Create a new `branch` locally with a different name
 * Adapt the content of a file
-* `commit` your adaptation
-* `push` your `branch` to the remote repository
-* Go to GitHub and make a `pull request`
+* `Commit` your adaptation
+* `Push` your `branch` to the remote repository
+* Go to GitHub and make a `Pull request`
 * Revise the work and `merge` online when appropriate
 * Update your local work
 * Check if all adaptations are represented in your local files
