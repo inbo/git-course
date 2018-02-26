@@ -758,25 +758,52 @@ Exercise:
 Exercise:
 </h4>
 <ol style="list-style-type: decimal">
-<li>Open the git shell</li>
-<li><p>Create a branch by a <code>checkout</code> to new <code>branch</code>:</p>
-<pre><code>git checkout -b analysis-script</code></pre></li>
-<li>Get an overview of your branches: <code>git branch</code></li>
-<li>Add an analysis file in a <code>/src</code> directory</li>
-<li><code>Commit</code> the adaptation to the branch</li>
+<li>click on <code>Create branch</code> symbol* (next to the current branch name)</li>
+<li>Provide a branch name (lowercase, no spaces)</li>
+<li>Keep remote on <code>origin</code></li>
+<li>Check the box <code>Sync branch with remote</code></li>
+<li>Click <code>Create</code></li>
 </ol>
 </div>
+<p>*the create branch symbol looks as follows: <img src="static/images/rstudio_branch_symbol.png" /></p>
 <hr />
-<p>For this example, we decided to use the name <code>analysis-script</code> for the branch name. Make sure your branch name makes sense for the work you are planning to do. Use lower case characters and <code>-</code> in between words (NO spaces!).</p>
-<p><img src="static/images/create-branch-rstudio.png" alt="Create branch" style="width:75.0%" /></p>
+<p>Make sure your branch name makes sense for the work you are planning to do. Use lower case characters and <code>-</code> in between words (NO spaces!). For this example, we decided to use the name <code>analysis-script</code> for the branch name.</p>
+<p><img src="static/images/branch-rstudio3.png" alt="Create branch" style="width:75.0%" /></p>
 <hr />
 <div class="alert alert-danger">
 <h4>
 Remark!
 </h4>
-<p>The new versions of Rstudio provide the functionality to create a branch directly!</p>
+<p>Older versions of Rstudio do not provide the functionality to create a branch directly! You will have to use the <code>Shell</code> to create the new branch:</p>
 </div>
-<p><img src="static/images/branch-rstudio3.png" alt="Create branch" style="width:75.0%" /></p>
+<div class="bs-callout bs-callout-info">
+<h4>
+Shell based approach to create a new branch:
+</h4>
+<ol style="list-style-type: decimal">
+<li>Open the git shell</li>
+<li><p>Create a branch by a <code>checkout</code> to new <code>branch</code>:</p>
+<pre><code>git checkout -b analysis-script</code></pre></li>
+<li>Get an overview of your branches: <code>git branch</code></li>
+<li><p>Type <code>git push -u origin analysis-script</code> to activate <code>Push</code>/<code>Pull</code> buttons</p></li>
+</ol>
+<p>Shell based approach to create a new branch: <img src="static/images/create-branch-rstudio.png" alt="Create branch" style="width:75.0%" /></p>
+<p>This will also activate the <code>pull</code> and <code>push</code> buttons. From now on, you can commit as many times as you want/need to this branch and push the commits to GitHub, where it will be stored under the same branch name:</p>
+<p><img src="static/images/branch-first-push-rstudio.png" alt="First push branch" style="width:75.0%" /></p>
+</div>
+<hr />
+<p>We can work on the just created branch and start making adaptations:</p>
+<div class="bs-callout bs-callout-exercise">
+<h4>
+Exercise:
+</h4>
+<ol style="list-style-type: decimal">
+<li>Add an analysis file in a <code>/src</code> directory</li>
+<li><code>Commit</code> the adaptation to the branch</li>
+<li>Click <code>Push</code> to send the adaptations to Github</li>
+<li>On GitHub website, look for your branch and check the adaptations to the branch</li>
+</ol>
+</div>
 <hr />
 </div>
 <div id="effect-of-switching-branches" class="section level3">
@@ -800,32 +827,9 @@ Exercise:
 <hr />
 <p>Rstudio provides you information about the switch to the <code>master</code> branch:</p>
 <p><img src="static/images/branch-rstudio2.png" alt="Switch branch" style="width:75.0%" /></p>
-<hr />
-</div>
-<div id="first-push-of-a-new-branch" class="section level3">
-<h3><span class="header-section-number">2.13.3</span> First push of a new branch</h3>
-<p>Notice that the <code>pull</code> and <code>push</code> buttons in the <code>git</code> pane are grayed out. When working on a branch, we have to activate these buttons:</p>
-<div class="bs-callout bs-callout-exercise">
-<h4>
-Exercise:
-</h4>
-<ol style="list-style-type: decimal">
-<li>Open the Git Shell</li>
-<li>Type <code>git push -u origin analysis-script</code></li>
-<li>On GitHub website, look for your branch and check the adaptations to the branch</li>
-</ol>
-</div>
-<hr />
 <div class="alert alert-danger">
-<h4>
-Remark!
-</h4>
-<p>When using the interface of Rstudio to create a branch, this functionality is already included by checking the box <code>Sync branch with remote</code>.</p>
+<p>Make sure you are currently working on your newly created branch (e.g. <code>analysis-script</code>) before you proceed!</p>
 </div>
-<p><img src="static/images/branch-rstudio3.png" alt="Create branch" style="width:75.0%" /></p>
-<hr />
-<p>This will also activate the <code>pull</code> and <code>push</code> buttons. From now on, you can commit as many times as you want/need to this branch and push the commits to GitHub, where it will be stored under the same branch name:</p>
-<p><img src="static/images/branch-first-push-rstudio.png" alt="First push branch" style="width:75.0%" /></p>
 <hr />
 </div>
 </div>
@@ -952,6 +956,7 @@ Remember!
 <p><strong>Working on a local branch - merging online</strong></p>
 </div>
 <hr />
+<p>You can interpret the following exercise as a wrap-up of the steps learnt in the previous section:</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
 Exercise:
@@ -960,9 +965,9 @@ Exercise:
 <li>As collaborator, <code>clone</code> the other repository to your local computer</li>
 <li>Create a new <code>branch</code> locally with a different name</li>
 <li>Adapt the content of a file</li>
-<li><code>commit</code> your adaptation</li>
-<li><code>push</code> your <code>branch</code> to the remote repository</li>
-<li>Go to GitHub and make a <code>pull request</code></li>
+<li><code>Commit</code> your adaptation</li>
+<li><code>Push</code> your <code>branch</code> to the remote repository</li>
+<li>Go to GitHub and make a <code>Pull request</code></li>
 <li>Revise the work and <code>merge</code> online when appropriate</li>
 <li>Update your local work</li>
 <li>Check if all adaptations are represented in your local files</li>

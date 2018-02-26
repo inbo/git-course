@@ -498,30 +498,58 @@ It is good practice to ALWAYS work on (short-living) branches. It allows you to 
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Exercise:</h4>
+1. click on `Create branch` symbol* (next to the current branch name)
+1. Provide a branch name (lowercase, no spaces)
+1. Keep remote on `origin`
+1. Check the box `Sync branch with remote`
+1. Click `Create`
+</div>
+
+*the create branch symbol looks as follows:
+![](./static/images/rstudio_branch_symbol.png)
+
+---
+
+Make sure your branch name makes sense for the work you are planning to do. Use lower case characters and `-` in between words (NO spaces!). For this example, we decided to use the name `analysis-script` for the branch name. 
+
+![Create branch](./static/images/branch-rstudio3.png){width=75%}
+
+---
+
+<div class="alert alert-danger">
+<h4>Remark!</h4>
+Older versions of Rstudio do not provide the functionality to create a branch directly! You will have to use the `Shell` to create the new branch:
+</div>
+
+<div class="bs-callout bs-callout-info">
+<h4>Shell based approach to create a new branch:</h4>
 1. Open the git shell
 1. Create a branch by a `checkout` to new `branch`:
     ```
     git checkout -b analysis-script
     ```
 1. Get an overview of your branches: `git branch`
-1. Add an analysis file in a `/src` directory
-1. `Commit` the adaptation to the branch
-</div>
+1. Type `git push -u origin analysis-script` to activate `Push`/`Pull` buttons
 
----
-
-For this example, we decided to use the name `analysis-script` for the branch name. Make sure your branch name makes sense for the work you are planning to do. Use lower case characters and `-` in between words (NO spaces!).
-
+Shell based approach to create a new branch:
 ![Create branch](./static/images/create-branch-rstudio.png){width=75%}
 
----
+This will also activate the `pull` and `push` buttons. From now on, you can commit as many times as you want/need to this branch and push the commits to GitHub, where it will be stored under the same branch name:
 
-<div class="alert alert-danger">
-<h4>Remark!</h4>
-The new versions of Rstudio provide the functionality to create a branch directly!
+![First push branch](./static/images/branch-first-push-rstudio.png){width=75%}
 </div>
 
-![Create branch](./static/images/branch-rstudio3.png){width=75%}
+---
+
+We can work on the just created branch and start making adaptations:
+
+<div class="bs-callout bs-callout-exercise">
+<h4>Exercise:</h4>
+1. Add an analysis file in a `/src` directory
+1. `Commit` the adaptation to the branch
+1. Click `Push` to send the adaptations to Github
+1. On GitHub website, look for your branch and check the adaptations to the branch
+</div>
 
 ---
 
@@ -550,33 +578,9 @@ Rstudio provides you information about the switch to the `master` branch:
 
 ![Switch branch](./static/images/branch-rstudio2.png){width=75%}
 
----
-
-### First push of a new branch
-
-Notice that the `pull` and `push` buttons in the `git` pane are grayed out. When working on a branch, we have to activate these buttons:
-
-<div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-1. Open the Git Shell
-1. Type `git push -u origin analysis-script`
-1. On GitHub website, look for your branch and check the adaptations to the branch
-</div>
-
----
-
 <div class="alert alert-danger">
-<h4>Remark!</h4>
-When using the interface of Rstudio to create a branch, this functionality is already included by checking the box `Sync branch with remote`.
+Make sure you are currently working on your newly created branch (e.g. `analysis-script`) before you proceed!
 </div>
-
-![Create branch](./static/images/branch-rstudio3.png){width=75%}
-
----
-
-This will also activate the `pull` and `push` buttons. From now on, you can commit as many times as you want/need to this branch and push the commits to GitHub, where it will be stored under the same branch name:
-
-![First push branch](./static/images/branch-first-push-rstudio.png){width=75%}
 
 ---
 
@@ -710,14 +714,16 @@ In this section, all the individual steps come together to collaborate on the co
 
 ---
 
+You can interpret the following exercise as a wrap-up of the steps learnt in the previous section:
+
 <div class="bs-callout bs-callout-exercise">
 <h4>Exercise:</h4>
 * As collaborator, `clone` the other repository to your local computer
 * Create a new `branch` locally with a different name
 * Adapt the content of a file
-* `commit` your adaptation
-* `push` your `branch` to the remote repository
-* Go to GitHub and make a `pull request`
+* `Commit` your adaptation
+* `Push` your `branch` to the remote repository
+* Go to GitHub and make a `Pull request`
 * Revise the work and `merge` online when appropriate
 * Update your local work
 * Check if all adaptations are represented in your local files
