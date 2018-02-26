@@ -39,6 +39,26 @@ h1:before {
     border-color: #C04384;
 }
 
+/* custom panel  */
+.panel-warning .panel-body {
+   border-left: 6px solid #356196;
+   margin-bottom: 15px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   padding-left: 16px;
+    }
+.panel-warning .panel-heading {
+  background-color: #356196;
+  border-color: #356196;
+}
+.panel-danger .panel-body {
+   border-left: 6px solid #f04124;
+   margin-bottom: 15px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   padding-left: 16px;
+    }
+
 /* Bootstrap call out custom css */
 /* https://cpratt.co/twitter-bootstrap-callout-css-styles/ */
 .bs-callout {
