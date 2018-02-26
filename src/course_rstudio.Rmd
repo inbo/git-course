@@ -15,15 +15,6 @@ output:
 ---
 
 <style type="text/css">
-    .exercise {
-       background-color: #ffffcc;
-       border-left: 6px solid #ffeb3b;
-       margin-top: 15px;
-       padding-top: 10px;
-       padding-bottom: 10px;
-       padding-left: 16px;
-       font-weight: bold;
-        }
     .panel-warning .panel-body {
        border-left: 6px solid #e99002;
        margin-bottom: 15px;
