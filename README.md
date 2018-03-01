@@ -18,7 +18,7 @@ We explain the main terminology of Git based on 5 important tasks:
 
 1. Tell the story of your project 
 1. Travel back in time
-1. Experiment with changes
+5. Experiment with changes
 1. Backup your work
 1. Collaborate on projects
 
@@ -33,9 +33,9 @@ We like to thank Alice Bartlett, as her `git-for-humans` talk, https://speakerde
 
 The content of the hands-on session in the afternoon depends on the audience of the workshop. Most of the people mainly work in Rstudio and it makes sense to use the integrated git-tools of Rstudio. Others are used to work in the command line or prefer Github Desktop to handle version control. As such, we have three similar sessions, targeted at the different audiences:
 
-* Using Git with GitHub desktop
+* Using Git with GitHub desktop (under development)
 * Using Git with [RStudio](./course_rstudio.html)
-* Using Git with the command line 
+* Using Git with the command line (under development)
 
 ## Setup
 
