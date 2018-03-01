@@ -146,7 +146,7 @@ To get the https link, you need to click the green button and make sure to copy 
 
 ---
 
-An example of the project setup using an existing Git repsoitory:
+An example of the project setup using an existing Git repository:
 
 ![Clone a repo in RStudio](./static/images/create-project-rstudio.png){width=75%}
 
