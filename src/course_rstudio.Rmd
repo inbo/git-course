@@ -637,7 +637,7 @@ For the moment, your adaptations are integrated into the `master` branch online,
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Exercise:</h4>
-1. In Rstudio, sitch to the `master` branch (right top in `Git` pane)
+1. In Rstudio, switch to the `master` branch (right top in `Git` pane)
 1. Click `Pull`
 1. Remove the local branch as well (otherwise you will have a lot of them after a while). You need to open the Shell:
     ```
