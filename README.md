@@ -45,7 +45,7 @@ For the git through RStudio, an installation of R and Rstudio is expected as wel
 
 ## Course development note
 
-The course is written as a combination of `.md` and `.Rmd` files and rendered using the `rmarkdown` package.Rendering the course webpage can be done using the command (assuming a, R studio project in the main repo folder):
+The course is written as a combination of `.md` and `.Rmd` files and rendered using the `rmarkdown` package.Rendering the course webpage can be done using the command (assuming an Rstudio project in the main repo folder):
 
 ```r
 rmarkdown::render_site("src")
