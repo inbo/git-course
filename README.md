@@ -24,8 +24,8 @@ We explain the main terminology of Git based on 5 important tasks:
 
 The morning session is provided using slideshows, split in two main sections:
 
-* [Git ](https://docs.google.com/presentation/d/1JqlFSqFFzUdY6uSMMv7tkO4uDjGok0J-6xI4CsfI_64)
-* [GitHub](https://docs.google.com/presentation/d/1sOAmEw8zpovPy5kyszBmsrMJUW7rzJhqhac4zfULQ0o) 
+* [Git ](static/presentations/git.pdf)
+* [GitHub](static/presentations/github.pdf) 
 
 We like to thank Alice Bartlett, as her `git-for-humans` talk, https://speakerdeck.com/alicebartlett/git-for-humans was a major source of inspiration to the course material.
 
