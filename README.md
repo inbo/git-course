@@ -43,6 +43,16 @@ In order to follow the git-course, the main installation requirement is [git](ht
 
 For the git through RStudio, an installation of R and Rstudio is expected as well. For the Github Desktop version, an installed version of [Github Desktop](https://desktop.github.com/).
 
+## Course development note
+
+The course is written as a combination of `.md` and `.Rmd` files and rendered using the `rmarkdown` package.Rendering the course webpage can be done using the command (assuming a, R studio project in the main repo folder):
+
+```r
+rmarkdown::render_site("src")
+```
+
+And the resulting `html` pages are updated to the `docs` folder. The `docs` folder of the master is used to [deploy the Github pages](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch).
+
 
 
 
