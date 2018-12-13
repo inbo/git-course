@@ -24,8 +24,8 @@ We explain the main terminology of Git based on 5 important tasks:
 
 The morning session is provided using slideshows, split in two main sections:
 
-* [Git ](https://docs.google.com/presentation/d/1JqlFSqFFzUdY6uSMMv7tkO4uDjGok0J-6xI4CsfI_64)
-* [GitHub](https://docs.google.com/presentation/d/1sOAmEw8zpovPy5kyszBmsrMJUW7rzJhqhac4zfULQ0o) 
+* [Git ](static/presentations/git.pdf)
+* [GitHub](static/presentations/github.pdf) 
 
 We like to thank Alice Bartlett, as her `git-for-humans` talk, https://speakerdeck.com/alicebartlett/git-for-humans was a major source of inspiration to the course material.
 
@@ -42,6 +42,16 @@ The content of the hands-on session in the afternoon depends on the audience of 
 In order to follow the git-course, the main installation requirement is [git](https://git-scm.com/) itself. Further configuration is explained during the tutorial. 
 
 For the git through RStudio, an installation of R and Rstudio is expected as well. For the Github Desktop version, an installed version of [Github Desktop](https://desktop.github.com/).
+
+## Course development note
+
+The course is written as a combination of `.md` and `.Rmd` files and rendered using the `rmarkdown` package.Rendering the course webpage can be done using the command (assuming an Rstudio project in the main repo folder):
+
+```r
+rmarkdown::render_site("src")
+```
+
+And the resulting `html` pages are updated to the `docs` folder. The `docs` folder of the master is used to [deploy the Github pages](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch).
 
 
 

@@ -120,7 +120,7 @@ git config --global user.email "my.name@inbo.be"
 
 ![RStudio setup git shell](./static/images/Rstudio-GitShell.png){width=75%}
 
-Use your **GitHub username**! You can check if you’re set up correctly by typing  `git config --global --list` in the same shell.
+Use your **GitHub username**! You can check if you're set up correctly by typing  `git config --global --list` in the same shell.
 
 When successful, the configuration is done. Congratulations!
 
@@ -146,7 +146,7 @@ To get the https link, you need to click the green button and make sure to copy 
 
 ---
 
-An example of the project setup using an existing Git repsoitory:
+An example of the project setup using an existing Git repository:
 
 ![Clone a repo in RStudio](./static/images/create-project-rstudio.png){width=75%}
 
@@ -637,7 +637,7 @@ For the moment, your adaptations are integrated into the `master` branch online,
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Exercise:</h4>
-1. In Rstudio, sitch to the `master` branch (right top in `Git` pane)
+1. In Rstudio, switch to the `master` branch (right top in `Git` pane)
 1. Click `Pull`
 1. Remove the local branch as well (otherwise you will have a lot of them after a while). You need to open the Shell:
     ```
@@ -754,17 +754,17 @@ Follow [this tutorial](https://help.github.com/articles/creating-releases/) to c
 # Some more *Rules for collaboration*:
 
 * Commit often, make small commits
-* Don’t mix changes in 1 commit
+* Don't mix changes in 1 commit
 * Think about your commit messages
 * Always commit into a feature branch, never in the `master` branch.
 * Always start features branches from the `master` branch.
 * Only work in your own branches.
-* Never merge someone else’s `pull request` without their consent.
-* Don’t keep long-lived branches (form of technical debt)
+* Never merge someone else's `pull request` without their consent.
+* Don't keep long-lived branches (form of technical debt)
 
 ---
 
-**There’s no such thing, as a free lunch...**
+**There's no such thing, as a free lunch...**
 
 ---
 
