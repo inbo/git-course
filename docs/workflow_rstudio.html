@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -73,11 +73,9 @@ h6 {
 }
 </style>
 
-<link rel="stylesheet" href="static\css\inbo.css" type="text/css" />
+<link rel="stylesheet" href="static/css/inbo.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -91,13 +89,18 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
 }
 </style>
 
@@ -113,7 +116,6 @@ body {
   padding-top: 50px;
   margin-top: -50px;
 }
-
 .section h2 {
   padding-top: 50px;
   margin-top: -50px;
@@ -133,6 +135,43 @@ body {
 .section h6 {
   padding-top: 50px;
   margin-top: -50px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -154,47 +193,66 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
 
 <!-- code folding -->
 
 
-
-
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <style type="text/css">
 
@@ -208,6 +266,12 @@ $(document).ready(function ()  {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -243,8 +307,6 @@ div.tocify {
 
 .tocify-subheader .tocify-item {
   font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
 }
 
 .tocify .list-group-item {
@@ -253,6 +315,16 @@ div.tocify {
 
 
 </style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
@@ -346,10 +418,7 @@ div.tocify {
 <p>Switch to existing topic branch: <img src="static/images/workflow_rstudio_3.png" /></p>
 <p>Update the topic branch to make sure is is aligned with the remote master: In the Git shell, type:</p>
 <pre><code>git pull origin master</code></pre>
-<div class="figure">
-<img src="static/images/workflow_rstudio_4.png" />
-
-</div>
+<p><img src="static/images/workflow_rstudio_4.png" /></p>
 <hr />
 </div>
 </div>
@@ -383,40 +452,25 @@ div.tocify {
 <h2>STEP 4: Pull request to add your changes to the current master.</h2>
 <p>Update the remote version of the topic branch. Click <code>Push</code>: <img src="static/images/workflow_rstudio_9.png" /></p>
 <p>Go to your repo on Github.com and click the <code>Compare &amp; pull request</code> button.</p>
-<div class="figure">
-<img src="static/images/workflow_rstudio_github_1.png" />
-
-</div>
+<p><img src="static/images/workflow_rstudio_github_1.png" /></p>
 <p>Add information about the Pull request, add reviewers, labels,… Finally, <code>Create pull request</code>: <img src="static/images/workflow_rstudio_github_2.png" /></p>
 </div>
 <div id="step-5-code-review" class="section level2">
 <h2>STEP 5: Code review!</h2>
 <p>You and collaborators can make comments about the edits, review the code and adapt if required (create additional commits and <code>Push</code> them to GitHub) .</p>
 <p>If everything is ok, click the <code>Merge pull request</code>:</p>
-<div class="figure">
-<img src="static/images/workflow_rstudio_github_3.png" />
-
-</div>
+<p><img src="static/images/workflow_rstudio_github_3.png" /></p>
 <p>followed by <code>Confirm merge</code>:</p>
-<div class="figure">
-<img src="static/images/workflow_rstudio_github_4.png" />
-
-</div>
+<p><img src="static/images/workflow_rstudio_github_4.png" /></p>
 <p>Delete the online branch after merge, since obsolete, click <code>Delete branch</code></p>
-<div class="figure">
-<img src="static/images/workflow_rstudio_github_5.png" />
-
-</div>
+<p><img src="static/images/workflow_rstudio_github_5.png" /></p>
 </div>
 <div id="step-6-update-the-master-branch-on-my-pc" class="section level2">
 <h2>STEP 6: Update the master branch on my PC</h2>
 <p>Make sure you are working on the master branch: <img src="static/images/workflow_rstudio_1.png" /></p>
 <p>Remove the local branch, since obsolete. In the Git shell, type:</p>
 <pre><code>git branch -d analysis-script</code></pre>
-<div class="figure">
-<img src="static/images/workflow_rstudio_4.png" />
-
-</div>
+<p><img src="static/images/workflow_rstudio_4.png" /></p>
 <p>Update the local master branch: Click <code>Pull</code>: <img src="static/images/workflow_rstudio_2.png" /></p>
 </div>
 </div>
@@ -439,6 +493,49 @@ $(document).ready(function () {
 });
 
 
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
 </script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
