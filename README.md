@@ -41,7 +41,7 @@ The content of the hands-on session in the afternoon depends on the audience of 
 
 In order to follow the git-course, the main installation requirement is [git](https://git-scm.com/) itself. Further configuration is explained during the tutorial. 
 
-For the git through RStudio, an installation of R and Rstudio is expected as well. For the Github Desktop version, an installed version of [Github Desktop](https://desktop.github.com/).
+For the git through RStudio, an installation of R and Rstudio is expected as well. For the Github Desktop version, an installed version of [Github Desktop](https://inbo.github.io/git-course/).
 
 ## Course development note
 
