@@ -347,16 +347,16 @@ $(document).ready(function () {
 </ol>
 <p>The morning session is provided using slideshows, split in two main sections:</p>
 <ul>
-<li><a href="static/presentations/git.pdf">Git</a></li>
-<li><a href="static/presentations/github.pdf">GitHub</a></li>
+<li><a href="https://inbo.github.io/git-course/static/presentations/git.pdf">Git</a></li>
+<li><a href="https://inbo.github.io/git-course/static/presentations/github.pdf">GitHub</a></li>
 </ul>
-<p>We like to thank Alice Bartlett, as her <code>git-for-humans</code> talk, <a href="https://speakerdeck.com/alicebartlett/git-for-humans" class="uri">https://speakerdeck.com/alicebartlett/git-for-humans</a> was a major source of inspiration to the course material.</p>
+<p>We like to thank Alice Bartlett, as her <a href="https://speakerdeck.com/alicebartlett/git-for-humans">git-for-humans</a> talk, was a major source of inspiration to the course material.</p>
 </div>
 <div id="afternoon-session" class="section level3">
 <h3>Afternoon session</h3>
 <p>The content of the hands-on session in the afternoon depends on the audience of the workshop. Most of the people mainly work in Rstudio and it makes sense to use the integrated git-tools of Rstudio. Others are used to work in the command line or prefer Github Desktop to handle version control. As such, we have three similar sessions, targeted at the different audiences:</p>
 <ul>
-<li>Using Git with <a href="course_rstudio.html">RStudio</a></li>
+<li>Using Git with <a href="https://inbo.github.io/git-course/course_rstudio.html">RStudio</a></li>
 <li>Using Git with GitHub Desktop (old presentation not yet converted)</li>
 <li>Using Git with the command line (old presentation not yet converted)</li>
 </ul>
@@ -369,7 +369,7 @@ $(document).ready(function () {
 </div>
 <div id="course-development-note" class="section level2">
 <h2>Course development note</h2>
-<p>The course is written as a combination of <code>.md</code> and <code>.Rmd</code> files (in <code>src</code>) and rendered using the <code>rmarkdown</code> package.Rendering the course webpage can be done using the command (assuming an Rstudio project in the main repo folder):</p>
+<p>The course is written as a combination of <code>.md</code> and <code>.Rmd</code> files (in <code>src</code>) and rendered using the <code>rmarkdown</code> package. Rendering the course webpage can be done using the command (assuming an Rstudio project in the main repo folder):</p>
 <pre class="r"><code>rmarkdown::render_site(&quot;src&quot;)</code></pre>
 <p>And the resulting <code>html</code> pages are updated to the <code>docs</code> folder. The <code>docs</code> folder of the master is used to <a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch">deploy the Github pages</a>.</p>
 <p>The source for the Git and GitHub presentations are Google Presentations by <span class="citation">@stijnvanhoey</span> and <span class="citation">@peterdesmet</span>. In the directory <code>slideshow</code>, there are a number of presentations not yet converted to course pages.</p>

@@ -22,8 +22,8 @@ We explain the main terminology of Git based on 5 important tasks:
 
 The morning session is provided using slideshows, split in two main sections:
 
-* [Git](static/presentations/git.pdf)
-* [GitHub](static/presentations/github.pdf) 
+* [Git](https://inbo.github.io/git-course/static/presentations/git.pdf)
+* [GitHub](https://inbo.github.io/git-course/static/presentations/github.pdf) 
 
 We like to thank Alice Bartlett, as her [git-for-humans](https://speakerdeck.com/alicebartlett/git-for-humans) talk,  was a major source of inspiration to the course material.
 
@@ -31,7 +31,7 @@ We like to thank Alice Bartlett, as her [git-for-humans](https://speakerdeck.com
 
 The content of the hands-on session in the afternoon depends on the audience of the workshop. Most of the people mainly work in Rstudio and it makes sense to use the integrated git-tools of Rstudio. Others are used to work in the command line or prefer Github Desktop to handle version control. As such, we have three similar sessions, targeted at the different audiences:
 
-* Using Git with [RStudio](course_rstudio.html)
+* Using Git with [RStudio](https://inbo.github.io/git-course/course_rstudio.html)
 * Using Git with GitHub Desktop (old presentation not yet converted)
 * Using Git with the command line (old presentation not yet converted)
 
