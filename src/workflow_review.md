@@ -85,7 +85,6 @@ Reviewers will receive an email with a link to the pull request, and they can:
     - __the changes__ on GitHub in the pull request by inspecting the tabs `Conversation`, `Commits` and `Files changed`
     - __the adapted version__ locally in RStudio after hitting `Pull` and select the branch name (mentioned at the top of the pull request in GitHub)
 - review it on GitHub by following [this workflow](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#starting-a-review)
-    - when reviewing, do not mix unrelated items in 1 proposed change, to allow the author to selectively accept changes
     - to propose major changes for a single issue yourself:
         - make a new branch in RStudio starting from the branch you are reviewing
         - add, commit and push your changes
