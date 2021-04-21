@@ -47,7 +47,7 @@ In RStudio on the `Git`tab:
 - add new code or change code, and make a `Commit` for every change
     - you can select specific lines or chunks, you don't have to commit all changes at once
     - bundle related changes in a single commit and add a clear commit message. Spread unrelated changes over multiple commits.
-- regularly `Push` your changes to the repository on github
+- occasionally `Push` your changes to the repository on github (at least once a day, not too frequently as every push might trigger automated tests)
 
 These steps are described into detail in a [separate workflow](https://inbo.github.io/git-course/workflow_rstudio.html) and in [this manual](https://inbo.github.io/git-course/course_rstudio.html#28_create_logical_commits).
 
