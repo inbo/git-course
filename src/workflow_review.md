@@ -101,7 +101,7 @@ During this revision, in the Pull request on GitHub:
 Once you and your coworkers agreed on the final version in your branch, it can
 be merged to the master branch:
 
-- in RStudio, make sure to include novel changes in the master branch:
+- in RStudio, make sure to include novel changes from the master branch:
     - switch to the master branch
     - hit `Pull`
     - switch back to your feature branch
@@ -123,7 +123,8 @@ For screenshots, see [here](https://inbo.github.io/git-course/workflow_rstudio.h
 
 <div class="alert alert-danger">
 When merging to the master branch or another important branch in the repo,
-always do this on GitHub by using a pull request.
+always do this on GitHub by using a pull request. It is recommended to protect
+these branches to enforce this procedure.
 </div>
 
 Once you are satisfied with a version, you can [create a release](https://docs.github.com/en/github/administering-a-repository/managing-releases-in-a-repository).
