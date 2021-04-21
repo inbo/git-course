@@ -90,11 +90,11 @@ Reviewers will receive an email with a link to the pull request, and they can:
         - add, commit and push your changes
         - make a pull request to merge your branch to the branch you are reviewing
 
-During this revision, in the `Conversation` tab in the Pull request on GitHub:
+During this revision, in the Pull request on GitHub:
 
-- the author can accept suggestions of reviewers by choosing `Commit suggestions`
+- the author can accept suggestions of reviewers by choosing `Commit suggestions` (easiest in `files change` tab)
 - suggestions or comments can be discussed using the comment boxes
-- the author can re-request a reviewer after solving all comments
+- the author can re-request a reviewer after solving all comments (only in `Conversation` tab)
 
 # Merge changes to master
 
