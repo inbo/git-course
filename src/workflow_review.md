@@ -53,6 +53,8 @@ These steps are described into detail in a [separate workflow](https://inbo.gith
 
 # Create a pull request
 
+Create a pull request when your work is ready to share with collaborators.
+
 In RStudio, make sure all changes are committed and pushed.
 
 In the GitHub repository:
