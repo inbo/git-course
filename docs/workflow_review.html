@@ -506,6 +506,15 @@ more code</code></pre>
 </div>
 <p>Once you are satisfied with a version, you can <a href="https://docs.github.com/en/github/administering-a-repository/managing-releases-in-a-repository">create a release</a>.</p>
 </div>
+<div id="branch-management" class="section level1">
+<h1>Branch management</h1>
+<p>After deleting branches on the remote, you may want to get rid of them as well in the selection list in the git pane in RStudio:</p>
+<ul>
+<li>hit <code>More</code> and choose <code>Shell...</code></li>
+<li>type <code>git fetch -p</code> to remove branches that don’t exist anymore on the origin</li>
+<li>type <code>git branch -d &lt;branch name&gt;</code> to remove local branch <code>&lt;branch name&gt;</code> (branches that are merged can be listed with <code>git branch --merged</code>)</li>
+</ul>
+</div>
 
 
 

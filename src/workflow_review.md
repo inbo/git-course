@@ -139,3 +139,13 @@ these branches to enforce this procedure.
 </div>
 
 Once you are satisfied with a version, you can [create a release](https://docs.github.com/en/github/administering-a-repository/managing-releases-in-a-repository).
+
+# Branch management
+
+After deleting branches on the remote, you may want to get rid of them as well
+in the selection list in the git pane in RStudio:
+
+- hit `More` and choose `Shell...`
+- type `git fetch -p` to remove branches that don't exist anymore on the origin
+- type `git branch -d <branch name>` to remove local branch `<branch name>`
+(branches that are merged can be listed with `git branch --merged`)
