@@ -476,7 +476,18 @@ div.tocify {
 <li>close the shell again</li>
 <li>if conflicts have appeared,
 <ul>
-<li>solve them in your scripts</li>
+<li>files with conflicts have an orange symbol in the Status column in the Git pane</li>
+<li>open the file, the problem looks like this:</li>
+</ul>
+<pre><code>code
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+code in your active branch
+=======
+code in the master branch
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; master
+more code</code></pre>
+<ul>
+<li>solve the conflict: keep one of the code blocks or rewrite it to combine the 2 code blocks</li>
 <li>save the changes</li>
 <li>commit all changes, make sure the solved conflicts are added</li>
 </ul></li>

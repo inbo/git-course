@@ -110,7 +110,18 @@ be merged to the master branch:
     - you will be mentioned of any additions and/or conflicts
     - close the shell again
     - if conflicts have appeared,
-        - solve them in your scripts
+        - files with conflicts have an orange symbol in the Status column in the Git pane
+        - open the file, the problem looks like this:
+```
+code
+<<<<<<< HEAD
+code in your active branch
+=======
+code in the master branch
+>>>>>>> master
+more code
+```
+        - solve the conflict: keep one of the code blocks or rewrite it to combine the 2 code blocks
         - save the changes
         - commit all changes, make sure the solved conflicts are added
     - `Push` all new commits to GitHub
