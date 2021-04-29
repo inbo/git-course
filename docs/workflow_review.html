@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Workflow Collaboration</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="static/css/inbo.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-sm-12 col-md-4 col-lg-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-sm-12 col-md-8 col-lg-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">INBO Git workshop</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Sessions
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="course_rstudio.html">Rstudio</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Workflows
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="workflow_rstudio.html">Workflow Rstudio</a>
+    </li>
+    <li>
+      <a href="workflow_review.html">Workflow collaboration</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/inbo/git-course">
+    <span class="fas fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Workflow Collaboration</h1>
+
+</div>
+
+
+<p>These guidelines explain the different steps to be taken when collaborating in a Github repository while developing code in RStudio. The main aim is to give a concise overview rather than giving detailed information on different options or showing screenshots for each step. The steps presented here follow more or less <a href="https://guides.github.com/introduction/flow/">this schedule</a> but the explanations and tips are rather complementary.</p>
+<div id="add-an-issue" class="section level1">
+<h1>Add an issue</h1>
+<p>Ask for changes or propose to make changes in a Github repository:</p>
+<ul>
+<li>on the main page of the git repository on GitHub, hit tab <code>Issues</code></li>
+<li>check for similar issues (using the search function)
+<ul>
+<li>if the issue already exists, add your comments or suggestions in this issue, or add a thumb emoticon (to follow the issue)</li>
+</ul></li>
+<li>if your issue is not yet reported, hit the button <code>New issue</code></li>
+<li>give it an informative title and add a clear and complete description (with reproducible example if appropriate)</li>
+</ul>
+<p>Issues can be used to:</p>
+<ul>
+<li>report to do’s to yourself/team</li>
+<li>propose and discuss additions/changes</li>
+<li>report bugs in packages you’re using</li>
+</ul>
+<p>Issues can be:</p>
+<ul>
+<li>assigned to someone</li>
+<li>labeled (e.g. bug, documentation, help wanted,…)</li>
+</ul>
+</div>
+<div id="add-code-in-a-new-feature-branch" class="section level1">
+<h1>Add code in a new feature branch</h1>
+<p>(If you don’t have the project locally, check the manual <a href="https://inbo.github.io/git-course/course_rstudio.html#23_clone_a_repo_to_work_locally">here</a>.)</p>
+<p>In RStudio on the <code>Git</code>tab:</p>
+<ul>
+<li>make sure the <code>master</code> branch is active and up to date (<code>Pull</code>)</li>
+<li>add a <code>New Branch</code> (hit button) and give it an informative name</li>
+<li>add new code or change code, and make a <code>Commit</code> for every change
+<ul>
+<li>you can select specific lines or chunks, you don’t have to commit all changes at once</li>
+<li>bundle related changes in a single commit and add a clear commit message. Spread unrelated changes over multiple commits.</li>
+</ul></li>
+<li>occasionally <code>Push</code> your changes to the repository on github (at least once a day, not too frequently as every push might trigger automated tests)</li>
+</ul>
+<p>These steps are described into detail in a <a href="https://inbo.github.io/git-course/workflow_rstudio.html">separate workflow</a> and in <a href="https://inbo.github.io/git-course/course_rstudio.html#28_create_logical_commits">this manual</a>.</p>
+</div>
+<div id="create-a-pull-request" class="section level1">
+<h1>Create a pull request</h1>
+<p>Create a pull request when your work is ready to share with collaborators.</p>
+<p>In RStudio, make sure all changes are committed and pushed.</p>
+<p>In the GitHub repository:</p>
+<ul>
+<li>create a pull request by either
+<ul>
+<li>using the <code>Compare &amp; pull request</code> button that appears after recent pushes</li>
+<li>selecting your new feature branch and hitting the <code>New pull request</code> button</li>
+</ul></li>
+<li>make sure the correct branches are indicated:
+<ul>
+<li>‘base’ mentions the branch where will merged to, often the master branch</li>
+<li>the ‘compare’ branch is your feature branch</li>
+</ul></li>
+<li>adapt the title if needed, and describe what you did (you can scroll down to check your commits)</li>
+<li>hit <code>Create Pull request</code></li>
+<li>request reviewers by adding them on the right top of the page</li>
+</ul>
+<p>For an explanation including screenshots, see <a href="https://inbo.github.io/git-course/course_rstudio.html#214_pull_requests">here</a> or <a href="https://inbo.github.io/git-course/workflow_rstudio.html#edits_on_branch_are_ready">here</a>.</p>
+<p><strong>Remark:</strong> after creating a pull request, it is still possible to add new commits to this branch and pull request. After pushing new commits in RStudio, they appear in the pull request. To show others that you are not finished yet, you can convert the pull request to draft (right top of page, where you request reviewers)</p>
+</div>
+<div id="revision-of-code" class="section level1">
+<h1>Revision of code</h1>
+<p>Reviewers will receive an email with a link to the pull request, and they can:</p>
+<ul>
+<li>inspect
+<ul>
+<li><strong>the changes</strong> on GitHub in the pull request by inspecting the tabs <code>Conversation</code>, <code>Commits</code> and <code>Files changed</code></li>
+<li><strong>the adapted version</strong> locally in RStudio after hitting <code>Pull</code> and select the branch name (mentioned at the top of the pull request in GitHub)</li>
+</ul></li>
+<li>review it on GitHub by following <a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#starting-a-review">this workflow</a>
+<ul>
+<li>to propose major changes for a single issue yourself:
+<ul>
+<li>make a new branch in RStudio starting from the branch you are reviewing</li>
+<li>add, commit and push your changes</li>
+<li>make a pull request to merge your branch to the branch you are reviewing</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>During this revision, in the Pull request on GitHub:</p>
+<ul>
+<li>the author can accept suggestions of reviewers by choosing <code>Commit suggestions</code> (easiest in <code>files change</code> tab)</li>
+<li>suggestions or comments can be discussed using the comment boxes</li>
+<li>the author can re-request a reviewer after solving all comments (only in <code>Conversation</code> tab)</li>
+</ul>
+</div>
+<div id="merge-changes-to-master" class="section level1">
+<h1>Merge changes to master</h1>
+<p>Once you and your coworkers agreed on the final version in your branch, it can be merged to the master branch:</p>
+<ul>
+<li>in RStudio, make sure to include novel changes from the master branch:
+<ul>
+<li>switch to the master branch</li>
+<li>hit <code>Pull</code></li>
+<li>switch back to your feature branch</li>
+<li>hit <code>More</code> and choose <code>Shell...</code></li>
+<li>type <code>git merge master</code> (or replace master by the name of the branch you want to merge to your branch)</li>
+<li>you will be mentioned of any additions and/or conflicts</li>
+<li>close the shell again</li>
+<li>if conflicts have appeared,
+<ul>
+<li>files with conflicts have an orange symbol in the Status column in the Git pane</li>
+<li>open the file, the problem looks like this:</li>
+</ul>
+<pre><code>code
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+code in your active branch
+=======
+code in the master branch
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; master
+more code</code></pre>
+<ul>
+<li>solve the conflict: keep one of the code blocks or rewrite it to combine the 2 code blocks</li>
+<li>save the changes</li>
+<li>commit all changes, make sure the solved conflicts are added</li>
+</ul></li>
+<li><code>Push</code> all new commits to GitHub</li>
+</ul></li>
+<li>on Github, below in the pull request:
+<ul>
+<li>hit <code>Merge pull request</code></li>
+<li>hit <code>Confirm merge</code></li>
+<li>and finally choose <code>Delete branch</code> to keep your repo clean and clear</li>
+</ul></li>
+</ul>
+<p>For screenshots, see <a href="https://inbo.github.io/git-course/workflow_rstudio.html#step_5:_code_review">here</a>.</p>
+<div class="alert alert-danger">
+<p>When merging to the master branch or another important branch in the repo, always do this on GitHub by using a pull request. It is recommended to protect these branches to enforce this procedure.</p>
+</div>
+<p>Once you are satisfied with a version, you can <a href="https://docs.github.com/en/github/administering-a-repository/managing-releases-in-a-repository">create a release</a>.</p>
+</div>
+<div id="branch-management" class="section level1">
+<h1>Branch management</h1>
+<p>After deleting branches on the remote, you may want to get rid of them as well in the selection list in the git pane in RStudio:</p>
+<ul>
+<li>hit <code>More</code> and choose <code>Shell...</code></li>
+<li>type <code>git fetch -p</code> to remove branches that don’t exist anymore on the origin</li>
+<li>type <code>git branch -d &lt;branch name&gt;</code> to remove local branch <code>&lt;branch name&gt;</code> (branches that are merged can be listed with <code>git branch --merged</code>)</li>
+</ul>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
