@@ -1,4 +1,39 @@
 
+/*  import font*/
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+.book.font-family-0 {font-family: Georgia, serif;}
+.book.font-family-1 {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}
+
+
+
+/* -----------Sidebar div tips------------- */
+/* from r-pkgs.org*/
+
+   div.warn, div.bulb {
+    padding: 1em;
+    margin: 1em 0;
+    padding-left: 100px;
+    background-size: 70px;
+    background-repeat: no-repeat;
+    background-position: 15px center;
+    min-height: 120px;
+    color: #1f5386;
+    background-color: #bed3ec;
+    border: solid 5px #dfedff;
+  }
+
+div.warn {
+  background-image: url("../static/images/div_tips/warn.png");
+}
+
+div.bulb {
+  background-image: url("../static/images/div_tips/bulb.png");
+}
+
+
+
+
 /* Links */
 a,
 a:hover,

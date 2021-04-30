@@ -13,6 +13,7 @@
 
 <title>index.utf8</title>
 
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
@@ -26,6 +27,15 @@
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -72,7 +82,8 @@ h6 {
 }
 </style>
 
-<link rel="stylesheet" href="static/css/inbo.css" type="text/css" />
+
+<link rel="stylesheet" href="static/css/git_intro.css" type="text/css" />
 
 
 
@@ -272,7 +283,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">INBO Git workshop</a>
+      <a class="navbar-brand" href="index.html">Git & GitHub con R</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -299,15 +310,18 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="workflow_rstudio.html">Workflow Rstudio</a>
+      <a href="workflow_rstudio.html">Workflow da Rstudio</a>
+    </li>
+    <li>
+      <a href="workflow_review.html">Workflow per la collaborazione</a>
     </li>
   </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/inbo/git-course">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="https://github.com/NiccoloSalvini/git-course">
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -325,54 +339,85 @@ $(document).ready(function () {
 
 
 <p><br><br></p>
-<div id="inbo-git-workshop" class="section level1">
-<h1>INBO Git workshop</h1>
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
-<p>At INBO, people do write code and require version control. As <code>git</code> is not the most straightforward environment to work with for non-IT specialists, we try to define our own sub-ecosystem with relevant practices and an achievable workflow.</p>
-<p>In this repository, we collect the material for workshops and courses given by/for INBO people, but for other interested researchers/… as well.</p>
-<p>A workshop typically takes a whole day, with the morning session focused on getting the concepts and terminology clear and an afternoon hands-on session.</p>
-</div>
-<div id="workshop-content" class="section level2">
-<h2>Workshop content</h2>
-<div id="morning-session" class="section level3">
-<h3>Morning session</h3>
-<p>We explain the main terminology of Git based on 5 important tasks:</p>
-<ol style="list-style-type: decimal">
-<li>Tell the story of your project</li>
-<li>Travel back in time</li>
-<li>Experiment with changes</li>
-<li>Backup your work</li>
-<li>Collaborate on projects</li>
-</ol>
-<p>The morning session is provided using slideshows, split in two main sections:</p>
+<div id="git-github-con-r" class="section level1">
+<h1>Git &amp; GitHub con R</h1>
+<div id="lets-git-started" class="section level2">
+<h2>Let’s Git started…</h2>
+<p>Generalmente chi sviluppa software e lo fa di lavoro ha bisogno di uno strumento di controllo delle versioni (i.e. version control system <strong>VCS</strong>), che gli permetta di:</p>
 <ul>
-<li><a href="https://inbo.github.io/git-course/static/presentations/git.pdf">Git</a></li>
-<li><a href="https://inbo.github.io/git-course/static/presentations/github.pdf">GitHub</a></li>
+<li>Mantenere il codice accessibile</li>
+<li>controllare il codice</li>
+<li>ritornare a versioni precedenti del codice se il software si rompe</li>
+<li>far usare una versione del codice a degli utenti e sbilupparne un’altra contestualmente</li>
+<li>avere un ambiente collaborativo dove condividere, rivedere e richidere aiuto a utenti o colleghi (questo fa in modo di non lavorare più persone sullo stesso documento)</li>
+<li>etc.</li>
 </ul>
-<p>We like to thank Alice Bartlett, as her <a href="https://speakerdeck.com/alicebartlett/git-for-humans">git-for-humans</a> talk, was a major source of inspiration to the course material.</p>
+<p><code>git</code> è la soluzione a ciascuno di questi (emoji sopra) problemi per collaborare con programmatori esperti e, con tutta la buona volontà dopo aver letto questa dispensa, utenti non-IT o mai stati esposti a questi strumenti. In questo documento si predilige un approccio pratico introducendo un <em>modus operandi</em> per essere subito pronti a partire e garantire un impatto immediato, tuttavia si lascia anche spazio ad approfondimenti e “linee parallele” tramite strumenti alternativi e approcci con più respiro rispetto allo stretto scopo della dispensa.</p>
+<!---
+
+## Workshop content
+
+### Morning session
+
+We explain the main terminology of Git based on 5 important tasks:
+
+1. Tell the story of your project
+1. Travel back in time
+1. Experiment with changes
+1. Backup your work
+1. Collaborate on projects
+
+The morning session is provided using slideshows, split in two main sections:
+
+* [Git](https://inbo.github.io/git-course/static/presentations/git.pdf)
+* [GitHub](https://inbo.github.io/git-course/static/presentations/github.pdf)
+
+We like to thank Alice Bartlett, as her [git-for-humans](https://speakerdeck.com/alicebartlett/git-for-humans) talk,  was a major source of inspiration to the course material.
+
+### Afternoon session
+
+The content of the hands-on session in the afternoon depends on the audience of the workshop. Most of the people mainly work in Rstudio and it makes sense to use the integrated git-tools of Rstudio. Others are used to work in the command line or prefer Github Desktop to handle version control. As such, we have three similar sessions, targeted at the different audiences:
+
+* Using Git with [RStudio](https://inbo.github.io/git-course/course_rstudio.html)
+* Using Git with GitHub Desktop (old presentation not yet converted)
+* Using Git with the command line (old presentation not yet converted)
+
+## Setup
+
+In order to follow the git-course, the main installation requirement is [git](https://git-scm.com/) itself. Further configuration is explained during the tutorial. 
+
+For the git through RStudio, an installation of R and Rstudio is expected as well. For the Github Desktop version, an installed version of [Github Desktop](https://desktop.github.com/).
+-->
 </div>
-<div id="afternoon-session" class="section level3">
-<h3>Afternoon session</h3>
-<p>The content of the hands-on session in the afternoon depends on the audience of the workshop. Most of the people mainly work in Rstudio and it makes sense to use the integrated git-tools of Rstudio. Others are used to work in the command line or prefer Github Desktop to handle version control. As such, we have three similar sessions, targeted at the different audiences:</p>
-<ul>
-<li>Using Git with <a href="https://inbo.github.io/git-course/course_rstudio.html">RStudio</a></li>
-<li>Using Git with GitHub Desktop (old presentation not yet converted)</li>
-<li>Using Git with the command line (old presentation not yet converted)</li>
-</ul>
-</div>
-</div>
-<div id="setup" class="section level2">
-<h2>Setup</h2>
-<p>In order to follow the git-course, the main installation requirement is <a href="https://git-scm.com/">git</a> itself. Further configuration is explained during the tutorial.</p>
-<p>For the git through RStudio, an installation of R and Rstudio is expected as well. For the Github Desktop version, an installed version of <a href="https://desktop.github.com/">Github Desktop</a>.</p>
-</div>
-<div id="course-development-note" class="section level2">
-<h2>Course development note</h2>
-<p>The course is written as a combination of <code>.md</code> and <code>.Rmd</code> files (in <code>src</code>) and rendered using the <code>rmarkdown</code> package. Rendering the course webpage can be done using the command (assuming an Rstudio project in the main repo folder):</p>
+<div id="messa-in-produzione-del-corso" class="section level2">
+<h2>Messa in produzione del corso</h2>
+<p>Il corso è scritto grazie ad una combinazione di documenti <code>.md</code> e <code>.Rmd</code> (contenuti in <code>src</code>) compilati con <code>rmarkdown</code> trasformandoli in documenti <code>.html</code>.</p>
 <pre class="r"><code>rmarkdown::render_site(&quot;src&quot;)</code></pre>
-<p>And the resulting <code>html</code> pages are updated to the <code>docs</code> folder. The <code>docs</code> folder of the master is used to <a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch">deploy the Github pages</a>.</p>
-<p>The source for the Git and GitHub presentations are Google Presentations by <span class="citation">@stijnvanhoey</span> and <span class="citation">@peterdesmet</span>. In the directory <code>slideshow</code>, there are a number of presentations not yet converted to course pages.</p>
+<p>Il render dei files <code>.html</code> viene raccolto in un unico documento (<code>index.html</code>) nella cartella <code>/docs</code>. La cartella è quindi usata per il deployment tramite <a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch">Github pages</a>. Alternativamente Netlify costituisce un servizio più completo, è sufficiente puntare il deployment verso la caretella <code>/docs</code>, netlify si occuperà di recuperare in automatico il file <code>index.html</code> all’interno della cartella e dopo qualche minuto tramite la dispensa è online all’indirizzo generato da netlify. Il suggertimento è quello di cambiarlo perchè spesso sono nomi improbabili.</p>
+</div>
+<div id="ringraziamenti-clap" class="section level2">
+<h2>Ringraziamenti :clap:</h2>
+<p>Il set up del progetto viene da <a href="https://inbo.github.io/git-course/index.html">questo corso di git</a> promosso da <a href="https://www.vlaanderen.be/inbo/home/">INBO</a>, la <a href="https://github.com/inbo/git-course">cui repo</a>. Gli autori a cui vanno i miei ringraziamenti per la contribuzione open source sono <span class="citation">[@stijnvanhoey]</span>(<a href="https://github.com/stijnvanhoey" class="uri">https://github.com/stijnvanhoey</a>), <span class="citation">[@peterdesmet]</span>(<a href="https://github.com/peterdesmet" class="uri">https://github.com/peterdesmet</a>), <span class="citation">[@ThierryO]</span>(<a href="https://github.com/ThierryO" class="uri">https://github.com/ThierryO</a>). Si ringraziano anche gli ulteriori contributori (<span class="citation">[@ElsLommelen]</span>(<a href="https://github.com/ElsLommelen" class="uri">https://github.com/ElsLommelen</a>), <span class="citation">[@IPauwels]</span>(<a href="https://github.com/IPauwels" class="uri">https://github.com/IPauwels</a>)) e le referenze della contribuzione e quelle della mia contribuzione: webinars:</p>
+<ul>
+<li><a href="https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN">Github and Rstudio management</a></li>
+<li><a href="https://www.rstudio.com/resources/webinars/collaboration-and-time-travel-version-control-with-git-github-and-rstudio/">Collaboration and time travel: version control with git, github and RStudio</a> (un po’ datata, 2016, ma sempre di grande interesse dato l’autore i.e. Wickham)</li>
+</ul>
+<p>books (e-books):</p>
+<ul>
+<li><a href="https://happygitwithr.com/">happy GIT with R</a>, di gran lunga la risorsa più completa, il miglior punto per iniziare e per rifinire.</li>
+<li><a href="https://r-pkgs.org/git.html">R Packages</a>, nella sezione del libro di git legata al ciclo di vita dei pacchetti e la condivisione. ottima risorsa in ogni caso, specialmente per git e github come strumento di mantenimento e diffusione dei pacchetti R.</li>
+</ul>
+<p>posts:</p>
+<ul>
+<li><a href="https://r-bio.github.io/intro-git-rstudio/">An introduction to Git and how to use it with RStudio</a> un’altra grande risorsa che mira all’essenziale. La parte delle PR (Pull Requests) ricalca quella del post.</li>
+<li><a href="https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/">How to Use Git/GitHub with R</a> una risorsa valida con annessiu tutorial. La miglior parte è quella iniziale.</li>
+</ul>
+<!--- metti script che richiama i contributori e gli autori tramite API -->
+<!---
+
+The source for the Git and GitHub presentations are Google Presentations by @stijnvanhoey and @peterdesmet. In the directory `slideshow`, there are a number of presentations not yet converted to course pages.
+
+-->
 </div>
 </div>
 
@@ -385,7 +430,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();

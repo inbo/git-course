@@ -1,8 +1,8 @@
-name: "INBO Git workshop"
+name: "Introduzione a git & GitHub con R"
 output_dir: "../docs"
 include: ["static/"]
 navbar:
-  title: "INBO Git workshop"
+  title: "Git & GitHub con R"
   left:
     - text: "Home"
       href: index.html
@@ -12,15 +12,15 @@ navbar:
           href: course_rstudio.html
     - text: "Workflows"
       menu:
-        - text: "Workflow Rstudio"
+        - text: "Workflow da Rstudio"
           href: workflow_rstudio.html
-        - text: "Workflow collaboration"
+        - text: "Workflow per la collaborazione"
           href: workflow_review.html
   right:
     - icon: fa-github fa-lg
-      href: https://github.com/inbo/git-course
+      href: https://github.com/NiccoloSalvini/git-course
 output:
   html_document:
     theme: yeti
     df_print: paged
-    css: "static/css/inbo.css"
+    css: "static/css/git_intro.css"

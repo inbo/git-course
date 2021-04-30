@@ -1,12 +1,19 @@
-# INBO Git workshop
+# Git & GitHub con R 
 
-## Introduction
+## Let's Git started...
 
-At INBO, people do write code and require version control. As `git` is not the most straightforward environment to work with for non-IT specialists, we try to define our own sub-ecosystem with relevant practices and an achievable workflow.
+Generalmente chi sviluppa software e lo fa di lavoro ha bisogno di uno strumento di controllo delle versioni (i.e. version control system **VCS**), che gli permetta di:
 
-In this repository, we collect the material for workshops and courses given by/for INBO people, but for other interested researchers/... as well. 
+  * Mantenere il codice accessibile
+  * controllare il codice
+  * ritornare a versioni precedenti del codice se il software si rompe
+  * far usare una versione del codice a degli utenti e sbilupparne un'altra contestualmente
+  * avere un ambiente collaborativo dove condividere, rivedere e richidere aiuto a utenti o colleghi (questo fa in modo di non lavorare più persone sullo stesso documento)
+  * etc.
 
-A workshop typically takes a whole day, with the morning session focused on getting the concepts and terminology clear and an afternoon hands-on session.
+`git` è la soluzione a ciascuno di questi (emoji sopra) problemi per collaborare con programmatori esperti e, con tutta la buona volontà dopo aver letto questa dispensa, utenti non-IT o mai stati esposti a questi strumenti. In questo documento si predilige un approccio pratico introducendo un _modus operandi_ per essere subito pronti a partire e garantire un impatto immediato, tuttavia si lascia anche spazio ad approfondimenti e "linee parallele" tramite strumenti alternativi e approcci con più respiro rispetto allo stretto scopo della dispensa.
+
+<!---
 
 ## Workshop content
 
@@ -14,7 +21,7 @@ A workshop typically takes a whole day, with the morning session focused on gett
 
 We explain the main terminology of Git based on 5 important tasks:
 
-1. Tell the story of your project 
+1. Tell the story of your project
 1. Travel back in time
 1. Experiment with changes
 1. Backup your work
@@ -23,7 +30,7 @@ We explain the main terminology of Git based on 5 important tasks:
 The morning session is provided using slideshows, split in two main sections:
 
 * [Git](https://inbo.github.io/git-course/static/presentations/git.pdf)
-* [GitHub](https://inbo.github.io/git-course/static/presentations/github.pdf) 
+* [GitHub](https://inbo.github.io/git-course/static/presentations/github.pdf)
 
 We like to thank Alice Bartlett, as her [git-for-humans](https://speakerdeck.com/alicebartlett/git-for-humans) talk,  was a major source of inspiration to the course material.
 
@@ -40,15 +47,42 @@ The content of the hands-on session in the afternoon depends on the audience of 
 In order to follow the git-course, the main installation requirement is [git](https://git-scm.com/) itself. Further configuration is explained during the tutorial. 
 
 For the git through RStudio, an installation of R and Rstudio is expected as well. For the Github Desktop version, an installed version of [Github Desktop](https://desktop.github.com/).
+-->
 
-## Course development note
+## Messa in produzione del corso
 
-The course is written as a combination of `.md` and `.Rmd` files (in `src`) and rendered using the `rmarkdown` package. Rendering the course webpage can be done using the command (assuming an Rstudio project in the main repo folder):
+Il corso è scritto grazie ad una combinazione di documenti  `.md` e `.Rmd` (contenuti in `src`) compilati con `rmarkdown` trasformandoli in documenti `.html`.
 
 ```r
 rmarkdown::render_site("src")
 ```
 
-And the resulting `html` pages are updated to the `docs` folder. The `docs` folder of the master is used to [deploy the Github pages](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch).
+Il render dei files `.html` viene raccolto in un unico documento (`index.html`) nella cartella  `/docs`. La cartella è quindi usata per il deployment tramite [Github pages](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch). Alternativamente Netlify costituisce un servizio più completo, è sufficiente puntare il deployment verso la caretella `/docs`, netlify si occuperà di recuperare in automatico il file `index.html` all'interno della cartella e dopo qualche minuto tramite la dispensa è online all'indirizzo generato da netlify. Il suggertimento è quello di cambiarlo perchè spesso sono nomi improbabili.
+
+
+## Ringraziamenti :clap:
+
+Il set up del progetto viene da [questo corso di git](https://inbo.github.io/git-course/index.html) promosso da [INBO](https://www.vlaanderen.be/inbo/home/), la [cui repo](https://github.com/inbo/git-course). Gli autori a cui vanno i miei ringraziamenti per la contribuzione open source sono [@stijnvanhoey](https://github.com/stijnvanhoey), [@peterdesmet](https://github.com/peterdesmet), [@ThierryO](https://github.com/ThierryO). Si ringraziano anche gli ulteriori contributori ([@ElsLommelen](https://github.com/ElsLommelen), [@IPauwels](https://github.com/IPauwels)) e le referenze della contribuzione e quelle della mia contribuzione:
+webinars:
+
+* [Github and Rstudio management](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN)
+* [Collaboration and time travel: version control with git, github and RStudio](https://www.rstudio.com/resources/webinars/collaboration-and-time-travel-version-control-with-git-github-and-rstudio/) (un po' datata, 2016, ma sempre di grande interesse dato l'autore i.e. Wickham)
+
+books (e-books): 
+
+* [happy GIT with R](https://happygitwithr.com/), di gran lunga la risorsa più completa, il miglior punto per iniziare e per rifinire.
+* [R Packages](https://r-pkgs.org/git.html), nella sezione del libro di git legata al ciclo di vita dei pacchetti e la condivisione. ottima risorsa in ogni caso, specialmente per git e github come strumento di mantenimento e diffusione dei pacchetti R.
+
+posts:
+
+* [An introduction to Git and how to use it with RStudio](https://r-bio.github.io/intro-git-rstudio/) un'altra grande risorsa che mira all'essenziale. La parte delle PR (Pull Requests) ricalca quella del post.
+* [How to Use Git/GitHub with R](https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/) una risorsa valida con annessiu tutorial. La miglior parte è quella iniziale.
+
+
+<!--- metti script che richiama i contributori e gli autori tramite API -->
+
+<!---
 
 The source for the Git and GitHub presentations are Google Presentations by @stijnvanhoey and @peterdesmet. In the directory `slideshow`, there are a number of presentations not yet converted to course pages.
+
+-->

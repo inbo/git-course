@@ -1,9 +1,7 @@
 ---
-title: "Git hands-on session within RStudio"
+title: "Git attraverso RStudio"
 author:
-- Stijn Van Hoey
-- Peter Desmet
-- Thierry Onkelinx
+- Niccolò Salvini
 date: "`r Sys.Date()`"
 output:
   html_document:
@@ -16,16 +14,17 @@ output:
 
 # Setup
 
-When starting this tutorial, we assume:
+Prima di cominciare questo tutorial assumo che:
 
-* you have [R](https://lib.ugent.be/CRAN/) and [Rstudio](https://www.rstudio.com/products/rstudio/download/) installed on your computer
-* you have [git](https://git-scm.com/) installed on your computer
+* tu abbia [R](https://lib.ugent.be/CRAN/) e [Rstudio](https://www.rstudio.com/products/rstudio/download/) installati e funzionanti sul computer.
+* tu abbia [git](https://git-scm.com/) installato sul computer e puntanto sul file `git.exe`
+* tu abbia un [account GitHub](https://github.com/join), pensaci al tuo nome due secondi in più, è sempre possibile cambiarlo ma incorri nei [seguenti problemi](https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/changing-your-github-username)
 
 ---
 
-# Working on your own {data-background=#c2c444}
+# Lavora da solo {data-background=#c2c444}
 
-We start with you working on a repository, without interference of colleagues
+Di solito si comincia inizializzando una repository su GitHub, nel gergo tecnico  _init_. Per questo step non hai assolutamente bisogno di un collaboratore/collega.
 
 ---
 
@@ -768,19 +767,19 @@ Follow [this tutorial](https://help.github.com/articles/creating-releases/) to c
 
 ---
 
-...but if you're hungry:
+<!-- ...but if you're hungry you can  -->
 
-* Webinars
-    - [Github and Rstudio management](https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/)
-    - [Collaboration and time travel: version control with git, github and RStudio](https://www.rstudio.com/resources/webinars/collaboration-and-time-travel-version-control-with-git-github-and-rstudio/)
+<!-- * Webinars -->
+<!--     - [Github and Rstudio management](https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/) -->
+<!--     - [Collaboration and time travel: version control with git, github and RStudio](https://www.rstudio.com/resources/webinars/collaboration-and-time-travel-version-control-with-git-github-and-rstudio/) -->
 
-* Tutorials
-    - [Hadley Wickham R packages book](http://r-pkgs.had.co.nz/git.html)
-    - [Happy Git and GitHub for the useR](http://happygitwithr.com/index.html)
+<!-- * Tutorials -->
+<!--     - [Hadley Wickham R packages book](http://r-pkgs.had.co.nz/git.html) -->
+<!--     - [Happy Git and GitHub for the useR](http://happygitwithr.com/index.html) -->
 
----
+<!-- --- -->
 
-Information combined at [INBO Git course](https://github.com/inbo/git-course). <br/>You're welcome to provide issues, pull requests,...
+<!-- Information combined at [INBO Git course](https://github.com/inbo/git-course). <br/>You're welcome to provide issues, pull requests,... -->
 
 
 
