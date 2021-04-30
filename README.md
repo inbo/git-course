@@ -2,6 +2,8 @@
 
 ## Let's Git started...
 
+<img src="src/static/images/git-gif.gif" width="800" height="600"/>
+
 Generalmente chi sviluppa software e lo fa di lavoro ha bisogno di uno strumento di controllo delle versioni (i.e. version control system **VCS**), che gli permetta di:
 
   * Mantenere il codice accessibile
@@ -60,7 +62,7 @@ rmarkdown::render_site("src")
 Il render dei files `.html` viene raccolto in un unico documento (`index.html`) nella cartella  `/docs`. La cartella è quindi usata per il deployment tramite [Github pages](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch). Alternativamente Netlify costituisce un servizio più completo, è sufficiente puntare il deployment verso la caretella `/docs`, netlify si occuperà di recuperare in automatico il file `index.html` all'interno della cartella e dopo qualche minuto tramite la dispensa è online all'indirizzo generato da netlify. Il suggertimento è quello di cambiarlo perchè spesso sono nomi improbabili.
 
 
-## Ringraziamenti :clap:
+## Ringraziamenti 👏
 
 Il set up del progetto viene da [questo corso di git](https://inbo.github.io/git-course/index.html) promosso da [INBO](https://www.vlaanderen.be/inbo/home/), la [cui repo](https://github.com/inbo/git-course). Gli autori a cui vanno i miei ringraziamenti per la contribuzione open source sono [@stijnvanhoey](https://github.com/stijnvanhoey), [@peterdesmet](https://github.com/peterdesmet), [@ThierryO](https://github.com/ThierryO). Si ringraziano anche gli ulteriori contributori ([@ElsLommelen](https://github.com/ElsLommelen), [@IPauwels](https://github.com/IPauwels)) e le referenze della contribuzione e quelle della mia contribuzione:
 webinars:
