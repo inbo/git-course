@@ -1,8 +1,11 @@
 # Git & GitHub con R 
 
+<p align="center">
+<img src="src/static/images/gattaccio.jpg" width="533" height="400"/>
+</p>
+
 ## Let's Git started...
 
-<img src="src/static/images/git-gif.gif" width="800" height="600"/>
 
 Generalmente chi sviluppa software e lo fa di lavoro ha bisogno di uno strumento di controllo delle versioni (i.e. version control system **VCS**), che gli permetta di:
 
@@ -64,7 +67,7 @@ Il render dei files `.html` viene raccolto in un unico documento (`index.html`) 
 
 ## Ringraziamenti 👏
 
-Il set up del progetto viene da [questo corso di git](https://inbo.github.io/git-course/index.html) promosso da [INBO](https://www.vlaanderen.be/inbo/home/), la [cui repo](https://github.com/inbo/git-course). Gli autori a cui vanno i miei ringraziamenti per la contribuzione open source sono [@stijnvanhoey](https://github.com/stijnvanhoey), [@peterdesmet](https://github.com/peterdesmet), [@ThierryO](https://github.com/ThierryO). Si ringraziano anche gli ulteriori contributori ([@ElsLommelen](https://github.com/ElsLommelen), [@IPauwels](https://github.com/IPauwels)) e le referenze della contribuzione e quelle della mia contribuzione:
+Il set up del progetto viene da [questo corso di git](https://inbo.github.io/git-course/index.html) promosso da [INBO](https://www.vlaanderen.be/inbo/home/), la [cui repo](https://github.com/inbo/git-course). Gli autori a cui vanno i miei ringraziamenti per la contribuzione open source sono [\@stijnvanhoey](https://github.com/stijnvanhoey), [\@peterdesmet](https://github.com/peterdesmet), [\@ThierryO](https://github.com/ThierryO). Si ringraziano anche gli ulteriori contributori ([\@ElsLommelen](https://github.com/ElsLommelen), [\@IPauwels](https://github.com/IPauwels), [\@damianooldoni](https://github.com/damianooldoni)) e le referenze della contribuzione e quelle della mia contribuzione:
 webinars:
 
 * [Github and Rstudio management](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN)

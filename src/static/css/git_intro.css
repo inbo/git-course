@@ -24,7 +24,7 @@
   }
 
 div.warn {
-  background-image: url("../static/images/div_tips/warn.png");
+  background-image: url("https://raw.githubusercontent.com/NiccoloSalvini/thesis/master/images/div_tips/warn.png");
 }
 
 div.bulb {
@@ -39,7 +39,7 @@ a,
 a:hover,
 a:active,
 a:visited {
-     color: #C04384;
+     color: #75aada;
 }
 
 /* Whitespace */
@@ -70,8 +70,8 @@ h1:before {
 .list-group-item.active,
 .list-group-item.active:focus,
 .list-group-item.active:hover {
-    background-color: #C04384;
-    border-color: #C04384;
+    background-color: #75aada;
+    border-color: #75aada;
 }
 
 /* custom alert */
