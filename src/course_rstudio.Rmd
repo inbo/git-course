@@ -99,8 +99,10 @@ Dato il fatto che useremo Git(Hub) per amministrare esclusivamente scripts R/Rma
 Ci sono altri git clients, detti **SCM**, di versioning, alcuni totalmente a pagamento, alcuni _freemium_ con limitazioni e altri open source, [qui una lista completa](https://git-scm.com/downloads/guis):
 Alcuni sperimentati:
 
-* [gitKraken](https://www.gitkraken.com/) GUI notevole e veloce, con addons molti addons come Trello o Jira (supporta Bitbucket e Gitlab, omologhi di GitHub). permette di costruire linee del tempo per tenere traccia di traguardi nello sviluppo. permette di avere una lavagna di Kaban per asseganre (nello stile di Trello) obiettivi ai collaboratori. sviluppo su repo private non concesso. 
+* [gitKraken](https://www.gitkraken.com/) client notevole e veloce (lo utilizza chi scrive). Molti addons come Trello o Jira (supporta Bitbucket e Gitlab, omologhi di GitHub). Permette di costruire linee del tempo per tenere traccia di traguardi nello sviluppo. Permette di avere una lavagna di Kaban per assegnare (nello stile di Trello) obiettivi ai collaboratori. sviluppo su repo private non concesso. Possibilità di collaborazione direttamente su Kraken. Interoperabile, va bene per Windowws, Linux e MacOS.
 * [fork](https://git-fork.com/) Vincenzo può aiutarmi @vicnardelli
+* [GitHub Desktop](https://desktop.github.com/)
+* [Sourcetree](https://www.sourcetreeapp.com/) gratis, perfetto per Windows, non per il resto dei sistemi operativi su cui fa fatica e commette errori che non vengomo risolti dai mantenitori del client.
 
 
 ### Installazione
@@ -173,6 +175,28 @@ Se la configirazione ha avuto esito positivo allora congratulazioni, il tuo setu
 
 ---
 
+
+Se ti trovi male con la configurazione da terminale recentemente il pacchetto `usethis` ha introdotto una serie di funzioni per interagire con Git e GitHub. Qui copriamo solo lo "handshake" tra Git e RStudio, ma molto copre molte alte operazioni di verisoning come la **P**ull **R**equest etc. una sezione sarà interamente dedicata al set up completo tramite `usethis`:
+
+
+```{r usethis, eval=F}
+
+## Installa il pacchetto se necessario (solo una volta)
+## install.packages("usethis")
+
+library(usethis)
+use_git_config(user.name = "Jane Doe", user.email = "jane@example.org")
+
+```
+
+Per verificare la corretta configurazione esegui lo stesso comando da terminale:
+
+```
+git config --global --list
+```
+
+
+
 ## Clona una repo per lavorarci in locale
 
 Prima abbiamo inizializzato una repo online e abbiamo configurato git per cooperare con RStudio. Adesso possiamo cominciare a lavorare sul codice localmente scaricando la repo sul laptop. RStudio provvede ad occuparsi di tutto questo in una maniera molto conveniente e facile. 
@@ -207,8 +231,8 @@ Cerca la cartella che corrisponde alla git repo nella destinazione al punto 4 de
 
 ## `.gitignore`
 
-Quando si inizia un nuovo progetto in RStudio, ma anche in Python e tanti altri linguaggi è utile (anche se non propio indispensabile) aggiungere il file `.gitignore` se non esiste già. E' infatti possibile in fase di inizializzazione della repo online, direttamente da GitHub, creare il `.gitignore` default o custom (un'alternativa può essere copiarlo da qualcuno che sta esegiuendo un progetto simile al nostro e che presumiamo ne sappia più di noi).
-Il file `.gitignore` definisce tutti quei files che **non** devono finire nella repo online per diversi motivi, alcuni:
+Quando si inizia un nuovo progetto in RStudio, ma anche in Python e tanti altri linguaggi è utile (anche se non propio indispensabile) aggiungere il file `.gitignore` se non esiste già. E' infatti possibile in fase di inizializzazione della repo online, direttamente da GitHub, creare il `.gitignore` default o custom (se hai difficoltà a comporre il file `.gitignore` assicurati di trovare un progetto simile al tu su GitHub e copia il contenuto, in alternativa naviga in [questo strumento online gratuito](https://www.toptal.com/developers/gitignore) speficificando i software che utilizzi e in automatico questo comporrà il perfetto `.gitignore`).
+Il file `.gitignore` definisce tutti quei files che **non** devono finire nella repo online per diversi motivi, eccone alcuni:
 
 - ci sono delle credenziali segrete `.Renviron` o`.Rprofile`  ( TODO: link a come storare credenziali segrete in R)
 - files di sessione `.RData`
@@ -328,137 +352,138 @@ Nota che `git` ti avverte che *your branch is ahead of 'origin/master' by 2 comm
 
 ---
 
-Rstudio gives you a warning about the status of your local commits versus those stored on GitHub:
+RStudio successivamente ti avverte sullo stato dei tuoi commits locali rispetto a quelli mandati `push`ed a GitHub:
 
 ![Push](./static/images/push-rstudio1.png){width=75%}
 
 ---
 
-Is the `README.md` adapted? Where do you find the Commits overview online?
+Adesso su GitHub il `README.md` è aggiornato? Dove si trova la panoramica dei commits sulla repo online?
 
 ![Verify your commits on GitHub](./static/images/local-commit-on-github.png){width=75%}
 
 ---
 
-## Additional configuration - store your password
+## Configurazioni Addizionali - metti da parte la password 🔑
 
-It is a tedious task to retype the password each time you want to `push` anything to GitHub. Luckily, you can store your credentials when using https:
+Non è per caso noioso tutte le volte rimettere la propria password ogni volta che viene `push`ato qualcosa alla repo?  
+Fortunatamente così come per _Username_ e _mail_, anche con la password è possibile fare la stessa cosa usando il protocollo sicuro **HTTPS**.
 
 <div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-1. Click on the `more` button in the `git` pane and select `Shell`
-1. Type `git config --global credential.helper store`
-1. Type `exit` to quit the shell
+<h4>Esercizio:</h4>
+1. Clicca su `More` nel `git` pane e seleziona `Shell`
+1. Scrivi `git config --global credential.helper store` e premi invio
+1. Scrivi `exit` e premi invio per uscire dalla shell
 </div>
 
-The next time `git` needs your credentials, it will ask them **one more time and store them**!
+La prossima volta che `git` avrà bisogno delle tue credenziali **te le chiederà solo una volta** e le manterrà per tutte le operazioni successive.
 
 ---
 
-The more button has a `wheel` symbol:
+Il bottone "More" ha il simbolo di un **ingranaggio** ⚙️: 
 
 ![Store credentials](./static/images/https-credentials-rstudio1.png){width=75%}
 
 
 ---
 
-## Create logical commits
+## Crea un commit logico
 
-As mentioned earlier, you should commit often and make sure each commit links to a specific change/problem. Sometimes, this means that you have to split the additions in a single file into two individual commits. Rstudio provides the interface to include specific lines of code into a commit message:
+Come anticipato prima, la buona pratica di sviluppo di software prevede di committare spesso e mappare in modo chiaro e sintetico la relazione tra problema da risolto e codice cambiato/aggiunto. Tuttavia alcune volte questo prevede che l'aggiunta di cambiamenti alla codebase avvenga in due diversi commits. L'interfaccia di RStudio include anche la possibilità di specificare qualche linea di codice nel messagio del commit:
 
 ![Logical commit 1](./static/images/logical-commit-rstudio.png){width=75%}
 
 ---
 
-To summarize, the following actions can be executed:
+Per riassumere, le diverse fasi che intercorrono tra una operazione di commit e la successiva possono essere:
 
-- `stage xyz`: add the xyz from the commit
-- `unstage xyz`: remove the xyz from the commit
-- `discard xyz`: revert the changes in the xyz (be careful, can't be undone!)
+- `stage xyz`: aggiungi xyz dal commit
+- `unstage xyz`: rimuovi xyz dal commit
+- `discard xyz`: revert (ritorna indietro) rispetto ai cambiamenti su xyz ( `r emo::ji("warning")` stai attento, questo non può essere riportato indietro! `r emo::ji("warning")` )
 
-and `xyz` can be
+E `xyz` può essere
 
-- a single `line`
-- a `selection` of lines
-- a `chunk`
-    - RStudio will automatically split the changes in chunks
-    - chunks are defined by 10 unchanged lines between changes
+- una `linea` singola
+- una `selezione` di linee
+- un `chunk` di codice
+    - RStudio si occuperà di spezzare i cambiamenti in più chunks
+    - I chunks sono definiti come 10 linee di codice non cambiate tra gli effettivi cambiamenti
 
 ---
 
 <div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-1. Make 2 unrelated changes to your `README.md` locally
-1. Create one `commit` for each change:
-    1. Select the changes you want to commit and click `stage selection`
-    1. Add a `commit message` and click `Commit`
-1. Do NOT push (yet)
+<h4>Esercizio:</h4>
+1. Effettua due differenti cambiamenti al `README.md` localmente
+1. Crea un `commit` per ogni cambiamento tale che:
+    1. Seleziona il cambiamento e mettilo in `stage`
+    1. Aggiungi un messaggio di `commit` e clicca su `Commit`
+1. non `Push`are (ancora...)
 </div>
 
 ---
 
-## Create a conflict!
+## Crea un Conflitto
 
-Sometimes, conflicts will appear. Maybe because a collaborator was working on exactly the same lines of code or because of a mistake in your workflow,... No worries, we'll learn you how to fix conflicts by initiating one.
+Alcune volte accade, soprattuto in ambienti molto collaborativi o con tanti contributori che più collaboratori lavorino sulle stesse linee di codice. Non c'è da preoccuparsi, adesso impariamo ad amministrare i conflitti e risolverli. Lo faremi creandone uno.
 
 <div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-Update your `README.md` online on GitHub, on the exact same line you just edited locally in the previous exercise.
+<h4>Esercizio:</h4>
+Aggiorna il `README.md` direttamente online su GitHub, sulla stessa identica linea che hai cambiato nell'esercizio precedente.
 </div>
 
 ---
 
-If you do not remember how to change files online, check again [this online tutorial](https://help.github.com/articles/create-a-repo/#commit-your-first-change). Check the result of your online commit, similar to:
+Se non ti ricordi o non sai come si fa un cambiamento online, per favore controlla [questo tutorial](https://help.github.com/articles/create-a-repo/#commit-your-first-change). Guarda poi i risultati online del commit. Ricorda che non c'è  bisogno di spingere i cambiamenti  `Push`ando il commit, siamo già online, non serve, infattic contestualmente `Push`ando cambia immediatamente il contenuto della repo.
 
 ![Commit to create conflict](./static/images/commit-to-create-conflict.png){width=75%}
 
 ---
 
 <div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-Back in Rstudio, try to push (click `push`) your local changes.
+<h4>Esercizio:</h4>
+Torna indietro su Rstudio e prova a spingere (click `push`) i cambiamenti locali.
 </div>
 
 ---
-
-Git provides a warning about the remote changes on the same repository:
+Git ti aiuta avvertendoti che ci sono dei cambiamenti remoti ( _remote changes_ ) sulla stessa repo.
 
 ![Conflict](./static/images/conflict-rstudio1.png){width=75%}
 
 ---
 
 <div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-Click `Pull` to download the changes from Github
+<h4>Esercizio:</h4>
+Clicca su `Pull` per tirare i cambiamenti dentro la tua repo GitHub (fare il download) 
 </div>
 
-Git notices the **CONFLICT** and demands you what to do next:
+Git ti notifica un conflitto i.e. **CONFLICT** e ti chiede cosa vuoi fare, le operazioni da fare sono 2:
 
-1. Fix conflicts
-1. Commit the result after fixing the conflict
+1. Metti a posto il conflitto
+1. Commit del risultato dopo aver messo a posto il conflitto
 
 ![Conflict](./static/images/conflict-rstudio2.png){width=75%}
 
 ---
 
-Keep calm and resolve conflict!
+Adesso con calma va risolto il conflitto!
 
-Each conflict is always marked by the combination of the following elements:
+Ogni conflitto è sempre evidenziato con la seguente sintassi:
+
 ```
 <<<<<<< HEAD
-your local code
+il tuo codice locale
 =======
-the code as it exists on Github
+il codice che esiste su GitHub
 >>>>>>> origin/master
 ```
 
-To solve a conflict, you have to decide which version of the code you want to keep. 
+Per risolvere il conflitto tdevi decidere quale delle due versioni ti convince di più viceversa quale vuoi scartare.
 
 ---
 
 <div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-1. Open `README.md` in RStudio:
+<h4>Esercizio:</h4>
+1. Apri il `README.md` in RStudio:
 
         <<<<<<< HEAD
         A simple analysis to visualize my favourite fruit colour.
@@ -466,19 +491,19 @@ To solve a conflict, you have to decide which version of the code you want to ke
         A simple analysis to discover my favourite fruit color.
         >>>>>>> origin/master
 
-2. Choose what you want to keep and only keep that code in the file:
+2. Scegli solo la _versione_ preferita (in questo caso quella su GitHub):
 
         A simple analysis to discover my favourite fruit colour.
 
-3. Commit the adaptation with a commit message
-4. Click `Push` to update GitHub
+3. Committa il risultato
+4. Clicca su `Push` per aggiornare GitHub
 </div>
 
-If you encounter a conflict in the future, repeat this procedure.
+Se tu dovessi incontrare nuovi conflitti in futuro utilizza il semplice _modus operandi_ che hai appena visto.
 
 ---
 
-## Add a new file
+## Aggiungi un nuovoi file
 
 During a project, new files will be added to the project folder, which need to be version controlled as well. New directories and files can be added and committed, just like any other adaptation. 
 
