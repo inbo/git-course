@@ -11,14 +11,14 @@
 
 <meta name="author" content="Niccolò Salvini" />
 
-<meta name="date" content="2021-04-30" />
+<meta name="date" content="2021-05-01" />
 
 <title>Git attraverso RStudio</title>
 
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -123,33 +123,33 @@ summary {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 45px;
+  padding-top: 51px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 50px;
-  margin-top: -50px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h2 {
-  padding-top: 50px;
-  margin-top: -50px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h3 {
-  padding-top: 50px;
-  margin-top: -50px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h4 {
-  padding-top: 50px;
-  margin-top: -50px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h5 {
-  padding-top: 50px;
-  margin-top: -50px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .section h6 {
-  padding-top: 50px;
-  margin-top: -50px;
+  padding-top: 56px;
+  margin-top: -56px;
 }
 .dropdown-submenu {
   position: relative;
@@ -414,7 +414,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Git attraverso RStudio</h1>
 <h4 class="author">Niccolò Salvini</h4>
-<h4 class="date">2021-04-30</h4>
+<h4 class="date">2021-05-01</h4>
 
 </div>
 
@@ -433,24 +433,27 @@ div.tocify {
 <h1 number="2" data-background="#c2c444"><span class="header-section-number">2</span> Lavora da solo</h1>
 <p>Di solito si comincia inizializzando una repository su GitHub, nel gergo tecnico <em>init</em>. Per questo step non hai assolutamente bisogno di un collaboratore/collega.</p>
 <hr />
-<div id="create-a-repository" class="section level2" number="2.1">
-<h2 number="2.1"><span class="header-section-number">2.1</span> Create a repository</h2>
-<p>A new project starts with a new repository, which can be easily setup using <a href="https://github.com">GitHub.com</a>.</p>
+<div id="crea-una-repo-che-sta-per-repo-sitory" class="section level2" number="2.1">
+<h2 number="2.1"><span class="header-section-number">2.1</span> Crea una repo (che sta per <em>repo</em> sitory)</h2>
+<p>aiutati a pensarla sempre in questi termini: <strong>Un nuovo progetto comincia sempre con una nuova repo</strong>. Cominciare una nuova da <a href="https://github.com">GitHub.com</a>. è molto semplice:</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ol style="list-style-type: decimal">
-<li>Go to <a href="https://github.com">GitHub</a> and login</li>
-<li>Follow <a href="https://help.github.com/articles/create-a-repo/">this tutorial</a> to create a repo and <a href="https://help.github.com/articles/create-a-repo/#commit-your-first-change">create your first (online) commit</a> to your repository</li>
+<li>vai su <a href="https://github.com">GitHub</a> ed esegui il login</li>
+<li>segui <a href="https://help.github.com/articles/create-a-repo/">questo tutorial</a> dalla documentazione originale per creare una repo <a href="https://help.github.com/articles/create-a-repo/#commit-your-first-change">crea il tuo primo commit</a> alla tua repository</li>
 </ol>
 </div>
 <hr />
-<p>For this first exercise, we have chosen to create a dummy repository:</p>
-<p><img src="static/images/create-a-repo.png" alt="Create a repo" /> (<em>you do not have to copy the example, choose any name :-)</em>)</p>
+<p>Per questo esercizio abbiamo deciso di creare una <em>dummy repo</em>.</p>
+<p><img src="static/images/create-a-repo.png" alt="crea una repo" /> (<em>scegli il nome che vuoi, non sia mai che ti suggerisca cosa fare!</em>)</p>
 <hr />
-<p>The resulting repository layout will look like this:</p>
-<p><img src="static/images/create-repo-result.png" alt="Result of creating a repo" /> (<em>Remember that there is a <code>Clone or Download</code> button on this page!</em>)</p>
+<p>Fatto 😄, Il risulatato finale è il seguente:</p>
+<p><img src="static/images/create-repo-result.png" alt="il risulato della creazione di una repo" /> (<em>ricord!</em>)</p>
+<div class="bulb">
+<p>ricordati il tasto verde clone, ci saràd’aiuto dopo!</p>
+</div>
 <hr />
 </div>
 <div id="git-for-rstudio-configuration" class="section level2" number="2.2">

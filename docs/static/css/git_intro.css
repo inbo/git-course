@@ -24,11 +24,11 @@
   }
 
 div.warn {
-  background-image: url("../static/images/div_tips/warn.png");
+  background-image: url("https://raw.githubusercontent.com/NiccoloSalvini/thesis/master/images/div_tips/warn.png");
 }
 
 div.bulb {
-  background-image: url("../static/images/div_tips/bulb.png");
+  background-image: url("https://raw.githubusercontent.com/NiccoloSalvini/thesis/master/images/div_tips/bulb.png");
 }
 
 
