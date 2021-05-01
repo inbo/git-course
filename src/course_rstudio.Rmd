@@ -42,14 +42,14 @@ Successivamente esegui:
 ```
 git --version
 ```
-L'ultima versione disponibile è la `r read_html("https://git-scm.com/") %>%  html_nodes(css = ".version") %>%  html_text(trim = T)`. Corrisponde a quella installata? Se sì procedi. Se non corrisponde o qualche altro errore compare sentiti libero di mandarmi una [me medesimo](mailto:niccolo.salvini27@gmail.com).
 
+L'ultima versione di `git` disponibile è la `r read_html("https://git-scm.com/") %>%  html_nodes(css = ".version") %>%  html_text(trim = T)`. Corrisponde a quella installata? Se sì procedi avanti. Se non corrisponde o compare qualche altro errore sentiti libero di mandarmi una mail [me medesimo](mailto:niccolo.salvini27@gmail.com). Se hai installata una versione precedente di `git` non occorre aggiornare per questo tutorial, anche se puoi considerare l'idea di farlo in prossimo futuro.
 
-* tu abbia un [account GitHub](https://github.com/join), pensaci al tuo nome due secondi in più, è sempre possibile cambiarlo ma incorri nei [seguenti problemi](https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/changing-your-github-username) (~ 1 min.).
+* tu abbia un [account GitHub](https://github.com/join), pensa due secondi in più al tuo nome utente, sei sempre a tempo a cambiarlo, ma potresti incorrere nei [seguenti problemi](https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/changing-your-github-username) (~ 1 min.).
 
 ---
 
-# Lavora da solo {data-background=#c2c444}
+# Lavora da solo {data-background=##75aada}
 
 Di solito si comincia inizializzando una repository su GitHub, nel gergo tecnico  _init_. Per questo step non hai assolutamente bisogno di un collaboratore/collega.
 
@@ -57,8 +57,14 @@ Di solito si comincia inizializzando una repository su GitHub, nel gergo tecnico
 
 ## Crea una repo (che sta per _repo_ sitory)
 
-Abituati a pensarla sempre in questi termini: **Un nuovo progetto comincia sempre con una nuova repo**. 
-Cominciare una nuova da [GitHub.com](https://github.com). è molto semplice:
+Abituati a pensarla sempre in questi termini: 
+
+> Un nuovo progetto comincia sempre con una nuova repo.
+>
+> `r tufte::quote_footer('--- Git Samurai')`
+
+
+Cominciare una nuova repo direttamente da [GitHub.com](https://github.com) è estremamente semplice:
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Esercizio:</h4>
@@ -181,126 +187,143 @@ Prima abbiamo inizializzato una repo online e abbiamo configurato git per cooper
 
 --- 
 
-Per avere l'indirizzo **HTTPS** di clone della repo é sufficiente cliccare sopra <span style="color: green;">code</span> e premere sul piccolo bottone accanto all'indirizzo per copiare su clipboard (in alternativa seleziona e copia tutto l'url).
+Per avere l'indirizzo **HTTPS** di clone della repo é sufficiente cliccare sopra <span style="color: green;">code</span> e premere sul piccolo bottone accanto all'indirizzo per copiare direttamente su clipboard (in alternativa seleziona e copia tutto l'url).
 
 ![Copy the https link of a repo](./static/images/copy-repo-link.png){width=75%}
 
 ---
-
-An example of the project setup using an existing Git repository:
+Un esempio di setup del progetto utilizzando una repo Git può essere questo:
 
 ![Clone a repo in RStudio](./static/images/create-project-rstudio.png){width=75%}
 
 ---
 
 <div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-In your File explorer, search for your project folder and check the content. Does this corresponds to what is shown online on your repository website?
+<h4>Esercizio:</h4>
+Cerca la cartella che corrisponde alla git repo nella destinazione al punto 4 dell'esercizio. Il contenuto della cartella corrisponde a quello che c'è nella repo online?
 </div>
 
 ---
 
 ## `.gitignore`
 
-When starting a new project in RStudio, it will always add a file `.gitignore` if it does not already exists (you can actually also create one in the online setup). A `gitignore` file defines all those files that should not be taken into account by Git. An example is the `myprojectname.Rproj` file, as this is a user/computer specific file.
+Quando si inizia un nuovo progetto in RStudio, ma anche in Python e tanti altri linguaggi è utile (anche se non propio indispensabile) aggiungere il file `.gitignore` se non esiste già. E' infatti possibile in fase di inizializzazione della repo online, direttamente da GitHub, creare il `.gitignore` default o custom (un'alternativa può essere copiarlo da qualcuno che sta esegiuendo un progetto simile al nostro e che presumiamo ne sappia più di noi).
+Il file `.gitignore` definisce tutti quei files che **non** devono finire nella repo online per diversi motivi, alcuni:
 
-Hence, we can ignore the `myprojectname.Rproj` file by adding the file to the `.gitignore` text-file. We can do this inside Rstudio:
+- ci sono delle credenziali segrete `.Renviron` o`.Rprofile`  ( TODO: link a come storare credenziali segrete in R)
+- files di sessione `.RData`
+- files di logs e history `.Rhistory` e `.Rapp.history`
+- file di sistema prodotti da RStudio, come`myprojectname.Rproj` 
+- file specifici dell'utente `.Ruserdata`
+- files temporanei creati da R Markdown, esempio: `*.utf8.md` e `*.knit.md`.
+- files/ cartelle di cache come  `*_cache/` o `/cache/`
+- tokens per [OAuth2 authorization](https://github.com/r-lib/httr/releases/tag/v0.3), come `.httr-oauth`
+- Se stai scivendo un pacchetto: files di risposta in seguito ad un **R CMD build**, come `/*.tar.gz`; files di risposta in seguito ad un **R CMD check** come `/*.Rcheck/`
+- altri che dipendono dalle esigenze specifiche del progetto espressi con una sintassi particolar, come tutti i files preceduti da "_" nel build con `bookdown`
+
+Quindi rimandendo sullo stretto necessario se non c'è già possiamo aggiungere un file di testo (`File > New File > Text File`) rinominandolo `.gitignore` e aggiungere nel file il seguente testo `myprojectname.Rproj`, in alternativa come nell'esercizio:
 
 <div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-1. Go to `git` pane (the tab that says Git), 
-1. right click on `....Proj` and select `Ignore...`
-1. Check if the content of `.gitignore` is correctly updated and click `Save`.
+<h4>Esercizio:</h4>
+1. vai sul `git` pane (la tab dove c'è scritto Git), 
+1. tasto destro sopra il file `....Proj` e seleziona nel men+ a tendina `Ignore...`
+1. controlla se iul contenuto del `.gitignore` è correttamente aggiornato, poi clicca `Save`.
 </div>
 
 ---
 
-As our dummy project is called `favourite-fruit-color`, the `.Rproj` file is called `favourite-fruit-color.Rproj`. We right click on the file and select `Ignore...`:
+Visto che il nostro porgetto dummy èp rinominato `favourite-fruit-color`, il corrispondente `.Rproj` file è `favourite-fruit-color.Rproj`. Cliccando il tasto destro del muose sul file è possibile selezionare ignora:
 
 ![Ignore a file](./static/images/gitignore-rstudio1.png){width=75%}
 
 ---
 
-When to use `.gitignore`:
+Linee guida su quando è necessario usare il file `.gitignore`:
 
-* in any programming language, some files are _derivatives_
-* sensitive information (passwords,...)
-* a folder with large data files that should not be in the history (and backuped elsewhere!)
-* a _temp/_ folder for just garbage you create/...
+* in ogni linguaggiuo di progrannazione dove alcuni files dono *derivati* di altri
+* quando ci sono informazioni sensibili che non devono assolutamente essere condivise e non possono essere immagazzinate negli scripts (passwords di Accounts, di database, tokens di Dropbox, etc...)
+* quando c'è una cartella con files di grandi dimensioni che non deve finire nella history (bensì backed up da qualche altra parte)
+* una cartella con files temporanei o con esempi come _temp/_ o _*-Ex.R_
 
 ---
 
-Note that you can use wild cards e.g. `*.Rproj` to exclude a group of files from the version control:
+Nota che la sintassi del `.gitignore` è molto intuitiva e permette tramite wildcards di estendere l'ingnore a tutti i files con la medesima estensione ( per esempio `*.Rproj`) o con il medesimo prefisso o suffisso.
 
 ![Update .gitignore](./static/images/gitignore-rstudio2.png){width=75%}
 
 ---
 
-Check the content of the `.gitignore` file. If satisfied, click `Save`:
+Controllla il contenuto del `.gitignore`, se sei soddisfatto premi `Save`:
 
 ![Update .gitignore](./static/images/gitignore-rstudio2.png){width=75%}
 
 ---
 
-## Make commits
+## Fa il **commit**
 
-As the `.gitignore` is a newly added file (or at least adapted), we can `commit` this change and provide a commit message:
+Visto che il `.gitignore` è stato modificato git ha registrato un cambiamento nella <span style="color: green;">repo locale</span> che non è nella <span style="color: red;">repo online</span> di GitHub.
+Allora data la nuova aaggiunta/modifica del presistente `.gitignore` possiamo fare il `commit` di questo cambiamento e fornire un messagio ce spieghi il cambiamento fatto.
 
 <div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-1. Go to `git` pane
-1. Check the box next to `.gitignore`
-1. Click `Commit`
-1. Add a `commit message` and click commit
-1. Click `Close` to remove the commit summary
+<h4>Esercizio:</h4>
+1. Vai sul `git` pane
+1. Spunta la casella accanto a `.gitignore`
+1. Clicca `Commit`
+1. Aggiungi un messaggio premendo su `commit message` e clicca commit
+1. Clicca `Close` per rimuovere il summary del commit
 </div>
 
 ---
 
-The status of the `.gitignore` file before the file was committed, with the yellow question mark saying that the file is yet unknown to Git:
+Adesso lo stato del `.gitignore` prima che il file venga committato è giallo con un punto interrogativo accanto. Questo significa che Git ha notato un cambiamento/aggiunta di quel file.
 
 ![Local commit](./static/images/commit-rstudio1.png){width=75%}
 
 ---
 
-By checking the box and clicking commit, we add the file and commit this addition with a commit message:
+Spuntando la casella accanto al `.gitignore` (oppure selezionandolo e premendo invio) e cliccando su commit si apre una finestra di dialogo dove viene chiesto a destra di inserire un messaggio di commit. 
+(rivdere) 
+Ogni messaggio di commit ha un header, cioè un titolo dove viene spesso riassunto il cuore di quello che è stato fatto per poi lasciare uno spazio bianco sotto l'headere ed elencare con un elenco puntato e numerato quali sono materialemente le operazioni fatte o il motivo. Il messaggio di commit è una vera e propria **arte** deve essere _semplice_, _chiaro_ e sempre nell'ottica di far capire ad un terzo, molto probabilmente te nel futuro cosa tu abbia fatto e perchè lo hai fatto. [Questo post](https://chris.beams.io/posts/git-commit/) può aiutarti a scrivere in maniera più efficace un commit seguendo alcune linee guida.
+Alcuni SCM (non quello intgrato nella IDE di RStudio) prevedono la possibilità di creare un template per il commit, cosicchè ogni volta che un file o un gruppo di files viene committato un template di commit viene generato e il processo di revisione del codice è meglio struttuato e più riproducibile. 
+Dietro questa semplice operazione ci sono 
+
 
 ![Local commit](./static/images/commit-rstudio2.png){width=75%}
 
 ---
 
-We get a small technical overview of the alterations we provided with this commit: 
+Dopo questo abbiamo una piccola panoramica tecnica di quello che sta succedendo (quello che è stato aggiunto, quello che è stato tolto, quello che è stato modificato)
 
 ![Local commit](./static/images/commit-rstudio3.png){width=75%}
 
 ---
+E buona pratica **committare spesso**. Questo permette di spezzettare la logica dello sviluppo del software in tante e piccole singole operazioni su cui si può intervenire in maniera stagna. L'uso frequente di commits permette anche di evitare alcuni probelmi comuni sia di GitHub che di RStudio. Un problema è il tempo di attesa del commit, infatti il git pane di RStudio è molto pratico ma non è ottimizzato. Fare un commit molto grosso con tanti files potrebbe richiedere molto tempo e in alcuni casi git potrebbe sputare un errore. (related issue)
 
-It is good practice to **commit often**, so you will do this a lot. Each commit should only contain changes related to a single problem/element/... Each commit is a snapshot of your project and the messages describe the story of your project.
-
-As documentation is crucial, providing some more information in the `README.md` file will help others (and yourself in a couple of months/years) to understand the aim of the project. Just as we adapted the `README.md` file online earlier, we can do the same locally:
+La documentazione è un aspetto cruciale dello sviluppo di ogni software, prima ancora che per gli altri **per te stesso**. Il file `README.md`  ti aiuta a capire lo scopo del progetto. Adesso possiamo provare a modificare il file `README.md` localmente e procedere alla stessa maniera.
 
 <div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-1. Update the `README.md` inside Rstudio
-1. Commit your changes
+<h4>Esercizio:</h4>
+1. Aggiorna il file `README.md` direttamente da dentro RStudio
+1. Commit i cambiamenti
 </div>
 
 ---
 
-Remark the reporting of the changed lines linked to this commit with green and red colors:
+
+Ricorda che il report dei cambiamenti nel panel in basso barra in rosso le linee di codice che sono sparite dal file e in verde quelle aggiunte o modificate:
 
 ![Local commit](./static/images/commit-rstudio4.png){width=75%}
 
 ---
 
-## Push the changes to GitHub
+## Push dei cambiamenti su GitHub
 
-Note that the `git` pane displays *your branch is ahead of 'origin/master' by 2 commits*. This is actually providing you a warning message that there is no backup of these two commits! In order to store these changes on GitHub as well, we have to `push` our changes to GitHub:
+Nota che `git` ti avverte che *your branch is ahead of 'origin/master' by 2 commits*, questo significa che ancora i tuoi cambiamenti sono in fase di stage, devono ancora essere trasmessi alla repo di GitHub online. Per trasmettere i cambiamenti a GitHub premi `push`.
 
 <div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-1. Click `push` in the `git` pane
-1. Go to your repository on GitHub to verify the commits and file contents
+<h4>Esercizio:</h4>
+1. Clicca `push` nel `git` pane
+1. Vai su GitHub all'indirizzo della tua repository e verifica il commit, il messaggio e i cambiamenti
 </div>
 
 ---

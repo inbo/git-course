@@ -6,7 +6,7 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "Sessions"
+    - text: "Parto da 0"
       menu:
         - text: "Rstudio"
           href: course_rstudio.html

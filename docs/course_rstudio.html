@@ -423,19 +423,26 @@ div.tocify {
 <h1 number="1"><span class="header-section-number">1</span> Setup</h1>
 <p>Prima di cominciare questo tutorial assumo che:</p>
 <ul>
-<li>tu abbia <a href="https://lib.ugent.be/CRAN/">R</a> e <a href="https://www.rstudio.com/products/rstudio/download/">Rstudio</a> installati e funzionanti sul computer.</li>
-<li>tu abbia <a href="https://git-scm.com/">git</a> installato sul computer e puntanto sul file <code>git.exe</code></li>
-<li>tu abbia un <a href="https://github.com/join">account GitHub</a>, pensaci al tuo nome due secondi in più, è sempre possibile cambiarlo ma incorri nei <a href="https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/changing-your-github-username">seguenti problemi</a></li>
+<li>tu abbia <a href="https://lib.ugent.be/CRAN/">R</a> e <a href="https://www.rstudio.com/products/rstudio/download/">Rstudio</a> installati e funzionanti sul computer (~ 5 min).</li>
+<li>tu abbia <a href="https://git-scm.com/">git</a> installato sul computer e puntanto sul file <code>git.exe</code>. (~ 3 min.)</li>
+</ul>
+<p>Per verificare la corretta installazione di Git entra su RStudio, poi apri il terminale i.e. “Terminal”, Si trova accanto alla “Console” da dove esegui di solito i comandi in R. Nel caso tu avessi difficoltà a trovarlo su Windows premi contemporamente Alt+Shift+M, su Mac Cmd+Shift+M (da verificare). Se ancora non vedi il terminale Shift+Alt+T (Tools-&gt;Terminal-&gt;Move Focus to Terminal). Una volt sul terminale esequi i seguenti comandi:</p>
+<pre><code>which git</code></pre>
+<p>Dovesti vedere come risposta del terminale qualcosa come: <strong>/usr/local/bin/git</strong>. Successivamente esegui:</p>
+<pre><code>git --version</code></pre>
+<p>L’ultima versione di <code>git</code> disponibile è la 2.31.1. Corrisponde a quella installata? Se sì procedi avanti. Se non corrisponde o compare qualche altro errore sentiti libero di mandarmi una mail <a href="mailto:niccolo.salvini27@gmail.com">me medesimo</a>. Se hai installata una versione precedente di <code>git</code> non occorre aggiornare per questo tutorial, anche se puoi considerare l’idea di farlo in prossimo futuro.</p>
+<ul>
+<li>tu abbia un <a href="https://github.com/join">account GitHub</a>, pensa due secondi in più al tuo nome utente, sei sempre a tempo a cambiarlo, ma potresti incorrere nei <a href="https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/changing-your-github-username">seguenti problemi</a> (~ 1 min.).</li>
 </ul>
 <hr />
 </div>
-<div id="lavora-da-solo" class="section level1" number="2" data-background="#c2c444">
-<h1 number="2" data-background="#c2c444"><span class="header-section-number">2</span> Lavora da solo</h1>
+<div id="lavora-da-solo" class="section level1" number="2" data-background="##75aada">
+<h1 number="2" data-background="##75aada"><span class="header-section-number">2</span> Lavora da solo</h1>
 <p>Di solito si comincia inizializzando una repository su GitHub, nel gergo tecnico <em>init</em>. Per questo step non hai assolutamente bisogno di un collaboratore/collega.</p>
 <hr />
 <div id="crea-una-repo-che-sta-per-repo-sitory" class="section level2" number="2.1">
 <h2 number="2.1"><span class="header-section-number">2.1</span> Crea una repo (che sta per <em>repo</em> sitory)</h2>
-<p>aiutati a pensarla sempre in questi termini: <strong>Un nuovo progetto comincia sempre con una nuova repo</strong>. Cominciare una nuova da <a href="https://github.com">GitHub.com</a>. è molto semplice:</p>
+<p>Abituati a pensarla sempre in questi termini: <strong>Un nuovo progetto comincia sempre con una nuova repo</strong>. Cominciare una nuova da <a href="https://github.com">GitHub.com</a>. è molto semplice:</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
 Esercizio:
@@ -449,194 +456,217 @@ Esercizio:
 <p>Per questo esercizio abbiamo deciso di creare una <em>dummy repo</em>.</p>
 <p><img src="static/images/create-a-repo.png" alt="crea una repo" /> (<em>scegli il nome che vuoi, non sia mai che ti suggerisca cosa fare!</em>)</p>
 <hr />
-<p>Fatto 😄, Il risulatato finale è il seguente:</p>
-<p><img src="static/images/create-repo-result.png" alt="il risulato della creazione di una repo" /> (<em>ricord!</em>)</p>
+<p>Già fatto 😄. Il risultato finale è il seguente:</p>
+<p><img src="static/images/create-repo-result.png" alt="il risulato della creazione di una repo" /></p>
 <div class="bulb">
-<p>ricordati il tasto verde clone, ci saràd’aiuto dopo!</p>
+<p><strong>Ricordati il tasto verde code, ci sarà molto utile più tardi!</strong></p>
 </div>
 <hr />
 </div>
-<div id="git-for-rstudio-configuration" class="section level2" number="2.2">
-<h2 number="2.2"><span class="header-section-number">2.2</span> Git for RStudio configuration</h2>
-<p>As we will mainly use Git(Hub) to manage R/Rmarkdown scripts, the existing integration of Rstudio and Git provides a convenient way to add version control.</p>
-<div id="installation" class="section level3" number="2.2.1">
-<h3 number="2.2.1"><span class="header-section-number">2.2.1</span> Installation</h3>
-<p>Just to make sure, in case you did not already installed Git and Rstudio:</p>
+<div id="la-configurazione-di-git-per-rstudio" class="section level2" number="2.2">
+<h2 number="2.2"><span class="header-section-number">2.2</span> La configurazione di Git per RStudio</h2>
+<p>Dato il fatto che useremo Git(Hub) per amministrare esclusivamente scripts R/Rmarkdown, l’integrazione di RStudio con Git fa al caso nostro fornendo un’interfaccia facile e intuitiva come VCS (<strong>V</strong>ersion <strong>C</strong>ontrol <strong>S</strong>ystem). Ci sono altri git clients, detti <strong>SCM</strong>, di versioning, alcuni totalmente a pagamento, alcuni <em>freemium</em> con limitazioni e altri open source, <a href="https://git-scm.com/downloads/guis">qui una lista completa</a>: Alcuni sperimentati:</p>
+<ul>
+<li><a href="https://www.gitkraken.com/">gitKraken</a> GUI notevole e veloce, con addons molti addons come Trello o Jira (supporta Bitbucket e Gitlab, omologhi di GitHub). permette di costruire linee del tempo per tenere traccia di traguardi nello sviluppo. permette di avere una lavagna di Kaban per asseganre (nello stile di Trello) obiettivi ai collaboratori. sviluppo su repo private non concesso.</li>
+<li><a href="https://git-fork.com/">fork</a> Vincenzo può aiutarmi <span class="citation">@vicnardelli</span></li>
+</ul>
+<div id="installazione" class="section level3" number="2.2.1">
+<h3 number="2.2.1"><span class="header-section-number">2.2.1</span> Installazione</h3>
+<div class="warn">
+<p><strong>Sii assolutamente sicuro che tu abbia installato i requisiti:</strong></p>
+</div>
+<!-- <div class="bs-callout bs-callout-exercise"> -->
+<!-- <h4>Esercizio:</h4> -->
+<!-- 1. [Download](https://git-scm.com/downloads) Git -->
+<!-- 1. Installa [RStudio](https://inbo.github.io/tutorials/installation-RStudio-admin.html) -->
+<!-- </div> -->
+<p>Quando sono installate correttamente allora:</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ol style="list-style-type: decimal">
-<li><a href="https://git-scm.com/downloads">Download</a> and install Git</li>
-<li>Install <a href="https://inbo.github.io/tutorials/installation-RStudio-admin.html">RStudio</a></li>
-</ol>
-</div>
-<p>When installed properly:</p>
-<div class="bs-callout bs-callout-exercise">
-<h4>
-Exercise:
-</h4>
-<ol style="list-style-type: decimal">
-<li>Open <a href="https://inbo.github.io/tutorials/installation-RStudio-user.html">RStudio</a></li>
-</ol>
-</div>
-<hr />
-</div>
-<div id="configuration" class="section level3" number="2.2.2">
-<h3 number="2.2.2"><span class="header-section-number">2.2.2</span> Configuration</h3>
-<p>In order to start using version control in Rstudio, we have to do some configuration the first time. You only need to do this configuration once.</p>
-<p>First of all, tell RStudio where to find the Git installation.</p>
-<div class="bs-callout bs-callout-exercise">
-<h4>
-Exercise:
-</h4>
-<ol style="list-style-type: decimal">
-<li>Go to <code>Tools &gt; Global Options</code></li>
-<li>Click on <code>Git/SVN</code>.</li>
-<li>Check <em>Enable version control interface for RStudio projects</em></li>
-<li>Set the path to the Git executable that you installed*</li>
-<li>Check <em>use Git bash as shell for Git projects</em></li>
+<li>Apri <a href="https://inbo.github.io/tutorials/installation-RStudio-user.html">RStudio</a></li>
 </ol>
 </div>
 <hr />
-<p>*If you do not know where Git is installed, open your command line (<code>cmd</code> in Start for Windows user). When the cmd is open, type <code>where git</code> and hit enter. The path should be something like: <code>C:/Program Files (x86)/Git/bin/git.exe</code>. Still in trouble? Check <a href="http://happygitwithr.com/rstudio-see-git.html#tell-rstudio-where-to-find-git">this out</a>.</p>
+</div>
+<div id="configurazione-potrebbe-essere-diversa" class="section level3" number="2.2.2">
+<h3 number="2.2.2"><span class="header-section-number">2.2.2</span> Configurazione (potrebbe essere diversa)</h3>
+<p>Per cominciare ad utilizzare lo strumento di versioning dobbiamo impostare una configurazione, fortunatamente lo facciamo <em>una tantum</em>.</p>
+<p>Per prima cosa è necessario indicare ad RStudio dove si trova l’executable di Git (il file tramite cui Git esegue i comandi).</p>
+<div class="bs-callout bs-callout-exercise">
+<h4>
+Esercizio:
+</h4>
+<ol style="list-style-type: decimal">
+<li>Vai su<code>Tools &gt; Global Options</code></li>
+<li>Clicca su <code>Git/SVN</code>.</li>
+<li>Assicurati che: <em>Enable version control interface for RStudio projects</em></li>
+<li>Imposta il path che punta diretto all’executable di git (dove c’è l’installazione)</li>
+<li>Assicurati che <em>use Git bash as shell for Git projects</em></li>
+</ol>
+</div>
+<hr />
+<p>Se non ti ricordi o non sai dove hai installato git e l’eseguibile di git (il <strong>punto 4</strong> dei passaggi precedenti) allora apri il terminale da windows con WIN+R e scrivi <code>cmd</code>, premi enter (su Mac apri Bash). Aperto il terminale scrivi <code>where git</code>, la rispota ti dirà dove si trova il file. confronta la tua risposta con la mia: <code>C:/Program Files (x86)/Git/bin/git.exe</code>, è simile? Se sì procedi. Se invece riscontri ancora problemi con la ricerca dai un’occhiata <a href="http://happygitwithr.com/rstudio-see-git.html#tell-rstudio-where-to-find-git">a questo</a>.</p>
 <p><img src="static/images/RStudio-setup-git.png" style="width:50.0%" alt="RStudio setup for git" /></p>
 <hr />
-<p>Next, we have to tell Github who we actually are, in order to make the connection to the online account. To do so, Git requires the configuration of your Github (!) username and GitHub email:</p>
+<p>Adesso dobbiamo dire a GitHub chi siamo, con l’obiettivo di stabilire una connessione all’account online. Per farlo git ha bisogno delle credenziali di GitHub, i.e. username e GitHub email:</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ol style="list-style-type: decimal">
-<li>Go to <code>Tools &gt; Shell</code> to open the Git Shell</li>
-<li>In the shell, type the following command and enter:</li>
+<li>vai su <code>Tools &gt; Shell</code> e apri shell</li>
+<li>nella shell, scrivi i seguenti comandi e premi invio.</li>
 </ol>
 <pre><code>git config --global user.name &quot;mygithubusername&quot;</code></pre>
 <ol style="list-style-type: decimal">
-<li>Still in the shell, type the following command and enter:</li>
+<li>Sempre nella shell scrivi il seguente comando completando con la mail di registrazione e premi invio:</li>
 </ol>
-<pre><code>git config --global user.email &quot;my.name@inbo.be&quot;</code></pre>
+<pre><code>git config --global user.email &quot;my.name@gmail.com&quot;</code></pre>
 </div>
 <hr />
 <p><img src="static/images/Rstudio-GitShell.png" style="width:75.0%" alt="RStudio setup git shell" /></p>
-<p>Use your <strong>GitHub username</strong>! You can check if you’re set up correctly by typing <code>git config --global --list</code> in the same shell.</p>
-<p>When successful, the configuration is done. Congratulations!</p>
+<p>Mi raccomando usa il tuo <strong>username GitHub</strong>! Per verificare che tutta la configurazione sia andata a buon fine esegui questo comando: <code>git config --global --list</code></p>
+<p>Se la configirazione ha avuto esito positivo allora congratulazioni, il tuo setup è finito! 👍</p>
 <hr />
 </div>
 </div>
-<div id="clone-a-repo-to-work-locally" class="section level2" number="2.3">
-<h2 number="2.3"><span class="header-section-number">2.3</span> Clone a repo to work locally</h2>
-<p>We have initiated a repository online and a working Git within Rstudio. Hence, we can start working on the code locally by downloading the repository to our computer. Rstudio provides a convenient way to start a new project as a Git repository.</p>
+<div id="clona-una-repo-per-lavorarci-in-locale" class="section level2" number="2.3">
+<h2 number="2.3"><span class="header-section-number">2.3</span> Clona una repo per lavorarci in locale</h2>
+<p>Prima abbiamo inizializzato una repo online e abbiamo configurato git per cooperare con RStudio. Adesso possiamo cominciare a lavorare sul codice localmente scaricando la repo sul laptop. RStudio provvede ad occuparsi di tutto questo in una maniera molto conveniente e facile.</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ol style="list-style-type: decimal">
-<li>On your GitHub repository page, copy the repository <strong>HTTPS</strong> url (<em>remember the green button?</em>)</li>
-<li>In Rstudio, <code>File &gt; New Project...</code>, select <code>Version Control</code>, choose <code>Git</code></li>
-<li>Provide the repository HTTPS link you just copied (the project name will be filled in as well)</li>
-<li>Browse to desired directory where you will manage your project/code</li>
+<li>vai sulla pagina GitHub della tua nuova repo copiando l’url <strong>HTTPS</strong> (<em>ricordi il bottone di prima?</em>)</li>
+<li>in Rstudio prosegui per <code>File &gt; New Project...</code>, seleziona <code>Version Control</code> e scegli <code>Git</code></li>
+<li>nella prima casella in alto, copia e incolla l’url <strong>HTTPS</strong> (in automatico il nome della cartella che contiene il progetto viene completata)</li>
+<li>naviga fino alla cartella copiata dove desideri mettere tutti i tuoi progetti/codici R.</li>
 </ol>
 </div>
 <hr />
-<p>To get the https link, you need to click the green button and make sure to copy paste the link with as title <code>Clone with HTTPS</code>:</p>
+<p>Per avere l’indirizzo <strong>HTTPS</strong> di clone della repo é sufficiente cliccare sopra <span style="color: green;">code</span> e premere sul piccolo bottone accanto all’indirizzo per copiare direttamente su clipboard (in alternativa seleziona e copia tutto l’url).</p>
 <p><img src="static/images/copy-repo-link.png" style="width:75.0%" alt="Copy the https link of a repo" /></p>
-<hr />
-<p>An example of the project setup using an existing Git repository:</p>
-<p><img src="static/images/create-project-rstudio.png" style="width:75.0%" alt="Clone a repo in RStudio" /></p>
-<hr />
+<table style="width:6%;">
+<colgroup>
+<col width="5%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Un esempio di setup del progetto utilizzando una repo Git può essere questo:</td>
+</tr>
+<tr class="even">
+<td><img src="static/images/create-project-rstudio.png" style="width:75.0%" alt="Clone a repo in RStudio" /></td>
+</tr>
+</tbody>
+</table>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
-<p>In your File explorer, search for your project folder and check the content. Does this corresponds to what is shown online on your repository website?</p>
+<p>Cerca la cartella che corrisponde alla git repo nella destinazione al punto 4 dell’esercizio. Il contenuto della cartella corrisponde a quello che c’è nella repo online?</p>
 </div>
 <hr />
 </div>
 <div id="gitignore" class="section level2" number="2.4">
 <h2 number="2.4"><span class="header-section-number">2.4</span> <code>.gitignore</code></h2>
-<p>When starting a new project in RStudio, it will always add a file <code>.gitignore</code> if it does not already exists (you can actually also create one in the online setup). A <code>gitignore</code> file defines all those files that should not be taken into account by Git. An example is the <code>myprojectname.Rproj</code> file, as this is a user/computer specific file.</p>
-<p>Hence, we can ignore the <code>myprojectname.Rproj</code> file by adding the file to the <code>.gitignore</code> text-file. We can do this inside Rstudio:</p>
+<p>Quando si inizia un nuovo progetto in RStudio, ma anche in Python e tanti altri linguaggi è utile (anche se non propio indispensabile) aggiungere il file <code>.gitignore</code> se non esiste già. E’ infatti possibile in fase di inizializzazione della repo online, direttamente da GitHub, creare il <code>.gitignore</code> default o custom (un’alternativa può essere copiarlo da qualcuno che sta esegiuendo un progetto simile al nostro e che presumiamo ne sappia più di noi). Il file <code>.gitignore</code> definisce tutti quei files che <strong>non</strong> devono finire nella repo online per diversi motivi, alcuni:</p>
+<ul>
+<li>ci sono delle credenziali segrete <code>.Renviron</code> o<code>.Rprofile</code> ( TODO: link a come storare credenziali segrete in R)</li>
+<li>files di sessione <code>.RData</code></li>
+<li>files di logs e history <code>.Rhistory</code> e <code>.Rapp.history</code></li>
+<li>file di sistema prodotti da RStudio, come<code>myprojectname.Rproj</code></li>
+<li>file specifici dell’utente <code>.Ruserdata</code></li>
+<li>files temporanei creati da R Markdown, esempio: <code>*.utf8.md</code> e <code>*.knit.md</code>.</li>
+<li>files/ cartelle di cache come <code>*_cache/</code> o <code>/cache/</code></li>
+<li>tokens per <a href="https://github.com/r-lib/httr/releases/tag/v0.3">OAuth2 authorization</a>, come <code>.httr-oauth</code></li>
+<li>Se stai scivendo un pacchetto: files di risposta in seguito ad un <strong>R CMD build</strong>, come <code>/*.tar.gz</code>; files di risposta in seguito ad un <strong>R CMD check</strong> come <code>/*.Rcheck/</code></li>
+<li>altri che dipendono dalle esigenze specifiche del progetto espressi con una sintassi particolar, come tutti i files preceduti da "_" nel build con <code>bookdown</code></li>
+</ul>
+<p>Quindi rimandendo sullo stretto necessario se non c’è già possiamo aggiungere un file di testo (<code>File &gt; New File &gt; Text File</code>) rinominandolo <code>.gitignore</code> e aggiungere nel file il seguente testo <code>myprojectname.Rproj</code>, in alternativa come nell’esercizio:</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ol style="list-style-type: decimal">
-<li>Go to <code>git</code> pane (the tab that says Git),</li>
-<li>right click on <code>....Proj</code> and select <code>Ignore...</code></li>
-<li>Check if the content of <code>.gitignore</code> is correctly updated and click <code>Save</code>.</li>
+<li>vai sul <code>git</code> pane (la tab dove c’è scritto Git),</li>
+<li>tasto destro sopra il file <code>....Proj</code> e seleziona nel men+ a tendina <code>Ignore...</code></li>
+<li>controlla se iul contenuto del <code>.gitignore</code> è correttamente aggiornato, poi clicca <code>Save</code>.</li>
 </ol>
 </div>
 <hr />
-<p>As our dummy project is called <code>favourite-fruit-color</code>, the <code>.Rproj</code> file is called <code>favourite-fruit-color.Rproj</code>. We right click on the file and select <code>Ignore...</code>:</p>
+<p>Visto che il nostro porgetto dummy èp rinominato <code>favourite-fruit-color</code>, il corrispondente <code>.Rproj</code> file è <code>favourite-fruit-color.Rproj</code>. Cliccando il tasto destro del muose sul file è possibile selezionare ignora:</p>
 <p><img src="static/images/gitignore-rstudio1.png" style="width:75.0%" alt="Ignore a file" /></p>
 <hr />
-<p>When to use <code>.gitignore</code>:</p>
+<p>Linee guida su quando è necessario usare il file <code>.gitignore</code>:</p>
 <ul>
-<li>in any programming language, some files are <em>derivatives</em></li>
-<li>sensitive information (passwords,…)</li>
-<li>a folder with large data files that should not be in the history (and backuped elsewhere!)</li>
-<li>a <em>temp/</em> folder for just garbage you create/…</li>
+<li>in ogni linguaggiuo di progrannazione dove alcuni files dono <em>derivati</em> di altri</li>
+<li>quando ci sono informazioni sensibili che non devono assolutamente essere condivise e non possono essere immagazzinate negli scripts (passwords di Accounts, di database, tokens di Dropbox, etc…)</li>
+<li>quando c’è una cartella con files di grandi dimensioni che non deve finire nella history (bensì backed up da qualche altra parte)</li>
+<li>una cartella con files temporanei o con esempi come <em>temp/</em> o _*-Ex.R_</li>
 </ul>
 <hr />
-<p>Note that you can use wild cards e.g. <code>*.Rproj</code> to exclude a group of files from the version control:</p>
+<p>Nota che la sintassi del <code>.gitignore</code> è molto intuitiva e permette tramite wildcards di estendere l’ingnore a tutti i files con la medesima estensione ( per esempio <code>*.Rproj</code>) o con il medesimo prefisso o suffisso.</p>
 <p><img src="static/images/gitignore-rstudio2.png" style="width:75.0%" alt="Update .gitignore" /></p>
 <hr />
-<p>Check the content of the <code>.gitignore</code> file. If satisfied, click <code>Save</code>:</p>
+<p>Controllla il contenuto del <code>.gitignore</code>, se sei soddisfatto premi <code>Save</code>:</p>
 <p><img src="static/images/gitignore-rstudio2.png" style="width:75.0%" alt="Update .gitignore" /></p>
 <hr />
 </div>
-<div id="make-commits" class="section level2" number="2.5">
-<h2 number="2.5"><span class="header-section-number">2.5</span> Make commits</h2>
-<p>As the <code>.gitignore</code> is a newly added file (or at least adapted), we can <code>commit</code> this change and provide a commit message:</p>
+<div id="fa-il-commit" class="section level2" number="2.5">
+<h2 number="2.5"><span class="header-section-number">2.5</span> Fa il <strong>commit</strong></h2>
+<p>Visto che il <code>.gitignore</code> è stato modificato git ha registrato un cambiamento nella <span style="color: green;">repo locale</span> che non è nella <span style="color: red;">repo online</span> di GitHub. Allora data la nuova aaggiunta/modifica del presistente <code>.gitignore</code> possiamo fare il <code>commit</code> di questo cambiamento e fornire un messagio ce spieghi il cambiamento fatto.</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ol style="list-style-type: decimal">
-<li>Go to <code>git</code> pane</li>
-<li>Check the box next to <code>.gitignore</code></li>
-<li>Click <code>Commit</code></li>
-<li>Add a <code>commit message</code> and click commit</li>
-<li>Click <code>Close</code> to remove the commit summary</li>
+<li>Vai sul <code>git</code> pane</li>
+<li>Spunta la casella accanto a <code>.gitignore</code></li>
+<li>Clicca <code>Commit</code></li>
+<li>Aggiungi un messaggio premendo su <code>commit message</code> e clicca commit</li>
+<li>Clicca <code>Close</code> per rimuovere il summary del commit</li>
 </ol>
 </div>
 <hr />
-<p>The status of the <code>.gitignore</code> file before the file was committed, with the yellow question mark saying that the file is yet unknown to Git:</p>
+<p>Adesso lo stato del <code>.gitignore</code> prima che il file venga committato è giallo con un punto interrogativo accanto. Questo significa che Git ha notato un cambiamento/aggiunta di quel file.</p>
 <p><img src="static/images/commit-rstudio1.png" style="width:75.0%" alt="Local commit" /></p>
 <hr />
-<p>By checking the box and clicking commit, we add the file and commit this addition with a commit message:</p>
+<p>Spuntando la casella accanto al <code>.gitignore</code> (oppure selezionandolo e premendo invio) e cliccando su commit si apre una finestra di dialogo dove viene chiesto a destra di inserire un messaggio di commit. (rivdere) Ogni messaggio di commit ha un header, cioè un titolo dove viene spesso riassunto il cuore di quello che è stato fatto per poi lasciare uno spazio bianco sotto l’headere ed elencare con un elenco puntato e numerato quali sono materialemente le operazioni fatte o il motivo. Il messaggio di commit è una vera e propria <strong>arte</strong> deve essere <em>semplice</em>, <em>chiaro</em> e sempre nell’ottica di far capire ad un terzo, molto probabilmente te nel futuro cosa tu abbia fatto e perchè lo hai fatto. <a href="https://chris.beams.io/posts/git-commit/">Questo post</a> può aiutarti a scrivere in maniera più efficace un commit seguendo alcune linee guida. Alcuni SCM (non quello intgrato nella IDE di RStudio) prevedono la possibilità di creare un template per il commit, cosicchè ogni volta che un file o un gruppo di files viene committato un template di commit viene generato e il processo di revisione del codice è meglio struttuato e più riproducibile. Dietro questa semplice operazione ci sono</p>
 <p><img src="static/images/commit-rstudio2.png" style="width:75.0%" alt="Local commit" /></p>
 <hr />
-<p>We get a small technical overview of the alterations we provided with this commit:</p>
+<p>Dopo questo abbiamo una piccola panoramica tecnica di quello che sta succedendo (quello che è stato aggiunto, quello che è stato tolto, quello che è stato modificato)</p>
 <p><img src="static/images/commit-rstudio3.png" style="width:75.0%" alt="Local commit" /></p>
 <hr />
-<p>It is good practice to <strong>commit often</strong>, so you will do this a lot. Each commit should only contain changes related to a single problem/element/… Each commit is a snapshot of your project and the messages describe the story of your project.</p>
-<p>As documentation is crucial, providing some more information in the <code>README.md</code> file will help others (and yourself in a couple of months/years) to understand the aim of the project. Just as we adapted the <code>README.md</code> file online earlier, we can do the same locally:</p>
+<p>E buona pratica <strong>committare spesso</strong>. Questo permette di spezzettare la logica dello sviluppo del software in tante e piccole singole operazioni su cui si può intervenire in maniera stagna. L’uso frequente di commits permette anche di evitare alcuni probelmi comuni sia di GitHub che di RStudio. Un problema è il tempo di attesa del commit, infatti il git pane di RStudio è molto pratico ma non è ottimizzato. Fare un commit molto grosso con tanti files potrebbe richiedere molto tempo e in alcuni casi git potrebbe sputare un errore. (related issue)</p>
+<p>La documentazione è un aspetto cruciale dello sviluppo di ogni software, prima ancora che per gli altri <strong>per te stesso</strong>. Il file <code>README.md</code> ti aiuta a capire lo scopo del progetto. Adesso possiamo provare a modificare il file <code>README.md</code> localmente e procedere alla stessa maniera.</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ol style="list-style-type: decimal">
-<li>Update the <code>README.md</code> inside Rstudio</li>
-<li>Commit your changes</li>
+<li>Aggiorna il file <code>README.md</code> direttamente da dentro RStudio</li>
+<li>Commit i cambiamenti</li>
 </ol>
 </div>
 <hr />
-<p>Remark the reporting of the changed lines linked to this commit with green and red colors:</p>
+<p>Ricorda che il report dei cambiamenti nel panel in basso barra in rosso le linee di codice che sono sparite dal file e in verde quelle aggiunte o modificate:</p>
 <p><img src="static/images/commit-rstudio4.png" style="width:75.0%" alt="Local commit" /></p>
 <hr />
 </div>
-<div id="push-the-changes-to-github" class="section level2" number="2.6">
-<h2 number="2.6"><span class="header-section-number">2.6</span> Push the changes to GitHub</h2>
-<p>Note that the <code>git</code> pane displays <em>your branch is ahead of ‘origin/master’ by 2 commits</em>. This is actually providing you a warning message that there is no backup of these two commits! In order to store these changes on GitHub as well, we have to <code>push</code> our changes to GitHub:</p>
+<div id="push-dei-cambiamenti-su-github" class="section level2" number="2.6">
+<h2 number="2.6"><span class="header-section-number">2.6</span> Push dei cambiamenti su GitHub</h2>
+<p>Nota che <code>git</code> ti avverte che <em>your branch is ahead of ‘origin/master’ by 2 commits</em>, questo significa che ancora i tuoi cambiamenti sono in fase di stage, devono ancora essere trasmessi alla repo di GitHub online. Per trasmettere i cambiamenti a GitHub premi <code>push</code>.</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ol style="list-style-type: decimal">
-<li>Click <code>push</code> in the <code>git</code> pane</li>
-<li>Go to your repository on GitHub to verify the commits and file contents</li>
+<li>Clicca <code>push</code> nel <code>git</code> pane</li>
+<li>Vai su GitHub all’indirizzo della tua repository e verifica il commit, il messaggio e i cambiamenti</li>
 </ol>
 </div>
 <hr />
