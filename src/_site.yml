@@ -21,6 +21,6 @@ navbar:
       href: https://github.com/NiccoloSalvini/git-course
 output:
   html_document:
-    theme: yeti
+    theme: cosmo
     df_print: paged
     css: "static/css/git_intro.css"

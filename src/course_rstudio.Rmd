@@ -12,13 +12,40 @@ output:
     fig_caption: false
 ---
 
+
+```{r setup, include=F}
+
+library(rvest, quietly = T, warn.conflicts = F)
+library(magrittr, quietly = T, warn.conflicts = F)
+
+```
+
+
+
 # Setup
 
 Prima di cominciare questo tutorial assumo che:
 
-* tu abbia [R](https://lib.ugent.be/CRAN/) e [Rstudio](https://www.rstudio.com/products/rstudio/download/) installati e funzionanti sul computer.
-* tu abbia [git](https://git-scm.com/) installato sul computer e puntanto sul file `git.exe`
-* tu abbia un [account GitHub](https://github.com/join), pensaci al tuo nome due secondi in più, è sempre possibile cambiarlo ma incorri nei [seguenti problemi](https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/changing-your-github-username)
+* tu abbia [R](https://lib.ugent.be/CRAN/) e [Rstudio](https://www.rstudio.com/products/rstudio/download/) installati e funzionanti sul computer (~ 5 min).
+* tu abbia [git](https://git-scm.com/) installato sul computer e puntanto sul file `git.exe`. (~ 3 min.)
+
+Per verificare la corretta installazione di Git entra su RStudio, poi apri il terminale i.e. "Terminal", Si trova accanto alla "Console" da dove esegui di solito i comandi in R. Nel caso tu avessi difficoltà a trovarlo su Windows premi contemporamente Alt+Shift+M, su Mac Cmd+Shift+M (da verificare). Se ancora non vedi il terminale Shift+Alt+T (Tools->Terminal->Move Focus to Terminal). 
+Una volt sul terminale esequi i seguenti comandi:
+
+```
+which git
+```
+
+Dovesti vedere come risposta del terminale qualcosa come:  **/usr/local/bin/git**.
+Successivamente esegui:
+
+```
+git --version
+```
+L'ultima versione disponibile è la `r read_html("https://git-scm.com/") %>%  html_nodes(css = ".version") %>%  html_text(trim = T)`. Corrisponde a quella installata? Se sì procedi. Se non corrisponde o qualche altro errore compare sentiti libero di mandarmi una [me medesimo](mailto:niccolo.salvini27@gmail.com).
+
+
+* tu abbia un [account GitHub](https://github.com/join), pensaci al tuo nome due secondi in più, è sempre possibile cambiarlo ma incorri nei [seguenti problemi](https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/changing-your-github-username) (~ 1 min.).
 
 ---
 
@@ -28,90 +55,104 @@ Di solito si comincia inizializzando una repository su GitHub, nel gergo tecnico
 
 ---
 
-## Create a repository
+## Crea una repo (che sta per _repo_ sitory)
 
-A new project starts with a new repository, which can be easily setup using [GitHub.com](https://github.com).
+Abituati a pensarla sempre in questi termini: **Un nuovo progetto comincia sempre con una nuova repo**. 
+Cominciare una nuova da [GitHub.com](https://github.com). è molto semplice:
 
 <div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-1. Go to [GitHub](https://github.com) and login
-2. Follow [this tutorial](https://help.github.com/articles/create-a-repo/) to create a repo and [create your first (online) commit](https://help.github.com/articles/create-a-repo/#commit-your-first-change) to your repository
+<h4>Esercizio:</h4>
+1. vai su [GitHub](https://github.com) ed esegui il login
+2. segui [questo tutorial](https://help.github.com/articles/create-a-repo/) dalla documentazione originale per creare una repo [crea il tuo primo commit](https://help.github.com/articles/create-a-repo/#commit-your-first-change) alla tua repository
 </div>
 
 ---
 
-For this first exercise, we have chosen to create a dummy repository:
+Per questo esercizio abbiamo deciso di creare una _dummy repo_.
 
-![Create a repo](./static/images/create-a-repo.png)
-(*you do not have to copy the example, choose any name :-)*)
-
----
-
-The resulting repository layout will look like this:
-
-![Result of creating a repo](./static/images/create-repo-result.png)
-(*Remember that there is a `Clone or Download` button on this page!*)
+![crea una repo](./static/images/create-a-repo.png)
+(*scegli il nome che vuoi, non sia mai che ti suggerisca cosa fare!*)
 
 ---
 
-## Git for RStudio configuration
+Già fatto `r emo::ji("smile")`. Il risultato finale è il seguente:
 
-As we will mainly use Git(Hub) to manage R/Rmarkdown scripts, the existing integration of Rstudio and Git provides a convenient way to add version control. 
 
-### Installation
+![il risulato della creazione di una repo](./static/images/create-repo-result.png)
 
-Just to make sure, in case you did not already installed Git and Rstudio:
 
-<div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-1. [Download](https://git-scm.com/downloads) and install Git
-1. Install [RStudio](https://inbo.github.io/tutorials/installation-RStudio-admin.html)
-</div>
-
-When installed properly:
-
-<div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-1. Open [RStudio](https://inbo.github.io/tutorials/installation-RStudio-user.html)
-</div>
+:::bulb
+**Ricordati il tasto verde code, ci sarà molto utile più tardi!**
+:::
 
 ---
 
-### Configuration
+## La configurazione di Git per RStudio
 
-In order to start using version control in Rstudio, we have to do some configuration the first time. You only need to do this configuration once.
+Dato il fatto che useremo Git(Hub) per amministrare esclusivamente scripts R/Rmarkdown, l'integrazione di RStudio con Git fa al caso nostro fornendo un'interfaccia facile e intuitiva come VCS (**V**ersion **C**ontrol **S**ystem).
+Ci sono altri git clients, detti **SCM**, di versioning, alcuni totalmente a pagamento, alcuni _freemium_ con limitazioni e altri open source, [qui una lista completa](https://git-scm.com/downloads/guis):
+Alcuni sperimentati:
 
-First of all, tell RStudio where to find the Git installation. 
+* [gitKraken](https://www.gitkraken.com/) GUI notevole e veloce, con addons molti addons come Trello o Jira (supporta Bitbucket e Gitlab, omologhi di GitHub). permette di costruire linee del tempo per tenere traccia di traguardi nello sviluppo. permette di avere una lavagna di Kaban per asseganre (nello stile di Trello) obiettivi ai collaboratori. sviluppo su repo private non concesso. 
+* [fork](https://git-fork.com/) Vincenzo può aiutarmi @vicnardelli
+
+
+### Installazione
+
+:::warn
+**Sii assolutamente sicuro che tu abbia installato i requisiti:**
+:::
+
+
+<!-- <div class="bs-callout bs-callout-exercise"> -->
+<!-- <h4>Esercizio:</h4> -->
+<!-- 1. [Download](https://git-scm.com/downloads) Git -->
+<!-- 1. Installa [RStudio](https://inbo.github.io/tutorials/installation-RStudio-admin.html) -->
+<!-- </div> -->
+
+Quando sono installate correttamente allora:
 
 <div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-1. Go to `Tools > Global Options`
-1. Click on `Git/SVN`.
-1. Check *Enable version control interface for RStudio projects*
-1. Set the path to the Git executable that you installed*
-1. Check *use Git bash as shell for Git projects*
+<h4>Esercizio:</h4>
+1. Apri [RStudio](https://inbo.github.io/tutorials/installation-RStudio-user.html)
 </div>
 
 ---
 
-*If you do not know where Git is installed, open your command line (`cmd` in Start for Windows user). When the cmd is open, type `where git` and hit enter. The path should be something like: `C:/Program Files (x86)/Git/bin/git.exe`. Still in trouble? Check [this out](http://happygitwithr.com/rstudio-see-git.html#tell-rstudio-where-to-find-git).
+### Configurazione (potrebbe essere diversa)
+
+Per cominciare ad utilizzare lo strumento di versioning dobbiamo impostare una configurazione, fortunatamente lo facciamo _una tantum_.
+
+Per prima cosa è necessario indicare ad RStudio dove si trova l'executable di Git (il file tramite cui Git esegue i comandi).
+
+<div class="bs-callout bs-callout-exercise">
+<h4>Esercizio:</h4>
+1. Vai su`Tools > Global Options`
+1. Clicca su `Git/SVN`.
+1. Assicurati che: *Enable version control interface for RStudio projects*
+1. Imposta il path che punta diretto all'executable di git (dove c'è l'installazione)
+1. Assicurati che *use Git bash as shell for Git projects*
+</div>
+
+---
+
+Se non ti ricordi o non sai dove hai installato git e l'eseguibile di git (il **punto 4** dei passaggi precedenti) allora apri il terminale da windows con WIN+R e scrivi `cmd`, premi enter (su Mac apri Bash). Aperto il terminale scrivi `where git`, la rispota ti dirà dove si trova il file. confronta la tua risposta con la mia: `C:/Program Files (x86)/Git/bin/git.exe`, è simile? Se sì procedi. Se invece riscontri ancora problemi con la ricerca dai un'occhiata [a questo](http://happygitwithr.com/rstudio-see-git.html#tell-rstudio-where-to-find-git).
 
 ![RStudio setup for git](./static/images/RStudio-setup-git.png){width=50%}
 
 ---
-
-Next, we have to tell Github who we actually are, in order to make the connection to the online account. To do so, Git requires the configuration of your Github (!) username and GitHub email:
+Adesso dobbiamo dire a GitHub chi siamo, con l'obiettivo di stabilire una connessione all'account online. Per farlo git ha bisogno delle credenziali di GitHub, i.e. username e GitHub email:
 
 <div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-1. Go to `Tools > Shell` to open the Git Shell
-1. In the shell, type the following command and enter:
+<h4>Esercizio:</h4>
+1. vai su `Tools > Shell` e apri shell
+1. nella shell, scrivi i seguenti comandi e premi invio.
 ```
 git config --global user.name "mygithubusername"
 ```
 1. Still in the shell, type the following command and enter:
 ```
-git config --global user.email "my.name@inbo.be"
+git config --global user.email "my.name@gmail.com"
 ```
 </div>
 
