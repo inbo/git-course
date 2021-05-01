@@ -150,7 +150,7 @@ Adesso dobbiamo dire a GitHub chi siamo, con l'obiettivo di stabilire una connes
 ```
 git config --global user.name "mygithubusername"
 ```
-1. Still in the shell, type the following command and enter:
+1. Sempre nella shell scrivi il seguente comando completando con la mail di registrazione e premi invio:
 ```
 git config --global user.email "my.name@gmail.com"
 ```
@@ -160,27 +160,28 @@ git config --global user.email "my.name@gmail.com"
 
 ![RStudio setup git shell](./static/images/Rstudio-GitShell.png){width=75%}
 
-Use your **GitHub username**! You can check if you're set up correctly by typing  `git config --global --list` in the same shell.
 
-When successful, the configuration is done. Congratulations!
+Mi raccomando usa il tuo **username GitHub**! Per verificare che tutta la configurazione sia andata a buon fine esegui questo comando: `git config --global --list`
+
+Se la configirazione ha avuto esito positivo allora congratulazioni, il tuo setup è finito! 👍
 
 ---
 
-## Clone a repo to work locally
+## Clona una repo per lavorarci in locale
 
-We have initiated a repository online and a working Git within Rstudio. Hence, we can start working on the code locally by downloading the repository to our computer. Rstudio provides a convenient way to start a new project as a Git repository.
+Prima abbiamo inizializzato una repo online e abbiamo configurato git per cooperare con RStudio. Adesso possiamo cominciare a lavorare sul codice localmente scaricando la repo sul laptop. RStudio provvede ad occuparsi di tutto questo in una maniera molto conveniente e facile. 
 
 <div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-1. On your GitHub repository page, copy the repository **HTTPS** url (*remember the green button?*)
-1. In Rstudio, `File > New Project...`, select `Version Control`, choose `Git`
-1. Provide the repository HTTPS link you just copied (the project name will be filled in as well)
-1. Browse to desired directory where you will manage your project/code
+<h4>Esercizio:</h4>
+1. vai sulla pagina GitHub della tua nuova repo copiando l'url **HTTPS** (*ricordi il bottone di prima?*)
+1. in Rstudio prosegui per `File > New Project...`, seleziona `Version Control` e scegli `Git`
+1. nella prima casella in alto, copia e incolla l'url **HTTPS** (in automatico il nome della cartella che contiene il progetto viene completata)
+1. naviga fino alla cartella copiata dove desideri mettere tutti i tuoi progetti/codici R.
 </div>
 
 --- 
 
-To get the https link, you need to click the green button and make sure to copy paste the link with as title `Clone with HTTPS`:
+Per avere l'indirizzo **HTTPS** di clone della repo é sufficiente cliccare sopra <span style="color: green;">code</span> e premere sul piccolo bottone accanto all'indirizzo per copiare su clipboard (in alternativa seleziona e copia tutto l'url).
 
 ![Copy the https link of a repo](./static/images/copy-repo-link.png){width=75%}
 
