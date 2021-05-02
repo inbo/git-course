@@ -11,7 +11,7 @@
 
 <meta name="author" content="Niccolò Salvini" />
 
-<meta name="date" content="2021-05-01" />
+<meta name="date" content="2021-05-02" />
 
 <title>Git attraverso RStudio</title>
 
@@ -26,8 +26,6 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
@@ -42,22 +40,98 @@
   ul.task-list{list-style: none;}
     </style>
 
+
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -366,17 +440,21 @@ div.tocify {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Home</a>
+  <a href="index.html">
+    <span class="fas fa-home"></span>
+     
+    Home
+  </a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Sessions
+    Parto da 0
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="course_rstudio.html">Rstudio</a>
+      <a href="course_rstudio.html">Su Rstudio</a>
     </li>
   </ul>
 </li>
@@ -414,7 +492,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Git attraverso RStudio</h1>
 <h4 class="author">Niccolò Salvini</h4>
-<h4 class="date">2021-05-01</h4>
+<h4 class="date">2021-05-02</h4>
 
 </div>
 
@@ -442,7 +520,14 @@ div.tocify {
 <hr />
 <div id="crea-una-repo-che-sta-per-repo-sitory" class="section level2" number="2.1">
 <h2 number="2.1"><span class="header-section-number">2.1</span> Crea una repo (che sta per <em>repo</em> sitory)</h2>
-<p>Abituati a pensarla sempre in questi termini: <strong>Un nuovo progetto comincia sempre con una nuova repo</strong>. Cominciare una nuova da <a href="https://github.com">GitHub.com</a>. è molto semplice:</p>
+<p>Abituati a pensarla sempre in questi termini:</p>
+<blockquote>
+<p>Un nuovo progetto comincia sempre con una nuova repo.</p>
+<footer>
+— Git Samurai
+</footer>
+</blockquote>
+<p>Cominciare una nuova repo direttamente da <a href="https://github.com">GitHub.com</a> è estremamente semplice:</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
 Esercizio:
@@ -467,8 +552,10 @@ Esercizio:
 <h2 number="2.2"><span class="header-section-number">2.2</span> La configurazione di Git per RStudio</h2>
 <p>Dato il fatto che useremo Git(Hub) per amministrare esclusivamente scripts R/Rmarkdown, l’integrazione di RStudio con Git fa al caso nostro fornendo un’interfaccia facile e intuitiva come VCS (<strong>V</strong>ersion <strong>C</strong>ontrol <strong>S</strong>ystem). Ci sono altri git clients, detti <strong>SCM</strong>, di versioning, alcuni totalmente a pagamento, alcuni <em>freemium</em> con limitazioni e altri open source, <a href="https://git-scm.com/downloads/guis">qui una lista completa</a>: Alcuni sperimentati:</p>
 <ul>
-<li><a href="https://www.gitkraken.com/">gitKraken</a> GUI notevole e veloce, con addons molti addons come Trello o Jira (supporta Bitbucket e Gitlab, omologhi di GitHub). permette di costruire linee del tempo per tenere traccia di traguardi nello sviluppo. permette di avere una lavagna di Kaban per asseganre (nello stile di Trello) obiettivi ai collaboratori. sviluppo su repo private non concesso.</li>
+<li><a href="https://www.gitkraken.com/">gitKraken</a> client notevole e veloce (lo utilizza chi scrive). Molti addons come Trello o Jira (supporta Bitbucket e Gitlab, omologhi di GitHub). Permette di costruire linee del tempo per tenere traccia di traguardi nello sviluppo. Permette di avere una lavagna di Kaban per assegnare (nello stile di Trello) obiettivi ai collaboratori. sviluppo su repo private non concesso. Possibilità di collaborazione direttamente su Kraken. Interoperabile, va bene per Windowws, Linux e MacOS.</li>
 <li><a href="https://git-fork.com/">fork</a> Vincenzo può aiutarmi <span class="citation">@vicnardelli</span></li>
+<li><a href="https://desktop.github.com/">GitHub Desktop</a></li>
+<li><a href="https://www.sourcetreeapp.com/">Sourcetree</a> gratis, perfetto per Windows, non per il resto dei sistemi operativi su cui fa fatica e commette errori che non vengomo risolti dai mantenitori del client.</li>
 </ul>
 <div id="installazione" class="section level3" number="2.2.1">
 <h3 number="2.2.1"><span class="header-section-number">2.2.1</span> Installazione</h3>
@@ -531,6 +618,14 @@ Esercizio:
 <p>Mi raccomando usa il tuo <strong>username GitHub</strong>! Per verificare che tutta la configurazione sia andata a buon fine esegui questo comando: <code>git config --global --list</code></p>
 <p>Se la configirazione ha avuto esito positivo allora congratulazioni, il tuo setup è finito! 👍</p>
 <hr />
+<p>Se ti trovi male con la configurazione da terminale recentemente il pacchetto <code>usethis</code> ha introdotto una serie di funzioni per interagire con Git e GitHub. Qui copriamo solo lo “handshake” tra Git e RStudio, ma molto copre molte alte operazioni di verisoning come la <strong>P</strong>ull <strong>R</strong>equest etc. una sezione sarà interamente dedicata al set up completo tramite <code>usethis</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Installa il pacchetto se necessario (solo una volta)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="do">## install.packages(&quot;usethis&quot;)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(usethis)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">use_git_config</span>(<span class="at">user.name =</span> <span class="st">&quot;Jane Doe&quot;</span>, <span class="at">user.email =</span> <span class="st">&quot;jane@example.org&quot;</span>)</span></code></pre></div>
+<p>Per verificare la corretta configurazione esegui lo stesso comando da terminale:</p>
+<pre><code>git config --global --list</code></pre>
 </div>
 </div>
 <div id="clona-una-repo-per-lavorarci-in-locale" class="section level2" number="2.3">
@@ -573,7 +668,7 @@ Esercizio:
 </div>
 <div id="gitignore" class="section level2" number="2.4">
 <h2 number="2.4"><span class="header-section-number">2.4</span> <code>.gitignore</code></h2>
-<p>Quando si inizia un nuovo progetto in RStudio, ma anche in Python e tanti altri linguaggi è utile (anche se non propio indispensabile) aggiungere il file <code>.gitignore</code> se non esiste già. E’ infatti possibile in fase di inizializzazione della repo online, direttamente da GitHub, creare il <code>.gitignore</code> default o custom (un’alternativa può essere copiarlo da qualcuno che sta esegiuendo un progetto simile al nostro e che presumiamo ne sappia più di noi). Il file <code>.gitignore</code> definisce tutti quei files che <strong>non</strong> devono finire nella repo online per diversi motivi, alcuni:</p>
+<p>Quando si inizia un nuovo progetto in RStudio, ma anche in Python e tanti altri linguaggi è utile (anche se non propio indispensabile) aggiungere il file <code>.gitignore</code> se non esiste già. E’ infatti possibile in fase di inizializzazione della repo online, direttamente da GitHub, creare il <code>.gitignore</code> default o custom (se hai difficoltà a comporre il file <code>.gitignore</code> assicurati di trovare un progetto simile al tu su GitHub e copia il contenuto, in alternativa naviga in <a href="https://www.toptal.com/developers/gitignore">questo strumento online gratuito</a> speficificando i software che utilizzi e in automatico questo comporrà il perfetto <code>.gitignore</code>). Il file <code>.gitignore</code> definisce tutti quei files che <strong>non</strong> devono finire nella repo online per diversi motivi, eccone alcuni:</p>
 <ul>
 <li>ci sono delle credenziali segrete <code>.Renviron</code> o<code>.Rprofile</code> ( TODO: link a come storare credenziali segrete in R)</li>
 <li>files di sessione <code>.RData</code></li>
@@ -670,137 +765,147 @@ Esercizio:
 </ol>
 </div>
 <hr />
-<p>Rstudio gives you a warning about the status of your local commits versus those stored on GitHub:</p>
+<p>RStudio successivamente ti avverte sullo stato dei tuoi commits locali rispetto a quelli mandati <code>push</code>ed a GitHub:</p>
 <p><img src="static/images/push-rstudio1.png" style="width:75.0%" alt="Push" /></p>
 <hr />
-<p>Is the <code>README.md</code> adapted? Where do you find the Commits overview online?</p>
+<p>Adesso su GitHub il <code>README.md</code> è aggiornato? Dove si trova la panoramica dei commits sulla repo online?</p>
 <p><img src="static/images/local-commit-on-github.png" style="width:75.0%" alt="Verify your commits on GitHub" /></p>
 <hr />
 </div>
-<div id="additional-configuration---store-your-password" class="section level2" number="2.7">
-<h2 number="2.7"><span class="header-section-number">2.7</span> Additional configuration - store your password</h2>
-<p>It is a tedious task to retype the password each time you want to <code>push</code> anything to GitHub. Luckily, you can store your credentials when using https:</p>
+<div id="configurazioni-addizionali---metti-da-parte-la-password" class="section level2" number="2.7">
+<h2 number="2.7"><span class="header-section-number">2.7</span> Configurazioni Addizionali - metti da parte la password 🔑</h2>
+<p>Non è per caso noioso tutte le volte rimettere la propria password ogni volta che viene <code>push</code>ato qualcosa alla repo?<br />
+Fortunatamente così come per <em>Username</em> e <em>mail</em>, anche con la password è possibile fare la stessa cosa usando il protocollo sicuro <strong>HTTPS</strong>.</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ol style="list-style-type: decimal">
-<li>Click on the <code>more</code> button in the <code>git</code> pane and select <code>Shell</code></li>
-<li>Type <code>git config --global credential.helper store</code></li>
-<li>Type <code>exit</code> to quit the shell</li>
+<li>Clicca su <code>More</code> nel <code>git</code> pane e seleziona <code>Shell</code></li>
+<li>Scrivi <code>git config --global credential.helper store</code> e premi invio</li>
+<li>Scrivi <code>exit</code> e premi invio per uscire dalla shell</li>
 </ol>
 </div>
-<p>The next time <code>git</code> needs your credentials, it will ask them <strong>one more time and store them</strong>!</p>
+<p>La prossima volta che <code>git</code> avrà bisogno delle tue credenziali <strong>te le chiederà solo una volta</strong> e le manterrà per tutte le operazioni successive.</p>
 <hr />
-<p>The more button has a <code>wheel</code> symbol:</p>
+<p>Il bottone “More” ha il simbolo di un <strong>ingranaggio</strong> ⚙️:</p>
 <p><img src="static/images/https-credentials-rstudio1.png" style="width:75.0%" alt="Store credentials" /></p>
 <hr />
 </div>
-<div id="create-logical-commits" class="section level2" number="2.8">
-<h2 number="2.8"><span class="header-section-number">2.8</span> Create logical commits</h2>
-<p>As mentioned earlier, you should commit often and make sure each commit links to a specific change/problem. Sometimes, this means that you have to split the additions in a single file into two individual commits. Rstudio provides the interface to include specific lines of code into a commit message:</p>
+<div id="crea-un-commit-logico" class="section level2" number="2.8">
+<h2 number="2.8"><span class="header-section-number">2.8</span> Crea un commit logico</h2>
+<p>Come anticipato prima, la buona pratica di sviluppo di software prevede di committare spesso e mappare in modo chiaro e sintetico la relazione tra problema da risolto e codice cambiato/aggiunto. Tuttavia alcune volte questo prevede che l’aggiunta di cambiamenti alla codebase avvenga in due diversi commits. L’interfaccia di RStudio include anche la possibilità di specificare qualche linea di codice nel messagio del commit:</p>
 <p><img src="static/images/logical-commit-rstudio.png" style="width:75.0%" alt="Logical commit 1" /></p>
 <hr />
-<p>To summarize, the following actions can be executed:</p>
+<p>Per riassumere, le diverse fasi che intercorrono tra una operazione di commit e la successiva possono essere:</p>
 <ul>
-<li><code>stage xyz</code>: add the xyz from the commit</li>
-<li><code>unstage xyz</code>: remove the xyz from the commit</li>
-<li><code>discard xyz</code>: revert the changes in the xyz (be careful, can’t be undone!)</li>
+<li><code>stage xyz</code>: aggiungi xyz dal commit</li>
+<li><code>unstage xyz</code>: rimuovi xyz dal commit</li>
+<li><code>discard xyz</code>: revert (ritorna indietro) rispetto ai cambiamenti su xyz ( ⚠️ stai attento, questo non può essere riportato indietro! ⚠️ )</li>
 </ul>
-<p>and <code>xyz</code> can be</p>
+<p>E <code>xyz</code> può essere</p>
 <ul>
-<li>a single <code>line</code></li>
-<li>a <code>selection</code> of lines</li>
-<li>a <code>chunk</code>
+<li>una <code>linea</code> singola</li>
+<li>una <code>selezione</code> di linee</li>
+<li>un <code>chunk</code> di codice
 <ul>
-<li>RStudio will automatically split the changes in chunks</li>
-<li>chunks are defined by 10 unchanged lines between changes</li>
+<li>RStudio si occuperà di spezzare i cambiamenti in più chunks</li>
+<li>I chunks sono definiti come 10 linee di codice non cambiate tra gli effettivi cambiamenti</li>
 </ul></li>
 </ul>
 <hr />
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ol style="list-style-type: decimal">
-<li>Make 2 unrelated changes to your <code>README.md</code> locally</li>
-<li>Create one <code>commit</code> for each change:
+<li>Effettua due differenti cambiamenti al <code>README.md</code> localmente</li>
+<li>Crea un <code>commit</code> per ogni cambiamento tale che:
 <ol style="list-style-type: decimal">
-<li>Select the changes you want to commit and click <code>stage selection</code></li>
-<li>Add a <code>commit message</code> and click <code>Commit</code></li>
+<li>Seleziona il cambiamento e mettilo in <code>stage</code></li>
+<li>Aggiungi un messaggio di <code>commit</code> e clicca su <code>Commit</code></li>
 </ol></li>
-<li>Do NOT push (yet)</li>
+<li>non <code>Push</code>are (ancora…)</li>
 </ol>
 </div>
 <hr />
 </div>
-<div id="create-a-conflict" class="section level2" number="2.9">
-<h2 number="2.9"><span class="header-section-number">2.9</span> Create a conflict!</h2>
-<p>Sometimes, conflicts will appear. Maybe because a collaborator was working on exactly the same lines of code or because of a mistake in your workflow,… No worries, we’ll learn you how to fix conflicts by initiating one.</p>
+<div id="crea-un-conflitto" class="section level2" number="2.9">
+<h2 number="2.9"><span class="header-section-number">2.9</span> Crea un Conflitto</h2>
+<p>Alcune volte accade, soprattuto in ambienti molto collaborativi o con tanti contributori che più collaboratori lavorino sulle stesse linee di codice. Non c’è da preoccuparsi, adesso impariamo ad amministrare i conflitti e risolverli. Lo faremi creandone uno.</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
-<p>Update your <code>README.md</code> online on GitHub, on the exact same line you just edited locally in the previous exercise.</p>
+<p>Aggiorna il <code>README.md</code> direttamente online su GitHub, sulla stessa identica linea che hai cambiato nell’esercizio precedente.</p>
 </div>
 <hr />
-<p>If you do not remember how to change files online, check again <a href="https://help.github.com/articles/create-a-repo/#commit-your-first-change">this online tutorial</a>. Check the result of your online commit, similar to:</p>
+<p>Se non ti ricordi o non sai come si fa un cambiamento online, per favore controlla <a href="https://help.github.com/articles/create-a-repo/#commit-your-first-change">questo tutorial</a>. Guarda poi i risultati online del commit. Ricorda che non c’è bisogno di spingere i cambiamenti <code>Push</code>ando il commit, siamo già online, non serve, infattic contestualmente <code>Push</code>ando cambia immediatamente il contenuto della repo.</p>
 <p><img src="static/images/commit-to-create-conflict.png" style="width:75.0%" alt="Commit to create conflict" /></p>
 <hr />
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
-<p>Back in Rstudio, try to push (click <code>push</code>) your local changes.</p>
+<p>Torna indietro su Rstudio e prova a spingere (click <code>push</code>) i cambiamenti locali.</p>
 </div>
-<hr />
-<p>Git provides a warning about the remote changes on the same repository:</p>
-<p><img src="static/images/conflict-rstudio1.png" style="width:75.0%" alt="Conflict" /></p>
-<hr />
+<table style="width:6%;">
+<colgroup>
+<col width="5%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Git ti aiuta avvertendoti che ci sono dei cambiamenti remoti ( <em>remote changes</em> ) sulla stessa repo.</td>
+</tr>
+<tr class="even">
+<td><img src="static/images/conflict-rstudio1.png" style="width:75.0%" alt="Conflict" /></td>
+</tr>
+</tbody>
+</table>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
-<p>Click <code>Pull</code> to download the changes from Github</p>
+<p>Clicca su <code>Pull</code> per tirare i cambiamenti dentro la tua repo GitHub (fare il download)</p>
 </div>
-<p>Git notices the <strong>CONFLICT</strong> and demands you what to do next:</p>
+<p>Git ti notifica un conflitto i.e. <strong>CONFLICT</strong> e ti chiede cosa vuoi fare, le operazioni da fare sono 2:</p>
 <ol style="list-style-type: decimal">
-<li>Fix conflicts</li>
-<li>Commit the result after fixing the conflict</li>
+<li>Metti a posto il conflitto</li>
+<li>Commit del risultato dopo aver messo a posto il conflitto</li>
 </ol>
 <p><img src="static/images/conflict-rstudio2.png" style="width:75.0%" alt="Conflict" /></p>
 <hr />
-<p>Keep calm and resolve conflict!</p>
-<p>Each conflict is always marked by the combination of the following elements:</p>
+<p>Adesso con calma va risolto il conflitto!</p>
+<p>Ogni conflitto è sempre evidenziato con la seguente sintassi:</p>
 <pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-your local code
+il tuo codice locale
 =======
-the code as it exists on Github
+il codice che esiste su GitHub
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master</code></pre>
-<p>To solve a conflict, you have to decide which version of the code you want to keep.</p>
+<p>Per risolvere il conflitto tdevi decidere quale delle due versioni ti convince di più viceversa quale vuoi scartare.</p>
 <hr />
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ol style="list-style-type: decimal">
-<li><p>Open <code>README.md</code> in RStudio:</p>
+<li><p>Apri il <code>README.md</code> in RStudio:</p>
 <pre><code> &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
  A simple analysis to visualize my favourite fruit colour.
  =======
  A simple analysis to discover my favourite fruit color.
  &gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master</code></pre></li>
-<li><p>Choose what you want to keep and only keep that code in the file:</p>
+<li><p>Scegli solo la <em>versione</em> preferita (in questo caso quella su GitHub):</p>
 <pre><code> A simple analysis to discover my favourite fruit colour.</code></pre></li>
-<li><p>Commit the adaptation with a commit message</p></li>
-<li><p>Click <code>Push</code> to update GitHub</p></li>
+<li><p>Committa il risultato</p></li>
+<li><p>Clicca su <code>Push</code> per aggiornare GitHub</p></li>
 </ol>
 </div>
-<p>If you encounter a conflict in the future, repeat this procedure.</p>
+<p>Se tu dovessi incontrare nuovi conflitti in futuro utilizza il semplice <em>modus operandi</em> che hai appena visto.</p>
 <hr />
 </div>
-<div id="add-a-new-file" class="section level2" number="2.10">
-<h2 number="2.10"><span class="header-section-number">2.10</span> Add a new file</h2>
+<div id="aggiungi-un-nuovoi-file" class="section level2" number="2.10">
+<h2 number="2.10"><span class="header-section-number">2.10</span> Aggiungi un nuovoi file</h2>
 <p>During a project, new files will be added to the project folder, which need to be version controlled as well. New directories and files can be added and committed, just like any other adaptation.</p>
 <p>By clicking the box next to a file, the file is staged (i.e. ready to be committed). Staging a new directory will stage all files in the directory. However, you can not stage empty directories!</p>
 <div class="bs-callout bs-callout-exercise">

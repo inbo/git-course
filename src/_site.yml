@@ -6,9 +6,10 @@ navbar:
   left:
     - text: "Home"
       href: index.html
+      icon: fa-home
     - text: "Parto da 0"
       menu:
-        - text: "Rstudio"
+        - text: "Su Rstudio"
           href: course_rstudio.html
     - text: "Workflows"
       menu:
@@ -22,5 +23,7 @@ navbar:
 output:
   html_document:
     theme: cosmo
+    highlight: tango
     df_print: paged
     css: "static/css/git_intro.css"
+    

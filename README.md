@@ -1,7 +1,7 @@
 # Git & GitHub con R 
 
 <p align="center">
-<img src="src/static/images/gattaccio.jpg" width="533" height="400"/>
+<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="533" height="400"/>
 </p>
 
 ## Let's Git started...
@@ -82,6 +82,10 @@ posts:
 
 * [An introduction to Git and how to use it with RStudio](https://r-bio.github.io/intro-git-rstudio/) un'altra grande risorsa che mira all'essenziale. La parte delle PR (Pull Requests) ricalca quella del post.
 * [How to Use Git/GitHub with R](https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/) una risorsa valida con annessiu tutorial. La miglior parte è quella iniziale.
+
+style:
+
+* [rstudio4edu](https://rstudio4edu.github.io/rstudio4edu-book/) aggiungi stile ai documenti R Markdown.
 
 
 <!--- metti script che richiama i contributori e gli autori tramite API -->
