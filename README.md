@@ -1,7 +1,7 @@
 # Git & GitHub con R 
 
 <p align="center">
-<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="533" height="400"/>
+<img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="512" height="512"/>
 </p>
 
 ## Let's Git started...
@@ -86,6 +86,7 @@ posts:
 style:
 
 * [rstudio4edu](https://rstudio4edu.github.io/rstudio4edu-book/) aggiungi stile ai documenti R Markdown.
+* [STA210-Sp19](https://github.com/STA210-Sp19/website) by Maria Tackett [@matackett](https://github.com/matackett) (Duke University) for some CSS and inspiration. The most awesome STAT course hosted on GitHub.
 
 
 <!--- metti script che richiama i contributori e gli autori tramite API -->

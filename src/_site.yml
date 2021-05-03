@@ -26,4 +26,8 @@ output:
     highlight: tango
     df_print: paged
     css: "static/css/git_intro.css"
+    includes:
+      in_header: header.html
+      after_body: footer.html
+    
     

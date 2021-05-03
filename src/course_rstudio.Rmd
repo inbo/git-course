@@ -20,8 +20,6 @@ library(magrittr, quietly = T, warn.conflicts = F)
 
 ```
 
-
-
 # Setup
 
 Prima di cominciare questo tutorial assumo che:
@@ -475,9 +473,9 @@ il tuo codice locale
 =======
 il codice che esiste su GitHub
 >>>>>>> origin/master
-```
+```x
 
-Per risolvere il conflitto tdevi decidere quale delle due versioni ti convince di più viceversa quale vuoi scartare.
+Per risolvere il conflitto devi decidere quale delle due versioni ti convince di più viceversa e quale vuoi scartare.
 
 ---
 
@@ -505,50 +503,60 @@ Se tu dovessi incontrare nuovi conflitti in futuro utilizza il semplice _modus o
 
 ## Aggiungi un nuovoi file
 
-During a project, new files will be added to the project folder, which need to be version controlled as well. New directories and files can be added and committed, just like any other adaptation. 
+Durante lo sviluppo di un progetto nuovi files sono introdotti, pure questi necessitano di un controllo di versione!.
+Le nuove cartelle insieme ai files possono essere aggiunte e successivamente committate, esattamente come ogni altro cambiamento.
 
-By clicking the box next to a file, the file is staged (i.e. ready to be committed). Staging a new directory will stage all files in the directory. However, you can not stage empty directories!
+Spuntando la casella accanto al nuovo file/cartella appena aggiunto viene messo in fase `stage`. Mettere in `stage` una nuova cartella metterà in automatico ogni file contenuto nella cartella. 
+Tuttavia RStudio non ti permetterà di mettere in `stage` una cartella vuota!
 
 <div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-1. Add a `fruits.csv` file in a `/data` subdirectory
-1. Link to this file in the `README.md` (use relative paths), mentioning the purpose of the file 
-1. Commit both changes (new data file and the `README.md` adaptation) in a single commit message
+<h4>Esercizio:</h4>
+1. Aggiungi il file `fruits.csv` all'interno di `/data` (subdirectory)
+1. Aggiungi un collegamento a file `README.md` (usando il path relativo), menzionando la funzione del file
+1. Adesso Commit tutti e due i cambiamenti (il nuovo file `fruits.csv`  e le modifiche apportate al `README.md`) in un singolo messaggiio di commit
 </div>
 ---
 
-Rstudio provides information about the status of the file:
+RStudio provvede ad informati circa lo status dei files
 
-- `README.md` file is adapted (blue *Modified* box)
-- `data/` is currently unknown to Git (yellow *Question mark* box)
+- `README.md` file è stato cambiato (*Modified* <span style="color: blue;">M</span>)
+- `data/` è per il momento sconosciuto a git (*Question mark* <span style="color: yellow;">?</span>)
 
 ![Add a file](./static/images/add-file-rstudio1.png){width=75%}
 
 ---
 
-Clicking both will make them ready to be committed. Remark, the `data/fruits.csv` file gets a green *Added* box:
+Sputando tutti e due li farà diventare pronti per il commit. Ricorda che `data/fruits.csv` diventa verde visto che viene <span style="color: green;">Aggiunto</span>:
 
 ![Add a file](./static/images/add-file-rstudio2.png){width=75%}
 
 ---
 
-## Adapt last commit
+## Adatta l'ultimo commit
 
-Sometimes, you just did a commit of some adaptations, but you see that you missed some lines of code that should be included in the same commit. Git provides the ability to `amend` a previous commit with some additional adaptations.
+Succede spesso che vengano committate linee di codice ma ci si dimentichi di altre o che quelle stesse necessitino una piccola revisione. Git provvede attraverso l'abilità `amend` modificando il precedente commit con gli adattamenti necessari.
 
 <div class="bs-callout bs-callout-exercise">
-<h4>Exercise:</h4>
-1. Make a change in `fruits.csv`
-1. `Commit` as usual but **check** `amend previous commit` in the commit message box
+<h4>Esercizio:</h4>
+1. Fai un cambiamento in `fruits.csv`
+1. `Commit` come sempre, ma **spunta** la casella `amend previous commit` (accanto al bottone `Commit`)
 </div>
 
-**Warning:** don't do this on commits that have been pushed. That would result in conflicts.
+**Attenzione:** don't do this on commits that have been pushed. That would result in conflicts.
 
 ---
 
 Next to the `Commit` box, the `amend` option is available:
 
 ![Add a file](./static/images/amend-commit-rstudio.png){width=75%}
+
+<!-- <div class="question">`  -->
+
+<!-- 1. Prima domanda? -->
+<!-- 1. Seconda domanda? -->
+
+<!-- </div>` -->
+
 
 ---
 

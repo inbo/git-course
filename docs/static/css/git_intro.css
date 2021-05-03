@@ -16,18 +16,6 @@ body {
 
 
 
-/*----------LOGO above TOC--------- */
-
-#TOC::before {
-  content: "";
-  display: block;
-  height: 200px;
-  margin: 2em 20px 40px 20px;
-  background-image: url("https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png");
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
 
 
 /*----------LOGO above TOC version 2--------- 
@@ -124,6 +112,7 @@ h1:before {
     margin-top: 1.2em;
 }
 
+
 /* Side menu */
 .list-group-item.active,
 .list-group-item.active:focus,
@@ -131,6 +120,48 @@ h1:before {
     background-color: #75aada;
     border-color: #75aada;
 }
+
+
+
+/* Side menu 
+
+.list-group-item {
+    color: #75aada;
+    font-size: 16px;
+}
+
+.list-group-item.active:focus,
+.list-group-item.active:hover {
+    background-color: #75aada;
+    border-color: #75aada;
+} 
+
+*/
+
+   /* TOC links 
+
+.list-group-item {
+    color: #75aada;
+    font-size: 16px;
+}
+
+
+.list-group-item.active {
+    color: #75aada;
+    background-color: white;
+    border: none;
+}
+
+
+
+.list-group-item:hover, 
+.list-group-item.active:hover {
+    color: #131b23;
+    background-color: white;
+}
+
+*/
+
 
 /* custom alert */
 .alert-danger {
@@ -203,3 +234,170 @@ h1:before {
 .bs-callout-exercise h4 {
     color: #356196;
 }
+
+
+/*----------LOGO above TOC--------- */
+
+#TOC::before {
+  content: "";
+  display: block;
+  height: 200px;
+  margin: 2em 20px 40px 20px;
+  background-image: url("https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/*--------------------------------------*/
+/*----------------- TOC ----------------*/
+/*--------------------------------------*/
+
+
+/* NO TOC on mobile */
+@media screen and (max-width: 767px){
+
+  .col-xs-12.col-sm-4.col-md-3 {
+    display: none;
+  }
+  
+  .top-text {
+    font-size: 25px;
+  }
+
+  .bottom-text {
+    font-size: 40px;
+  }
+  
+  
+}
+
+/* no border in TOC 
+
+position: -webkit-sticky;
+  position: sticky; 
+  top: 120px; /*Controls where TOC stops when sticky 
+  width: 100% !important;
+
+*/
+
+
+
+.tocify {
+  position: -webkit-sticky;
+  top: 120px;
+  border: none;
+}
+
+
+
+/*--------------------------------------*/
+/*----------------NAVBAR ---------------*/
+/*--------------------------------------*/
+
+
+.navbar-default {
+    background-color: #141c25f2;
+}
+
+.navbar-default .navbar-nav>.open>a, 
+.navbar-default .navbar-nav>.active>a, 
+a.dropdown-toggle:hover {
+  background-color: #141c25 !important;
+}
+
+/* Dropdown menu color */
+.navbar-default .dropdown-menu {
+  background-color: #141c25;
+}
+
+/* Dropdown menu hover color */
+  .navbar-default .dropdown-menu>li>a:hover {
+    background-color: #202831f2;
+  }
+
+/* Navbar Links when hovered*/
+.navbar-default .dropdown-menu>.active>a
+.navbar-default .navbar-nav>.active>a:hover, 
+.navbar-default .navbar-nav:hover, 
+.navbar-default .navbar-nav>li>a:hover, 
+a.navbar-brand:hover {
+  color: #ffffffab !important;
+  background-color: #141c25;
+}
+
+
+
+  /* -----------Question counter ---------*/
+  /* ------- da aggiungere alla fine di ogni capitolo ---------*/
+
+  body {
+    counter-reset: li;
+  }
+
+  .question ol {
+    /* Remove the default left padding */
+    padding-left: 0;
+  }
+
+  .question ol>li {
+    /* Create a positioning context */
+    position: relative;
+    /* Disable the normal item numbering */
+    list-style: none;
+    width: 90%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 0;
+    padding-left: 120px;
+  }
+
+  .question ol>li:before,
+  .question ol>p>li:before{
+    /* Use the counter as content */
+    content: "Question " counter(li) ": ";
+    /* Increment the counter by 1 */
+    counter-increment: li;
+    position: absolute;
+    color: #3d85bb;
+    left: -0.5px;
+    font-weight: bold;
+  }
+
+  .question ol ol {
+    counter-reset: subitem;
+  }
+  
+
+/*----------------------------*/
+/*------------FOOTER----------*/
+/*----------------------------*/
+
+/* Divider line above footer */
+.footer hr{
+  width: 100%;
+}
+
+.footer {
+  font-size: 16px;
+  color: #808080;
+  text-align: center;
+  width: 90%;
+  margin: 3rem auto;
+  font-weight: 300;
+}
+
+.footer.logo {
+  width: 25px;
+  margin: 0px !important;
+}
+
+.rstudio4edu-footer {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.tocify-extend-page {
+  height: 0px !important; /* Gets rid of extra space after footer*/
+}
+

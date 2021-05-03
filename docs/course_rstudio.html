@@ -30,6 +30,7 @@
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="static/images/logo_github_icon.ico"/>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -877,12 +878,8 @@ Esercizio:
 <hr />
 <p>Adesso con calma va risolto il conflitto!</p>
 <p>Ogni conflitto è sempre evidenziato con la seguente sintassi:</p>
-<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-il tuo codice locale
-=======
-il codice che esiste su GitHub
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master</code></pre>
-<p>Per risolvere il conflitto tdevi decidere quale delle due versioni ti convince di più viceversa quale vuoi scartare.</p>
+<p><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD il tuo codice locale ======= il codice che esiste su GitHub &gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master</code>x</p>
+<p>Per risolvere il conflitto devi decidere quale delle due versioni ti convince di più viceversa e quale vuoi scartare.</p>
 <hr />
 <div class="bs-callout bs-callout-exercise">
 <h4>
@@ -906,46 +903,50 @@ Esercizio:
 </div>
 <div id="aggiungi-un-nuovoi-file" class="section level2" number="2.10">
 <h2 number="2.10"><span class="header-section-number">2.10</span> Aggiungi un nuovoi file</h2>
-<p>During a project, new files will be added to the project folder, which need to be version controlled as well. New directories and files can be added and committed, just like any other adaptation.</p>
-<p>By clicking the box next to a file, the file is staged (i.e. ready to be committed). Staging a new directory will stage all files in the directory. However, you can not stage empty directories!</p>
+<p>Durante lo sviluppo di un progetto nuovi files sono introdotti, pure questi necessitano di un controllo di versione!. Le nuove cartelle insieme ai files possono essere aggiunte e successivamente committate, esattamente come ogni altro cambiamento.</p>
+<p>Spuntando la casella accanto al nuovo file/cartella appena aggiunto viene messo in fase <code>stage</code>. Mettere in <code>stage</code> una nuova cartella metterà in automatico ogni file contenuto nella cartella. Tuttavia RStudio non ti permetterà di mettere in <code>stage</code> una cartella vuota!</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ol style="list-style-type: decimal">
-<li>Add a <code>fruits.csv</code> file in a <code>/data</code> subdirectory</li>
-<li>Link to this file in the <code>README.md</code> (use relative paths), mentioning the purpose of the file</li>
-<li>Commit both changes (new data file and the <code>README.md</code> adaptation) in a single commit message</li>
+<li>Aggiungi il file <code>fruits.csv</code> all’interno di <code>/data</code> (subdirectory)</li>
+<li>Aggiungi un collegamento a file <code>README.md</code> (usando il path relativo), menzionando la funzione del file</li>
+<li>Adesso Commit tutti e due i cambiamenti (il nuovo file <code>fruits.csv</code> e le modifiche apportate al <code>README.md</code>) in un singolo messaggiio di commit</li>
 </ol>
 </div>
 <hr />
-<p>Rstudio provides information about the status of the file:</p>
+<p>RStudio provvede ad informati circa lo status dei files</p>
 <ul>
-<li><code>README.md</code> file is adapted (blue <em>Modified</em> box)</li>
-<li><code>data/</code> is currently unknown to Git (yellow <em>Question mark</em> box)</li>
+<li><code>README.md</code> file è stato cambiato (<em>Modified</em> <span style="color: blue;">M</span>)</li>
+<li><code>data/</code> è per il momento sconosciuto a git (<em>Question mark</em> <span style="color: yellow;">?</span>)</li>
 </ul>
 <p><img src="static/images/add-file-rstudio1.png" style="width:75.0%" alt="Add a file" /></p>
 <hr />
-<p>Clicking both will make them ready to be committed. Remark, the <code>data/fruits.csv</code> file gets a green <em>Added</em> box:</p>
+<p>Sputando tutti e due li farà diventare pronti per il commit. Ricorda che <code>data/fruits.csv</code> diventa verde visto che viene <span style="color: green;">Aggiunto</span>:</p>
 <p><img src="static/images/add-file-rstudio2.png" style="width:75.0%" alt="Add a file" /></p>
 <hr />
 </div>
-<div id="adapt-last-commit" class="section level2" number="2.11">
-<h2 number="2.11"><span class="header-section-number">2.11</span> Adapt last commit</h2>
-<p>Sometimes, you just did a commit of some adaptations, but you see that you missed some lines of code that should be included in the same commit. Git provides the ability to <code>amend</code> a previous commit with some additional adaptations.</p>
+<div id="adatta-lultimo-commit" class="section level2" number="2.11">
+<h2 number="2.11"><span class="header-section-number">2.11</span> Adatta l’ultimo commit</h2>
+<p>Succede spesso che vengano committate linee di codice ma ci si dimentichi di altre o che quelle stesse necessitino una piccola revisione. Git provvede attraverso l’abilità <code>amend</code> modificando il precedente commit con gli adattamenti necessari.</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ol style="list-style-type: decimal">
-<li>Make a change in <code>fruits.csv</code></li>
-<li><code>Commit</code> as usual but <strong>check</strong> <code>amend previous commit</code> in the commit message box</li>
+<li>Fai un cambiamento in <code>fruits.csv</code></li>
+<li><code>Commit</code> come sempre, ma <strong>spunta</strong> la casella <code>amend previous commit</code> (accanto al bottone <code>Commit</code>)</li>
 </ol>
 </div>
-<p><strong>Warning:</strong> don’t do this on commits that have been pushed. That would result in conflicts.</p>
+<p><strong>Attenzione:</strong> don’t do this on commits that have been pushed. That would result in conflicts.</p>
 <hr />
 <p>Next to the <code>Commit</code> box, the <code>amend</code> option is available:</p>
 <p><img src="static/images/amend-commit-rstudio.png" style="width:75.0%" alt="Add a file" /></p>
+<!-- <div class="question">`  -->
+<!-- 1. Prima domanda? -->
+<!-- 1. Seconda domanda? -->
+<!-- </div>` -->
 <hr />
 </div>
 <div id="view-history" class="section level2" number="2.12">
@@ -1241,6 +1242,17 @@ Exercise:
 <!-- Information combined at [INBO Git course](https://github.com/inbo/git-course). <br/>You're welcome to provide issues, pull requests,... -->
 </div>
 
+
+<div class="footer"> 
+  
+  <hr> 
+  
+  <p> <!--your custom footer text can go here--> </p>
+
+  <p class="git-course-footer">This site was created with an <a class="rstudio4edu-link" href="https://rstudio4edu.github.io/rstudio4edu-book/"> <img class="rstudio4edu-footer-logo" src="logo-mark-rstudio4edu.png">&nbsp;rstudio4edu</a> template.</p>
+
+
+</div>
 
 
 </div>
