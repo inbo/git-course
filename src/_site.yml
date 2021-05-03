@@ -9,6 +9,8 @@ navbar:
       icon: fa-home
     - text: "Parto da 0"
       menu:
+        - text: "Terminologia"
+          href: terminologia.html
         - text: "Su Rstudio"
           href: course_rstudio.html
     - text: "Workflows"

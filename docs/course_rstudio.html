@@ -11,7 +11,7 @@
 
 <meta name="author" content="Niccolò Salvini" />
 
-<meta name="date" content="2021-05-02" />
+<meta name="date" content="2021-05-03" />
 
 <title>Git attraverso RStudio</title>
 
@@ -493,7 +493,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Git attraverso RStudio</h1>
 <h4 class="author">Niccolò Salvini</h4>
-<h4 class="date">2021-05-02</h4>
+<h4 class="date">2021-05-03</h4>
 
 </div>
 
@@ -918,12 +918,12 @@ Esercizio:
 <hr />
 <p>RStudio provvede ad informati circa lo status dei files</p>
 <ul>
-<li><code>README.md</code> file è stato cambiato (<em>Modified</em> <span style="color: blue;">M</span>)</li>
+<li><code>README.md</code> file è stato cambiato (<span style="color: blue;">M</span>odified)</li>
 <li><code>data/</code> è per il momento sconosciuto a git (<em>Question mark</em> <span style="color: yellow;">?</span>)</li>
 </ul>
 <p><img src="static/images/add-file-rstudio1.png" style="width:75.0%" alt="Add a file" /></p>
 <hr />
-<p>Sputando tutti e due li farà diventare pronti per il commit. Ricorda che <code>data/fruits.csv</code> diventa verde visto che viene <span style="color: green;">Aggiunto</span>:</p>
+<p>Sputando tutti e due li farà diventare pronti per il commit. Ricorda che <code>data/fruits.csv</code> diventa verde visto che viene <span style="color: green;">A</span>ggiunto:</p>
 <p><img src="static/images/add-file-rstudio2.png" style="width:75.0%" alt="Add a file" /></p>
 <hr />
 </div>
@@ -939,9 +939,11 @@ Esercizio:
 <li><code>Commit</code> come sempre, ma <strong>spunta</strong> la casella <code>amend previous commit</code> (accanto al bottone <code>Commit</code>)</li>
 </ol>
 </div>
-<p><strong>Attenzione:</strong> don’t do this on commits that have been pushed. That would result in conflicts.</p>
+<div class="warn">
+<p><strong>Attenzione:</strong> non lo fare per commits che sono già stati pusha, altrimenti incorri in un conflitto!</p>
+</div>
 <hr />
-<p>Next to the <code>Commit</code> box, the <code>amend</code> option is available:</p>
+<p>Poi, accanto all bottone <code>Commit</code>, spunta l’opzione <code>amend</code> previous commit:</p>
 <p><img src="static/images/amend-commit-rstudio.png" style="width:75.0%" alt="Add a file" /></p>
 <!-- <div class="question">`  -->
 <!-- 1. Prima domanda? -->
@@ -949,166 +951,176 @@ Esercizio:
 <!-- </div>` -->
 <hr />
 </div>
-<div id="view-history" class="section level2" number="2.12">
-<h2 number="2.12"><span class="header-section-number">2.12</span> View history</h2>
-<p>One of the advantages of using version control with regular commits is that you get a history of your project. You can check the history (the series of commits) both online on GitHub as well as in Rstudio:</p>
+<div id="guarda-lhistory" class="section level2" number="2.12">
+<h2 number="2.12"><span class="header-section-number">2.12</span> Guarda l’history</h2>
+<p>Uno dei vantaggi di usare uno strumento di verion control con commits regolari è poter avere la cronostoria di tutto il lavoro sul progetto. E’ possibile infatti guardare l’History (la serie di commits) sia online che in locale su RStudio.</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ol style="list-style-type: decimal">
-<li>Within Rstudio, click on <code>history</code> in the <code>git</code> pane</li>
-<li>On the webpage of your repository, chek the commit list</li>
+<li>All’interno di RStudio clicca su <code>history</code>, nel <code>git</code> pane</li>
+<li>Sulla pagina della repo controlla la lista dei commits</li>
 </ol>
 </div>
 <hr />
-<p>Notice the presence of <code>History</code> twice in the following image:</p>
+<p>Nota la preseza di <code>History</code> due volte nella seguente immagine:</p>
 <ul>
-<li>As a separate pane (your R command history): this has nothing to do with Git</li>
-<li>Within the <code>git</code> pane (the history of your commit messages)</li>
+<li>Come pane separato (la storia di tutti i comandi R eseguiti nella sessione): non ha niente a che fare con Git ❌</li>
+<li>All’interno del <code>git</code> pane (la history dei commits) ✔️</li>
 </ul>
 <p><img src="static/images/history-rstudio1.png" style="width:75.0%" alt="View history" /></p>
 <hr />
-<p>You can click on each of the commits to verify the adaptations that were part of the specific commit:</p>
+<p>Clicca su ciascuno dei commits per vedere le modifiche apportate, tieni d’occhio in alto a sinistra il flusso dei commits.</p>
 <p><img src="static/images/history-rstudio2.png" style="width:75.0%" alt="View history" /></p>
 <hr />
 </div>
-<div id="create-a-branch-to-experiment" class="section level2" number="2.13">
-<h2 number="2.13"><span class="header-section-number">2.13</span> Create a branch to experiment</h2>
-<div id="how-to-make-a-new-branch" class="section level3" number="2.13.1">
-<h3 number="2.13.1"><span class="header-section-number">2.13.1</span> How to make a new branch?</h3>
-<p>It is good practice to ALWAYS work on (short-living) branches. It allows you to freely experiment until you are satisfied of the result and it ensures your <code>master</code> provides the last stable version of your analysis/project.</p>
+<div id="crea-un-branch" class="section level2" number="2.13">
+<h2 number="2.13"><span class="header-section-number">2.13</span> Crea un branch</h2>
+<div id="come-si-fa-un-nuovo-branch" class="section level3" number="2.13.1">
+<h3 number="2.13.1"><span class="header-section-number">2.13.1</span> Come si fa un nuovo branch?</h3>
+<p>E’ buona pratica <strong>tutte le volte</strong> che si lavora su codice proprio o altrui lavorare su branches <em>a scadenza</em>. Questo ti permette di sperimentare liberamente finchè non sei soddisfatto, senza però compromettere il <code>master</code> branch (il codice principale, dove è contenuta versione stabile del codice). Per “a scadenza” s’intendono modifiche sul codice di un progetto/analisi che hanno vita breve, cioè che auspicabilmente in un momento successivo possano essere riunite al branch principale (<code>master</code>) o scartate.</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ol style="list-style-type: decimal">
-<li>click on <code>Create branch</code> symbol* (next to the current branch name)</li>
-<li>Provide a branch name (lowercase, no spaces)</li>
-<li>Keep remote on <code>origin</code></li>
-<li>Check the box <code>Sync branch with remote</code></li>
-<li>Click <code>Create</code></li>
+<li>Clicca su <code>New branch</code> symbol* (accanto al nome corrente del branch)</li>
+<li>Assegna un nome al nuovo branch (minuscolo e senza spazi, vanno bene under traits)</li>
+<li>Mantieni il remoto come <code>origin</code></li>
+<li>Spunta la casella <code>Sync branch with remote</code></li>
+<li>Clicca su <code>Create</code></li>
 </ol>
 </div>
-<p>*the create branch symbol looks as follows: <img src="static/images/rstudio_branch_symbol.png" /></p>
+<p>*il simbolo <code>New branch</code> è questo: <img src="static/images/rstudio_branch_symbol.png" /></p>
 <hr />
-<p>Make sure your branch name makes sense for the work you are planning to do. Use lower case characters and <code>-</code> in between words (NO spaces!). For this example, we decided to use the name <code>analysis-script</code> for the branch name.</p>
+<p>Assicurati che il nome del branch abbia senso rispetto ai cambiamenti che pianifichi di fare. E’ buona pratica adottare una sintassi standard per nomi di branch che vuole:</p>
+<ul>
+<li>Tutti i caratteri minuscoli</li>
+<li>Non più di 20 caratteri</li>
+<li>Nessuno spazio</li>
+<li>se nome composto usare snake cases ( <code>_</code> o <code>-</code> )</li>
+</ul>
+<p>In questo esempio decidiamo di chiamarlo: <code>analysis-script</code>.</p>
 <p><img src="static/images/branch-rstudio3.png" style="width:75.0%" alt="Create branch" /></p>
 <hr />
-<div class="alert alert-danger">
-<h4>
-Remark!
-</h4>
-<p>Older versions of Rstudio do not provide the functionality to create a branch directly! You will have to use the <code>Shell</code> to create the new branch:</p>
+<div class="warn">
+<p><strong>Attenzione</strong>: Alcune versioni precedenti di RStudio non hanno la funzionalità di creare branch! In questo caso o aggiorni RStudio alla ultima versione o utilizzi la <code>Shell</code> per creare un nuovo branch.</p>
 </div>
 <div class="bs-callout bs-callout-info">
 <h4>
-Shell based approach to create a new branch:
+Approccio per creare un nuovo branch da Shell:
 </h4>
 <ol style="list-style-type: decimal">
-<li>Open the git shell</li>
-<li>Create a branch by a <code>checkout</code> to new <code>branch</code>: <code>git checkout -b analysis-script</code></li>
-<li>Get an overview of your branches: <code>git branch</code></li>
-<li>Type <code>git push -u origin analysis-script</code> to activate <code>Push</code>/<code>Pull</code> buttons</li>
+<li>Apri la <code>Shell</code></li>
+<li>Crea un new <code>branch</code> da <code>checkout</code> <code>git checkout -b analysis-script</code></li>
+<li>Verifica la creazione del branch vedendoli tutti con: <code>git branch</code></li>
+<li>Scrivi <code>git push -u origin analysis-script</code> per attivare <code>Push</code>/<code>Pull</code> sul branch</li>
 </ol>
-<p>Shell based approach to create a new branch: <img src="static/images/create-branch-rstudio.png" style="width:75.0%" alt="Create branch" /></p>
-<p>This will also activate the <code>pull</code> and <code>push</code> buttons. From now on, you can commit as many times as you want/need to this branch and push the commits to GitHub, where it will be stored under the same branch name:</p>
+<p>L’approccio con la Shell per creare un nuovo branch: <img src="static/images/create-branch-rstudio.png" style="width:75.0%" alt="Create branch" /></p>
+<p>Questo attiverà anche i bottoni <code>pull</code> and <code>push</code>. Da ora in poi si può committare liberamente sul branch seguendo il <em>modus operandi</em> visto finora.</p>
+<div class="bulb">
+<p><strong>Ricorda</strong>: Da ora in poi tutti i cambiamenti che farai saranno registrati sul nuovo branch, pertanto quando farai un commit e pusherai alla repo remota potrai vedere i rispettivi cambiamenti cambianto il branch anche su Github, cioè passando da <code>master</code> a <code>analysis-script</code> nella repo online.</p>
+</div>
 <p><img src="static/images/branch-first-push-rstudio.png" style="width:75.0%" alt="First push branch" /></p>
 </div>
 <hr />
-<p>We can work on the just created branch and start making adaptations:</p>
+<p>Adesso possiamo lavorare sul nuovo branch e cominciare a cambiare o aggiungere files.</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ol style="list-style-type: decimal">
-<li>Add an analysis file in a <code>/src</code> directory</li>
-<li><code>Commit</code> the adaptation to the branch</li>
-<li>Click <code>Push</code> to send the adaptations to Github</li>
-<li>On GitHub website, look for your branch and check the adaptations to the branch</li>
+<li>Aggiungi un file di analisi nella subdirectory <code>/src</code></li>
+<li><code>Commit</code> i cambiamenti al nuovo branch</li>
+<li>Clicca <code>Push</code> per mandare i cambiamenti a GitHub</li>
+<li>Procedi su GitHub, cerca il nuovo branch e verifica il commit</li>
 </ol>
 </div>
 <hr />
 </div>
-<div id="effect-of-switching-branches" class="section level3" number="2.13.2">
-<h3 number="2.13.2"><span class="header-section-number">2.13.2</span> Effect of switching branches</h3>
-<p>The first time you switch branches and you see files disappearing, you might be wondering what is happening. No worries, Git is just making sure you only see those files relevant for the active branch. In the next exercise, we will explore this feature in more detail:</p>
+<div id="gli-effetti-di-cambiare-branch" class="section level3" number="2.13.2">
+<h3 number="2.13.2"><span class="header-section-number">2.13.2</span> Gli effetti di cambiare branch</h3>
+<p>La prima volta che è cambiato un branch si notano files che spariscon, non ti preoccupare, non hai perso niente, adesso ti chiederai cosa sia succeso a quei file. Git si prende cura di farti vedere solo quei files che sono rilevanti per quel branch attivo, Nel prossimo esercuzio vedremo questa proprietà più in dettaglio.</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizip:
 </h4>
 <ol style="list-style-type: decimal">
-<li>Click on the right-top dropdown in the <code>git</code> pane</li>
-<li>Switch to the status of the <code>master</code> branch by selecting <code>(LOCAL BRANCHES) -&gt; master</code></li>
-<li>Verify your local directory structure in file explorer: where are your files?</li>
-<li>Switch back to the status of the new branch (in the example i.e. <code>analysis-script</code>)</li>
-<li>Verify your local directory structure in file explorer again: where are your files?</li>
+<li>Clicca nel dropdwon menu sul the <code>git</code> pane (in alto a destra)</li>
+<li>Cambia nuovamente il branch selezionando <code>master</code>, <code>(LOCAL BRANCHES) -&gt; master</code></li>
+<li>Verifica la struttura delle cartelle in locale nel file explorer, dove sono andati a finire i files aggiunti?</li>
+<li>Adesso cambia ancora il branch ritornando sul nuovo branch (in the example i.e. <code>analysis-script</code>)</li>
+<li>Riverifica la struttura delle cartelle col file explorer, dove sono i files ora?</li>
 </ol>
 </div>
 <hr />
-<p>As in our example, the branch name is <code>analysis-script</code>, the dropdown defines this as the currently active branch. Clicking on the dropdown provides an overview of all branches:</p>
+<p>Come nel nostro esempio, il nome del branch è <code>analysis-script</code>, il dropdown menù segnala che ci troviamo nel branch attivo, cioè <code>analysis-script</code>. Adesso cliccandoci vediamo tutti i branch correnti, nell’esempio due: <code>master</code> (il principale) e <code>analysis-script</code> il nostro dev. <code>dev</code> viene spesso usato come nome per <code>dev</code>eloping branches. Clicchiamo su <code>master</code>.</p>
 <p><img src="static/images/branch-rstudio1.png" style="width:75.0%" alt="Switch branch" /></p>
 <hr />
-<p>Rstudio provides you information about the switch to the <code>master</code> branch:</p>
-<p><img src="static/images/branch-rstudio2.png" style="width:75.0%" alt="Switch branch" /></p>
-<div class="alert alert-danger">
-<p>Make sure you are currently working on your newly created branch (e.g. <code>analysis-script</code>) before you proceed!</p>
-</div>
+<p>RStudio fornisce le informazioni sullo switch di branch appena effettuato verso <code>master</code> segnalandoci:</p>
+<ul>
+<li>Che il branch da cui siamo appena partiti <code>analysis-script</code> è <strong>avanti</strong> di 1 commit rispetto al <code>master</code>, quello dove siamo ritornati.</li>
+<li>log di notifica di passaggio: adesso siamo in <code>master</code></li>
+</ul>
+<p><img src="static/images/branch-rstudio2.png" style="width:75.0%" alt="Switch branch" /> :::warn</p>
+<p><strong>Attenzione</strong>: se qualcosa non torna riverifica che il lavoro che hai svolto aggiungendo files in <code>/src</code> sia effettivamente sul branch <code>your-new-branch-name</code>. :::</p>
 <hr />
 </div>
 </div>
-<div id="pull-requests" class="section level2" number="2.14">
-<h2 number="2.14"><span class="header-section-number">2.14</span> Pull requests</h2>
-<p>When satisfied about the work done in a branch, it is time to bring these adaptations to the <code>master</code> branch as part of the <em>stable</em> analysis. NEVER merge locally on your machine, we will ALWAYS merge a branch online, by making use of a <code>Pull request</code>!</p>
-<hr />
-<div id="create-a-pull-request" class="section level3" number="2.14.1">
-<h3 number="2.14.1"><span class="header-section-number">2.14.1</span> Create a pull request</h3>
+<div id="pull-requests-pr" class="section level2" number="2.14">
+<h2 number="2.14"><span class="header-section-number">2.14</span> <strong>P</strong>ull <strong>R</strong>equests (PR)</h2>
+</div>
+<div id="quando-sei-soddisfatto-del-lavoro-sul-branch-di-sviluppo-allora-è-il-momento-di-unire-merge-i-cambiamenti-dal-branch-analysis-script-a-master-che-ricordiamo-essere-le-versione-stabile-del-codice.-assolutamente-mai-unire-i-cambiamenti-oin-locale-piuttosto-vai-sempre-su-github-nel-branch-online-e-effettua-la-pull-request." class="section level2" number="2.15">
+<h2 number="2.15"><span class="header-section-number">2.15</span> Quando sei soddisfatto del lavoro sul branch di sviluppo, allora è il momento di unire (merge) i cambiamenti dal branch <code>analysis-script</code> a <code>master</code> (che ricordiamo essere le <em>versione stabile</em> del codice). Assolutamente <strong>MAI</strong> unire i cambiamenti oin locale, piuttosto vai <strong>SEMPRE</strong> su GitHub nel branch online e effettua la <code>Pull Request</code>.</h2>
+<div id="crea-una-pull-request" class="section level3" number="2.15.1">
+<h3 number="2.15.1"><span class="header-section-number">2.15.1</span> Crea una <strong>P</strong>ull <strong>R</strong>equest</h3>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ol style="list-style-type: decimal">
-<li>Click <code>push</code> (if not already done)</li>
-<li>At <a href="https://github.com/">Github</a>, browse to your repository.</li>
-<li>Create a <code>pull request</code> online</li>
+<li>Clicca su <code>push</code> (se non l’hai ancora fatto)</li>
+<li>Vai su <a href="https://github.com/">Github</a>, e naviga all’indirizzo della tua repo online</li>
+<li>Crea una <code>pull request</code> online</li>
 </ol>
 </div>
 <hr />
-<p>Github actually suggests you to <code>Compare &amp; Pull request</code> on the webpage in a new yellow box. If you do not see the messag, you can still initiate a <code>Pull request</code>. The <code>Pull request</code> aims to insert the adaptations in your branch into the <code>master</code> branch.</p>
+<p>GitHub verosimilmente ti suggerirà un bottone verde <code>Compare &amp; Pull request</code> sulla pagine scontornato da un riquadro giallo. Se non lo vedi puoi comunque inizializzare una pull request direttamente da lì. Fare una Pull Request significa unire il branch di sviluppo col branch della versione stabile del codice ed è sostanzialmente <em>il cuore di ogni contribuzione Open Source.</em></p>
 <p><img src="static/images/pull-request-intro.png" style="width:75.0%" alt="Check Github message pull request" /></p>
 <hr />
-<p>In a new dialog, you can provide a short summary line about the <code>Pull request</code> with the option to add additional information. By clicking the <code>Create pull request</code> button, you actually propose the merge into the <code>master</code> branch.</p>
+<p>Nella finestra di dialogo riassumi in poche linee i cambiamenti apportati con la <code>Pull request</code> integrando le informazioni già inserite nel commit al branch di sviluppo. Successivamente clicca su <code>Create pull request</code>. Quello che stai facendo under the hood è chiedere il permesso al propietario della repo (te medesimo) di approvare ed unire i cambiamenti fatti dall’utente che ha creato la Pull Request (te medesimo).</p>
 <p><img src="static/images/pull-request_message.png" style="width:75.0%" alt="Adapt Github message and start pull request" /></p>
 <hr />
 </div>
-<div id="review-your-pull-request" class="section level3" number="2.14.2">
-<h3 number="2.14.2"><span class="header-section-number">2.14.2</span> Review your pull request</h3>
-<p>While working on your own and you are sure about the changes, you can actually merge the <code>Pull request</code> yourself. Although, this is the ideal moment for revision of the code (you can ask people to review your code, but automated checks can be added as well).</p>
+<div id="rivedere-e-approvare-la-pr" class="section level3" number="2.15.2">
+<h3 number="2.15.2"><span class="header-section-number">2.15.2</span> Rivedere e approvare la PR</h3>
+<p>Finchè lavori da solo puoi essere abbastanza sicuro dei cambiamenti che fai e puoi in automatico evitare di rivedere la PR. Del resto controllore concide con controllante. Tuttavia questo può essere un buon momento per richiedere il controllo di qualcun’altro e stabilire dei check automatici dopo che il terzo soggetto che controlla ha effettivamente controllato (<em>automated checks</em>).</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ol style="list-style-type: decimal">
-<li>Review your own code!</li>
-<li>If OK, merge the <code>Pull request</code>.</li>
-<li>Do not forget to delete the branch online (Github asks you to)</li>
+<li>Rivedi il tuo stesso codice!</li>
+<li>Se va bene, allora unisci (merge) la <code>Pull request</code>.</li>
+<li>Non dimenticarti di rimuovere il branch che hai appena unito (Github te lo chiedo subito dopo)</li>
 </ol>
 </div>
 <hr />
 <p><img src="static/images/pr.png" style="width:75.0%" alt="See pull request" /></p>
 <hr />
 </div>
-<div id="include-your-accepted-work-to-local-master" class="section level3" number="2.14.3">
-<h3 number="2.14.3"><span class="header-section-number">2.14.3</span> Include your accepted work to local master</h3>
-<p>For the moment, your adaptations are integrated into the <code>master</code> branch online, but not yet on your local computer. So, you have to update the local <code>master</code> branch:</p>
+<div id="includi-il-tuo-auto-verificato-lavoro-su-master" class="section level3" number="2.15.3">
+<h3 number="2.15.3"><span class="header-section-number">2.15.3</span> Includi il tuo auto-verificato lavoro su <code>master</code></h3>
+<p>Per il momento i tuoi cambiamenti sono integrati sul <code>master</code> online (solo su GitHub), ma non in locale (sul branch <code>master</code> del tuo progetto/analisi) Allora a questo punto devi aggionare il tuo <code>master</code> locale:</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ol style="list-style-type: decimal">
-<li>In Rstudio, switch to the <code>master</code> branch (right top in <code>Git</code> pane)</li>
-<li>Click <code>Pull</code></li>
-<li>Remove the local branch as well (otherwise you will have a lot of them after a while). You need to open the Shell: <code>git branch -d analysis-script</code></li>
+<li>In Rstudio, cambia dinuovo il branch su <code>master</code> (operazione vista prima, da <code>Git</code> pane)</li>
+<li>Clicca su <code>Pull</code></li>
+<li>Cancella il branch <em>scaduto</em> (altrimenti all’ n-esimo cambiamento avrai una lista infinita di branch). Apri la shell ed esegui: <code>git branch -d analysis-script</code></li>
 </ol>
 </div>
 <p><img src="static/images/pull-rstudio.png" style="width:75.0%" alt="git pull" /></p>
@@ -1116,120 +1128,133 @@ Exercise:
 </div>
 </div>
 </div>
-<div id="working-together" class="section level1" number="3" data-background="#c2c444">
-<h1 number="3" data-background="#c2c444"><span class="header-section-number">3</span> Working together</h1>
+<div id="lavora-con-un-collaboratore" class="section level1" number="3" data-background="#c2c444">
+<h1 number="3" data-background="#c2c444"><span class="header-section-number">3</span> Lavora con un Collaboratore</h1>
 <hr />
-<div id="invite-collaborators" class="section level2" number="3.1">
-<h2 number="3.1"><span class="header-section-number">3.1</span> Invite collaborators</h2>
-<p>You now have experienced all the major steps to effectively use version control with Git. We can now apply these same steps when working together.</p>
+<div id="invita-un-collaboratore" class="section level2" number="3.1">
+<h2 number="3.1"><span class="header-section-number">3.1</span> Invita un collaboratore</h2>
+<p>Finora hai imparato le principali operazioni per fare un uso personale, efficace e consapevole di Git con GitHub. Adesso possiamo fare un salto in avanti e creare un ambiente di collaborazione.</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ul>
-<li>Team up with two or three persons</li>
-<li>Let one person invite the others, provide them with read/write access as explained in <a href="https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/">this tutorial</a></li>
+<li>Alleati con due o più persone</li>
+<li>Lascia che una persona inviti le altre, fornendogli informazioni su permessi di scruttura e lettura come in <a href="https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/">questo articolo</a></li>
 </ul>
 </div>
 <hr />
-<p>On your own repository, you have all admin rights to add <code>Collaborators</code> in the <code>Settings</code> section of GitHub:</p>
+<p>All’indirizzo della tua repo, in particolare nel pane <code>Settings</code>, nella colonna sinistra appare <code>Collaborators</code>. Previa richiesta di login è possibile invitare collaboratori e amministrare i tuoi diritti e quelli dei tuoi collaboratori.</p>
 <p><img src="static/images/invite-collaborator.png" style="width:75.0%" alt="Invite collaborator" /></p>
 <hr />
-<p>When invited to collaborate, you have to <code>Accept invitation</code> in order to start working on the repository:</p>
+<p>Qunado sei invitato a collaborare ti è richiesto di accettare l’invito <code>Accept invitation</code> per cominciare a lavorare sulla repo.</p>
 <p><img src="static/images/react-collaborator.png" style="width:75.0%" alt="react to collaborator" /></p>
 <hr />
 </div>
-<div id="issues" class="section level2" number="3.2">
-<h2 number="3.2"><span class="header-section-number">3.2</span> Issues</h2>
-<p>Issues can be used for multiple purposes: alerting colleagues about a bug in the code, proposing new features, discussing specific steps in the analysis,…</p>
+<div id="issues-problemi" class="section level2" number="3.2">
+<h2 number="3.2"><span class="header-section-number">3.2</span> Issues (problemi)</h2>
+<p>Le issues sono comunemente utilizzate per molteplici scopi: allertare un collega di un <span style="color: red;">bug</span> sul codice, <span style="color: green;">proporre novità</span> o <span style="color: orange;">discutere di temi specifici dell’analisi</span>. Tuttavia recentemente GitHub ha deciso di assegnare ad ogni azione un suo preciso posto, standardizzado così l’allocazione delle risorse del progetto. E’ anche vero che la buona pratica di mettere le risorse dove <em>è giusto che stiano</em> lascia spazio all’uso comune che i developers fanno degli spazi prima che i cambiamenti ci fossero, per questa ragione le issues raccolgono in sè anche contenuti che non hanno esattamente a che fare con problemi, piuttosto con soluzioni come le <code>Feature Request</code> (<strong>FR</strong>) o discussioni. In particolare i cambiamenti riguardano:</p>
+<ul>
+<li>le <code>issue</code>s rimangono esattamente dove erano, ma per loro è possibile scrivere un template (blog post) che faccia in modo di facilitare sia la compilazione dell’utente (<code>reprex</code>) che la ricezione del problema del maintainer. Per abilitare e modificare i template per issues (ed altri) è <code>Settings &gt; Options &gt; Features</code>. Le <code>issues</code> ricorpono il ruolo di <span style="color: red;">bug</span> e di <span style="color: green;">Feature Request</span>.</li>
+<li>le <span style="color: orange;">discussioni</span> che riguardano la metodologia adottata nel progetto/analisi hanno un nuovo luogo: <code>Discussion</code>, attivabile spuntando la cassella al medesimo percorso dei templates. Tuttavia l’adozione non è ancora largamente diffusa quindi spesso le stesse discussioni finiscono dentro le <code>issue</code>s.<br />
+</li>
+<li>le informazioni che riguardano il progetto/analisi possono essere contenute nella sezione Wiki (attivabile allo stesso percorso). Tuttavia, se il progetto non è mastodontico, è uso comune includere la documentazione nel <code>README.md</code> o dedicare un sito al progetto con la documentazione da attaccare alla repo (molto diffuso per i pacchetti).</li>
+</ul>
+<p>Le</p>
+<div class="warn">
+<p><strong>Attenzione</strong>: Ogni developer può includere le proprie linee guida su come e dove contribuire (o sottoforma di bug report, di feature request o di PR), alla repo in un foglio markdown nominato <code>CONDUCT.md</code> dove è tenuto anche a specificare i toni e i termini a cui la discussione si deve attenere (tema molto caro per gli autori americani). Occorre anche ricordare che le linee guida della “buona contribuzione” sono in continua evoluzione e specifiche di ogni linguaggio e di ogni comunità attorno al linguaggio, per questi motivi è una buona mossa adottare le buone pratiche promosse dai maggiori contributori.</p>
+</div>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ul>
-<li>Raise an <code>issue</code> online</li>
-<li>Provide issues with an appropriate <code>label</code></li>
-<li>Assign your colleague to the issue</li>
+<li>Solleva un problema sul codice tramite una <code>issue</code> online</li>
+<li>Assegna alla issue la rispettiva <code>label</code></li>
+<li>Assegna un collaboratore/collega alla <code>issue</code> cosicchè se ne occupi!</li>
 </ul>
 </div>
 <hr />
 </div>
-<div id="online-adaptations" class="section level2" number="3.3">
-<h2 number="3.3"><span class="header-section-number">3.3</span> Online adaptations</h2>
-<p>When there is no coding involved, e.g. you just need to update a few text lines in a markdown file, the usage of the online GitHub features could be sufficient enough:</p>
+<div id="cambiamenti-online" class="section level2" number="3.3">
+<h2 number="3.3"><span class="header-section-number">3.3</span> Cambiamenti Online</h2>
+<p>Se non c’è coinvolgimento di codice nella risoluzione del problema (<code>issue</code>) sollevato da un utente allora questo pul essere completamente svolto online da GitHub tramite la sezione dedicata:</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Esercizio:
 </h4>
 <ul>
-<li>Make an adaptation to an online file</li>
-<li>Propose a <code>pull request</code> and assign your collaborator</li>
-<li>Merge the adaptation to the <code>master</code> branch</li>
+<li>Fai un adattamento ad un file</li>
+<li>Proponi una <code>pull request</code> e assegnala ad un collaboratore</li>
+<li>Unisci (<code>master</code>) il cambiamento al <code>master</code> branch</li>
 </ul>
 </div>
 <hr />
 </div>
-<div id="local-adaptations" class="section level2" number="3.4">
-<h2 number="3.4"><span class="header-section-number">3.4</span> Local adaptations</h2>
-<p>In this section, all the individual steps come together to collaborate on the code of your project. First, we will start with a rehearsel of the individual steps as an exercise. Afterwards, we will try out a workflow that can be used as a step by step procedure in the future.</p>
-<div class="alert alert-danger">
-<h4>
-Remember!
-</h4>
-<p><strong>Working on a local branch - merging online</strong></p>
+<div id="adattamenti-locali" class="section level2" number="3.4">
+<h2 number="3.4"><span class="header-section-number">3.4</span> Adattamenti locali</h2>
+<p>In questa sezione ogni singolo passo fatto finora viene messo insieme simulando una collaborazione per un progetto. I semplici passi proposti standardizzano e guidano un <em>modus operandi</em> sicuro, efficiente, efficace e <em>in linea coi tempi</em> per affrontare progetti in ambienti open source o meno data la stack di tecnlogie che abbiamo a disposizione.</p>
+<div class="warn">
+<p><strong>Attenzione</strong>: Si lavora SEMPRE in locale e poi si fa merge dei branch online. Ripeti questa cantilena per il numero di volte che vuoi fare un cambiamento.</p>
 </div>
 <hr />
-<p>You can interpret the following exercise as a wrap-up of the steps learnt in the previous section:</p>
+<p>Riassumendo tutto, ecco la sequenza di operazioni affrontate nelle sezioni precedenti che compongono il naturale sviluppo di un software (anche su R):</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
-Exercise:
+Passo dopo Passo:
 </h4>
 <ul>
-<li>As collaborator, <code>clone</code> the other repository to your local computer</li>
-<li>Create a new <code>branch</code> locally with a different name</li>
-<li>Adapt the content of a file</li>
-<li><code>Commit</code> your adaptation</li>
-<li><code>Push</code> your <code>branch</code> to the remote repository</li>
-<li>Go to GitHub and make a <code>Pull request</code></li>
-<li>Revise the work and <code>merge</code> online when appropriate</li>
-<li>Update your local work</li>
-<li>Check if all adaptations are represented in your local files</li>
+<li>Come collaboratore, <code>clone</code> la repo in locale sul tuo computer</li>
+<li>Crea un nuovo <code>branch</code> in locale</li>
+<li>Adatta il file sulla base del cambiamento che vuoi apportare</li>
+<li><code>Commit</code> del cambiamento</li>
+<li><code>Push</code> del <code>branch</code> alla repo remota (GitHub online)</li>
+<li>Vai alla repo GitHub e crea la <code>Pull request</code></li>
+<li>Rivedi il tuo lavoro, completa un messaggio esaustivo e approva la <code>Pull request</code> se ti soddisfa.</li>
+<li>Cancella il <code>branch</code> <em>scaduto</em></li>
+<li>Aggiorna il tuo lavoro in locale facendo <code>Pull</code></li>
+<li>Controlla se gli adattamenti sono stati trasmessi in locale e corrispondono a quelli in remoto (su GitHub)</li>
 </ul>
 </div>
-<p><strong>Tip</strong>: All functionalities are described in the previous sections</p>
 <hr />
 </div>
-<div id="step-by-step-workflow" class="section level2" number="3.5">
-<h2 number="3.5"><span class="header-section-number">3.5</span> Step by step workflow</h2>
-<p>The steps of the previous exercise provide the main building blocks. Nevertheless, when working on a project, a step by step procedure can help in the beginning to remember the workflow. A dedicated version for Rstudio is available at this repo as a separate <a href="./workflow_rstudio.html">workflow overview</a>.</p>
-<hr />
+<div id="workflow-da-rstudio" class="section level2" number="3.5">
+<h2 number="3.5"><span class="header-section-number">3.5</span> Workflow da RStudio</h2>
 </div>
-<div id="release" class="section level2" number="3.6">
-<h2 number="3.6"><span class="header-section-number">3.6</span> Release</h2>
-<p>Once you are satisfied with the status of your analysis, it makes sense to create a release:</p>
+<div id="gli-steps-riassunti-prima-forniscono-un-workflow-generale-di-come-si-contribuisce-ad-una-repository-su-github-secondo-le-sue-stesse-linee-guida.-tuttavia-quando-si-lavora-ad-un-progetto-non-è-detto-che-le-cose-siano-state-messe-in-piedi-esattamente-come-abbiamo-fatto-noi-per-questo-motivo-ho-composto-un-uno-spazio-separato-con-un-workflow-che-auspicabilmente-copre-alcuni-scenari-non-visti-nei-semplici-passi-visti-prima." class="section level2" number="3.6">
+<h2 number="3.6"><span class="header-section-number">3.6</span> Gli steps riassunti prima forniscono un workflow generale di come si contribuisce ad una repository su GitHub secondo le <a href="https://guides.github.com/introduction/flow/">sue stesse linee guida</a>. Tuttavia, quando si lavora ad un progetto, non è detto che le cose siano state messe in piedi esattamente come abbiamo fatto noi; per questo motivo ho composto un uno spazio separato con <a href="./workflow_rstudio.html">un workflow</a> che auspicabilmente copre alcuni scenari non visti nei semplici passi visti prima.</h2>
+</div>
+<div id="release-rilascio-della-versione" class="section level2" number="3.7">
+<h2 number="3.7"><span class="header-section-number">3.7</span> Release (Rilascio della versione)</h2>
+<p>Quando ti ritieni soddisfatto dello stato del tuo progetto/analisi, allora puoi scegliere di rilasciarlo con un Release. I Release sono dei <em>checkpoints</em> delle versioni del codice che aiutano <em>in primis</em> te a tenere traccia delle pietre miliari raggiunte nello sviluppo del codice e <em>in secundis</em> per gli utenti che auspicabilmente usufruiscono del tuo codice e possono scegliere quale release utilizzare (ed evitare, per esempio, problemi di compatibilità). I release possono coinvolgere:</p>
 <ul>
-<li>For publications (DOI)</li>
+<li>Per Pubblicazioni (DOI)</li>
 <li>For code/software development versions</li>
 <li>For course notes</li>
 </ul>
-<p>Follow <a href="https://help.github.com/articles/creating-releases/">this tutorial</a> to create a release.</p>
+<p>Dato che il release non è una questione di sostanza, sebbene utilissimo, ti reindirizzo verso <a href="https://help.github.com/articles/creating-releases/">un tutorial</a> dalla documentazione originale di GitHub, verso <a href="https://r-pkgs.org/release.html#:~:text=If%20you%20use%20GitHub%2C%20go,tag%20%2Da%20v1.2.3%20.">un altro</a> se l’interesse è quello di rilasciare una versione di un pacchetto.</p>
 <hr />
 </div>
 </div>
-<div id="some-more-rules-for-collaboration" class="section level1" number="4">
-<h1 number="4"><span class="header-section-number">4</span> Some more <em>Rules for collaboration</em>:</h1>
+<div id="alcune-ottime-regole-per-collaborare-in-maniera-efficiente-efficace-ed-educata" class="section level1" number="4">
+<h1 number="4"><span class="header-section-number">4</span> Alcune ottime regole per <strong>collaborare in maniera efficiente, efficace ed educata</strong>:</h1>
 <ul>
-<li>Commit often, make small commits</li>
-<li>Don’t mix changes in 1 commit</li>
-<li>Think about your commit messages</li>
-<li>Always commit into a feature branch, never in the <code>master</code> branch.</li>
-<li>Always start features branches from the <code>master</code> branch.</li>
-<li>Only work in your own branches.</li>
-<li>Never merge someone else’s <code>pull request</code> without their consent.</li>
-<li>Don’t keep long-lived branches (form of technical debt)</li>
+<li>Committa <em>spesso</em>, e committa <em>pochi contenuti</em> alla volta</li>
+<li>Non mixare più contenuti nello stesso commit</li>
+<li>Rifletti sul messaggio di commit</li>
+<li>Committa sempre su branch nuovo, mai sul <code>master</code> branch.</li>
+<li>Aggiungi sempre nuove features dal <code>master</code> branch, mai dal <code>dev</code> (a meno di accordi particolari con il manutentore).</li>
+<li>Fai in modo di lavorare sempre sul tuo <code>branch</code>.</li>
+<li>Non unire mai la <code>pull request</code> di qualcun’altro senza il consenso degli altri.</li>
+<li>Non tenere aperti <code>branch</code> scaduti (in gergo tecnico, se lo fai crei debito tecnico)</li>
 </ul>
-<hr />
-<p><strong>There’s no such thing, as a free lunch…</strong></p>
+<blockquote>
+<p>Che la Git sia con te</p>
+<footer>
+— Yoda
+</footer>
+</blockquote>
+<p><img src="https://i.imgflip.com/tas66.jpg" alt="che la forza sia con te, Yoda" /></p>
 <hr />
 <!-- ...but if you're hungry you can  -->
 <!-- * Webinars -->
@@ -1243,16 +1268,25 @@ Exercise:
 </div>
 
 
-<div class="footer"> 
-  
-  <hr> 
-  
-  <p> <!--your custom footer text can go here--> </p>
+&nbsp;
+<hr />
+<p style="text-align: center;">A work by <a href="https://github.com/NiccoloSalvini">Niccolò Salvini</a></p>
+<p style="text-align: center;"><span style="color: #808080;"><em>niccolo.salvini27@gmail.com</em></span></p>
 
-  <p class="git-course-footer">This site was created with an <a class="rstudio4edu-link" href="https://rstudio4edu.github.io/rstudio4edu-book/"> <img class="rstudio4edu-footer-logo" src="logo-mark-rstudio4edu.png">&nbsp;rstudio4edu</a> template.</p>
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<!-- Add font awesome icons -->
+<p style="text-align: center;">
+    <a href="https://twitter.com/SalviniQ" class="fa fa-twitter"></a>
+    <a href="https://www.linkedin.com/in/niccol%C3%B2-salvini-datascience/" class="fa fa-linkedin"></a>
+    <a href="https://github.com/NiccoloSalvini" class="fa fa-github"></a>
+    
+</p>
 
-</div>
+<p style="text-align: center;">Made with <i class="fa fa-heart pulse"></i> in <a href="https://www.google.com/maps/place/Firenze+FI/@43.7695604,11.2558136,12z/data=!4m5!3m4!1s0x132a56a680d2d6ad:0x93d57917efc72a03!8m2!3d43.7695604!4d11.2558136" target="_blank">Florence</a></p>
+
+&nbsp;
 
 
 </div>

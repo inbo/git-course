@@ -1,0 +1,22 @@
+---
+title: "Terminologia"
+author:
+- Niccolò Salvini
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+    fig_caption: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Glossario dei Termini
+
+- `repo` sta per repository ed è una cartella online assumibile ad un Google Drive 
+- `clone` clonare una 

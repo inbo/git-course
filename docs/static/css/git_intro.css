@@ -220,7 +220,7 @@ h1:before {
     border-left-color: #f0ad4e;
 }
 .bs-callout-warning h4 {
-    color: #f0ad4e;
+    color: #f0ad4e;1
 }
 .bs-callout-info {
     border-left-color: #5bc0de;
@@ -243,7 +243,7 @@ h1:before {
   display: block;
   height: 200px;
   margin: 2em 20px 40px 20px;
-  background-image: url("https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png");
+  background-image: url('//images//logo_github_icon.png');
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
