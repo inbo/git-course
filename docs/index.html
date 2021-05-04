@@ -376,9 +376,11 @@ $(document).ready(function () {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Preliminary Content</li>
     <li>
       <a href="terminologia.html">Terminologia</a>
     </li>
+    <li class="divider"></li>
     <li>
       <a href="course_rstudio.html">Su Rstudio</a>
     </li>
@@ -403,7 +405,13 @@ $(document).ready(function () {
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/NiccoloSalvini/git-course">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fas fa-code-branch"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://github.com/NiccoloSalvini/git-course/issues">
+    <span class="fas fa-project-diagram"></span>
      
   </a>
 </li>
@@ -481,6 +489,10 @@ For the git through RStudio, an installation of R and Rstudio is expected as wel
 <p>Il corso è scritto grazie ad una combinazione di documenti <code>.md</code> e <code>.Rmd</code> (contenuti in <code>src</code>) compilati con <code>rmarkdown</code> trasformandoli in documenti <code>.html</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render_site</span>(<span class="st">&quot;src&quot;</span>)</span></code></pre></div>
 <p>Il render dei files <code>.html</code> viene raccolto nella cartella <code>/docs</code>. La cartella è quindi l’oggetto del deployment. <a href="https://www.netlify.com/">Netlify</a> è un’intuitiva piattforma serverless e basata su git per fare build, deployment e collaborare su web apps. Inoltre rende possibile avere un ambiente di CI/CD con hosting scalabile.</p>
+</div>
+<div id="contribuisci" class="section level2">
+<h2>Contribuisci</h2>
+<p>Questa dispensa ti darà una mano a familiarizzare con Git + GitHub e RStudio, perchè non provi direttamente a contribuire alla repo cosicchè tu possa sperimentare quello che hai imparato? Inoltre se trovi errori, inesattezze per favore clicca in alto a destra nel sito per essere rediretto all’issue pane e segnalarmelo, se te la senti prova a fare direttamente la correzione tu tramite PR.</p>
 </div>
 <div id="ringraziamenti" class="section level2">
 <h2>Ringraziamenti 👏</h2>

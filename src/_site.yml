@@ -9,8 +9,10 @@ navbar:
       icon: fa-home
     - text: "Parto da 0"
       menu:
+        - text: "Preliminary Content"
         - text: "Terminologia"
           href: terminologia.html
+        - text: '---------'
         - text: "Su Rstudio"
           href: course_rstudio.html
     - text: "Workflows"
@@ -20,8 +22,10 @@ navbar:
         - text: "Workflow per la collaborazione"
           href: workflow_review.html
   right:
-    - icon: fa-github fa-lg
+    - icon: fas fa-code-branch
       href: https://github.com/NiccoloSalvini/git-course
+    - icon: fas fa-project-diagram
+      href: https://github.com/NiccoloSalvini/git-course/issues
 output:
   html_document:
     theme: cosmo

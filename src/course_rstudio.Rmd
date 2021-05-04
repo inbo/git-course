@@ -49,11 +49,11 @@ L'ultima versione di `git` disponibile è la `r read_html("https://git-scm.com/"
 
 # Lavora da solo {data-background=##75aada}
 
-Di solito si comincia inizializzando una repository su GitHub, nel gergo tecnico _init_. Per questo step non hai assolutamente bisogno di un collaboratore/collega.
+Di solito si comincia inizializzando una repository su GitHub. Per questo step non hai assolutamente bisogno di un collaboratore/collega.
 
 ---
 
-## Crea una repo (che sta per _repo_ sitory)
+## Creare una repo (che sta per _repo_ sitory)
 
 Abituati a pensarla sempre in questi termini: 
 
@@ -708,7 +708,9 @@ RStudio fornisce le informazioni sullo switch di branch appena effettuato verso 
 
 ## **P**ull **R**equests (PR)
 
+
 Quando sei soddisfatto del lavoro sul branch di sviluppo, allora è il momento di unire (merge) i cambiamenti dal branch `analysis-script` a `master` (che ricordiamo essere le _versione stabile_ del codice). Assolutamente **MAI** unire i cambiamenti oin locale, piuttosto vai **SEMPRE** su GitHub nel branch online e effettua la `Pull Request`.
+
 ---
 
 ### Crea una **P**ull **R**equest
@@ -874,6 +876,7 @@ Riassumendo tutto, ecco la sequenza di operazioni affrontate nelle sezioni prece
 ## Workflow da RStudio
 
 Gli steps riassunti prima forniscono un workflow generale di come si contribuisce ad una repository su GitHub secondo le [sue stesse linee guida](https://guides.github.com/introduction/flow/). Tuttavia, quando si lavora ad un progetto, non è detto che le cose siano state messe in piedi esattamente come abbiamo fatto noi; per questo motivo ho composto un uno spazio separato con [un workflow](./workflow_rstudio.html) che auspicabilmente copre alcuni scenari non visti nei semplici passi visti prima.
+
 ---
 
 ## Release (Rilascio della versione)
@@ -903,11 +906,15 @@ Dato che il release non è una questione di sostanza, sebbene utilissimo, ti rei
 
 ---
 
-> Che la Git sia con te
+> Che Git sia con te
 >
 > `r tufte::quote_footer('--- Yoda')`
 
-![che la forza sia con te, Yoda](https://i.imgflip.com/tas66.jpg)
+<!-- ![che la forza sia con te, Yoda](https://i.imgflip.com/tas66.jpg) -->
+
+<p align="center">
+<img src="https://i.imgflip.com/tas66.jpg" width="512" height="512"/>
+</p>
 
 
 

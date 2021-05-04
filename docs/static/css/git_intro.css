@@ -14,27 +14,6 @@ body {
 }
 
 
-
-
-
-
-/*----------LOGO above TOC version 2--------- 
-
-#header.fluid-row::before {
-   content: "";
-   height: 150px;
-   width: 150px;
-   float: right;
-   background-image: url("https://marcolombardo.com/blog/images/git-github.jpg");
-   background-size: contain;
-   background-position: center center;
-   background-repeat: no-repeat;
- }
-
-*/
-
-
-
 /* -----------Sidebar div tips------------- */
 /* from r-pkgs.org*/
 
@@ -236,7 +215,7 @@ h1:before {
 }
 
 
-/*----------LOGO above TOC--------- */
+/*----------LOGO above TOC--------- 
 
 #TOC::before {
   content: "";
@@ -249,9 +228,31 @@ h1:before {
   background-repeat: no-repeat;
 }
 
+*/
+
 /*--------------------------------------*/
 /*----------------- TOC ----------------*/
 /*--------------------------------------*/
+
+
+/*----------LOGO above TOC version 2--------- */
+
+#header.fluid-row::before {
+   content: "";
+   height: 150px;
+   width: 150px;
+   float: right;
+   background-image: url("https://marcolombardo.com/blog/images/git-github.jpg");
+   background-size: contain;
+   background-position: center center;
+   background-repeat: no-repeat;
+ }
+
+
+
+
+
+
 
 
 /* NO TOC on mobile */
@@ -308,12 +309,12 @@ a.dropdown-toggle:hover {
 
 /* Dropdown menu color */
 .navbar-default .dropdown-menu {
-  background-color: #74aada;
+  background-color: #ffffffab;
 }
 
 /* Dropdown menu hover color */
   .navbar-default .dropdown-menu>li>a:hover {
-    background-color: #202831f2;
+    background-color: #74aadaf2;
   }
 
 /* Navbar Links when hovered*/

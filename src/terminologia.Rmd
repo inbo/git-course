@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Glossario dei Termini
 
-All'interno della dispensa troverai ripetuti numerose volte i termini qua sotto, alcune volte riferiti a comandi eseguibili da shell o terminale (se preceduti da `git`), altre volte a lessico tecnico e di uso gergale nell'ambiente. E' molto importante _introdurre_ e _memorizzare_ questi termini perchè permette di risparmiare tempo nello sviluppo di codice in ambiente collaborativo. Auspicabilmente alla fine della dispensa **avrai una panoramica dall'alto del funzionamento di git** e un **modo di lavorare** che ti permetteranno di sperimentare, approfondire ed essere produttivo fin dall'inizio.
+All'interno della dispensa troverai ripetuti numerose volte i termini qua sotto, alcune volte riferiti a comandi eseguibili da shell o terminale (se preceduti da `git`), altre volte a lessico tecnico e di uso gergale nell'ambiente. E' molto importante _introdurre_ e _memorizzare_ questi termini perchè permette di risparmiare tempo nello sviluppo di codice in ambiente collaborativo. Auspicabilmente alla fine della dispensa **avrai una panoramica dall'alto del funzionamento di git** e un **modo di lavorare** che ti permetteranno di sperimentare, approfondire ed essere produttivo fin dall'inizio. Tutte le volte che incontrerai difficoltà nel ricordare un concetto ripassa qua!
 
 ## Gergo
 

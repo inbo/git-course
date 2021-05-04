@@ -454,9 +454,11 @@ div.tocify {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Preliminary Content</li>
     <li>
       <a href="terminologia.html">Terminologia</a>
     </li>
+    <li class="divider"></li>
     <li>
       <a href="course_rstudio.html">Su Rstudio</a>
     </li>
@@ -481,7 +483,13 @@ div.tocify {
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/NiccoloSalvini/git-course">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fas fa-code-branch"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://github.com/NiccoloSalvini/git-course/issues">
+    <span class="fas fa-project-diagram"></span>
      
   </a>
 </li>
@@ -520,10 +528,10 @@ div.tocify {
 </div>
 <div id="lavora-da-solo" class="section level1" number="2" data-background="##75aada">
 <h1 number="2" data-background="##75aada"><span class="header-section-number">2</span> Lavora da solo</h1>
-<p>Di solito si comincia inizializzando una repository su GitHub, nel gergo tecnico <em>init</em>. Per questo step non hai assolutamente bisogno di un collaboratore/collega.</p>
+<p>Di solito si comincia inizializzando una repository su GitHub. Per questo step non hai assolutamente bisogno di un collaboratore/collega.</p>
 <hr />
-<div id="crea-una-repo-che-sta-per-repo-sitory" class="section level2" number="2.1">
-<h2 number="2.1"><span class="header-section-number">2.1</span> Crea una repo (che sta per <em>repo</em> sitory)</h2>
+<div id="creare-una-repo-che-sta-per-repo-sitory" class="section level2" number="2.1">
+<h2 number="2.1"><span class="header-section-number">2.1</span> Creare una repo (che sta per <em>repo</em> sitory)</h2>
 <p>Abituati a pensarla sempre in questi termini:</p>
 <blockquote>
 <p>Un nuovo progetto comincia sempre con una nuova repo.</p>
@@ -1073,11 +1081,10 @@ Esercizip:
 </div>
 <div id="pull-requests-pr" class="section level2" number="2.14">
 <h2 number="2.14"><span class="header-section-number">2.14</span> <strong>P</strong>ull <strong>R</strong>equests (PR)</h2>
-</div>
-<div id="quando-sei-soddisfatto-del-lavoro-sul-branch-di-sviluppo-allora-è-il-momento-di-unire-merge-i-cambiamenti-dal-branch-analysis-script-a-master-che-ricordiamo-essere-le-versione-stabile-del-codice.-assolutamente-mai-unire-i-cambiamenti-oin-locale-piuttosto-vai-sempre-su-github-nel-branch-online-e-effettua-la-pull-request." class="section level2" number="2.15">
-<h2 number="2.15"><span class="header-section-number">2.15</span> Quando sei soddisfatto del lavoro sul branch di sviluppo, allora è il momento di unire (merge) i cambiamenti dal branch <code>analysis-script</code> a <code>master</code> (che ricordiamo essere le <em>versione stabile</em> del codice). Assolutamente <strong>MAI</strong> unire i cambiamenti oin locale, piuttosto vai <strong>SEMPRE</strong> su GitHub nel branch online e effettua la <code>Pull Request</code>.</h2>
-<div id="crea-una-pull-request" class="section level3" number="2.15.1">
-<h3 number="2.15.1"><span class="header-section-number">2.15.1</span> Crea una <strong>P</strong>ull <strong>R</strong>equest</h3>
+<p>Quando sei soddisfatto del lavoro sul branch di sviluppo, allora è il momento di unire (merge) i cambiamenti dal branch <code>analysis-script</code> a <code>master</code> (che ricordiamo essere le <em>versione stabile</em> del codice). Assolutamente <strong>MAI</strong> unire i cambiamenti oin locale, piuttosto vai <strong>SEMPRE</strong> su GitHub nel branch online e effettua la <code>Pull Request</code>.</p>
+<hr />
+<div id="crea-una-pull-request" class="section level3" number="2.14.1">
+<h3 number="2.14.1"><span class="header-section-number">2.14.1</span> Crea una <strong>P</strong>ull <strong>R</strong>equest</h3>
 <div class="bs-callout bs-callout-exercise">
 <h4>
 Esercizio:
@@ -1096,8 +1103,8 @@ Esercizio:
 <p><img src="static/images/pull-request_message.png" style="width:75.0%" alt="Adapt Github message and start pull request" /></p>
 <hr />
 </div>
-<div id="rivedere-e-approvare-la-pr" class="section level3" number="2.15.2">
-<h3 number="2.15.2"><span class="header-section-number">2.15.2</span> Rivedere e approvare la PR</h3>
+<div id="rivedere-e-approvare-la-pr" class="section level3" number="2.14.2">
+<h3 number="2.14.2"><span class="header-section-number">2.14.2</span> Rivedere e approvare la PR</h3>
 <p>Finchè lavori da solo puoi essere abbastanza sicuro dei cambiamenti che fai e puoi in automatico evitare di rivedere la PR. Del resto controllore concide con controllante. Tuttavia questo può essere un buon momento per richiedere il controllo di qualcun’altro e stabilire dei check automatici dopo che il terzo soggetto che controlla ha effettivamente controllato (<em>automated checks</em>).</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
@@ -1113,8 +1120,8 @@ Esercizio:
 <p><img src="static/images/pr.png" style="width:75.0%" alt="See pull request" /></p>
 <hr />
 </div>
-<div id="includi-il-tuo-auto-verificato-lavoro-su-master" class="section level3" number="2.15.3">
-<h3 number="2.15.3"><span class="header-section-number">2.15.3</span> Includi il tuo auto-verificato lavoro su <code>master</code></h3>
+<div id="includi-il-tuo-auto-verificato-lavoro-su-master" class="section level3" number="2.14.3">
+<h3 number="2.14.3"><span class="header-section-number">2.14.3</span> Includi il tuo auto-verificato lavoro su <code>master</code></h3>
 <p>Per il momento i tuoi cambiamenti sono integrati sul <code>master</code> online (solo su GitHub), ma non in locale (sul branch <code>master</code> del tuo progetto/analisi) Allora a questo punto devi aggionare il tuo <code>master</code> locale:</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
@@ -1223,12 +1230,11 @@ Passo dopo Passo:
 </div>
 <div id="workflow-da-rstudio" class="section level2" number="3.5">
 <h2 number="3.5"><span class="header-section-number">3.5</span> Workflow da RStudio</h2>
+<p>Gli steps riassunti prima forniscono un workflow generale di come si contribuisce ad una repository su GitHub secondo le <a href="https://guides.github.com/introduction/flow/">sue stesse linee guida</a>. Tuttavia, quando si lavora ad un progetto, non è detto che le cose siano state messe in piedi esattamente come abbiamo fatto noi; per questo motivo ho composto un uno spazio separato con <a href="./workflow_rstudio.html">un workflow</a> che auspicabilmente copre alcuni scenari non visti nei semplici passi visti prima.</p>
+<hr />
 </div>
-<div id="gli-steps-riassunti-prima-forniscono-un-workflow-generale-di-come-si-contribuisce-ad-una-repository-su-github-secondo-le-sue-stesse-linee-guida.-tuttavia-quando-si-lavora-ad-un-progetto-non-è-detto-che-le-cose-siano-state-messe-in-piedi-esattamente-come-abbiamo-fatto-noi-per-questo-motivo-ho-composto-un-uno-spazio-separato-con-un-workflow-che-auspicabilmente-copre-alcuni-scenari-non-visti-nei-semplici-passi-visti-prima." class="section level2" number="3.6">
-<h2 number="3.6"><span class="header-section-number">3.6</span> Gli steps riassunti prima forniscono un workflow generale di come si contribuisce ad una repository su GitHub secondo le <a href="https://guides.github.com/introduction/flow/">sue stesse linee guida</a>. Tuttavia, quando si lavora ad un progetto, non è detto che le cose siano state messe in piedi esattamente come abbiamo fatto noi; per questo motivo ho composto un uno spazio separato con <a href="./workflow_rstudio.html">un workflow</a> che auspicabilmente copre alcuni scenari non visti nei semplici passi visti prima.</h2>
-</div>
-<div id="release-rilascio-della-versione" class="section level2" number="3.7">
-<h2 number="3.7"><span class="header-section-number">3.7</span> Release (Rilascio della versione)</h2>
+<div id="release-rilascio-della-versione" class="section level2" number="3.6">
+<h2 number="3.6"><span class="header-section-number">3.6</span> Release (Rilascio della versione)</h2>
 <p>Quando ti ritieni soddisfatto dello stato del tuo progetto/analisi, allora puoi scegliere di rilasciarlo con un Release. I Release sono dei <em>checkpoints</em> delle versioni del codice che aiutano <em>in primis</em> te a tenere traccia delle pietre miliari raggiunte nello sviluppo del codice e <em>in secundis</em> per gli utenti che auspicabilmente usufruiscono del tuo codice e possono scegliere quale release utilizzare (ed evitare, per esempio, problemi di compatibilità). I release possono coinvolgere:</p>
 <ul>
 <li>Per Pubblicazioni (DOI)</li>
@@ -1253,12 +1259,15 @@ Passo dopo Passo:
 </ul>
 <hr />
 <blockquote>
-<p>Che la Git sia con te</p>
+<p>Che Git sia con te</p>
 <footer>
 — Yoda
 </footer>
 </blockquote>
-<p><img src="https://i.imgflip.com/tas66.jpg" alt="che la forza sia con te, Yoda" /></p>
+<!-- ![che la forza sia con te, Yoda](https://i.imgflip.com/tas66.jpg) -->
+<p align="center">
+<img src="https://i.imgflip.com/tas66.jpg" width="512" height="512"/>
+</p>
 </div>
 
 
