@@ -112,12 +112,7 @@ Puoi verificare il funzionamento di Bug Reporting e di Pull Request
 
 ## How to make a `reprex`
 
-TODO
-
-
-
-
-
+_TODO_
 
 
 
