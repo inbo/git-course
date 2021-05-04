@@ -20,6 +20,7 @@ Generalmente chi sviluppa software e lo fa di lavoro ha bisogno di uno strumento
 
 `git` è la soluzione a ciascuno di questi (emoji sopra) problemi per collaborare con programmatori esperti e, con tutta la buona volontà dopo aver letto questa dispensa, utenti non-IT o mai stati esposti a questi strumenti. In questo documento si predilige un approccio pratico introducendo un _modus operandi_ per essere subito pronti a partire e garantire un impatto immediato, tuttavia si lascia anche spazio ad approfondimenti e "linee parallele" tramite strumenti alternativi e approcci con più respiro rispetto allo stretto scopo della dispensa.
 
+
 <!---
 
 ## Workshop content
@@ -64,7 +65,7 @@ Il corso è scritto grazie ad una combinazione di documenti  `.md` e `.Rmd` (con
 rmarkdown::render_site("src")
 ```
 
-Il render dei files `.html` viene raccolto in un unico documento (`index.html`) nella cartella  `/docs`. La cartella è quindi usata per il deployment tramite [Github pages](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch). Alternativamente Netlify costituisce un servizio più completo, è sufficiente puntare il deployment verso la caretella `/docs`, netlify si occuperà di recuperare in automatico il file `index.html` all'interno della cartella e dopo qualche minuto tramite la dispensa è online all'indirizzo generato da netlify. Il suggertimento è quello di cambiarlo perchè spesso sono nomi improbabili.
+Il render dei files `.html` viene raccolto nella cartella  `/docs`. La cartella è quindi l'oggetto del deployment. [Netlify](https://www.netlify.com/) è un'intuitiva piattforma serverless e basata su git per fare build, deployment e collaborare su web apps. Inoltre rende possibile avere un ambiente di CI/CD con hosting scalabile.
 
 
 ## Ringraziamenti 👏
@@ -85,6 +86,7 @@ posts:
 
 * [An introduction to Git and how to use it with RStudio](https://r-bio.github.io/intro-git-rstudio/) un'altra grande risorsa che mira all'essenziale. La parte delle PR (Pull Requests) ricalca quella del post.
 * [How to Use Git/GitHub with R](https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/) una risorsa valida con annessiu tutorial. La miglior parte è quella iniziale.
+* [Glossario GitHub](https://git-scm.com/docs/gitglossary): dalla documentazione originale estraggo le parole meno comuni e le rinterpeto.
 
 style:
 
