@@ -1,5 +1,7 @@
 # Git & GitHub con R 
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/438c89f1-5c35-49a7-a2b6-2db57ad28824/deploy-status)](https://app.netlify.com/sites/corso-git/deploys)
+
 <!---
 <p align="center">
 <img src="https://cdn.icon-icons.com/icons2/2351/PNG/512/logo_github_icon_143196.png" width="512" height="512"/>
