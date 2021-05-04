@@ -100,6 +100,11 @@ style:
 * [rstudio4edu](https://rstudio4edu.github.io/rstudio4edu-book/) aggiungi stile ai documenti R Markdown.
 * [STA210-Sp19](https://github.com/STA210-Sp19/website) by Maria Tackett [@matackett](https://github.com/matackett) (Duke University) Per alcuni elementi del file CSS (la parte delle domande) e per aver costruito il miglior corso di statistica su GitHub.
 
+Misc:
+
+* [html guide](https://www.html.it/pag/53180/installazione-di-git/) guida in italiano all'installazione di Git su diversi sistemi operativi. Spacca il capello, anche troppo, l'ho ridotta ai minimi termini.
+* [RStudio webinar](https://resources.rstudio.com/webinars/help-me-help-you-creating-reproducible-examples-jenny-bryan) come preparare un buon `reprex`.
+
 
 <!--- metti script che richiama i contributori e gli autori tramite API -->
 
