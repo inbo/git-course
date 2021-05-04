@@ -14,6 +14,9 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+library(reprex, warn.conflicts = F, quietly = T)
+
 ```
 
 ## `issues` templates
@@ -112,7 +115,19 @@ Puoi verificare il funzionamento di Bug Reporting e di Pull Request
 
 ## How to make a `reprex`
 
-_TODO_
+**reprex** sta per **Re**producible **Ex**ample ed è un esempio minimale e ben strutturato di un errore in cui sei incorso.
+Riprodurre un errore spesso in maniera tale che qualcuno lo possa capire e risolvere è più difficile che risolvere l'errore stesso, anzi accade strutturando il reprex si trova la soluzione all'errore per cui si sta scrivendo lo stesso reprex. Il pacchetto [reprex](https://reprex.tidyverse.org/articles/articles/learn-reprex.html) presta una mano allo sviluppatore R permettendogli di velocizzare il processo di composizione di un reprex da segnalare nella sezione `issues` al manutentore della repo a cui si sta contestando l'errore, o da sottomettere a Stack Overflow che ha delle [linee guida](https://stackoverflow.com/help/how-to-ask) abbastanza strette per la costruzione della domanda.
+La chiamata `reprex::reprex()` essenzialmente genera un foglio in Markdown contente il codice (visibile nel Viewer pane di RStudio) e copia su clipboard il codice sorgente cosicchè possa essere incollato nei luoghi sopra citati.
+
+Cominciamo con un esempio semplice:
+
+
+```{r}
+x  = factor("a")
+y  = factor("b")
+c(x,y)
+
+```
 
 
 
