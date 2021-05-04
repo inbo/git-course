@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Niccolò Salvini" />
 
+<meta name="date" content="2021-05-04" />
 
-<title>Workflow Rstudio</title>
+<title>Varie Risorse utili</title>
 
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -26,6 +28,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
   <link rel="icon" type="image/png" href="static/images/logo_github_icon.ico"/>
 
 <style type="text/css">
@@ -411,85 +415,94 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Workflow Rstudio</h1>
+<h1 class="title toc-ignore">Varie Risorse utili</h1>
+<h4 class="author">Niccolò Salvini</h4>
+<h4 class="date">2021-05-04</h4>
 
 </div>
 
 
-<hr />
-<div id="before-i-start-working" class="section level1">
-<h1>BEFORE I START WORKING</h1>
-<hr />
-<div id="step-1-update-your-code" class="section level2">
-<h2>STEP 1: Update your code</h2>
-<p><strong>Choose your option:</strong></p>
-<div id="option-1a-ill-make-a-new-branch-to-work-with" class="section level3">
-<h3>OPTION 1A: <em>I’ll make a new branch to work with</em></h3>
-<p>Create a new topic branch from master</p>
-<p>Make sure you are working on the master branch: <img src="static/images/workflow_rstudio_1.png" /></p>
-<p>Update the master branch to make sure it is aligned with the remote master: Click <code>Pull</code>: <img src="static/images/workflow_rstudio_2.png" /></p>
-<p>Create a new branch: click on <code>New branch</code> and fill in a branch name: <img src="static/images/workflow_rstudio_2b.png" /></p>
+<div id="issues-templates" class="section level2" number="0.1">
+<h2 number="0.1"><span class="header-section-number">0.1</span> <code>issues</code> templates</h2>
+<p>Spesso è difficile risolvere un problema quando i dettagli importanti mancano o non sono ben evidenziati. Da febbario 2016 i manutentori/propietari di repo possono aggiungere dei templates prestabiliti ai loro loro progetti per <code>Issues</code> e <code>Pull Requests</code>. Facendo questo aiutano i contributori e collaboratori a condividere i dettagli necessari a cominciare una discussione.</p>
+<p>Per aggiungere un template ad una repo è necessario creare un file <code>ISSUE_TEMPLATE</code> nella root dir. L’estesione del file è opzionale ma la buona pratica vuole che sia <code>.md</code> (è possibile avere una preview cliccandoci sopra come accade in automatico col <code>README.md</code>). L’estensione <code>.md</code>rende facile l’aggiunta di elementi come paragrafi, links, e menzioni a collaboratori, proprio come liste TODOs per i templates.</p>
+<p>I templates per <code>Pull Requests</code> seguono lo stesso modello: aggiungi un file nominato <code>PULL_REQUEST_TEMPLATE</code> al root della tua repo.</p>
+<p>Altrimenti procedi per <code>Settings &gt; Features &gt; Issues &gt; Set up templates</code> (<strong>scelta dell’autore</strong>).</p>
+<p>Se sei preoccupato del disordine nella root allora il consiglio è creare una dir <code>.github/</code> dove spostare <code>CONTRIBUTING.md</code>, <code>ISSUE_TEMPLATE.md</code>, and <code>PULL_REQUEST_TEMPLATE.md</code>. GitHub si occupererà si recuperare i files e tutto funzionerà esattamente alla stessa maniera.</p>
+<p>Se vuoi approfondire oltre questo <a href="https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions">ecco la documentazione</a>. Sotto ne sono stati creati due dall’autore sulla base di templates gia esistenti per azioni di <strong>Bug Reporting</strong> e di <strong>Pull Request</strong>. Niente vieta che tu ne possa scrivere altri per diverse azioni.</p>
+<div id="bug-report-temp" class="section level3" number="0.1.1">
+<h3 number="0.1.1"><span class="header-section-number">0.1.1</span> Bug Report temp:</h3>
+<pre><code># Prerequisites
+
+Please answer the following questions for yourself before submitting an issue. **YOU MAY DELETE THE PREREQUISITES SECTION.**
+
+- [ ] I am running the latest version
+- [ ] I checked the documentation and found no answer
+- [ ] I checked to make sure that this issue has not already been filed
+- [ ] I&#39;m reporting the issue to the correct repository (for multi-repository projects)
+
+# Expected Behavior
+
+Please describe the behavior you are expecting
+
+# Current Behavior
+
+What is the current behavior?
+
+# Failure Information (for bugs)
+
+Please help provide information about the failure if this is a bug. If it is not a bug, please remove the rest of this template.
+
+## Steps to Reproduce
+
+Please provide detailed steps for reproducing the issue.
+
+1. step 1
+2. step 2
+3. you get it...
+
+## Context
+
+Please provide any relevant information about your setup. This is important in case the issue is not reproducible except for under certain conditions.
+
+* Firmware Version:
+* Operating System:
+* SDK version:
+* Toolchain version:
+
+## Failure Logs
+
+Please include any relevant log snippets or files here.</code></pre>
 </div>
-<div id="option-1b-i-already-have-a-branch-i-want-to-continue-working-on" class="section level3">
-<h3>OPTION 1B: <em>I already have a branch I want to continue working on</em>:</h3>
-<p>Switch to existing topic branch: <img src="static/images/workflow_rstudio_3.png" /></p>
-<p>Update the topic branch to make sure is is aligned with the remote master: In the Git shell, type:</p>
-<pre><code>git pull origin master</code></pre>
-<p><img src="static/images/workflow_rstudio_4.png" /></p>
-<hr />
+<div id="pull-request-temp" class="section level3" number="0.1.2">
+<h3 number="0.1.2"><span class="header-section-number">0.1.2</span> Pull Request temp:</h3>
+<pre><code>### All Submissions:
+
+* [ ] Have you followed the guidelines in our Contributing document?
+* [ ] Have you checked to ensure there aren&#39;t other open [Pull Requests](../../../pulls) for the same update/change?
+
+&lt;!-- You can erase any parts of this template not applicable to your Pull Request. --&gt;
+
+### New Feature Submissions:
+
+1. [ ] Does your submission pass tests?
+2. [ ] Have you lint your code locally prior to submission?
+
+### Changes to Core Features:
+
+* [ ] Have you added an explanation of what your changes do and why you&#39;d like us to include them?
+* [ ] Have you written new tests for your core changes, as applicable?
+* [ ] Have you successfully ran tests with your changes locally?</code></pre>
+<p>Quindi navigando nella cartella del progetto su GitHub e andando nel pane Issues, vediamo due templates che rispondono alle due azioni concesse dall’autore. Immaginiamo di trovare un <span style="color: red;">Bug</span> nel codice e di volerlo segnalare. Bug Report fa al caso nostro.</p>
+<p><img src="static/images/bug_report_temp.PNG" style="width:75.0%" alt="issues template" /></p>
+<p>E premendo su <span style="color: green;">Get Started</span></p>
+<p><img src="static/images/md_bug_report_temp.PNG" style="width:75.0%" alt="bug report template" /></p>
+<p>Da qui è necessario riempire i campi suggeriti dall’autore seguendo la sua struttura, rendendoci facile la vita evitandoci di dare informazioni superflue (risparmiando tempo); e facile per lui ricevendo lo stretto necessario a riprodurre il problema <code>reprex</code> (qualche informazione in più su <strong>Rep</strong>roducible <strong>Ex</strong>ample, <a href="https://reprex.tidyverse.org/">pacchetto qui</a> e <a href="https://www.jessemaegan.com/post/so-you-ve-been-asked-to-make-a-reprex/">blog post qui</a>). Puoi verificare il funzionamento di Bug Reporting e di Pull Request</p>
 </div>
 </div>
-</div>
-<div id="while-editing" class="section level1">
-<h1>WHILE EDITING</h1>
-<hr />
-<div id="step-2.x-adapt-in-md-r-code-multiple-times" class="section level2">
-<h2>STEP 2.x: adapt in md, R-code,… (multiple times!)</h2>
-<div id="add-new-files" class="section level3">
-<h3>Add new files</h3>
-<p>Stage the new file with checkbox and click <code>Commit</code> <img src="static/images/workflow_rstudio_5.png" /></p>
-<p>Provide clear and understandable message about adaptations <img src="static/images/workflow_rstudio_6.png" /></p>
-</div>
-<div id="change-files" class="section level3">
-<h3>Change files:</h3>
-<p>Stage the adaptations with checkbox and click <code>Commit</code> <img src="static/images/workflow_rstudio_7.png" /></p>
-<p>Provide clear and understandable message about adaptations <img src="static/images/workflow_rstudio_8.png" /></p>
-</div>
-</div>
-<div id="step-3-push-your-changes-to-github." class="section level2">
-<h2>STEP 3: Push your changes to GitHub.</h2>
-<p>Update the remote version of the topic branch. Click <code>Push</code>: <img src="static/images/workflow_rstudio_9.png" /></p>
-<hr />
-</div>
-</div>
-<div id="edits-on-branch-are-ready" class="section level1">
-<h1>EDITS ON BRANCH ARE READY</h1>
-<hr />
-<div id="step-4-pull-request-to-add-your-changes-to-the-current-master." class="section level2">
-<h2>STEP 4: Pull request to add your changes to the current master.</h2>
-<p>Update the remote version of the topic branch. Click <code>Push</code>: <img src="static/images/workflow_rstudio_9.png" /></p>
-<p>Go to your repo on Github.com and click the <code>Compare &amp; pull request</code> button.</p>
-<p><img src="static/images/workflow_rstudio_github_1.png" /></p>
-<p>Add information about the Pull request, add reviewers, labels,… Finally, <code>Create pull request</code>: <img src="static/images/workflow_rstudio_github_2.png" /></p>
-</div>
-<div id="step-5-code-review" class="section level2">
-<h2>STEP 5: Code review!</h2>
-<p>You and collaborators can make comments about the edits, review the code and adapt if required (create additional commits and <code>Push</code> them to GitHub) .</p>
-<p>If everything is ok, click the <code>Merge pull request</code>:</p>
-<p><img src="static/images/workflow_rstudio_github_3.png" /></p>
-<p>followed by <code>Confirm merge</code>:</p>
-<p><img src="static/images/workflow_rstudio_github_4.png" /></p>
-<p>Delete the online branch after merge, since obsolete, click <code>Delete branch</code></p>
-<p><img src="static/images/workflow_rstudio_github_5.png" /></p>
-</div>
-<div id="step-6-update-the-master-branch-on-my-pc" class="section level2">
-<h2>STEP 6: Update the master branch on my PC</h2>
-<p>Make sure you are working on the master branch: <img src="static/images/workflow_rstudio_1.png" /></p>
-<p>Remove the local branch, since obsolete. In the Git shell, type:</p>
-<pre><code>git branch -d analysis-script</code></pre>
-<p><img src="static/images/workflow_rstudio_4.png" /></p>
-<p>Update the local master branch: Click <code>Pull</code>: <img src="static/images/workflow_rstudio_2.png" /></p>
-</div>
+<div id="how-to-make-a-reprex" class="section level2" number="0.2">
+<h2 number="0.2"><span class="header-section-number">0.2</span> How to make a <code>reprex</code></h2>
+<p><em>TODO</em></p>
 </div>
 
 
@@ -558,7 +571,7 @@ $(document).ready(function ()  {
 
     // establish options
     var options = {
-      selectors: "h1,h2",
+      selectors: "h1,h2,h3",
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
