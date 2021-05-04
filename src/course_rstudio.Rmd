@@ -25,7 +25,7 @@ library(magrittr, quietly = T, warn.conflicts = F)
 Prima di cominciare questo tutorial assumo che:
 
 * tu abbia [R](https://lib.ugent.be/CRAN/) e [Rstudio](https://www.rstudio.com/products/rstudio/download/) installati, aggiornati (a versioni relativamente recenti, quelle della mia macchina sono: R: `r getRversion()` ed RStudio: '1.4.1103' (~ 5 min).
-* tu abbia [git](https://git-scm.com/) installato sul computer e puntanto sull'eseguibile `git.exe`. (~ 3 min.)
+* tu abbia [git](https://git-scm.com/) installato sul computer e puntanto sull'eseguibile `git.exe`. (~ 3 min. , segui [il tutorial sul sito](./installazioni.html))
 
 Per verificare la corretta installazione di Git entra su RStudio, poi apri il terminale i.e. "Terminal", Si trova accanto alla "Console" da dove si eseguono i comandi in R. Nel caso tu avessi difficoltà a trovarlo su Windows premi contemporamente Alt+Shift+M, su Mac Cmd+Shift+M (da verificare). Se ancora non vedi il terminale Shift+Alt+T (`Tools > Terminal > Move Focus to Terminal`). 
 Una volt sul terminale esequi i seguenti comandi:
