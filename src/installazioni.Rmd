@@ -1,0 +1,28 @@
+---
+title: "Installazioni di Git per OS"
+author:
+- Niccolò Salvini
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+    fig_caption: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Git è un progetto open source che ha una manutenzione abbastanza frequente (periodicità mensile). Fortunatamente nella maggior parte dei casi le migliorie coinvolgono aggiornamenti di rango minore che non influiscono sul processo d’installazione e che prevede grosso modo la medesima procedura.
+
+La compatibilità  di Git con le distribuzioni a Kernel Linux è molto ampia, del resto l'origine fu fortemente voluta da Linus Torvalds. Questo è vero anche per le piattaforme (Mac) OS X, essendo derivati di UNIX come Linux e pure nell'ecosistema Windows. 
+
+## Installazione di Git su Linux 
+
+Molte distribuzioni Linux come già anticipato sono derivati di altre distribuzioni "a monte", in particolare Ubuntu sta "a valle" di Debian o Mint che sta "a valle" di Canonical. Questo rende possibile utilizzare gli stessi comandi delle distribuzioni "a monte" anche per "a valle".
+
+
