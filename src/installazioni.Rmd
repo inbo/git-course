@@ -1,5 +1,5 @@
 ---
-title: "Installazioni di Git per OS"
+title: "Installazioni di Git per ogni OS"
 author:
 - Niccolò Salvini
 date: "`r Sys.Date()`"
@@ -24,5 +24,85 @@ La compatibilità  di Git con le distribuzioni a Kernel Linux è molto ampia, de
 ## Installazione di Git su Linux 
 
 Molte distribuzioni Linux come già anticipato sono derivati di altre distribuzioni "a monte", in particolare Ubuntu sta "a valle" di Debian o Mint che sta "a valle" di Canonical. Questo rende possibile utilizzare gli stessi comandi delle distribuzioni "a monte" anche per "a valle".
+Aprire il Terminale e lanciare le seguenti istruzioni:
+
+    $ sudo apt-get update
+    $ apt-get install git
+
+Il primo comando aggiornerà l’elenco locale dei pacchetti software del gestore **APT** (Advanced Packaging Tool), il secondo effettivamente inizierà l’installazione. 
+Qualora si necessitasse di versioni di Git _dev_, non ancora rilasciate, si può ricorrere a ai **PPA** (Personal Package Archives) i quali mostrano le ultime release ancora prima delle repo ufficiali.
+Facendo così i comandi da eseguire sono:
+
+    $ sudo add-apt-repository ppa:git-core/ppa
+    $ sudo apt-get update
+    $ sudo apt-get install git
+
+## Installazione di Git su (Mac) OS X
+
+> (env. test: OS X 10.10, “Yosemite“)
+>
+
+Navigare verso la [sezione downloads](https://git-scm.com/download/mac) di Git e fare il download del file in formato DMG. Aprire il file DMG ed cliccare sul `git.pkg` che lancia l'installazione.
+Verificare la corretta installazione tramite il comando da Bash:
+
+    $ git --version
+
+Basg dovrebbe resituire una risposta come:
+
+    git version 2. ...(qualche numero)
+
+E' anche necessario conoscere la destinazione di installazione per localizzare l'**executable**, che poi va passato dentro RStudio. Per fare questo esegui da Bash il seguente comando:
+
+    $ which git
+
+Bash dovrebbe rispondere qualcosa che assomiglia a:
+
+    /usr/local/git/bin/git
+
+
+## Installazione di Git su Windows
+
+
+> (env. test: Windows 10 Home edition)
+>
+
+
+L'installazioni di Git per Windows ha un progetto satellite degli stessi autori di Git dedicato, chiamato “**Git for Windows**”. L'installazione mette a disposizione anche un Bash, una GUI e l’integrazione con la Shell. Git for Windows fornisce un'emulatore della BASH per l’utilizzo dell’applicazione da terminale, lavorando alla stessa maniera dei sistemi UNIX o UNIX like.
+GUI invece è un'interfaccia guidata che punta a sostituire Bash per tutti gli utenti che usano IDE (interfacce di sviluppo Human Friendly). Anche se è una forma di aiuto notevole onestamente non ci servirà più di tanto.
+
+Una volta scaricato il necessario l'**executable** dal sito ufficiale di [Git for Windows](https://gitforwindows.org/) e fatto doppio click sull'installer, si ottiene questo:
+
+<p align="center">
+<img src="https://static.html.it/app/uploads/2015/05/Cattura2.png"/>
+</p>
+
+<!-- ![Wizard per l'installazione di Git su Windows](https://static.html.it/app/uploads/2015/05/Cattura2.png) -->
+
+La procedura prosegue con l'accettazione della licenza e la scelta della destinazione per l’installazione.
+
+
+<p align="center">
+<img src="https://static.html.it/app/uploads/2015/05/Cattura3.png"/>
+</p>
+
+Le opzioni disponibili permettono una serie di tweaks che non sono necessari, le si può spuntare per completezza ed evitare comportamenti insoliti, ma non sono necessarie allo scopo della dispensa. La linea guida è correre velocemente verso l'installazione per non perdere tempo e lasciare che Git trovi spazio nel nostro computer piuttosto che il contrario. Con più pazienza puoi tranquillamente ritornare sui tuoi passi e rivedere queste scelte.
+Fatto questo imposta l’ambiente di lavoro con Git dall’emulatore di BASH o dal Prompt dei comandi, la scelta più sicura è la preferita:
+
+<p align="center">
+<img src="https://static.html.it/app/uploads/2015/05/Cattura5.png"/>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
