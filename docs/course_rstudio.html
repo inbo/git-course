@@ -11,7 +11,7 @@
 
 <meta name="author" content="Niccolò Salvini" />
 
-<meta name="date" content="2021-05-03" />
+<meta name="date" content="2021-05-04" />
 
 <title>Git attraverso RStudio</title>
 
@@ -455,6 +455,9 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="terminologia.html">Terminologia</a>
+    </li>
+    <li>
       <a href="course_rstudio.html">Su Rstudio</a>
     </li>
   </ul>
@@ -493,7 +496,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Git attraverso RStudio</h1>
 <h4 class="author">Niccolò Salvini</h4>
-<h4 class="date">2021-05-03</h4>
+<h4 class="date">2021-05-04</h4>
 
 </div>
 
@@ -502,12 +505,12 @@ div.tocify {
 <h1 number="1"><span class="header-section-number">1</span> Setup</h1>
 <p>Prima di cominciare questo tutorial assumo che:</p>
 <ul>
-<li>tu abbia <a href="https://lib.ugent.be/CRAN/">R</a> e <a href="https://www.rstudio.com/products/rstudio/download/">Rstudio</a> installati e funzionanti sul computer (~ 5 min).</li>
-<li>tu abbia <a href="https://git-scm.com/">git</a> installato sul computer e puntanto sul file <code>git.exe</code>. (~ 3 min.)</li>
+<li>tu abbia <a href="https://lib.ugent.be/CRAN/">R</a> e <a href="https://www.rstudio.com/products/rstudio/download/">Rstudio</a> installati, aggiornati (a versioni relativamente recenti, quelle della mia macchina sono: R: 4.0.3 ed RStudio: ‘1.4.1103’ (~ 5 min).</li>
+<li>tu abbia <a href="https://git-scm.com/">git</a> installato sul computer e puntanto sull’eseguibile <code>git.exe</code>. (~ 3 min.)</li>
 </ul>
-<p>Per verificare la corretta installazione di Git entra su RStudio, poi apri il terminale i.e. “Terminal”, Si trova accanto alla “Console” da dove esegui di solito i comandi in R. Nel caso tu avessi difficoltà a trovarlo su Windows premi contemporamente Alt+Shift+M, su Mac Cmd+Shift+M (da verificare). Se ancora non vedi il terminale Shift+Alt+T (Tools-&gt;Terminal-&gt;Move Focus to Terminal). Una volt sul terminale esequi i seguenti comandi:</p>
+<p>Per verificare la corretta installazione di Git entra su RStudio, poi apri il terminale i.e. “Terminal”, Si trova accanto alla “Console” da dove si eseguono i comandi in R. Nel caso tu avessi difficoltà a trovarlo su Windows premi contemporamente Alt+Shift+M, su Mac Cmd+Shift+M (da verificare). Se ancora non vedi il terminale Shift+Alt+T (<code>Tools &gt; Terminal &gt; Move Focus to Terminal</code>). Una volt sul terminale esequi i seguenti comandi:</p>
 <pre><code>which git</code></pre>
-<p>Dovesti vedere come risposta del terminale qualcosa come: <strong>/usr/local/bin/git</strong>. Successivamente esegui:</p>
+<p>La risposta del terminale dovrebbe essere qualcosa come: <strong>/usr/local/bin/git</strong>. Successivamente esegui:</p>
 <pre><code>git --version</code></pre>
 <p>L’ultima versione di <code>git</code> disponibile è la 2.31.1. Corrisponde a quella installata? Se sì procedi avanti. Se non corrisponde o compare qualche altro errore sentiti libero di mandarmi una mail <a href="mailto:niccolo.salvini27@gmail.com">me medesimo</a>. Se hai installata una versione precedente di <code>git</code> non occorre aggiornare per questo tutorial, anche se puoi considerare l’idea di farlo in prossimo futuro.</p>
 <ul>
@@ -953,7 +956,7 @@ Esercizio:
 </div>
 <div id="guarda-lhistory" class="section level2" number="2.12">
 <h2 number="2.12"><span class="header-section-number">2.12</span> Guarda l’history</h2>
-<p>Uno dei vantaggi di usare uno strumento di verion control con commits regolari è poter avere la cronostoria di tutto il lavoro sul progetto. E’ possibile infatti guardare l’History (la serie di commits) sia online che in locale su RStudio.</p>
+<p>Uno dei vantaggi di usare uno strumento di verion control come Git, <em>assumendo commits regolari</em>, è poter avere la cronistoria commentata di tutto il lavoro sul progetto. E’ possibile infatti guardare l’History (la serie di <code>commit</code>) sia online che in locale su RStudio.</p>
 <div class="bs-callout bs-callout-exercise">
 <h4>
 Esercizio:
@@ -1248,6 +1251,7 @@ Passo dopo Passo:
 <li>Non unire mai la <code>pull request</code> di qualcun’altro senza il consenso degli altri.</li>
 <li>Non tenere aperti <code>branch</code> scaduti (in gergo tecnico, se lo fai crei debito tecnico)</li>
 </ul>
+<hr />
 <blockquote>
 <p>Che la Git sia con te</p>
 <footer>
@@ -1255,16 +1259,6 @@ Passo dopo Passo:
 </footer>
 </blockquote>
 <p><img src="https://i.imgflip.com/tas66.jpg" alt="che la forza sia con te, Yoda" /></p>
-<hr />
-<!-- ...but if you're hungry you can  -->
-<!-- * Webinars -->
-<!--     - [Github and Rstudio management](https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/) -->
-<!--     - [Collaboration and time travel: version control with git, github and RStudio](https://www.rstudio.com/resources/webinars/collaboration-and-time-travel-version-control-with-git-github-and-rstudio/) -->
-<!-- * Tutorials -->
-<!--     - [Hadley Wickham R packages book](http://r-pkgs.had.co.nz/git.html) -->
-<!--     - [Happy Git and GitHub for the useR](http://happygitwithr.com/index.html) -->
-<!-- --- -->
-<!-- Information combined at [INBO Git course](https://github.com/inbo/git-course). <br/>You're welcome to provide issues, pull requests,... -->
 </div>
 
 

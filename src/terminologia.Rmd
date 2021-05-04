@@ -18,5 +18,47 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Glossario dei Termini
 
-- `repo` sta per repository ed è una cartella online assumibile ad un Google Drive 
-- `clone` clonare una 
+All'interno della dispensa troverai ripetuti numerose volte i termini qua sotto, alcune volte riferiti a comandi eseguibili da shell o terminale (se preceduti da `git`), altre volte a lessico tecnico e di uso gergale nell'ambiente. E' molto importante _introdurre_ e _memorizzare_ questi termini perchè permette di risparmiare tempo nello sviluppo di codice in ambiente collaborativo. Auspicabilmente alla fine della dispensa **avrai una panoramica dall'alto del funzionamento di git** e un **modo di lavorare** che ti permetteranno di sperimentare, approfondire ed essere produttivo fin dall'inizio.
+
+## Gergo
+
+- `branch`: un branch è una linea indipendente/parallela di sviluppo del codice nella repo. Il branch è contenuto nella repo ma non colpice il "master" permettendo allo sviluppatore di lavorare liberamente senza danneggiare le versione stabile. Quando i cambiamenti sono stabili è necessario riunirli nel master.
+- `collaborator`: un colaborateore è una persona che ha accessi di tipo read and write (-rw) alla repo ed è stato invitato a contribuire dal mantenitore ufficiale/propietario della repo.
+- `commit`:
+  -  *come nome*: un cambiamento individuale ad un file o ad un insieme di files. Tutte le volte che viene fatto un commit Git crea un ID unico detto "SHA" o "hash" che associa il cambiamento allo specifico file insieme alle metainformazioni che riguardano chi l'ha fatto e quando. I commit normalmente contengono un messaggio che è una sintesi dei cambiamenti apportati. La parola `commit` è spesso usata al posto di `revision` o `version` in altri sistemi di controllo di versione.
+  - *come verbo*: la fase di stoccaggio dello snapshot dello stato del progetto nella history. 
+- `continuous integration`: **C**ontinous **I**ntegration è un processo che esegue build automatici e tests tutte le volte che una persona fa un commit ad una repo configurata. CI come [TravisCI](https://travis-ci.org/) o [circleCI](https://circleci.com/) sono servizi impiegati come buona pratica nello sviluppo di software offrendo un valido aiuto nella ricerca di bugs nel codice.
+Also known as CI. A process that runs automated builds and tests once a person commits a change to a configured repository on GitHub. CI is a common best practice in software development that helps detect errors
+- `contribution guidelines`: un documento, spesso salvato come `CONTRIBUTION_GUIDELINES.md` che spiega come contribuire al progetto in senso esteso.
+- `contributor`: un contributore è qualcuno che non ha i privilegi del colaboratore ma ha contribuito in maniera sostanziale al progetto avendo all'attivo almeno 1 Pull Request dal contenuto significativo. 
+- `diff`: un diff è la differenza tra due commits. Il diff è visivamente rappresentato come la differenza tra cioè che è stato aggiunto e cioò che è stato tolto tra un commit e il successivo. Molti IDE tra cui RStudio e VScode e altri clients Git come Fork e gitKraken evidenziano di verde le linee di codice aggiunte e di rosso qielle tolte.
+- `fork`: una fork è una copia personale di una repo di un altro user sul proprio. il fork permette di effettuare liberamente cambiamenti alla repo senza condizionare in alcun modo l'upstream repo, cioè l'originale dell'originale. E' anche possibile aprire una pull request con l'upstream repo e tenere il fork aggiornato con gli ultimi cambiamenti dell'originale. 
+- `history`: la cronistoria di tutti i cambiamenti effettuati sul progetto. (final_version1.docx, final_version2.docx, final_finalversion3.docx, really_the_finalversion4.docx)
+- `hook`: uno script che viene eseguito automaticamente ogni volta che occorre un evento in una repo di Git. Gli hooks permettono di personalizzare il funzionamento interno di Git in modo tale da creare
+- `master`: il branch di default di sviluppo. Tutte le volte che si crea una repo, un branch di nome "master" viene creato e diventa un branch attivo.
+- `merge`: merge prende i cambiamenti  un branch li applica ad un altro. Questo succede spesso nei casi di pull request.
+- `OAuth token`: un token di accesso usato nelle Oauth apps per accedere alle informazioni di un utente.
+- `origin`: il default upstream della repo. Molti progetti hanno almeno 1 upstream da tracciare. Come default è usato origin. 
+ reazioni automatiche ad azioni durante il ciclo vita di sviluppo del progetto. .
+- `private repository`: le repo private sono repo visibili solo al propietario della repo e ai rispettivi collaboratori che il propietario intende specificare.
+- `production branch`: un branch i cui cambiamenti finiscono per essere in deployment su un applicazione o su un sito.
+- `README`: un file di testo in markdown che contiene informazioni che riguardano la repo del progetto. Il file README, insieme a la licenza e al codice di condotta (`CONDUCT.md`) che aiutano a condividere le
+- `release`: un modo di GitHub di impacchettare il codice sottoforma di software a sè-stante agli utenti.
+- `remote repository`: una repo che è usata per tenere traccia degli stessi cambiamenti del progetto ma che è da qualche altra parte in remoto (online su GitHub).
+- `repo`: sta per repository ed è una cartella online, assumibile ad un Google Drive, in cui sono contenute le versioni del codice.
+ aspettative ed amministrare le contribuzioni al progetto. 
+- `SCM`: **S**ource **C**ode **M**anagement
+- `squash`: combinare molteplici commits in un signolo grande commit. Può essere anche un comando Git o un'opzione di default utilizzata nelle PR per specifici contributori.
+- `stage` mettere in stage un cambiamento prima di effettuare un commit
+- `stash`: mettere in stash un oggetto è temporaneamente metterlo da parte per successivamente o committarlo o scartarlo.
+- `upstream`: quando si parla di un branch o di un fork, il branch primario della repository originale è detto "upstream", visto che è la sorgente da cui arrivano i cambiamenti principali. Il branch/fork su cui l'utente che ha fatto fork lavora è detto "downstream" anche detto **origin**. !!! (forse immagine) !!!
+
+## Azioni:
+
+- `git chekout`: comando usato per creare un nuovo branch, cambiare da un branch all'altro o addirittura passare da una versione di un file da un branch ad un altro.
+- `git clone`: comando usato per creare una copia della repo remota in locale sul proprio computer. Quando viene fatta una copia della cartella remota è possibile modificare i files con l'editor preferito e poi usare git per tenere traccia dei cambiamenti senza essere necessariamente online. La repo clonata è comunque sempre connessa alla repo remota in modo tale da poter fare push sui cambiamenti da locale in favore di quella remota per tenerle sincrone.
+- `git fetch`: comando che dice al tuo git locale di recuperare le ultime informazioni sui metadati del remoto ma non esegue alcun trasferimento di file (verifica controllo modifiche online). Ogni `git pull` comporta un `git fetch`.
+- `git pull`: Incorpora i cambiamenti da una repository remota (`remote repository`) nel branch corrente. Per esempio se qualcuno a modificato qualche file nella repo remota a cui un altro utente stava già lavorando, l'ultimo utente ha la necessità di aggiornare la sua repo in locale con le ultime notifiche di chi ci ha già lavorato.
+- `git push`: per push s'intende l'operazione di spedizione dei cambiamenti (commits) alla repo remota in GitHub. Per esempio se si cambia qualcosa in locale, allora possonoe essere pushati i cambiamenti online cosicchè gli altri li possano vedere.
+- `pull request`: **P**ull **R**equests sono proposte di cambiamento di una repo inviate da un utente e successivamente riviste e accettate o rigettate da un collaboratore. 
+

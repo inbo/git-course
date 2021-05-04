@@ -243,7 +243,7 @@ h1:before {
   display: block;
   height: 200px;
   margin: 2em 20px 40px 20px;
-  background-image: url('//images//logo_github_icon.png');
+  background-image: url('https://i.morioh.com/2019/11/11/1f265e2d4c43.jpg');
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
@@ -293,22 +293,22 @@ position: -webkit-sticky;
 
 /*--------------------------------------*/
 /*----------------NAVBAR ---------------*/
-/*--------------------------------------*/
+/*-------------------------------------- #141c25 */
 
 
 .navbar-default {
-    background-color: #141c25f2;
+    background-color: #74aadaf2;
 }
 
 .navbar-default .navbar-nav>.open>a, 
 .navbar-default .navbar-nav>.active>a, 
 a.dropdown-toggle:hover {
-  background-color: #141c25 !important;
+  background-color: #74aada !important;
 }
 
 /* Dropdown menu color */
 .navbar-default .dropdown-menu {
-  background-color: #141c25;
+  background-color: #74aada;
 }
 
 /* Dropdown menu hover color */
@@ -323,7 +323,7 @@ a.dropdown-toggle:hover {
 .navbar-default .navbar-nav>li>a:hover, 
 a.navbar-brand:hover {
   color: #ffffffab !important;
-  background-color: #141c25;
+  background-color: #74aada;
 }
 
 

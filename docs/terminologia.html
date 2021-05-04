@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Niccolò Salvini" />
 
+<meta name="date" content="2021-05-04" />
 
-<title>Workflow Collaboration</title>
+<title>Terminologia</title>
 
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -26,6 +28,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
   <link rel="icon" type="image/png" href="static/images/logo_github_icon.ico"/>
 
 <style type="text/css">
@@ -399,154 +403,61 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Workflow Collaboration</h1>
+<h1 class="title toc-ignore">Terminologia</h1>
+<h4 class="author">Niccolò Salvini</h4>
+<h4 class="date">2021-05-04</h4>
 
 </div>
 
 
-<p>These guidelines explain the different steps to be taken when collaborating in a Github repository while developing code in RStudio. The main aim is to give a concise overview rather than giving detailed information on different options or showing screenshots for each step. The steps presented here follow more or less <a href="https://guides.github.com/introduction/flow/">this schedule</a> but the explanations and tips are rather complementary.</p>
-<div id="add-an-issue" class="section level1">
-<h1>Add an issue</h1>
-<p>Ask for changes or propose to make changes in a Github repository:</p>
+<div id="glossario-dei-termini" class="section level1" number="1">
+<h1 number="1"><span class="header-section-number">1</span> Glossario dei Termini</h1>
+<p>All’interno della dispensa troverai ripetuti numerose volte i termini qua sotto, alcune volte riferiti a comandi eseguibili da shell o terminale (se preceduti da <code>git</code>), altre volte a lessico tecnico e di uso gergale nell’ambiente. E’ molto importante <em>introdurre</em> e <em>memorizzare</em> questi termini perchè permette di risparmiare tempo nello sviluppo di codice in ambiente collaborativo. Auspicabilmente alla fine della dispensa <strong>avrai una panoramica dall’alto del funzionamento di git</strong> e un <strong>modo di lavorare</strong> che ti permetteranno di sperimentare, approfondire ed essere produttivo fin dall’inizio.</p>
+<div id="gergo" class="section level2" number="1.1">
+<h2 number="1.1"><span class="header-section-number">1.1</span> Gergo</h2>
 <ul>
-<li>on the main page of the git repository on GitHub, hit tab <code>Issues</code></li>
-<li>check for similar issues (using the search function)
+<li><code>branch</code>: un branch è una linea indipendente/parallela di sviluppo del codice nella repo. Il branch è contenuto nella repo ma non colpice il “master” permettendo allo sviluppatore di lavorare liberamente senza danneggiare le versione stabile. Quando i cambiamenti sono stabili è necessario riunirli nel master.</li>
+<li><code>collaborator</code>: un colaborateore è una persona che ha accessi di tipo read and write (-rw) alla repo ed è stato invitato a contribuire dal mantenitore ufficiale/propietario della repo.</li>
+<li><code>commit</code>:
 <ul>
-<li>if the issue already exists, add your comments or suggestions in this issue, or add a thumb emoticon (to follow the issue)</li>
+<li><em>come nome</em>: un cambiamento individuale ad un file o ad un insieme di files. Tutte le volte che viene fatto un commit Git crea un ID unico detto “SHA” o “hash” che associa il cambiamento allo specifico file insieme alle metainformazioni che riguardano chi l’ha fatto e quando. I commit normalmente contengono un messaggio che è una sintesi dei cambiamenti apportati. La parola <code>commit</code> è spesso usata al posto di <code>revision</code> o <code>version</code> in altri sistemi di controllo di versione.</li>
+<li><em>come verbo</em>: la fase di stoccaggio dello snapshot dello stato del progetto nella history.</li>
 </ul></li>
-<li>if your issue is not yet reported, hit the button <code>New issue</code></li>
-<li>give it an informative title and add a clear and complete description (with reproducible example if appropriate)</li>
-</ul>
-<p>Issues can be used to:</p>
-<ul>
-<li>report to do’s to yourself/team</li>
-<li>propose and discuss additions/changes</li>
-<li>report bugs in packages you’re using</li>
-</ul>
-<p>Issues can be:</p>
-<ul>
-<li>assigned to someone</li>
-<li>labeled (e.g. bug, documentation, help wanted,…)</li>
-</ul>
-</div>
-<div id="add-code-in-a-new-feature-branch" class="section level1">
-<h1>Add code in a new feature branch</h1>
-<p>(If you don’t have the project locally, check the manual <a href="https://inbo.github.io/git-course/course_rstudio.html#23_clone_a_repo_to_work_locally">here</a>.)</p>
-<p>In RStudio on the <code>Git</code>tab:</p>
-<ul>
-<li>make sure the <code>master</code> branch is active and up to date (<code>Pull</code>)</li>
-<li>add a <code>New Branch</code> (hit button) and give it an informative name</li>
-<li>add new code or change code, and make a <code>Commit</code> for every change
-<ul>
-<li>you can select specific lines or chunks, you don’t have to commit all changes at once</li>
-<li>bundle related changes in a single commit and add a clear commit message. Spread unrelated changes over multiple commits.</li>
-</ul></li>
-<li>occasionally <code>Push</code> your changes to the repository on github (at least once a day, not too frequently as every push might trigger automated tests)</li>
-</ul>
-<p>These steps are described into detail in a <a href="https://inbo.github.io/git-course/workflow_rstudio.html">separate workflow</a> and in <a href="https://inbo.github.io/git-course/course_rstudio.html#28_create_logical_commits">this manual</a>.</p>
-</div>
-<div id="create-a-pull-request" class="section level1">
-<h1>Create a pull request</h1>
-<p>Create a pull request when your work is ready to share with collaborators.</p>
-<p>In RStudio, make sure all changes are committed and pushed.</p>
-<p>In the GitHub repository:</p>
-<ul>
-<li>create a pull request by either
-<ul>
-<li>using the <code>Compare &amp; pull request</code> button that appears after recent pushes</li>
-<li>selecting your new feature branch and hitting the <code>New pull request</code> button</li>
-</ul></li>
-<li>make sure the correct branches are indicated:
-<ul>
-<li>‘base’ mentions the branch where will merged to, often the master branch</li>
-<li>the ‘compare’ branch is your feature branch</li>
-</ul></li>
-<li>adapt the title if needed, and describe what you did (you can scroll down to check your commits)</li>
-<li>hit <code>Create Pull request</code></li>
-<li>request reviewers by adding them on the right top of the page</li>
-</ul>
-<p>For an explanation including screenshots, see <a href="https://inbo.github.io/git-course/course_rstudio.html#214_pull_requests">here</a> or <a href="https://inbo.github.io/git-course/workflow_rstudio.html#edits_on_branch_are_ready">here</a>.</p>
-<p><strong>Remark:</strong> after creating a pull request, it is still possible to add new commits to this branch and pull request. After pushing new commits in RStudio, they appear in the pull request. To show others that you are not finished yet, you can convert the pull request to draft (right top of page, where you request reviewers)</p>
-</div>
-<div id="revision-of-code" class="section level1">
-<h1>Revision of code</h1>
-<p>Reviewers will receive an email with a link to the pull request, and they can:</p>
-<ul>
-<li>inspect
-<ul>
-<li><strong>the changes</strong> on GitHub in the pull request by inspecting the tabs <code>Conversation</code>, <code>Commits</code> and <code>Files changed</code></li>
-<li><strong>the adapted version</strong> locally in RStudio after hitting <code>Pull</code> and select the branch name (mentioned at the top of the pull request in GitHub)</li>
-</ul></li>
-<li>review it on GitHub by following <a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request#starting-a-review">this workflow</a>
-<ul>
-<li>to propose major changes for a single issue yourself:
-<ul>
-<li>make a new branch in RStudio starting from the branch you are reviewing</li>
-<li>add, commit and push your changes</li>
-<li>make a pull request to merge your branch to the branch you are reviewing</li>
-</ul></li>
-</ul></li>
-</ul>
-<p>During this revision, in the Pull request on GitHub:</p>
-<ul>
-<li>the author can accept suggestions of reviewers by choosing <code>Commit suggestions</code> (easiest in <code>files change</code> tab)</li>
-<li>suggestions or comments can be discussed using the comment boxes</li>
-<li>the author can re-request a reviewer after solving all comments (only in <code>Conversation</code> tab)</li>
+<li><code>continuous integration</code>: <strong>C</strong>ontinous <strong>I</strong>ntegration è un processo che esegue build automatici e tests tutte le volte che una persona fa un commit ad una repo configurata. CI come <a href="https://travis-ci.org/">TravisCI</a> o <a href="https://circleci.com/">circleCI</a> sono servizi impiegati come buona pratica nello sviluppo di software offrendo un valido aiuto nella ricerca di bugs nel codice. Also known as CI. A process that runs automated builds and tests once a person commits a change to a configured repository on GitHub. CI is a common best practice in software development that helps detect errors</li>
+<li><code>contribution guidelines</code>: un documento, spesso salvato come <code>CONTRIBUTION_GUIDELINES.md</code> che spiega come contribuire al progetto in senso esteso.</li>
+<li><code>contributor</code>: un contributore è qualcuno che non ha i privilegi del colaboratore ma ha contribuito in maniera sostanziale al progetto avendo all’attivo almeno 1 Pull Request dal contenuto significativo.</li>
+<li><code>diff</code>: un diff è la differenza tra due commits. Il diff è visivamente rappresentato come la differenza tra cioè che è stato aggiunto e cioò che è stato tolto tra un commit e il successivo. Molti IDE tra cui RStudio e VScode e altri clients Git come Fork e gitKraken evidenziano di verde le linee di codice aggiunte e di rosso qielle tolte.</li>
+<li><code>fork</code>: una fork è una copia personale di una repo di un altro user sul proprio. il fork permette di effettuare liberamente cambiamenti alla repo senza condizionare in alcun modo l’upstream repo, cioè l’originale dell’originale. E’ anche possibile aprire una pull request con l’upstream repo e tenere il fork aggiornato con gli ultimi cambiamenti dell’originale.</li>
+<li><code>history</code>: la cronistoria di tutti i cambiamenti effettuati sul progetto. (final_version1.docx, final_version2.docx, final_finalversion3.docx, really_the_finalversion4.docx)</li>
+<li><code>hook</code>: uno script che viene eseguito automaticamente ogni volta che occorre un evento in una repo di Git. Gli hooks permettono di personalizzare il funzionamento interno di Git in modo tale da creare</li>
+<li><code>master</code>: il branch di default di sviluppo. Tutte le volte che si crea una repo, un branch di nome “master” viene creato e diventa un branch attivo.</li>
+<li><code>merge</code>: merge prende i cambiamenti un branch li applica ad un altro. Questo succede spesso nei casi di pull request.</li>
+<li><code>OAuth token</code>: un token di accesso usato nelle Oauth apps per accedere alle informazioni di un utente.</li>
+<li><code>origin</code>: il default upstream della repo. Molti progetti hanno almeno 1 upstream da tracciare. Come default è usato origin. reazioni automatiche ad azioni durante il ciclo vita di sviluppo del progetto. .</li>
+<li><code>private repository</code>: le repo private sono repo visibili solo al propietario della repo e ai rispettivi collaboratori che il propietario intende specificare.</li>
+<li><code>production branch</code>: un branch i cui cambiamenti finiscono per essere in deployment su un applicazione o su un sito.</li>
+<li><code>README</code>: un file di testo in markdown che contiene informazioni che riguardano la repo del progetto. Il file README, insieme a la licenza e al codice di condotta (<code>CONDUCT.md</code>) che aiutano a condividere le</li>
+<li><code>release</code>: un modo di GitHub di impacchettare il codice sottoforma di software a sè-stante agli utenti.</li>
+<li><code>remote repository</code>: una repo che è usata per tenere traccia degli stessi cambiamenti del progetto ma che è da qualche altra parte in remoto (online su GitHub).</li>
+<li><code>repo</code>: sta per repository ed è una cartella online, assumibile ad un Google Drive, in cui sono contenute le versioni del codice. aspettative ed amministrare le contribuzioni al progetto.</li>
+<li><code>SCM</code>: <strong>S</strong>ource <strong>C</strong>ode <strong>M</strong>anagement</li>
+<li><code>squash</code>: combinare molteplici commits in un signolo grande commit. Può essere anche un comando Git o un’opzione di default utilizzata nelle PR per specifici contributori.</li>
+<li><code>stage</code> mettere in stage un cambiamento prima di effettuare un commit</li>
+<li><code>stash</code>: mettere in stash un oggetto è temporaneamente metterlo da parte per successivamente o committarlo o scartarlo.</li>
+<li><code>upstream</code>: quando si parla di un branch o di un fork, il branch primario della repository originale è detto “upstream”, visto che è la sorgente da cui arrivano i cambiamenti principali. Il branch/fork su cui l’utente che ha fatto fork lavora è detto “downstream” anche detto <strong>origin</strong>. !!! (forse immagine) !!!</li>
 </ul>
 </div>
-<div id="merge-changes-to-master" class="section level1">
-<h1>Merge changes to master</h1>
-<p>Once you and your coworkers agreed on the final version in your branch, it can be merged to the master branch:</p>
+<div id="azioni" class="section level2" number="1.2">
+<h2 number="1.2"><span class="header-section-number">1.2</span> Azioni:</h2>
 <ul>
-<li>in RStudio, make sure to include novel changes from the master branch:
-<ul>
-<li>switch to the master branch</li>
-<li>hit <code>Pull</code></li>
-<li>switch back to your feature branch</li>
-<li>hit <code>More</code> and choose <code>Shell...</code></li>
-<li>type <code>git merge master</code> (or replace master by the name of the branch you want to merge to your branch)</li>
-<li>you will be mentioned of any additions and/or conflicts</li>
-<li>close the shell again</li>
-<li>if conflicts have appeared,
-<ul>
-<li>files with conflicts have an orange symbol in the Status column in the Git pane</li>
-<li>open the file, the problem looks like this:</li>
+<li><code>git chekout</code>: comando usato per creare un nuovo branch, cambiare da un branch all’altro o addirittura passare da una versione di un file da un branch ad un altro.</li>
+<li><code>git clone</code>: comando usato per creare una copia della repo remota in locale sul proprio computer. Quando viene fatta una copia della cartella remota è possibile modificare i files con l’editor preferito e poi usare git per tenere traccia dei cambiamenti senza essere necessariamente online. La repo clonata è comunque sempre connessa alla repo remota in modo tale da poter fare push sui cambiamenti da locale in favore di quella remota per tenerle sincrone.</li>
+<li><code>git fetch</code>: comando che dice al tuo git locale di recuperare le ultime informazioni sui metadati del remoto ma non esegue alcun trasferimento di file (verifica controllo modifiche online). Ogni <code>git pull</code> comporta un <code>git fetch</code>.</li>
+<li><code>git pull</code>: Incorpora i cambiamenti da una repository remota (<code>remote repository</code>) nel branch corrente. Per esempio se qualcuno a modificato qualche file nella repo remota a cui un altro utente stava già lavorando, l’ultimo utente ha la necessità di aggiornare la sua repo in locale con le ultime notifiche di chi ci ha già lavorato.</li>
+<li><code>git push</code>: per push s’intende l’operazione di spedizione dei cambiamenti (commits) alla repo remota in GitHub. Per esempio se si cambia qualcosa in locale, allora possonoe essere pushati i cambiamenti online cosicchè gli altri li possano vedere.</li>
+<li><code>pull request</code>: <strong>P</strong>ull <strong>R</strong>equests sono proposte di cambiamento di una repo inviate da un utente e successivamente riviste e accettate o rigettate da un collaboratore.</li>
 </ul>
-<pre><code>code
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-code in your active branch
-=======
-code in the master branch
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; master
-more code</code></pre>
-<ul>
-<li>solve the conflict: keep one of the code blocks or rewrite it to combine the 2 code blocks</li>
-<li>save the changes</li>
-<li>commit all changes, make sure the solved conflicts are added</li>
-</ul></li>
-<li><code>Push</code> all new commits to GitHub</li>
-</ul></li>
-<li>on Github, below in the pull request:
-<ul>
-<li>hit <code>Merge pull request</code></li>
-<li>hit <code>Confirm merge</code></li>
-<li>and finally choose <code>Delete branch</code> to keep your repo clean and clear</li>
-</ul></li>
-</ul>
-<p>For screenshots, see <a href="https://inbo.github.io/git-course/workflow_rstudio.html#step_5:_code_review">here</a>.</p>
-<div class="alert alert-danger">
-<p>When merging to the master branch or another important branch in the repo, always do this on GitHub by using a pull request. It is recommended to protect these branches to enforce this procedure.</p>
 </div>
-<p>Once you are satisfied with a version, you can <a href="https://docs.github.com/en/github/administering-a-repository/managing-releases-in-a-repository">create a release</a>.</p>
-</div>
-<div id="branch-management" class="section level1">
-<h1>Branch management</h1>
-<p>After deleting branches on the remote, you may want to get rid of them as well in the selection list in the git pane in RStudio:</p>
-<ul>
-<li>hit <code>More</code> and choose <code>Shell...</code></li>
-<li>type <code>git fetch -p</code> to remove branches that don’t exist anymore on the origin</li>
-<li>type <code>git branch -d &lt;branch name&gt;</code> to remove local branch <code>&lt;branch name&gt;</code> (branches that are merged can be listed with <code>git branch --merged</code>)</li>
-</ul>
 </div>
 
 
@@ -615,7 +526,7 @@ $(document).ready(function ()  {
 
     // establish options
     var options = {
-      selectors: "h1,h2",
+      selectors: "h1,h2,h3",
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {

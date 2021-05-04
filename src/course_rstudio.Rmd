@@ -567,7 +567,7 @@ Poi, accanto all bottone `Commit`, spunta l'opzione `amend` previous commit:
 
 ## Guarda l'history
 
-Uno dei vantaggi di usare uno strumento di verion control con commits regolari è poter avere la cronostoria di tutto il lavoro sul progetto. E' possibile infatti guardare l'History (la serie di commits) sia online che in locale su RStudio.
+Uno dei vantaggi di usare uno strumento di verion control come Git, _assumendo commits regolari_, è poter avere la cronistoria commentata di tutto il lavoro sul progetto. E' possibile infatti guardare l'History (la serie di `commit`) sia online che in locale su RStudio.
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Esercizio:</h4>
