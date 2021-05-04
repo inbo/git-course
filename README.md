@@ -68,6 +68,11 @@ rmarkdown::render_site("src")
 Il render dei files `.html` viene raccolto nella cartella  `/docs`. La cartella è quindi l'oggetto del deployment. [Netlify](https://www.netlify.com/) è un'intuitiva piattforma serverless e basata su git per fare build, deployment e collaborare su web apps. Inoltre rende possibile avere un ambiente di CI/CD con hosting scalabile.
 
 
+## Contribuisci
+
+Questa dispensa ti darà una mano a familiarizzare con Git + GitHub e RStudio, perchè non provi direttamente a contribuire alla repo cosicchè tu possa sperimentare quello che hai imparato? Inoltre se trovi errori, inesattezze per favore clicca in alto a destra nel sito per essere rediretto all'issue pane e segnalarmelo, se te la senti prova a fare direttamente la correzione tu tramite PR.
+
+
 ## Ringraziamenti 👏
 
 Il set up del progetto viene da [questo corso di git](https://inbo.github.io/git-course/index.html) promosso da [INBO](https://www.vlaanderen.be/inbo/home/), la [cui repo](https://github.com/inbo/git-course). Gli autori a cui vanno i miei ringraziamenti per la contribuzione open source sono [\@stijnvanhoey](https://github.com/stijnvanhoey), [\@peterdesmet](https://github.com/peterdesmet), [\@ThierryO](https://github.com/ThierryO). Si ringraziano anche gli ulteriori contributori ([\@ElsLommelen](https://github.com/ElsLommelen), [\@IPauwels](https://github.com/IPauwels), [\@damianooldoni](https://github.com/damianooldoni)) e le referenze della contribuzione e quelle della mia contribuzione:
