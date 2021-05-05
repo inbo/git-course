@@ -31,9 +31,47 @@ Altrimenti procedi per `Settings > Features > Issues > Set up templates` (**scel
 
 Se sei preoccupato del disordine nella root allora il consiglio è creare una dir `.github/` dove spostare `CONTRIBUTING.md`, `ISSUE_TEMPLATE.md`, and `PULL_REQUEST_TEMPLATE.md`. GitHub si occupererà si recuperare i files e tutto funzionerà esattamente alla stessa maniera.
 
-Se vuoi approfondire oltre questo [ecco la documentazione](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions). Sotto ne sono stati creati due dall'autore sulla base di templates gia esistenti per azioni di **Bug Reporting** e di **Pull Request**. Niente vieta che tu ne possa scrivere altri per diverse azioni.
+Se vuoi approfondire oltre questo [ecco la documentazione](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions).
 
-### Bug Report temp:
+## Creazione Templates
+
+Nel reindirizzamento dopo aver cliccato su `Set up templates` appare un opzione centrale "Add Tempalte" con un drop down menu. 
+
+
+![aggiungi template](static/images/add_tempate.png){width=75%}
+
+Sotto ne sono stati creati due dall'autore sulla base di templates gia esistenti per azioni di **Bug Reporting** e di **Pull Request**. Niente vieta che tu ne possa scrivere altri per diverse azioni.
+
+Per modificarle quindi naviga nella cartella del progetto su GitHub 
+
+
+
+
+
+e andando nel Issues pane, vediamo due templates che rispondono alle due azioni concesse dall'autore. Immaginiamo di trovare un <span style="color: red;">Bug</span> nel codice e di volerlo segnalare.
+Bug Report fa al caso nostro.
+
+![issues template](static/images/bug_report_temp.PNG){width=75%}
+
+---- 
+
+E premendo su <span style="color: green;">Get Started</span> si arriva in:
+
+----
+
+![bug report template](static/images/md_bug_report_temp.PNG){width=75%}
+
+Da qui è necessario riempire i campi suggeriti dall'autore seguendo la sua struttura, rendendoci facile la vita evitandoci di dare informazioni superflue (risparmiando tempo); e facile per lui 
+ricevendo lo stretto necessario a riprodurre il problema  `reprex` (qualche informazione in più su **Rep**roducible **Ex**ample, [pacchetto qui](https://reprex.tidyverse.org/) e [blog post qui](https://www.jessemaegan.com/post/so-you-ve-been-asked-to-make-a-reprex/)).
+Puoi verificare il funzionamento di Bug Reporting e di Pull Request 
+
+
+
+
+
+
+
+## Bug Report temp:
 
     # Prerequisites
 
@@ -79,7 +117,7 @@ Se vuoi approfondire oltre questo [ecco la documentazione](https://docs.github.c
 
 
 
-### Pull Request temp:
+## Pull Request temp:
     
     ### All Submissions:
     
@@ -99,35 +137,3 @@ Se vuoi approfondire oltre questo [ecco la documentazione](https://docs.github.c
     * [ ] Have you written new tests for your core changes, as applicable?
     * [ ] Have you successfully ran tests with your changes locally?
     
-
-Quindi navigando nella cartella del progetto su GitHub e andando nel pane Issues, vediamo due templates che rispondono alle due azioni concesse dall'autore. Immaginiamo di trovare un <span style="color: red;">Bug</span> nel codice e di volerlo segnalare.
-Bug Report fa al caso nostro.
-
-![issues template](static/images/bug_report_temp.PNG){width=75%}
-
-E premendo su <span style="color: green;">Get Started</span> 
-
-![bug report template](static/images/md_bug_report_temp.PNG){width=75%}
-
-Da qui è necessario riempire i campi suggeriti dall'autore seguendo la sua struttura, rendendoci facile la vita evitandoci di dare informazioni superflue (risparmiando tempo); e facile per lui 
-ricevendo lo stretto necessario a riprodurre il problema  `reprex` (qualche informazione in più su **Rep**roducible **Ex**ample, [pacchetto qui](https://reprex.tidyverse.org/) e [blog post qui](https://www.jessemaegan.com/post/so-you-ve-been-asked-to-make-a-reprex/)).
-Puoi verificare il funzionamento di Bug Reporting e di Pull Request 
-
-## How to make a `reprex`
-
-**reprex** sta per **Re**producible **Ex**ample ed è un esempio minimale e ben strutturato di un errore in cui sei incorso.
-Riprodurre un errore spesso in maniera tale che qualcuno lo possa capire e risolvere è più difficile che risolvere l'errore stesso, anzi accade strutturando il reprex si trova la soluzione all'errore per cui si sta scrivendo lo stesso reprex. Il pacchetto [reprex](https://reprex.tidyverse.org/articles/articles/learn-reprex.html) presta una mano allo sviluppatore R permettendogli di velocizzare il processo di composizione di un reprex da segnalare nella sezione `issues` al manutentore della repo a cui si sta contestando l'errore, o da sottomettere a Stack Overflow che ha delle [linee guida](https://stackoverflow.com/help/how-to-ask) abbastanza strette per la costruzione della domanda.
-La chiamata `reprex::reprex()` essenzialmente genera un foglio in Markdown contente il codice (visibile nel Viewer pane di RStudio) e copia su clipboard il codice sorgente cosicchè possa essere incollato nei luoghi sopra citati.
-
-Cominciamo con un esempio semplice:
-
-
-```{r}
-x  = factor("a")
-y  = factor("b")
-c(x,y)
-
-```
-
-
-
