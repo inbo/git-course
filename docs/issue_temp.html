@@ -13,7 +13,7 @@
 
 <meta name="date" content="2021-05-05" />
 
-<title>Installazioni di Git per ogni OS</title>
+<title>Varie Risorse utili</title>
 
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -429,58 +429,99 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Installazioni di Git per ogni OS</h1>
+<h1 class="title toc-ignore">Varie Risorse utili</h1>
 <h4 class="author">Niccolò Salvini</h4>
 <h4 class="date">2021-05-05</h4>
 
 </div>
 
 
-<p>Git è un progetto open source che ha una manutenzione abbastanza frequente (periodicità mensile). Fortunatamente nella maggior parte dei casi le migliorie coinvolgono aggiornamenti di rango minore che non influiscono sul processo d’installazione e che prevede grosso modo la medesima procedura.</p>
-<p>La compatibilità di Git con le distribuzioni a Kernel Linux è molto ampia, del resto l’origine fu fortemente voluta da Linus Torvalds. Questo è vero anche per le piattaforme (Mac) OS X, essendo derivati di UNIX come Linux e pure nell’ecosistema Windows.</p>
-<div id="installazione-di-git-su-linux" class="section level2" number="0.1">
-<h2 number="0.1"><span class="header-section-number">0.1</span> Installazione di Git su <strong>Linux</strong></h2>
-<p>Molte distribuzioni Linux come già anticipato sono derivati di altre distribuzioni “a monte”, in particolare Ubuntu sta “a valle” di Debian o Mint che sta “a valle” di Canonical. Questo rende possibile utilizzare gli stessi comandi delle distribuzioni “a monte” anche per “a valle”. Aprire il Terminale e lanciare le seguenti istruzioni:</p>
-<pre><code>$ sudo apt-get update
-$ apt-get install git</code></pre>
-<p>Il primo comando aggiornerà l’elenco locale dei pacchetti software del gestore <strong>APT</strong> (Advanced Packaging Tool), il secondo effettivamente inizierà l’installazione. Qualora si necessitasse di versioni di Git <em>dev</em>, non ancora rilasciate, si può ricorrere a ai <strong>PPA</strong> (Personal Package Archives) i quali mostrano le ultime release ancora prima delle repo ufficiali. Facendo così i comandi da eseguire sono:</p>
-<pre><code>$ sudo add-apt-repository ppa:git-core/ppa
-$ sudo apt-get update
-$ sudo apt-get install git</code></pre>
+<div id="issues-templates" class="section level2" number="0.1">
+<h2 number="0.1"><span class="header-section-number">0.1</span> <code>issues</code> templates</h2>
+<p>Spesso è difficile risolvere un problema quando i dettagli importanti mancano o non sono ben evidenziati. Da febbario 2016 i manutentori/propietari di repo possono aggiungere dei templates prestabiliti ai loro loro progetti per <code>Issues</code> e <code>Pull Requests</code>. Facendo questo aiutano i contributori e collaboratori a condividere i dettagli necessari a cominciare una discussione.</p>
+<p>Per aggiungere un template ad una repo è necessario creare un file <code>ISSUE_TEMPLATE</code> nella root dir. L’estesione del file è opzionale ma la buona pratica vuole che sia <code>.md</code> (è possibile avere una preview cliccandoci sopra come accade in automatico col <code>README.md</code>). L’estensione <code>.md</code>rende facile l’aggiunta di elementi come paragrafi, links, e menzioni a collaboratori, proprio come liste TODOs per i templates.</p>
+<p>I templates per <code>Pull Requests</code> seguono lo stesso modello: aggiungi un file nominato <code>PULL_REQUEST_TEMPLATE</code> al root della tua repo.</p>
+<p>Altrimenti procedi per <code>Settings &gt; Features &gt; Issues &gt; Set up templates</code> (<strong>scelta dell’autore</strong>).</p>
+<p>Se sei preoccupato del disordine nella root allora il consiglio è creare una dir <code>.github/</code> dove spostare <code>CONTRIBUTING.md</code>, <code>ISSUE_TEMPLATE.md</code>, and <code>PULL_REQUEST_TEMPLATE.md</code>. GitHub si occupererà si recuperare i files e tutto funzionerà esattamente alla stessa maniera.</p>
+<p>Se vuoi approfondire oltre questo <a href="https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions">ecco la documentazione</a>.</p>
 </div>
-<div id="installazione-di-git-su-mac-os-x" class="section level2" number="0.2">
-<h2 number="0.2"><span class="header-section-number">0.2</span> Installazione di Git su (<strong>Mac</strong>) OS X</h2>
-<blockquote>
-<p>(env. test: OS X 10.10, “Yosemite“)</p>
-</blockquote>
-<p>Navigare verso la <a href="https://git-scm.com/download/mac">sezione downloads</a> di Git e fare il download del file in formato DMG. Aprire il file DMG ed cliccare sul <code>git.pkg</code> che lancia l’installazione. Verificare la corretta installazione tramite il comando da Bash:</p>
-<pre><code>$ git --version</code></pre>
-<p>Basg dovrebbe resituire una risposta come:</p>
-<pre><code>git version 2. ...(qualche numero)</code></pre>
-<p>E’ anche necessario conoscere la destinazione di installazione per localizzare l’<strong>executable</strong>, che poi va passato dentro RStudio. Per fare questo esegui da Bash il seguente comando:</p>
-<pre><code>$ which git</code></pre>
-<p>Bash dovrebbe rispondere qualcosa che assomiglia a:</p>
-<pre><code>/usr/local/git/bin/git</code></pre>
+<div id="creazione-templates" class="section level2" number="0.2">
+<h2 number="0.2"><span class="header-section-number">0.2</span> Creazione Templates</h2>
+<p>Nel reindirizzamento dopo aver cliccato su <code>Set up templates</code> appare un opzione centrale “Add Tempalte” con un drop down menu.</p>
+<p><img src="" /></p>
+<p>Sotto ne sono stati creati due dall’autore sulla base di templates gia esistenti per azioni di <strong>Bug Reporting</strong> e di <strong>Pull Request</strong>. Niente vieta che tu ne possa scrivere altri per diverse azioni.</p>
+<p>Per modificarle quindi naviga nella cartella del progetto su GitHub</p>
+<p>e andando nel Issues pane, vediamo due templates che rispondono alle due azioni concesse dall’autore. Immaginiamo di trovare un <span style="color: red;">Bug</span> nel codice e di volerlo segnalare. Bug Report fa al caso nostro.</p>
+<p><img src="static/images/bug_report_temp.PNG" style="width:75.0%" alt="issues template" /></p>
+<hr />
+<p>E premendo su <span style="color: green;">Get Started</span> si arriva in:</p>
+<hr />
+<p><img src="static/images/md_bug_report_temp.PNG" style="width:75.0%" alt="bug report template" /></p>
+<p>Da qui è necessario riempire i campi suggeriti dall’autore seguendo la sua struttura, rendendoci facile la vita evitandoci di dare informazioni superflue (risparmiando tempo); e facile per lui ricevendo lo stretto necessario a riprodurre il problema <code>reprex</code> (qualche informazione in più su <strong>Rep</strong>roducible <strong>Ex</strong>ample, <a href="https://reprex.tidyverse.org/">pacchetto qui</a> e <a href="https://www.jessemaegan.com/post/so-you-ve-been-asked-to-make-a-reprex/">blog post qui</a>). Puoi verificare il funzionamento di Bug Reporting e di Pull Request</p>
 </div>
-<div id="installazione-di-git-su-windows" class="section level2" number="0.3">
-<h2 number="0.3"><span class="header-section-number">0.3</span> Installazione di Git su <strong>Windows</strong></h2>
-<blockquote>
-<p>(env. test: Windows 10 Home edition)</p>
-</blockquote>
-<p>L’installazioni di Git per Windows ha un progetto satellite degli stessi autori di Git dedicato, chiamato “<strong>Git for Windows</strong>”. L’installazione mette a disposizione anche un Bash, una GUI e l’integrazione con la Shell. Git for Windows fornisce un’emulatore della BASH per l’utilizzo dell’applicazione da terminale, lavorando alla stessa maniera dei sistemi UNIX o UNIX like. GUI invece è un’interfaccia guidata che punta a sostituire Bash per tutti gli utenti che usano IDE (interfacce di sviluppo Human Friendly). Anche se è una forma di aiuto notevole onestamente non ci servirà più di tanto.</p>
-<p>Una volta scaricato il necessario l’<strong>executable</strong> dal sito ufficiale di <a href="https://gitforwindows.org/">Git for Windows</a> e fatto doppio click sull’installer, si ottiene questo:</p>
-<p align="center">
-<img src="https://static.html.it/app/uploads/2015/05/Cattura2.png"/>
-</p>
-<!-- ![Wizard per l'installazione di Git su Windows](https://static.html.it/app/uploads/2015/05/Cattura2.png) -->
-<p>La procedura prosegue con l’accettazione della licenza e la scelta della destinazione per l’installazione.</p>
-<p align="center">
-<img src="https://static.html.it/app/uploads/2015/05/Cattura3.png"/>
-</p>
-<p>Le opzioni disponibili permettono una serie di tweaks che non sono necessari, le si può spuntare per completezza ed evitare comportamenti insoliti, ma non sono necessarie allo scopo della dispensa. La linea guida è correre velocemente verso l’installazione per non perdere tempo e lasciare che Git trovi spazio nel nostro computer piuttosto che il contrario. Con più pazienza puoi tranquillamente ritornare sui tuoi passi e rivedere queste scelte. Fatto questo imposta l’ambiente di lavoro con Git dall’emulatore di BASH o dal Prompt dei comandi, la scelta più sicura è la preferita:</p>
-<p align="center">
-<img src="https://static.html.it/app/uploads/2015/05/Cattura5.png"/>
-</p>
+<div id="bug-report-temp" class="section level2" number="0.3">
+<h2 number="0.3"><span class="header-section-number">0.3</span> Bug Report temp:</h2>
+<pre><code># Prerequisites
+
+Please answer the following questions for yourself before submitting an issue. **YOU MAY DELETE THE PREREQUISITES SECTION.**
+
+- [ ] I am running the latest version
+- [ ] I checked the documentation and found no answer
+- [ ] I checked to make sure that this issue has not already been filed
+- [ ] I&#39;m reporting the issue to the correct repository (for multi-repository projects)
+
+# Expected Behavior
+
+Please describe the behavior you are expecting
+
+# Current Behavior
+
+What is the current behavior?
+
+# Failure Information (for bugs)
+
+Please help provide information about the failure if this is a bug. If it is not a bug, please remove the rest of this template.
+
+## Steps to Reproduce
+
+Please provide detailed steps for reproducing the issue.
+
+1. step 1
+2. step 2
+3. you get it...
+
+## Context
+
+Please provide any relevant information about your setup. This is important in case the issue is not reproducible except for under certain conditions.
+
+* Firmware Version:
+* Operating System:
+* SDK version:
+* Toolchain version:
+
+## Failure Logs
+
+Please include any relevant log snippets or files here.</code></pre>
+</div>
+<div id="pull-request-temp" class="section level2" number="0.4">
+<h2 number="0.4"><span class="header-section-number">0.4</span> Pull Request temp:</h2>
+<pre><code>### All Submissions:
+
+* [ ] Have you followed the guidelines in our Contributing document?
+* [ ] Have you checked to ensure there aren&#39;t other open [Pull Requests](../../../pulls) for the same update/change?
+
+&lt;!-- You can erase any parts of this template not applicable to your Pull Request. --&gt;
+
+### New Feature Submissions:
+
+1. [ ] Does your submission pass tests?
+2. [ ] Have you lint your code locally prior to submission?
+
+### Changes to Core Features:
+
+* [ ] Have you added an explanation of what your changes do and why you&#39;d like us to include them?
+* [ ] Have you written new tests for your core changes, as applicable?
+* [ ] Have you successfully ran tests with your changes locally?</code></pre>
 </div>
 
 
