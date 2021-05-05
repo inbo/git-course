@@ -35,6 +35,7 @@ Also known as CI. A process that runs automated builds and tests once a person c
 - `fork`: una fork è una copia personale di una repo di un altro user sul proprio. il fork permette di effettuare liberamente cambiamenti alla repo senza condizionare in alcun modo l'upstream repo, cioè l'originale dell'originale. E' anche possibile aprire una pull request con l'upstream repo e tenere il fork aggiornato con gli ultimi cambiamenti dell'originale. 
 - `history`: la cronistoria di tutti i cambiamenti effettuati sul progetto. (final_version1.docx, final_version2.docx, final_finalversion3.docx, really_the_finalversion4.docx)
 - `hook`: uno script che viene eseguito automaticamente ogni volta che occorre un evento in una repo di Git. Gli hooks permettono di personalizzare il funzionamento interno di Git in modo tale da creare
+- `IDE`: ambiente di sviluppo integrato, è un software progettato per la realizzazione di applicazioni che aggrega strumenti di sviluppo comuni in un'unica interfaccia utente grafica.
 - `master`: il branch di default di sviluppo. Tutte le volte che si crea una repo, un branch di nome "master" viene creato e diventa un branch attivo.
 - `merge`: merge prende i cambiamenti  un branch li applica ad un altro. Questo succede spesso nei casi di pull request.
 - `OAuth token`: un token di accesso usato nelle Oauth apps per accedere alle informazioni di un utente.

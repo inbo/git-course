@@ -28,32 +28,39 @@ Prima di cominciare questo tutorial assumo che:
 * tu abbia [git](https://git-scm.com/) installato sul computer e puntanto sull'eseguibile `git.exe`. (~ 3 min. , segui [il tutorial sul sito](./installazioni.html))
 
 Per verificare la corretta installazione di Git entra su RStudio, poi apri il terminale i.e. "Terminal", Si trova accanto alla "Console" da dove si eseguono i comandi in R. Nel caso tu avessi difficoltà a trovarlo su Windows premi contemporamente Alt+Shift+M, su Mac Cmd+Shift+M (da verificare). Se ancora non vedi il terminale Shift+Alt+T (`Tools > Terminal > Move Focus to Terminal`). 
-Una volt sul terminale esequi i seguenti comandi:
+Qaundo sei sul terminale esegui i seguenti comandi:
 
 ```
 which git
 ```
 
 La risposta del terminale dovrebbe essere qualcosa come:  **/usr/local/bin/git**.
+
 Successivamente esegui:
 
 ```
 git --version
 ```
 
-L'ultima versione di `git` disponibile è la `r read_html("https://git-scm.com/") %>%  html_nodes(css = ".version") %>%  html_text(trim = T)`. Corrisponde a quella installata? Se sì procedi avanti. Se non corrisponde o compare qualche altro errore sentiti libero di mandarmi una mail [me medesimo](mailto:niccolo.salvini27@gmail.com). Se hai installata una versione precedente di `git` non occorre aggiornare per questo tutorial, anche se puoi considerare l'idea di farlo in prossimo futuro.
+L'ultima versione di `git` disponibile è la `r read_html("https://git-scm.com/") %>%  html_nodes(css = ".version") %>%  html_text(trim = T)`. Corrisponde a quella installata? Se sì procedi al prossimo punto.
+
+Se invece non corrisponde o compare qualche altro errore sentiti libero di [mandarmi una mail](mailto:niccolo.salvini27@gmail.com). 
+
+Se invece hai installata una versione precedente di `git` non occorre aggiornarla alla più recente per questo tutorial, anche se dovresti considerare l'idea di farlo in un prossimo futuro.
 
 * tu abbia un [account GitHub](https://github.com/join), pensa due secondi in più al tuo nome utente, sei sempre a tempo a cambiarlo, ma potresti incorrere nei [seguenti problemi](https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/changing-your-github-username) (~ 1 min.).
+
+Tutte le volte che incontri un termine che non conosci o non ricordi passa a fare una visita al [glossario dei termini](terminologia.html), ti darà una mano a fissare i concetti.
 
 ---
 
 # Lavora da solo {data-background=##75aada}
 
-Di solito si comincia inizializzando una repository su GitHub. Per questo step non hai assolutamente bisogno di un collaboratore/collega.
+Di solito si comincia inizializzando una repository su GitHub. Inizializzare una repo significa creare una cartella online. Per questo step non hai assolutamente bisogno di un collaboratore/collega.
 
 ---
 
-## Creare una repo (che sta per _repo_ sitory)
+## Creare una _repo_(sitory)
 
 Abituati a pensarla sempre in questi termini: 
 
@@ -86,37 +93,39 @@ Già fatto `r emo::ji("smile")`. Il risultato finale è il seguente:
 
 
 :::bulb
-**Ricordati il tasto verde code, ci sarà molto utile più tardi!**
+**Rircoda**: il tasto verde "Clone and Download", nell'ultima versione di GitHub è chiamato "Code", poco importa. Quel tasto è un mattone importantissimo per quello che vedremo durante questo tutorial e ci sarà molto utile tra poco!
 :::
 
 ---
 
 ## La configurazione di Git per RStudio
 
-Dato il fatto che useremo Git(Hub) per amministrare esclusivamente scripts R/Rmarkdown, l'integrazione di RStudio con Git fa al caso nostro fornendo un'interfaccia facile e intuitiva come VCS (**V**ersion **C**ontrol **S**ystem).
-Ci sono altri git clients, detti **SCM**, di versioning, alcuni totalmente a pagamento, alcuni _freemium_ con limitazioni e altri open source, [qui una lista completa](https://git-scm.com/downloads/guis):
-Alcuni sperimentati:
+Dato il fatto che useremo Git(Hub) per amministrare esclusivamente scripts R/Rmarkdown, l'integrazione di RStudio con Git fa proprio al caso nostro fornendo un'interfaccia facile e intuitiva come VCS (**V**ersion **C**ontrol **S**ystem) e permettendoci di rimanere all'interno di un'unica IDE.
+Esistono altri git clients, detti **SCM**, che si differenziano per ulteriori funzionalità e offerta di piani: alcuni clients sono per intero a pagamento, alcuni offrono un piano _freemium_ con limitazioni e altri totalmente open source, [qui una lista completa](https://git-scm.com/downloads/guis) di tutte le offerte disponibili.
 
-* [gitKraken](https://www.gitkraken.com/) client notevole e veloce (lo utilizza chi scrive). Molti addons come Trello o Jira (supporta Bitbucket e Gitlab, omologhi di GitHub). Permette di costruire linee del tempo per tenere traccia di traguardi nello sviluppo. Permette di avere una lavagna di Kaban per assegnare (nello stile di Trello) obiettivi ai collaboratori. sviluppo su repo private non concesso. Possibilità di collaborazione direttamente su Kraken. Interoperabile, va bene per Windowws, Linux e MacOS.
-* [fork](https://git-fork.com/) Vincenzo può aiutarmi @vicnardelli
-* [GitHub Desktop](https://desktop.github.com/)
-* [Sourcetree](https://www.sourcetreeapp.com/) gratis, perfetto per Windows, non per il resto dei sistemi operativi su cui fa fatica e commette errori che non vengomo risolti dai mantenitori del client.
+Alcuni personalmente sperimentati:
+
+* [gitKraken](https://www.gitkraken.com/) client notevole e veloce (scelta default per chi sta scrivendo). Molti addons come Trello o Jira (supporta Bitbucket e Gitlab, omologhi di GitHub). Interfaccia semplice e intuitiva. Permette di costruire linee del tempo per tenere traccia di traguardi nello sviluppo. Permette di avere una lavagna di Kaban per assegnare (nello stile di Trello) obiettivi ai collaboratori. sviluppo su repo private non concesso. Possibilità di collaborazione direttamente su Kraken. Interoperabile, va bene per Windowws, Linux e MacOS.
+* [git-fork](https://git-fork.com/) Vincenzo può aiutarmi @vicnardelli
+* [GitHub Desktop](https://desktop.github.com/) cliet ufficiale di GitHub per git, non proprio intuitivo e probabilmente non la miglior scelta per un utente che intende usare solo R.
+* [Sourcetree](https://www.sourcetreeapp.com/) gratis, fatto per Windows, e per questo motivo non consigliato per tutto il resto dei sistemi operativi su cui fa fatica e commette errori che non vengono risolti dai mantenitori del client.
 
 
 ### Installazione
 
 :::warn
-**Sii assolutamente sicuro che tu abbia installato i requisiti:**
+**Attenzione**: Sii assolutamente sicuro che tu abbia installato i requisiti del setup al paragrafo 1. 
 :::
 
+Nel caso tu non lo avessi fatto:
 
-<!-- <div class="bs-callout bs-callout-exercise"> -->
-<!-- <h4>Esercizio:</h4> -->
-<!-- 1. [Download](https://git-scm.com/downloads) Git -->
-<!-- 1. Installa [RStudio](https://inbo.github.io/tutorials/installation-RStudio-admin.html) -->
-<!-- </div> -->
+<div class="bs-callout bs-callout-exercise">
+<h4>Esercizio:</h4>
+1. Installa [RStudio](https://www.rstudio.com/products/rstudio/download/) dal sito ufficiale e seleziona la versione corretta per il tuo sistema operativo.
+1. [Download](https://git-scm.com/downloads) di Git
+</div>
 
-Quando sono installate correttamente allora:
+Quando sono installati e funzionano correttamente allora:
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Esercizio:</h4>
@@ -142,12 +151,14 @@ Per prima cosa è necessario indicare ad RStudio dove si trova l'executable di G
 
 ---
 
-Se non ti ricordi o non sai dove hai installato git e l'eseguibile di git (il **punto 4** dei passaggi precedenti) allora apri il terminale da windows con WIN+R e scrivi `cmd`, premi enter (su Mac apri Bash). Aperto il terminale scrivi `where git`, la rispota ti dirà dove si trova il file. confronta la tua risposta con la mia: `C:/Program Files (x86)/Git/bin/git.exe`, è simile? Se sì procedi. Se invece riscontri ancora problemi con la ricerca dai un'occhiata [a questo](http://happygitwithr.com/rstudio-see-git.html#tell-rstudio-where-to-find-git).
+Se non ti ricordi o non sai dove hai installato git e l'eseguibile di git (il **punto 4** dei passaggi precedenti) allora apri il terminale da Windows con WIN+R e scrivi `cmd` e premi invio (su Mac apri Bash). Aperto il prompt comandi scrivi `where git` e premi invio, il prompt ti risponderà dove si trova il file. confronta la tua risposta con la mia: `C:/Program Files (x86)/Git/bin/git.exe`, è simile? Se sì procedi avanti.
+
+Se invece riscontri ancora problemi con la ricerca dai un'occhiata [a questa risorsa](http://happygitwithr.com/rstudio-see-git.html#tell-rstudio-where-to-find-git).
 
 ![RStudio setup for git](./static/images/RStudio-setup-git.png){width=50%}
 
 ---
-Adesso dobbiamo dire a GitHub chi siamo, con l'obiettivo di stabilire una connessione all'account online. Per farlo git ha bisogno delle credenziali di GitHub, i.e. username e GitHub email:
+Adesso dobbiamo comunicare a GitHub chi siamo, con l'obiettivo di stabilire una connessione tra la nostra interfaccia di sviluppo locale IDE (RStudio ) e l'account online di GitHub. Per farlo git ha bisogno delle credenziali di GitHub, cioè username e GitHub email:
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Esercizio:</h4>
@@ -167,14 +178,16 @@ git config --global user.email "my.name@gmail.com"
 ![RStudio setup git shell](./static/images/Rstudio-GitShell.png){width=75%}
 
 
-Mi raccomando usa il tuo **username GitHub**! Per verificare che tutta la configurazione sia andata a buon fine esegui questo comando: `git config --global --list`
+Mi raccomando usa il tuo **username GitHub**, il mio è [NiccoloSalvini](https://github.com/NiccoloSalvini)!
+
+Per verificare che tutta la configurazione sia andata a buon fine esegui questo comando: `git config --global --list`
 
 Se la configirazione ha avuto esito positivo allora congratulazioni, il tuo setup è finito! 👍
 
 ---
 
 
-Se ti trovi male con la configurazione da terminale recentemente il pacchetto `usethis` ha introdotto una serie di funzioni per interagire con Git e GitHub. Qui copriamo solo lo "handshake" tra Git e RStudio, ma molto copre molte alte operazioni di verisoning come la **P**ull **R**equest etc. una sezione sarà interamente dedicata al set up completo tramite `usethis`:
+Se sei scomodo con la configurazione da terminale, recentemente il pacchetto `usethis` ha introdotto una serie di funzioni per interagire direttamente con Git e GitHub. Qui copriamo solo lo "handshake" tra Git e RStudio, ma `usethis` copre molte altre operazioni come la **P**ull **R**equest, creazione di documentazione e di file Mardown precomilati (Lincenze, Codice di Condotta etc.). una sezione sarà interamente dedicata al set up completo tramite `usethis`:
 
 
 ```{r usethis, eval=F}
@@ -192,8 +205,6 @@ Per verificare la corretta configurazione esegui lo stesso comando da terminale:
 ```
 git config --global --list
 ```
-
-
 
 ## Clona una repo per lavorarci in locale
 

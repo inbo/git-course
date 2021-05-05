@@ -9,3 +9,5 @@ draft/*
 
 # Mac OS
 .DS_Store
+.Rdata
+.httr-oauth
