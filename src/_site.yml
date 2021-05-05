@@ -25,8 +25,10 @@ navbar:
           href: workflow_review.html
     - text: "Altre Risorse"
       menu:
-        - text: "miscellanea"
-          herf: altre_risorse.html
+        - text: "Templates"
+          href: issue_temp.html
+        - text: "`reprex`"
+          href: reprex.html  
   right:
     - icon: fas fa-code-branch
       href: https://github.com/NiccoloSalvini/git-course
