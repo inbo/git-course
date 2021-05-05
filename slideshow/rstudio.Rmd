@@ -3,7 +3,7 @@ title: "Git hands-on session within RStudio"
 author: "Stijn Van Hoey, Peter Desmet, Thierry Onkelinx"
 output:
   revealjs::revealjs_presentation:
-    theme: solarized
+    theme: sky
     highlight: zenburn
     transition: none
     center: true
@@ -33,14 +33,16 @@ output:
 
 
 
-## Working on your own {data-background=#c2c444}
+## Lavorare da Solo {data-background=#c2c444}
 
 ---
 
-### Create a repo
+### Creare una repo
 
-1. Go to [GitHub](https://github.com) and login
-2. Follow [this tutorial](https://help.github.com/articles/create-a-repo/) to create a repo
+1. Vai su [GitHub](https://github.com) ed esegui il login
+2. segui [questo tutorial](https://help.github.com/articles/create-a-repo/) per creare una repo
+
+<!-- aggiungere un piccolo video forse -->
 
 ---
 
@@ -53,26 +55,30 @@ output:
 
 ---
 
-### Git for RStudio setup
+### Requisiti
 
-1. [Download](https://git-scm.com/downloads) and install Git
-1. Install [RStudio](https://inbo.github.io/tutorials/installation-RStudio-admin.html)
-1. Open [RStudio](https://inbo.github.io/tutorials/installation-RStudio-user.html)
+1. [Download](https://git-scm.com/downloads) e installazione di Git
+1. Installazione di [RStudio](https://inbo.github.io/tutorials/installation-RStudio-admin.html)
+1. Apri [RStudio](https://inbo.github.io/tutorials/installation-RStudio-user.html)
 
 ---
 
-### Git for RStudio setup
+### RStudio setup per git
 
-Tell RStudio where to find the Git installation. 
+Va detto ad RStudio dove si trova l'eseguibile di Git
 
-1. Go to `Tools > Global Options`
-1. Click on `Git/SVN`. 
+1. Naviga nell'IDE di RStudio su `Tools > Global Options`
+1. Clicca su `Git/SVN`. 
 
 ![RStudio setup for git](images/RStudio-setup-git.png){width=50%}
 
 ---
 
-### Git for RStudio setup
+### RStudio setup per git
+
+Spunta " _Enable version control interface for RStudio projects_ " e specifica il path all'eseguibile di Git che hai appena installato. 
+
+Se non sai dov'è vai da terminale ed esegui `where git`. (da rivedere)
 
 Check Enable version control interface for RStudio projects. Set the path to the Git executable that you just installed. Open a shell, if you don't know where Git is installed. Type `where git` and hit enter (Windows users). 
 
