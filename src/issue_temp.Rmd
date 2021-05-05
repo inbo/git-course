@@ -35,43 +35,39 @@ Se vuoi approfondire oltre questo [ecco la documentazione](https://docs.github.c
 
 ## Creazione Templates
 
-Nel reindirizzamento dopo aver cliccato su `Set up templates` appare un opzione centrale "Add Tempalte" con un drop down menu. 
+Nel reindirizzamento dopo aver cliccato su `Set up templates` appare un'opzione centrale "Add Template" con un drop down menu. 
 
 
-![aggiungi template](static/images/add_tempate.png){width=75%}
+![aggiungi template](./static/images/add_template.png){width=75%}
+---
 
-Sotto ne sono stati creati due dall'autore sulla base di templates gia esistenti per azioni di **Bug Reporting** e di **Pull Request**. Niente vieta che tu ne possa scrivere altri per diverse azioni.
+Le tre default options proposte, per il momento sufficienti, sono:
 
-Per modificarle quindi naviga nella cartella del progetto su GitHub 
+- Bug Report
+- Feature request
+- Custom Template
 
+Selezionando **Bug Report** automaticamente viene aggiunto una piccola tab con due tasti: "Preview and edit" e un cestino. Cliccando sul primo otteniamo:
 
+![bug report](./static/images/bug_report.png)
+---
 
+La icona accanto al titolo Bug report segnalata dalla mano permette di modificare il template in tutte le sue parti:
 
+- **Template name**: permettendoci di flettere il template a poter accogliere qualsiasi tipo di richiesta dell utente
+- **About**: una piccola descrizione di quello che è il template name 
+- **Template content**: il più importante, permette di editare il contenuto del template con sintassi Markdown.
 
-e andando nel Issues pane, vediamo due templates che rispondono alle due azioni concesse dall'autore. Immaginiamo di trovare un <span style="color: red;">Bug</span> nel codice e di volerlo segnalare.
-Bug Report fa al caso nostro.
+Altre caratteristiche addizionali:
 
-![issues template](static/images/bug_report_temp.PNG){width=75%}
+- **Issue Default Title**: solitamente un acronimo o una parola corta che precederà il titolo, di modo che in situazioni con tanti templates e con tante issues sarà possibile  ricollegare subito la issue alla fattispecie di problema e stabilire priorità.
+- **Assignees**: permette di assegnare collaboratori a determinate issues, compartimenta il lavoro e lo specializza.
+- altre..
 
----- 
-
-E premendo su <span style="color: green;">Get Started</span> si arriva in:
-
-----
-
-![bug report template](static/images/md_bug_report_temp.PNG){width=75%}
-
-Da qui è necessario riempire i campi suggeriti dall'autore seguendo la sua struttura, rendendoci facile la vita evitandoci di dare informazioni superflue (risparmiando tempo); e facile per lui 
-ricevendo lo stretto necessario a riprodurre il problema  `reprex` (qualche informazione in più su **Rep**roducible **Ex**ample, [pacchetto qui](https://reprex.tidyverse.org/) e [blog post qui](https://www.jessemaegan.com/post/so-you-ve-been-asked-to-make-a-reprex/)).
-Puoi verificare il funzionamento di Bug Reporting e di Pull Request 
-
-
-
+Sotto sono stati riadattati due templates dall'autore per le azioni di **Bug Report** e di **Pull Request**. Niente vieta che tu possa scrivere le tue e formattarle come meglio credi sulle base delle esigenze che tu hai, per tutto il resto metto le mie. Sono aspecifiche e atematiche. E' sufficiente copiarle ed incollarle nel **Template content**.
 
 
-
-
-## Bug Report temp:
+### Bug Report temp:
 
     # Prerequisites
 
@@ -114,10 +110,9 @@ Puoi verificare il funzionamento di Bug Reporting e di Pull Request
     ## Failure Logs
 
     Please include any relevant log snippets or files here.
+---
 
-
-
-## Pull Request temp:
+### Pull Request temp:
     
     ### All Submissions:
     
@@ -136,4 +131,8 @@ Puoi verificare il funzionamento di Bug Reporting e di Pull Request
     * [ ] Have you added an explanation of what your changes do and why you'd like us to include them?
     * [ ] Have you written new tests for your core changes, as applicable?
     * [ ] Have you successfully ran tests with your changes locally?
-    
+
+---
+
+
+Fatto questo naviga dinuovo verso la tua cartella e apri l' `issue` pane. Adesso è comparso il template del `bug report`.
