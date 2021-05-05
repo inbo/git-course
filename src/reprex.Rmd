@@ -1,0 +1,35 @@
+---
+title: "Reprex"
+author:
+- Niccolò Salvini
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+    fig_caption: false
+---
+
+## Che cosa è `reprex`
+
+**reprex** sta per **Re**producible **Ex**ample ed è un esempio minimale e ben strutturato di un errore in cui sei incorso.
+Riprodurre un errore spesso in maniera tale che qualcuno lo possa capire e risolvere è più difficile che risolvere l'errore stesso, anzi accade strutturando il reprex si trova la soluzione all'errore per cui si sta scrivendo lo stesso reprex. Il pacchetto [reprex](https://reprex.tidyverse.org/articles/articles/learn-reprex.html) presta una mano allo sviluppatore R permettendogli di velocizzare il processo di composizione di un reprex da segnalare nella sezione `issues` al manutentore della repo a cui si sta contestando l'errore, o da sottomettere a Stack Overflow che ha delle [linee guida](https://stackoverflow.com/help/how-to-ask) abbastanza strette per la costruzione della domanda.
+La chiamata `reprex::reprex()` essenzialmente genera un foglio in Markdown contente il codice (visibile nel Viewer pane di RStudio) e copia su clipboard il codice sorgente cosicchè possa essere incollato nei luoghi sopra citati.
+
+
+## Come si fa un `reprex`
+
+Cominciamo con un esempio semplice:
+
+
+```{r}
+x  = factor("a")
+y  = factor("b")
+c(x,y)
+
+```
+
+
+
