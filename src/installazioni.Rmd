@@ -21,7 +21,7 @@ Git è un progetto open source che ha una manutenzione abbastanza frequente (per
 
 La compatibilità  di Git con le distribuzioni a Kernel Linux è molto ampia, del resto l'origine fu fortemente voluta da Linus Torvalds. Questo è vero anche per le piattaforme (Mac) OS X, essendo derivati di UNIX come Linux e pure nell'ecosistema Windows. 
 
-## Installazione di Git su Linux 
+## Installazione di Git su **Linux** 
 
 Molte distribuzioni Linux come già anticipato sono derivati di altre distribuzioni "a monte", in particolare Ubuntu sta "a valle" di Debian o Mint che sta "a valle" di Canonical. Questo rende possibile utilizzare gli stessi comandi delle distribuzioni "a monte" anche per "a valle".
 Aprire il Terminale e lanciare le seguenti istruzioni:
@@ -37,7 +37,7 @@ Facendo così i comandi da eseguire sono:
     $ sudo apt-get update
     $ sudo apt-get install git
 
-## Installazione di Git su (Mac) OS X
+## Installazione di Git su (**Mac**) OS X
 
 > (env. test: OS X 10.10, “Yosemite“)
 >
@@ -60,7 +60,7 @@ Bash dovrebbe rispondere qualcosa che assomiglia a:
     /usr/local/git/bin/git
 
 
-## Installazione di Git su Windows
+## Installazione di Git su **Windows**
 
 
 > (env. test: Windows 10 Home edition)

@@ -158,7 +158,7 @@ Se invece riscontri ancora problemi con la ricerca dai un'occhiata [a questa ris
 ![RStudio setup for git](./static/images/RStudio-setup-git.png){width=50%}
 
 ---
-Adesso dobbiamo comunicare a GitHub chi siamo, con l'obiettivo di stabilire una connessione tra la nostra interfaccia di sviluppo locale IDE (RStudio ) e l'account online di GitHub. Per farlo git ha bisogno delle credenziali di GitHub, cioè username e GitHub email:
+Adesso dobbiamo comunicare a GitHub chi siamo, con l'obiettivo di **stabilire una connessione** tra la nostra interfaccia di sviluppo locale IDE (RStudio) e l'account online di GitHub. Per farlo git ha bisogno delle credenziali di GitHub, cioè username e GitHub email:
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Esercizio:</h4>
@@ -177,6 +177,7 @@ git config --global user.email "my.name@gmail.com"
 
 ![RStudio setup git shell](./static/images/Rstudio-GitShell.png){width=75%}
 
+---
 
 Mi raccomando usa il tuo **username GitHub**, il mio è [NiccoloSalvini](https://github.com/NiccoloSalvini)!
 
@@ -184,7 +185,7 @@ Per verificare che tutta la configurazione sia andata a buon fine esegui questo 
 
 Se la configirazione ha avuto esito positivo allora congratulazioni, il tuo setup è finito! 👍
 
----
+### Approccio alla configurazione con `usethis`
 
 
 Se sei scomodo con la configurazione da terminale, recentemente il pacchetto `usethis` ha introdotto una serie di funzioni per interagire direttamente con Git e GitHub. Qui copriamo solo lo "handshake" tra Git e RStudio, ma `usethis` copre molte altre operazioni come la **P**ull **R**equest, creazione di documentazione e di file Mardown precomilati (Lincenze, Codice di Condotta etc.). una sezione sarà interamente dedicata al set up completo tramite `usethis`:
@@ -206,13 +207,15 @@ Per verificare la corretta configurazione esegui lo stesso comando da terminale:
 git config --global --list
 ```
 
+---
+
 ## Clona una repo per lavorarci in locale
 
 Prima abbiamo inizializzato una repo online e abbiamo configurato git per cooperare con RStudio. Adesso possiamo cominciare a lavorare sul codice localmente scaricando la repo sul laptop. RStudio provvede ad occuparsi di tutto questo in una maniera molto conveniente e facile. 
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Esercizio:</h4>
-1. vai sulla pagina GitHub della tua nuova repo copiando l'url **HTTPS** (*ricordi il bottone di prima?*)
+1. vai sulla pagina GitHub della tua nuova repo copiando l'url **HTTPS** (ricordi il *bottone verde Code* di prima?)
 1. in Rstudio prosegui per `File > New Project...`, seleziona `Version Control` e scegli `Git`
 1. nella prima casella in alto, copia e incolla l'url **HTTPS** (in automatico il nome della cartella che contiene il progetto viene completata)
 1. naviga fino alla cartella copiata dove desideri mettere tutti i tuoi progetti/codici R.
@@ -224,7 +227,9 @@ Per avere l'indirizzo **HTTPS** di clone della repo é sufficiente cliccare sopr
 
 ![Copy the https link of a repo](./static/images/copy-repo-link.png){width=75%}
 
+
 ---
+
 Un esempio di setup del progetto utilizzando una repo Git può essere questo:
 
 ![Clone a repo in RStudio](./static/images/create-project-rstudio.png){width=75%}
@@ -240,10 +245,10 @@ Cerca la cartella che corrisponde alla git repo nella destinazione al punto 4 de
 
 ## `.gitignore`
 
-Quando si inizia un nuovo progetto in RStudio, ma anche in Python e tanti altri linguaggi è utile (anche se non propio indispensabile) aggiungere il file `.gitignore` se non esiste già. E' infatti possibile in fase di inizializzazione della repo online, direttamente da GitHub, creare il `.gitignore` default o custom (se hai difficoltà a comporre il file `.gitignore` assicurati di trovare un progetto simile al tu su GitHub e copia il contenuto, in alternativa naviga in [questo strumento online gratuito](https://www.toptal.com/developers/gitignore) speficificando i software che utilizzi e in automatico questo comporrà il perfetto `.gitignore`).
+Quando si inizia un nuovo progetto in RStudio con R e git, allo stesso modo in Pycharm e VScode con Python e tanti altri IDE x linguaggi è utile (anche se non proprio indispensabile) aggiungere il file `.gitignore` se non esiste già. E' infatti possibile in fase di inizializzazione della repo online, direttamente da GitHub, creare il `.gitignore` default o custom (se hai difficoltà a comporre il file `.gitignore` assicurati di trovare un progetto simile al tuo su GitHub e copia il contenuto, in alternativa naviga in [questo strumento online gratuito](https://www.toptal.com/developers/gitignore) speficificando i software che utilizzi e in automatico questo comporrà il perfetto `.gitignore`).
 Il file `.gitignore` definisce tutti quei files che **non** devono finire nella repo online per diversi motivi, eccone alcuni:
 
-- ci sono delle credenziali segrete `.Renviron` o`.Rprofile`  ( TODO: link a come storare credenziali segrete in R)
+- ci sono delle credenziali segrete `.Renviron` o`.Rprofile` (link al misc dove tratto l'argomento)
 - files di sessione `.RData`
 - files di logs e history `.Rhistory` e `.Rapp.history`
 - file di sistema prodotti da RStudio, come`myprojectname.Rproj` 
@@ -254,7 +259,10 @@ Il file `.gitignore` definisce tutti quei files che **non** devono finire nella 
 - Se stai scivendo un pacchetto: files di risposta in seguito ad un **R CMD build**, come `/*.tar.gz`; files di risposta in seguito ad un **R CMD check** come `/*.Rcheck/`
 - altri che dipendono dalle esigenze specifiche del progetto espressi con una sintassi particolar, come tutti i files preceduti da "_" nel build con `bookdown`
 
-Quindi rimandendo sullo stretto necessario se non c'è già possiamo aggiungere un file di testo (`File > New File > Text File`) rinominandolo `.gitignore` e aggiungere nel file il seguente testo `myprojectname.Rproj`, in alternativa come nell'esercizio:
+Rimandendo sullo stretto necessario, se non esiste già, possiamo aggiungere un file di testo (`File > New File > Text File`) rinominandolo `.gitignore` e copiare il seguente testo `myprojectname.Rproj`, avendo cura di cambiare "myprojectname" col nome del proprio progetto. 
+[Ecco come appare](https://github.com/github/gitignore/blob/master/R.gitignore) un `.gitignore` standard suggerito da GitHub per R. 
+
+Ed ecco invece un esempio minimale nell'esercizio:
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Esercizio:</h4>
@@ -265,15 +273,15 @@ Quindi rimandendo sullo stretto necessario se non c'è già possiamo aggiungere 
 
 ---
 
-Visto che il nostro porgetto dummy èp rinominato `favourite-fruit-color`, il corrispondente `.Rproj` file è `favourite-fruit-color.Rproj`. Cliccando il tasto destro del muose sul file è possibile selezionare ignora:
+Visto che il nostro porgetto dummy è rinominato `favourite-fruit-color`, il corrispondente `.Rproj` file è `favourite-fruit-color.Rproj`. Cliccando il tasto destro del muose sul file è possibile selezionare ignora:
 
 ![Ignore a file](./static/images/gitignore-rstudio1.png){width=75%}
 
 ---
 
-Linee guida su quando è necessario usare il file `.gitignore`:
+Ecco alcune linee guida su quando è necessario usare il file `.gitignore`:
 
-* in ogni linguaggiuo di progrannazione dove alcuni files dono *derivati* di altri
+* in ogni linguaggio di progrannazione dove alcuni files dono *derivati* di altri
 * quando ci sono informazioni sensibili che non devono assolutamente essere condivise e non possono essere immagazzinate negli scripts (passwords di Accounts, di database, tokens di Dropbox, etc...)
 * quando c'è una cartella con files di grandi dimensioni che non deve finire nella history (bensì backed up da qualche altra parte)
 * una cartella con files temporanei o con esempi come _temp/_ o _*-Ex.R_
@@ -292,10 +300,10 @@ Controllla il contenuto del `.gitignore`, se sei soddisfatto premi `Save`:
 
 ---
 
-## Fa il **commit**
+## Fa il `commit`
 
-Visto che il `.gitignore` è stato modificato git ha registrato un cambiamento nella <span style="color: green;">repo locale</span> che non è nella <span style="color: red;">repo online</span> di GitHub.
-Allora data la nuova aaggiunta/modifica del presistente `.gitignore` possiamo fare il `commit` di questo cambiamento e fornire un messagio ce spieghi il cambiamento fatto.
+Visto che il `.gitignore` è stato modificato, git ha registrato un cambiamento nella <span style="color: green;"><b>repo locale</b></span> che non è nella <span style="color: red;"><b>repo online</b></span> di GitHub.
+Allora data la nuova aaggiunta/modifica del presistente `.gitignore` possiamo fare il `commit` di questo cambiamento e allegare un messagio che dia una spigazione di quello che abbiamo fatto.
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Esercizio:</h4>
@@ -308,31 +316,35 @@ Allora data la nuova aaggiunta/modifica del presistente `.gitignore` possiamo fa
 
 ---
 
-Adesso lo stato del `.gitignore` prima che il file venga committato è giallo con un punto interrogativo accanto. Questo significa che Git ha notato un cambiamento/aggiunta di quel file.
+Adesso lo stato del `.gitignore` prima che il file venga committato è giallo con un punto interrogativo accanto <span style="color: yellow;"><b>?</b></span>. Questo significa che Git ha notato un cambiamento in quel file (aggiunta o riduzione di una linea di codice).
 
 ![Local commit](./static/images/commit-rstudio1.png){width=75%}
 
 ---
 
-Spuntando la casella accanto al `.gitignore` (oppure selezionandolo e premendo invio) e cliccando su commit si apre una finestra di dialogo dove viene chiesto a destra di inserire un messaggio di commit. 
-(rivdere) 
-Ogni messaggio di commit ha un header, cioè un titolo dove viene spesso riassunto il cuore di quello che è stato fatto per poi lasciare uno spazio bianco sotto l'headere ed elencare con un elenco puntato e numerato quali sono materialemente le operazioni fatte o il motivo. Il messaggio di commit è una vera e propria **arte** deve essere _semplice_, _chiaro_ e sempre nell'ottica di far capire ad un terzo, molto probabilmente te nel futuro cosa tu abbia fatto e perchè lo hai fatto. [Questo post](https://chris.beams.io/posts/git-commit/) può aiutarti a scrivere in maniera più efficace un commit seguendo alcune linee guida.
-Alcuni SCM (non quello intgrato nella IDE di RStudio) prevedono la possibilità di creare un template per il commit, cosicchè ogni volta che un file o un gruppo di files viene committato un template di commit viene generato e il processo di revisione del codice è meglio struttuato e più riproducibile. 
-Dietro questa semplice operazione ci sono 
+Spuntando la casella accanto al `.gitignore` (oppure selezionandolo e premendo invio) e cliccando su `Commit` si apre una finestra di dialogo dove viene chiesto a destra di inserire un messaggio di commit `Commit message` (immagine sotto).
+Ogni messaggio di commit ha un header, cioè un titolo dove viene spesso riassunto il cuore di quello che è stato fatto per poi lasciare uno spazio bianco sotto l'header ed elencare quali sono materialemente le operazioni fatte ed il motivo. Il messaggio di commit è una vera e propria **arte** deve essere _semplice_, _chiaro_ e sempre nell'ottica di far capire ad un terzo, molto probabilmente te nel futuro cosa tu abbia fatto e perchè lo hai fatto. [Questo post](https://chris.beams.io/posts/git-commit/) può aiutarti a scrivere in maniera più efficace un commit seguendo alcune linee guida.
+
+Alcuni SCM (non quello intgrato nella IDE di RStudio) prevedono la possibilità di creare un template per il commit, cosicchè ogni volta che un file o un gruppo di files viene committato un [template di commit](issue_temp.html) viene generato e il processo di revisione del codice è meglio struttuato e più riproducibile, una in "altre risorse" è dedicata proprio a questo. 
 
 
 ![Local commit](./static/images/commit-rstudio2.png){width=75%}
 
 ---
 
-Dopo questo abbiamo una piccola panoramica tecnica di quello che sta succedendo (quello che è stato aggiunto, quello che è stato tolto, quello che è stato modificato)
+Dopo questo riceviamo una piccola panoramica tecnica di quello che sta succedendo (quello che è stato aggiunto, quello che è stato tolto, quello che è stato modificato)
 
 ![Local commit](./static/images/commit-rstudio3.png){width=75%}
 
 ---
-E buona pratica **committare spesso**. Questo permette di spezzettare la logica dello sviluppo del software in tante e piccole singole operazioni su cui si può intervenire in maniera stagna. L'uso frequente di commits permette anche di evitare alcuni probelmi comuni sia di GitHub che di RStudio. Un problema è il tempo di attesa del commit, infatti il git pane di RStudio è molto pratico ma non è ottimizzato. Fare un commit molto grosso con tanti files potrebbe richiedere molto tempo e in alcuni casi git potrebbe sputare un errore. (related issue)
+E buona pratica **committare spesso**. Questo permette di _spezzettare la logica dello sviluppo_ del software in tante, piccole e singole operazioni su cui si può intervenire in maniera stagna, cioè senza compromettere i cambiamenti successivi o precedenti. L'uso frequente di commits permette anche di evitare alcuni problemi comuni tra GitHub e l'integrazione del VCS in RStudio. 
 
-La documentazione è un aspetto cruciale dello sviluppo di ogni software, prima ancora che per gli altri **per te stesso**. Il file `README.md`  ti aiuta a capire lo scopo del progetto. Adesso possiamo provare a modificare il file `README.md` localmente e procedere alla stessa maniera.
+Un problema è il tempo di attesa per fare il commit, infatti il git pane di RStudio è molto pratico ma è abbastanza lento rispetto ad altri clients. Tuttavia per operazioni piccole e frequenti la percezione è che non si perda tanto tempo.
+In più, eseguire un commit molto grosso, composto da tanti files o da alcuni pesanti potrebbe richiedere non solo richiedere molto tempo, ma anche generare errori bizzarri difficili da tracciare (related issue link). 
+
+### Altro commit sul `README.md`
+
+La documentazione è un aspetto cruciale dello sviluppo di ogni software, prima ancora che per gli altri **per te stesso**. Il file `README.md`  ti aiuta a capire lo scopo del progetto. Adesso possiamo provare a modificare il file `README.md` localmente e procedere alla stessa maniera committando i cambiamenti.
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Esercizio:</h4>
@@ -351,23 +363,19 @@ Ricorda che il report dei cambiamenti nel panel in basso barra in rosso le linee
 
 ## Push dei cambiamenti su GitHub
 
-Nota che `git` ti avverte che *your branch is ahead of 'origin/master' by 2 commits*, questo significa che ancora i tuoi cambiamenti sono in fase di stage, devono ancora essere trasmessi alla repo di GitHub online. Per trasmettere i cambiamenti a GitHub premi `push`.
-
 <div class="bs-callout bs-callout-exercise">
 <h4>Esercizio:</h4>
 1. Clicca `push` nel `git` pane
 1. Vai su GitHub all'indirizzo della tua repository e verifica il commit, il messaggio e i cambiamenti
 </div>
 
----
 
-RStudio successivamente ti avverte sullo stato dei tuoi commits locali rispetto a quelli mandati `push`ed a GitHub:
-
+Ritorna sul git pane e nota come `git` ti avverta che "*your branch is ahead of 'origin/master' by 2 commits*". Questo significa che ancora i tuoi cambiamenti sono in fase di `stage` e devono ancora essere trasmessi alla repo di GitHub online. Per trasmettere i cambiamenti da locale a GitHub premi `push`.
 ![Push](./static/images/push-rstudio1.png){width=75%}
 
 ---
 
-Adesso su GitHub il `README.md` è aggiornato? Dove si trova la panoramica dei commits sulla repo online?
+Adesso su GitHub ti risulta che il `README.md` sia aggiornato? Dove si trova la panoramica dei commits sulla repo online?
 
 ![Verify your commits on GitHub](./static/images/local-commit-on-github.png){width=75%}
 
@@ -376,22 +384,22 @@ Adesso su GitHub il `README.md` è aggiornato? Dove si trova la panoramica dei c
 ## Configurazioni Addizionali - metti da parte la password 🔑
 
 Non è per caso noioso tutte le volte rimettere la propria password ogni volta che viene `push`ato qualcosa alla repo?  
-Fortunatamente così come per _Username_ e _mail_, anche con la password è possibile fare la stessa cosa usando il protocollo sicuro **HTTPS**.
+Fortunatamente così come per **username** e **mail**, anche per la password è possibile fare la stessa cosa usando il protocollo sicuro **HTTPS**.
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Esercizio:</h4>
 1. Clicca su `More` nel `git` pane e seleziona `Shell`
-1. Scrivi `git config --global credential.helper store` e premi invio
+1. Scrivi `git config --global credential.helper store`
 1. Scrivi `exit` e premi invio per uscire dalla shell
 </div>
-
-La prossima volta che `git` avrà bisogno delle tue credenziali **te le chiederà solo una volta** e le manterrà per tutte le operazioni successive.
 
 ---
 
 Il bottone "More" ha il simbolo di un **ingranaggio** ⚙️: 
 
 ![Store credentials](./static/images/https-credentials-rstudio1.png){width=75%}
+
+Dalla `shell` esegui il comando `git config --global credential.helper store`. La shell facendo così dovrebbe aver istruito `git` che la prossima volta che avrà bisogno delle tue credenziali **te le chiederà solo una volta** e le manterrà per tutte le operazioni successive.
 
 
 ---
@@ -431,9 +439,9 @@ E `xyz` può essere
 
 ---
 
-## Crea un Conflitto
+## Crea un Conflitto ⚔️
 
-Alcune volte accade, soprattuto in ambienti molto collaborativi o con tanti contributori che più collaboratori lavorino sulle stesse linee di codice. Non c'è da preoccuparsi, adesso impariamo ad amministrare i conflitti e risolverli. Lo faremi creandone uno.
+Alcune volte accade, soprattuto in ambienti molto collaborativi o con tanti contributori che più persone lavorino sulle stesse linee di codice. Non c'è da preoccuparsi, adesso impariamo ad amministrare i conflitti e risolverli. Lo faremo creandone uno.
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Esercizio:</h4>
@@ -442,7 +450,7 @@ Aggiorna il `README.md` direttamente online su GitHub, sulla stessa identica lin
 
 ---
 
-Se non ti ricordi o non sai come si fa un cambiamento online, per favore controlla [questo tutorial](https://help.github.com/articles/create-a-repo/#commit-your-first-change). Guarda poi i risultati online del commit. Ricorda che non c'è  bisogno di spingere i cambiamenti  `Push`ando il commit, siamo già online, non serve, infattic contestualmente `Push`ando cambia immediatamente il contenuto della repo.
+Se non ti ricordi o non sai come si fa un cambiamento online, per favore controlla [questo tutorial](https://help.github.com/articles/create-a-repo/#commit-your-first-change). Osserva poi i risultati online del commit. Ricorda che non c'è  bisogno di spingere i cambiamenti `Push`ando il commit, siamo già online, non serve, infattic contestualmente `Push`ando cambia immediatamente il contenuto della repo.
 
 ![Commit to create conflict](./static/images/commit-to-create-conflict.png){width=75%}
 
@@ -454,6 +462,7 @@ Torna indietro su Rstudio e prova a spingere (click `push`) i cambiamenti locali
 </div>
 
 ---
+
 Git ti aiuta avvertendoti che ci sono dei cambiamenti remoti ( _remote changes_ ) sulla stessa repo.
 
 ![Conflict](./static/images/conflict-rstudio1.png){width=75%}
@@ -465,9 +474,9 @@ Git ti aiuta avvertendoti che ci sono dei cambiamenti remoti ( _remote changes_ 
 Clicca su `Pull` per tirare i cambiamenti dentro la tua repo GitHub (fare il download) 
 </div>
 
-Git ti notifica un conflitto i.e. **CONFLICT** e ti chiede cosa vuoi fare, le operazioni da fare sono 2:
+Git ti notifica un conflitto i.e. **CONFLICT** e ti chiede cosa vuoi fare, le operazioni da affrontare sono 2:
 
-1. Metti a posto il conflitto
+1. Sana il conflitto
 1. Commit del risultato dopo aver messo a posto il conflitto
 
 ![Conflict](./static/images/conflict-rstudio2.png){width=75%}
@@ -484,7 +493,7 @@ il tuo codice locale
 =======
 il codice che esiste su GitHub
 >>>>>>> origin/master
-```x
+```
 
 Per risolvere il conflitto devi decidere quale delle due versioni ti convince di più viceversa e quale vuoi scartare.
 
@@ -512,13 +521,13 @@ Se tu dovessi incontrare nuovi conflitti in futuro utilizza il semplice _modus o
 
 ---
 
-## Aggiungi un nuovoi file
+## Aggiungi un nuovo file
 
-Durante lo sviluppo di un progetto nuovi files sono introdotti, pure questi necessitano di un controllo di versione!.
+Durante lo sviluppo di un progetto nuovi files sono introdotti, e pure questi necessitano di un controllo di versione!
 Le nuove cartelle insieme ai files possono essere aggiunte e successivamente committate, esattamente come ogni altro cambiamento.
 
 Spuntando la casella accanto al nuovo file/cartella appena aggiunto viene messo in fase `stage`. Mettere in `stage` una nuova cartella metterà in automatico ogni file contenuto nella cartella. 
-Tuttavia RStudio non ti permetterà di mettere in `stage` una cartella vuota!
+Non è permesso mettere in `stage` una cartella vuota!
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Esercizio:</h4>
@@ -528,22 +537,22 @@ Tuttavia RStudio non ti permetterà di mettere in `stage` una cartella vuota!
 </div>
 ---
 
-RStudio provvede ad informati circa lo status dei files
+RStudio provvede ad informarti circa lo status dei tuoi files
 
 - `README.md` file è stato cambiato (<span style="color: blue;">M</span>odified)
-- `data/` è per il momento sconosciuto a git (*Question mark* <span style="color: yellow;">?</span>)
+- `data/` è per il momento sconosciuto a git (*Punto Interrogativo* <span style="color: yellow;"><b>?</b></span>)
 
 ![Add a file](./static/images/add-file-rstudio1.png){width=75%}
 
 ---
 
-Sputando tutti e due li farà diventare pronti per il commit. Ricorda che `data/fruits.csv` diventa verde visto che viene <span style="color: green;">A</span>ggiunto:
+Sputando tutti e due li farà diventare pronti per il commit. Ricorda che `data/fruits.csv` diventa verde visto che viene <span style="color: green;"><b>A</b></span>ggiunto. La corretta aggiunta dei files al passaggio di stage è segnalata dalla spunta blu ☑️ accanto al nome del file.
 
 ![Add a file](./static/images/add-file-rstudio2.png){width=75%}
 
 ---
 
-## Adatta l'ultimo commit
+## Adatta l'ultimo commit (`amend`)
 
 Succede spesso che vengano committate linee di codice ma ci si dimentichi di altre o che quelle stesse necessitino una piccola revisione. Git provvede attraverso l'abilità `amend` modificando il precedente commit con gli adattamenti necessari.
 
@@ -555,7 +564,7 @@ Succede spesso che vengano committate linee di codice ma ci si dimentichi di alt
 
 
 :::warn
-**Attenzione:**  non lo fare per commits che sono già stati pusha, altrimenti incorri in un conflitto!
+**Attenzione:**  non lo fare per commits che sono già stati pushati, altrimenti incorri in un conflitto!
 :::
 
 
