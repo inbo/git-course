@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Niccolò Salvini" />
+  <title>Hands-on tutorial di Git attraverso RStudio</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="rstudio_git_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="rstudio_git_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="style\robot_lung_style.css"/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <script src="rstudio_git_files/header-attrs-2.6/header-attrs.js"></script>
+    <link href="rstudio_git_files/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+    <link href="rstudio_git_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Hands-on tutorial di Git attraverso RStudio</h1>
+    <h2 class="author">Niccolò Salvini</h2>
+</section>
+
+<section class="slide level2">
+
+<style type="text/css">
+    .reveal section img { 
+        border:none; 
+        box-shadow:none; 
+        }
+    .reveal code {
+        font-family: monospace;
+        color: #75aada;
+        }
+    .reveal pre code {
+        font-family: monospace;
+        color: #1a1a1a;
+        background: ##ececec;
+        }
+</style>
+</section>
+<section>
+<section id="lavorare-da-solo" class="title-slide slide level1" data-background="#75aada">
+<h1 data-background="#75aada">Lavorare da Solo</h1>
+
+</section>
+<section class="slide level2">
+
+<h3 id="creare-una-repo">Creare una repo</h3>
+<ol type="1">
+<li>Vai su <a href="https://github.com">GitHub</a> ed esegui il login</li>
+<li>segui <a href="https://help.github.com/articles/create-a-repo/">questo tutorial</a> per creare una repo</li>
+</ol>
+<!-- aggiungere un piccolo video forse -->
+</section>
+<section class="slide level2">
+
+<p><img data-src="images/create-a-repo.png" alt="Create a repo" /></p>
+</section>
+<section class="slide level2">
+
+<p><img data-src="images/create-repo-result.png" alt="Result of creating a repo" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="requisiti">Requisiti:</h3>
+<ol type="1">
+<li><a href="https://git-scm.com/downloads">Download</a> e installazione di Git</li>
+<li>Installazione di <a href="https://inbo.github.io/tutorials/installation-RStudio-admin.html">RStudio</a></li>
+<li>Apri <a href="https://inbo.github.io/tutorials/installation-RStudio-user.html">RStudio</a></li>
+</ol>
+</section>
+<section class="slide level2">
+
+<h3 id="rstudio-setup-per-git">RStudio setup per git</h3>
+<p>Va detto ad RStudio dove si trova l’eseguibile di Git</p>
+<ol type="1">
+<li>Naviga nell’IDE di RStudio su <code>Tools &gt; Global Options</code></li>
+<li>Clicca su <code>Git/SVN</code>.</li>
+</ol>
+<p><img data-src="images/RStudio-setup-git.png" style="width:50.0%" alt="RStudio setup for git" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="rstudio-setup-per-git-1">RStudio setup per git</h3>
+<p>Spunta " <em>Enable version control interface for RStudio projects</em> " e specifica il path all’eseguibile di Git che hai appena installato.</p>
+<p>Se non sai dov’è l’installazione di Git vai da terminale ed esegui <code>where git</code> (per utenti <strong>Win</strong>).</p>
+<p>Il percorso dovrebbe assomigliare a qualcosa come: <code>C:/Program Files (x86)/Git/bin/git.exe</code></p>
+</section>
+<section class="slide level2">
+
+<h3 id="git-rstudio-setup-la-configurazione-git">Git &amp; RStudio setup: la configurazione git</h3>
+<ol type="1">
+<li>Vai su <code>Tools &gt; Shell</code> per aprire la shell di Git</li>
+<li>Di’ a Git le tue credenziali Github (!) username &amp; GitHub email:</li>
+</ol>
+<p><img data-src="images/Rstudio-GitShell.png" alt="RStudio setup git shell" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="git-rstudio-setup-la-configurazione-git-1">Git &amp; RStudio setup: la configurazione git</h3>
+<ol type="1">
+<li>Vai su <code>Tools &gt; Shell</code> per aprire la shell di Git</li>
+<li>Di’ a Git le tue credenziali Github (!) username &amp; GitHub email:</li>
+</ol>
+<p>Nella shell, scrivi i seguenti due comandi:</p>
+<pre><code>git config --global user.email &quot;my.name@inbo.be&quot;
+git config --global user.name &quot;mygithubusername&quot;</code></pre>
+<p>Assicurati di utilizzare il <strong>tuo username</strong> di GitHub!</p>
+</section>
+<section class="slide level2">
+
+<h3 id="clona-una-repo-per-lavorare-in-locale">Clona una repo per lavorare in Locale</h3>
+<ol type="1">
+<li>Copia l’indirizzo <strong>HTTPS</strong> della repo (tasto <span style="color:verde"><b>code</b></span>)</li>
+<li><code>File &gt; New Project...</code>, select <code>Version Control</code>, choose <code>Git</code></li>
+<li>Provide the repository <strong>HTTPS</strong> link, select desired directory</li>
+</ol>
+</section>
+<section class="slide level2">
+
+<ol type="1">
+<li>Copia l’indirizzo <strong>HTTPS</strong></li>
+</ol>
+<p>Naviga all’indirizzo della cartella che vuoi copiare e premi sul tasto code</p>
+<p><img data-src="images/copy-repo-link_2.png" alt="Copy the https link of a repo" /></p>
+</section>
+<section class="slide level2">
+
+<ol start="2" type="1">
+<li><code>File &gt; New Project...</code>, select <code>Version Control</code>, choose <code>Git</code></li>
+</ol>
+<p><img data-src="images/create-project-rstudio_2.png" alt="Clone a repo in RStudio" /></p>
+</section>
+<section class="slide level2">
+
+<ol start="3" type="1">
+<li>Provide the repository <strong>HTTPS</strong> link, select desired directory</li>
+</ol>
+<p>Incolla l’indirizzo in <strong>Repository URL</strong>. Cambia il nome del progetto se vuoi. Premi su <strong>create Project</strong>.</p>
+<p><img data-src="images/paste_https_address.png" alt="Clone a repo in RStudio" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="gitignore">.gitignore</h3>
+<ol type="1">
+<li>RStudio aggingerà sempre un <code>.gitignore</code> se questo non esiste già.</li>
+<li>Vai al pane <code>git</code>, clicca cok tasto destro sul file <code>.Proj</code> e seleziona <code>Ìgnore</code></li>
+<li>Aggiorna <code>.gitignore</code> e clicca su <code>Save</code>.</li>
+</ol>
+<p><img data-src="images/gitignore-rstudio1.png" style="width:30.0%" alt="Ignore a file" /></p>
+<p><img data-src="images/gitignore-rstudio2.png" style="width:20.0%" alt="Update .gitignore" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="fai-un-commit">Fai un commit</h3>
+<ol type="1">
+<li>Aggiorna il <code>README.md</code></li>
+<li>Vai sul <code>git</code> pane, spuntando <code>.gitignore</code></li>
+<li>Clicca su commit.</li>
+</ol>
+<p><img data-src="images/commit-rstudio1.png" alt="Local commit" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="fai-il-commit">Fai il commit</h3>
+<ol type="1">
+<li>Aggiungi un messaggio di commit, <em>in questo caso “add .gitignore”</em></li>
+</ol>
+<p><img data-src="images/commit-rstudio2.png" alt="Local commit" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="fai-il-commit-1">Fai il commit</h3>
+<ol type="1">
+<li>Clicca su <code>Close</code></li>
+</ol>
+<p><img data-src="images/commit-rstudio3.png" alt="Local commit" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="fai-il-commit-2">Fai il commit</h3>
+<ol type="1">
+<li>Adesso spunta la casella accanto <code>README.md</code></li>
+<li>Aggiungi nuovamente un messaggio di commit e clicca su Commit</li>
+</ol>
+<p><img data-src="images/commit-rstudio4.png" alt="Local commit" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="push-dei-cambiamenti-su-github">Push dei cambiamenti su GitHub</h3>
+<ol type="1">
+<li>Nota che il <code>git</code> pane ti avverte che: <em>your branch is ahead of ‘origin/master’ by 2 commits</em> (cioè rispetto alla repo su GitHub la repo locale ha due cambiamenti in più)</li>
+<li>Clicca su <code>push</code> nel <code>git</code> pane</li>
+</ol>
+<p><img data-src="images/push-rstudio1.png" alt="Push" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="vai-sulla-tua-repo-di-github-e-verifica">Vai sulla tua repo di GitHub e verifica!</h3>
+<p><img data-src="images/local-commit-on-github.png" alt="Verify your commits on GitHub" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="metti-in-sicurezza-le-tue-credenziali-con-https">Metti in sicurezza le tue credenziali (con <strong>HTTPS</strong>)</h3>
+<ol type="1">
+<li>Clicca su <code>more</code> nel <code>git pane</code> e seleziona <code>shell</code></li>
+<li>Scrivi <code>git config --global credential.helper store</code></li>
+<li>Scrivi <code>exit</code> per abbandonare la shell</li>
+<li>La prossima volta che <code>git</code> avrà bisogno delle tue credenziali te le chiederà solo una volta</li>
+</ol>
+<p><img data-src="images/https-credentials-rstudio1.png" alt="Store credentials" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="crea-un-commit-logico">Crea un commit logico</h3>
+<ol type="1">
+<li>Fai 2 cambiamenti casuali sul <code>README.md</code> in locale</li>
+<li>Crea 1 commit per ogni cambiamento.</li>
+<li><strong>NON</strong> pushare i commit (non ancora)</li>
+</ol>
+</section>
+<section class="slide level2">
+
+<h3 id="crea-un-commit-logico-1">Crea un commit logico</h3>
+<ol type="1">
+<li>Clicca su <code>Commit</code> nel <code>git</code> pane</li>
+<li>Clicca sul <code>README.md</code></li>
+<li>Seleziona i cambiamenti che vuoi committare, successivamente clicca su <code>stage selection</code> (in blu)</li>
+<li>Aggiungi un <code>commit message</code> e clicca su <code>Commit</code></li>
+</ol>
+<p><img data-src="images/logical-commit-rstudio.png" style="width:80.0%" alt="Logical commit 1" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="crea-un-commit-logico-2">Crea un commit logico</h3>
+<ul>
+<li><code>stage xyz</code>: aggiungi xyz dal commit</li>
+<li><code>unstage xyz</code>: rimuovi xyz dal commit</li>
+<li><code>discard xyz</code>: revert (ritorna indietro) rispetto ai cambiamenti su xyz ( ⚠️ stai attento, questo non può essere riportato indietro! ⚠️ )</li>
+</ul>
+<p>E <code>xyz</code> può essere:</p>
+<ul>
+<li>una <code>linea</code> singola</li>
+<li>una <code>selezione</code> di linee</li>
+<li>un <code>chunk</code> di codice
+<ul>
+<li>RStudio si occuperà di spezzare i cambiamenti in più chunks</li>
+<li><h2 id="i-chunks-sono-definiti-come-10-linee-di-codice-non-cambiate-tra-gli-effettivi-cambiamenti">I chunks sono definiti come 10 linee di codice non cambiate tra gli effettivi cambiamenti</h2></li>
+</ul></li>
+</ul>
+<h3 id="crea-un-conflitto-️">Crea un Conflitto ⚔️</h3>
+<p>Aggiorna il <code>README.md</code> direttamente da GitHub,<br/> su unq qualsiasi linea, sulla stessa cambia qualcosa nella medesima riga, ma <strong>in Locale</strong>.</p>
+<p><img data-src="images/commit-to-create-conflict.png" alt="Commit to create conflict" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="ecco-il-conflitto">Ecco il Conflitto!</h3>
+<p>Prova a fare Push (cliccando su <code>push</code>) ai tuoi cambiamenti locali.</p>
+<p><img data-src="images/conflict-rstudio1.png" alt="Conflict" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="risolvi-il-conflitto">Risolvi il conflitto 🕊</h3>
+<ol type="1">
+<li>Clicca <code>Pull</code> per <em>tirare dentro</em> i cambiamenti.</li>
+</ol>
+<p><img data-src="images/conflict-rstudio2.png" alt="Conflict" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="risolvi-il-conflitto-️">Risolvi il conflitto ✌️</h3>
+<ol type="1">
+<li><p>Apri <code>README.md</code> in RStudio: (il conflitto è generato da due parole diverse <em>visualize</em> VS <em>discover</em>)</p>
+<pre><code> &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+ A simple analysis to visualize my favourite fruit colour.
+ =======
+ A simple analysis to discover my favourite fruit color.
+ &gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master</code></pre></li>
+<li><p>Scegli quale vuoi tenere:</p>
+<pre><code> A simple analysis to discover my favourite fruit colour.</code></pre></li>
+<li><p>Committa e clicca su <code>push</code></p></li>
+</ol>
+</section>
+<section class="slide level2">
+
+<h3 id="aggiungi-un-file">Aggiungi un File</h3>
+<ol type="1">
+<li>Agiungi un <code>fruits.csv</code> file in <code>/data</code></li>
+<li>Aggiungi un link al file su <code>README.md</code> (sintassi di Markdown)</li>
+</ol>
+<p><img data-src="images/add-file-rstudio1.png" alt="Add a file" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="aggiungi-un-file-within-attraverso-una-directory">Aggiungi un file within attraverso una directory</h3>
+<ul>
+<li>Mettere in stage una directory metterà in stage tutti files nella directory</li>
+<li>Non puoi mettere in stage directory vuote</li>
+</ul>
+<p><img data-src="images/add-file-rstudio2.png" alt="Add a file" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="adatta-lultimo-commit">Adatta l’ultimo commit</h3>
+<ul>
+<li><strong>Attenzione:</strong> NON fare questo su commit che sono già stati pushati, altrimenti andrai incontro ad un inevitabile conflitto</li>
+<li>Fai un cambiamenti in <code>fruits.csv</code></li>
+<li><code>Commit</code> come sempre, ma questa volta <strong>spunta</strong> <code>amend previous commit</code> sotto il commit box!</li>
+</ul>
+<p><img data-src="images/amend-commit-rstudio.png" style="width:60.0%" alt="Add a file" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="guarda-la-history">Guarda la <code>history</code></h3>
+<ul>
+<li>Clicca su <code>history</code> nel <code>git</code> pane <img data-src="images/history-rstudio1.png" alt="View history" /></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="guarda-la-history-1">Guarda la <code>history</code></h3>
+<p><img data-src="images/history-rstudio2.png" alt="View history" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="crea-un-nuovo-branch-per-sperimentare">Crea un nuovo branch per sperimentare</h3>
+<ol type="1">
+<li>Crea un NUOVO branch</li>
+<li>Aggiungi un “analysis file” nella cartella <code>/src</code></li>
+<li>Commit</li>
+<li>Cambia (Switch) tra un ramo e l’altro</li>
+</ol>
+</section>
+<section class="slide level2">
+
+<h3 id="crea-un-nuovo-branch-per-sperimentare-1">Crea un nuovo branch per sperimentare</h3>
+<ol type="1">
+<li><p>Apri la git shel</p></li>
+<li><p>Crea un branch attraverso il checkout di un nuovo branch, qìuindi scrivi il seguente sulla shell, assegna il nome che vuoi al posto di <code>analysis-script</code>.</p>
+<pre><code>git checkout -b analysis-script</code></pre></li>
+<li><p>Genera una panoramica dei branches attivi con: <code>git branch</code> sempre su shell</p></li>
+</ol>
+<p><img data-src="images/create-branch-rstudio.png" alt="Create branch" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="effetti-di-un-cambiamento-di-branch">Effetti di un cambiamento di branch</h3>
+<p>Aggiungi un file alla repo nella cartella <code>src</code>-directory (ricordati prima)</p>
+<ol type="1">
+<li>Premi sullo status del nuovo branch (nell’esempio <code>analysis-script</code>), poi ritorna indietro allo status al <code>master</code> branch, selezionando <code>(LOCAL BRANCHES) -&gt; master</code></li>
+</ol>
+<p><img data-src="images/branch-rstudio1.png" alt="Switch branch" /></p>
+<p><img data-src="images/branch-rstudio2.png" alt="Switch branch" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="effetti-di-un-cambiamento-di-branch-1">Effetti di un cambiamento di branch</h3>
+<ol type="1">
+<li>Verifica la struttura delle tue cartelle, dove sono andati a finire i files che hai aggiunto?</li>
+<li>Fai l’operazione opposta a quella di prima, ritorna sul branch <code>analysis-script</code></li>
+<li>RIverifica ancora la struttura della tua cartella, e adesso ci sono i files che hai aggiunto?</li>
+</ol>
+</section>
+<section class="slide level2">
+
+<h3 id="prima-push-sul-nuovo-branch">Prima push sul nuovo branch</h3>
+<ol type="1">
+<li>Nota <code>pull</code> and <code>push</code> che si sono <code>git</code> disattivati, sul nuovo branch</li>
+<li>Apri la shell</li>
+<li>Scrivi <code>git push -u origin analysis-script</code></li>
+</ol>
+<p>Questo attiverà i pulsanti <code>pull</code> and <code>push</code> sul nuovo branch!</p>
+<p><img data-src="images/branch-first-push-rstudio.png" alt="First push branch" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="crea-una-pull-request-pr-per-includere-il-tuo-lavor">Crea una <strong>P</strong>ull <strong>R</strong>equest (PR) per includere il tuo lavor</h3>
+<ol type="1">
+<li>Clicca su <code>push</code></li>
+<li>Nella <a href="https://github.com/">Github</a>, naviga sulla tua repo…</li>
+<li>Crea una <code>pull request</code></li>
+</ol>
+</section>
+<section class="slide level2">
+
+<h3 id="crea-una-pull-request-pr">Crea una <strong>P</strong>ull <strong>R</strong>equest (PR)</h3>
+<p><img data-src="images/pull-request-intro.png" alt="Check Github message pull request" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="crea-una-pull-request-pr-1">Crea una <strong>P</strong>ull <strong>R</strong>equest (PR)</h3>
+<p><img data-src="images/pull-request_message.png" alt="Adapt Github message and start pull request" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="review-the-pr">Review the <strong>PR</strong></h3>
+<p><img data-src="images/pr.png" alt="See pull request" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="review-the-pr-1">Review the <strong>PR</strong></h3>
+<ol type="1">
+<li>Rivedi i cambiamenti</li>
+<li>Se vanno bene, unisci (merge) della PR</li>
+<li>Cancella il branch di sperimentazione</li>
+</ol>
+</section>
+<section class="slide level2">
+
+<h3 id="include-i-cambiamenti-nel-master-in-locale">Include i cambiamenti nel <code>master</code> in locale</h3>
+<ol type="1">
+<li>Switch sul <code>master</code> branch</li>
+<li>Clicca <code>pull</code>.</li>
+</ol>
+<p><img data-src="images/pull-rstudio.png" alt="git pull" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="escludi-files">Escludi files</h3>
+<ul>
+<li>in ogni lunguaggio di programmazione ci sono dei files che sono dei <em>derivati</em> di altri, (fanno da stampella per la creazione)</li>
+<li>Informazioni sensibili (passwords, tokens…)</li>
+<li>cartelle con file pesanti che non devono essere inclusi nella history</li>
+<li>i <em>temp/</em> o gli <em>/example_1.R</em></li>
+</ul>
+<p><code>.gitignore</code> qui ci aiuta!</p>
+</section>
+<section class="slide level2">
+
+<h3 id="escludi-i-files">Escludi i files</h3>
+<p><img data-src="images/gitignore-rstudio1.png" style="width:30.0%" alt="Ignore a file" /></p>
+<p>Ricorda che puoi usare dei caratteri speciali detti <em>Wildcards</em> come <code>*.Rproj</code> per escludere tutti i files con la stessa estensione, suffisso o prefisso (SQL like)</p>
+<p><img data-src="images/gitignore-rstudio2.png" style="width:30.0%" alt="Update .gitignore" /></p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="lavorare-insieme" class="title-slide slide level1" data-background="#75aada">
+<h1 data-background="#75aada">Lavorare Insieme</h1>
+
+</section>
+<section class="slide level2">
+
+<h3 id="team-up">Team Up</h3>
+<ul>
+<li>Raccogli due persone da assegnare ad un team</li>
+<li>Lascia che una persona inviti le altre due e assegna a ciascuno di loro permessi read/write come in <a href="https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/">questo tutorial</a></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="invita-collaboratori">Invita Collaboratori</h3>
+<p><img data-src="images/invite-collaborator.png" alt="Invite collaborator" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="invita-i-collaboratori">Invita i collaboratori</h3>
+<p><img data-src="images/react-collaborator.png" alt="react to collaborator" /></p>
+</section>
+<section class="slide level2">
+
+<h3 id="collaborazione-le-issues">Collaborazione: le <code>issues</code></h3>
+<ul>
+<li>File una <strong>issue</strong> online</li>
+<li>Attribuisci alla issue una label appropiata</li>
+<li>Assegna il tuo collaboratore alla issue</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="collaborazione-adattamenti-online">Collaborazione: Adattamenti online</h3>
+<ul>
+<li>Fai un cambiamento online ad un file</li>
+<li>Proponi una <strong>pull eequest</strong> e assegnala ad un collaboratore</li>
+<li>Unisci (merge) dei cambiamenti al <code>master</code> branch</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="collaborazione-cambiamenti-locali">Collaborazione: cambiamenti locali</h3>
+<p>Ricorda: <strong>Lavora SEMPRE Localmente - Fai merge SEMPRE online</strong></p>
+<ul>
+<li>Come collaboratore, <code>clone</code> la repo sul tuo laptop come hai già visto</li>
+<li>Crea un nuovo <code>branch</code> con un nome cogente</li>
+<li>Adatta i contenuti del file rispetto al cambiamento che vuoi apportare</li>
+<li><code>commit</code> i cambiamenti</li>
+<li><code>push</code> del <code>branch</code> alla repo remota</li>
+<li>Vai online e proponi una <code>pull request</code></li>
+<li>Rivedi il lavoro e unisci <code>merge</code> online se lo ritieni opportuno</li>
+<li>Aggiorna il master branch locale</li>
+<li>Controlla che gli adattamenti siano stati portati al master in maniera corretta</li>
+</ul>
+<p><strong>Consiglio</strong>: Tutto quello che c’è nell’elenco è stato affrontato nei punti precedenti</p>
+</section>
+<section class="slide level2">
+
+<h3 id="release">Release</h3>
+<p>Una volta che sei soddisfatto dello stato della tua analisi, può avere senso fare un <strong>release</strong>:</p>
+<ul>
+<li>Per la pubblicazione di un paper (DOI)</li>
+<li>Per versioni dev del codice/software</li>
+<li>Per note del corso</li>
+</ul>
+<p>Segui <a href="https://help.github.com/articles/creating-releases/">questo tutorial</a> per creare un release</p>
+</section>
+<section class="slide level2">
+
+<h3 id="alcuni-altri-importanti-consigli">Alcuni altri <strong>importanti</strong> consigli:</h3>
+<ul>
+<li>Committa spesso e pochi files alla volta</li>
+<li>Non fare minestroni di commits con tanti cambiamenti spuri</li>
+<li>Pensa a sufficienza al messaggio di commit</li>
+<li>Tieni un codice ed uno stile pulito. <code>knitr::opts_chunk$set(tidy = "styler")</code></li>
+<li>Usa branches!</li>
+<li>Una volta usati i branches cancellali</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="altre-risorse" class="title-slide slide level1" data-background="#75aada">
+<h1 data-background="#75aada">Altre Risorse</h1>
+
+</section>
+<section class="slide level2">
+
+<ul>
+<li>Webinars
+<ul>
+<li><a href="https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/">Github and Rstudio management</a></li>
+<li><a href="https://www.rstudio.com/resources/webinars/collaboration-and-time-travel-version-control-with-git-github-and-rstudio/">Collaboration and time travel: version control with git, github and RStudio</a></li>
+</ul></li>
+<li>Tutorials
+<ul>
+<li><a href="http://r-pkgs.had.co.nz/git.html">Hadley Wickham R packages book</a></li>
+<li><a href="http://happygitwithr.com/index.html">Happy Git and GitHub for the useR</a></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>Informazioni combinate da <a href="https://inbo.github.io/tutorials/">INBO Tutorials website</a> + <a href="https://github.com/NiccoloSalvini">Niccolò Salvini</a>. <br/> Se qualcosa non torna fammelo presente con una issue o mandami una <strong>PR</strong></p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="rstudio_git_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="rstudio_git_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: true,
+        // Opens links in an iframe preview overlay
+        previewLinks: true,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+        menu: {
+   
+    
+    
+    
+    
+    
+    
+ 
+          custom: false,
+          themes: false,
+          transitions: false
+        },
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'rstudio_git_files/reveal.js-3.3.0.1/plugin/menu/menu.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>

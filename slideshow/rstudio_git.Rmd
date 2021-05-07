@@ -1,0 +1,553 @@
+---
+title: "Hands-on tutorial di Git attraverso RStudio"
+author: "Niccolò Salvini"
+output:
+  revealjs::revealjs_presentation:
+    css: style/robot_lung_style.css
+    self_contained: false
+    highlight: pygments
+    transition: slide
+    reveal_plugins: "menu"
+    center: true
+    fig_caption: false
+    fig_width: 5
+    fig_height: 4
+    reveal_options:
+      slideNumber: true
+      previewLinks: true    
+---
+
+<style type="text/css">
+    .reveal section img { 
+        border:none; 
+        box-shadow:none; 
+        }
+    .reveal code {
+    	font-family: monospace;
+    	color: #75aada;
+        }
+    .reveal pre code {
+    	font-family: monospace;
+    	color: #1a1a1a;
+    	background: ##ececec;
+        }
+</style>
+
+
+
+# Lavorare da Solo {data-background=#75aada}
+
+---
+
+### Creare una repo
+
+1. Vai su [GitHub](https://github.com) ed esegui il login
+2. segui [questo tutorial](https://help.github.com/articles/create-a-repo/) per creare una repo
+
+<!-- aggiungere un piccolo video forse -->
+
+---
+
+![Create a repo](images/create-a-repo.png)
+    
+
+---
+
+![Result of creating a repo](images/create-repo-result.png)
+
+---
+
+### Requisiti:
+
+1. [Download](https://git-scm.com/downloads) e installazione di Git
+1. Installazione di [RStudio](https://inbo.github.io/tutorials/installation-RStudio-admin.html)
+1. Apri [RStudio](https://inbo.github.io/tutorials/installation-RStudio-user.html)
+
+---
+
+### RStudio setup per git
+
+Va detto ad RStudio dove si trova l'eseguibile di Git
+
+1. Naviga nell'IDE di RStudio su `Tools > Global Options`
+1. Clicca su `Git/SVN`. 
+
+![RStudio setup for git](images/RStudio-setup-git.png){width=50%}
+
+---
+
+### RStudio setup per git
+
+Spunta " _Enable version control interface for RStudio projects_ " e specifica il path all'eseguibile di Git che hai appena installato. 
+
+Se non sai dov'è l'installazione di Git vai da terminale ed esegui `where git` (per utenti **Win**).
+
+Il percorso dovrebbe assomigliare a qualcosa come: `C:/Program Files (x86)/Git/bin/git.exe`
+
+---
+
+### Git & RStudio setup: la configurazione git 
+
+1. Vai su `Tools > Shell` per aprire la shell di Git
+1. Di' a Git le tue credenziali Github (!) username & GitHub email:
+
+![RStudio setup git shell](images/Rstudio-GitShell.png)
+
+---
+
+### Git & RStudio setup: la configurazione git 
+
+1. Vai su `Tools > Shell` per aprire la shell di Git
+1. Di' a Git le tue credenziali Github (!) username & GitHub email:
+
+Nella shell, scrivi i seguenti due comandi:
+
+```
+git config --global user.email "my.name@inbo.be"
+git config --global user.name "mygithubusername"
+```
+Assicurati di utilizzare il **tuo username** di GitHub!
+
+---
+
+### Clona una repo per lavorare in Locale
+
+1. Copia l'indirizzo **HTTPS** della repo (tasto <span style="color:verde"><b>code</b></span>)
+2. `File > New Project...`, select `Version Control`, choose `Git`
+3. Provide the repository **HTTPS** link, select desired directory
+
+---
+
+1. Copia l'indirizzo **HTTPS**
+
+Naviga all'indirizzo della cartella che vuoi copiare e premi sul tasto code
+
+![Copy the https link of a repo](images/copy-repo-link_2.png)
+
+---
+
+2. `File > New Project...`, select `Version Control`, choose `Git`
+
+![Clone a repo in RStudio](images/create-project-rstudio_2.png)
+
+---
+
+3. Provide the repository **HTTPS** link, select desired directory
+
+Incolla l'indirizzo in **Repository URL**. Cambia il nome del progetto se vuoi. Premi su **create Project**.
+
+![Clone a repo in RStudio](images/paste_https_address.png)
+
+---
+
+### .gitignore
+
+1. RStudio aggingerà sempre un `.gitignore` se questo non esiste già.
+1. Vai al pane `git`, clicca cok tasto destro sul file `.Proj` e seleziona `Ìgnore`
+1. Aggiorna `.gitignore` e clicca su `Save`.
+
+![Ignore a file](images/gitignore-rstudio1.png){width=30%}
+
+![Update .gitignore](images/gitignore-rstudio2.png){width=20%}
+
+---
+
+### Fai un commit
+
+1. Aggiorna il `README.md`
+1. Vai sul `git` pane, spuntando `.gitignore` 
+1. Clicca su commit.
+
+![Local commit](images/commit-rstudio1.png)                            
+
+---
+
+### Fai il commit
+
+1. Aggiungi un messaggio di commit, _in questo caso "add .gitignore"_
+
+![Local commit](images/commit-rstudio2.png)
+
+---
+
+### Fai il commit
+
+1. Clicca su `Close`
+
+![Local commit](images/commit-rstudio3.png)
+
+---
+
+### Fai il commit
+
+1. Adesso spunta la casella accanto `README.md`
+1. Aggiungi nuovamente un messaggio di commit e clicca su Commit
+
+![Local commit](images/commit-rstudio4.png)
+
+---
+
+### Push dei cambiamenti su GitHub
+
+1. Nota che il `git` pane ti avverte che:  _your branch is ahead of 'origin/master' by 2 commits_ (cioè rispetto alla repo su GitHub la repo locale ha due cambiamenti in più)
+1. Clicca su `push` nel `git` pane
+
+![Push](images/push-rstudio1.png)
+
+---
+
+### Vai sulla tua repo di GitHub e verifica!
+
+![Verify your commits on GitHub](images/local-commit-on-github.png)
+
+---
+
+### Metti in sicurezza le tue credenziali (con **HTTPS**)
+
+1. Clicca su `more` nel `git pane` e seleziona `shell`
+1. Scrivi `git config --global credential.helper store`
+1. Scrivi `exit` per abbandonare la shell
+1. La prossima volta che `git` avrà bisogno delle tue credenziali te le chiederà solo una volta
+
+![Store credentials](images/https-credentials-rstudio1.png)
+
+
+---
+
+### Crea un commit logico
+
+1. Fai 2 cambiamenti casuali sul `README.md` in locale
+2. Crea 1 commit per ogni cambiamento.
+3. **NON** pushare i commit (non ancora)
+
+---
+
+### Crea un commit logico
+
+1. Clicca su `Commit` nel `git` pane
+1. Clicca sul `README.md`
+1. Seleziona i cambiamenti che vuoi committare, successivamente clicca su `stage selection` (in blu)
+1. Aggiungi un `commit message` e clicca su `Commit`
+
+![Logical commit 1](images/logical-commit-rstudio.png){width=80%}
+
+---
+
+### Crea un commit logico
+
+- `stage xyz`: aggiungi xyz dal commit
+- `unstage xyz`: rimuovi xyz dal commit
+- `discard xyz`: revert (ritorna indietro) rispetto ai cambiamenti su xyz ( `r emo::ji("warning")` stai attento, questo non può essere riportato indietro! `r emo::ji("warning")` )
+
+
+E `xyz` può essere:
+
+- una `linea` singola
+- una `selezione` di linee
+- un `chunk` di codice
+    - RStudio si occuperà di spezzare i cambiamenti in più chunks
+    - I chunks sono definiti come 10 linee di codice non cambiate tra gli effettivi cambiamenti
+---
+
+###  Crea un Conflitto ⚔️
+
+Aggiorna il `README.md` direttamente da GitHub,<br/>
+su unq qualsiasi linea, sulla stessa cambia qualcosa nella medesima riga, ma **in Locale**.
+
+![Commit to create conflict](images/commit-to-create-conflict.png)
+
+---
+
+### Ecco il Conflitto!
+
+Prova a fare Push (cliccando su `push`) ai tuoi cambiamenti locali.
+
+![Conflict](images/conflict-rstudio1.png)
+
+---
+
+### Risolvi il conflitto `r emo::ji("peace")`
+
+1. Clicca `Pull` per _tirare dentro_ i cambiamenti.
+
+![Conflict](images/conflict-rstudio2.png)
+
+---
+
+### Risolvi il conflitto `r emo::ji("peace")`
+
+1. Apri `README.md` in RStudio: (il conflitto è generato da due parole diverse _visualize_ VS _discover_) 
+
+        <<<<<<< HEAD
+        A simple analysis to visualize my favourite fruit colour.
+        =======
+        A simple analysis to discover my favourite fruit color.
+        >>>>>>> origin/master
+
+2. Scegli quale vuoi tenere:
+
+        A simple analysis to discover my favourite fruit colour.
+
+3. Committa e clicca su `push`
+
+---
+
+### Aggiungi un File
+
+1. Agiungi un `fruits.csv` file in `/data`
+2. Aggiungi un link al file su `README.md` (sintassi di Markdown)
+
+![Add a file](images/add-file-rstudio1.png)
+
+---
+
+### Aggiungi un file within attraverso una directory
+
+- Mettere in stage una directory metterà in stage tutti files nella directory
+- Non puoi mettere in stage directory vuote
+
+![Add a file](images/add-file-rstudio2.png)
+
+---
+
+### Adatta l'ultimo commit
+
+- **Attenzione:** NON fare questo su commit che sono già stati pushati, altrimenti andrai incontro ad un inevitabile conflitto 
+- Fai un cambiamenti in `fruits.csv`
+- `Commit` come sempre, ma questa volta **spunta** `amend previous commit` sotto il commit box!
+
+![Add a file](images/amend-commit-rstudio.png){width=60%}
+
+---
+
+### Guarda la `history`
+
+- Clicca su `history` nel `git` pane
+![View history](images/history-rstudio1.png)
+
+---
+
+### Guarda la `history`
+
+![View history](images/history-rstudio2.png)
+
+---
+
+### Crea un nuovo branch per sperimentare
+
+1. Crea un NUOVO branch
+2. Aggiungi un "analysis file" nella cartella `/src`
+3. Commit
+4. Cambia (Switch) tra un ramo e l'altro
+
+---
+
+### Crea un nuovo branch per sperimentare
+
+1. Apri la git shel
+1. Crea un branch attraverso il checkout di un nuovo branch, qìuindi scrivi il seguente sulla shell, assegna il nome che vuoi al posto di `analysis-script`.
+
+    ```
+    git checkout -b analysis-script
+    ```
+1. Genera una panoramica dei branches attivi con: `git branch` sempre su shell
+
+![Create branch](images/create-branch-rstudio.png)
+
+---
+
+### Effetti di un cambiamento di branch
+
+Aggiungi un file alla repo nella cartella `src`-directory (ricordati prima)
+
+1. Premi sullo status del nuovo branch (nell'esempio `analysis-script`), poi ritorna indietro allo status al `master` branch, selezionando `(LOCAL BRANCHES) -> master`
+
+![Switch branch](images/branch-rstudio1.png)
+
+![Switch branch](images/branch-rstudio2.png)
+
+---
+
+### Effetti di un cambiamento di branch
+
+1. Verifica la struttura delle tue cartelle, dove sono andati a finire i files che hai aggiunto?
+1. Fai l'operazione opposta a quella di prima, ritorna sul branch `analysis-script`
+1. RIverifica ancora la struttura della tua cartella, e adesso ci sono i files che hai aggiunto?
+
+---
+
+### Prima push sul nuovo branch
+
+1. Nota `pull` and `push` che si sono `git` disattivati, sul nuovo branch
+1. Apri la shell
+1. Scrivi `git push -u origin analysis-script`
+
+Questo attiverà i pulsanti  `pull` and `push` sul nuovo branch!
+
+![First push branch](images/branch-first-push-rstudio.png)
+
+
+---
+
+### Crea una **P**ull **R**equest (PR) per includere il tuo lavor
+
+1. Clicca su `push` 
+2. Nella [Github](https://github.com/), naviga sulla tua repo...
+3. Crea una `pull request`
+
+---
+
+### Crea una **P**ull **R**equest (PR)
+
+![Check Github message pull request](images/pull-request-intro.png)
+
+---
+
+### Crea una **P**ull **R**equest (PR) 
+
+![Adapt Github message and start pull request](images/pull-request_message.png)
+
+---
+
+### Review the **PR**
+
+![See pull request](images/pr.png)
+
+---
+
+### Review the **PR**
+
+1. Rivedi i cambiamenti
+2. Se vanno bene, unisci (merge) della PR
+3. Cancella il branch di sperimentazione
+
+---
+
+### Include i cambiamenti nel `master` in locale 
+
+1. Switch sul `master` branch
+2. Clicca `pull`.
+
+![git pull](images/pull-rstudio.png)
+
+---
+
+### Escludi files
+
+* in ogni lunguaggio di programmazione ci sono dei files che sono dei _derivati_ di altri, (fanno da stampella per la creazione)
+* Informazioni sensibili  (passwords, tokens...)
+* cartelle con file pesanti che non devono essere inclusi nella history
+* i _temp/_ o gli _/example_1.R_
+
+`.gitignore` qui ci aiuta!
+
+---
+
+### Escludi i files
+
+![Ignore a file](images/gitignore-rstudio1.png){width=30%}
+
+Ricorda che puoi usare dei caratteri speciali detti _Wildcards_ come `*.Rproj` per escludere tutti i files con la stessa estensione, suffisso o prefisso (SQL like)
+
+![Update .gitignore](images/gitignore-rstudio2.png){width=30%}
+
+---
+
+# Lavorare Insieme {data-background=#75aada}
+
+---
+
+### Team Up
+
+* Raccogli due persone da assegnare ad un team
+* Lascia che una persona inviti le altre due e assegna a ciascuno di loro permessi read/write come in [questo tutorial](https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/)
+
+---
+
+### Invita Collaboratori
+
+![Invite collaborator](images/invite-collaborator.png)
+
+---
+
+### Invita i collaboratori
+
+![react to collaborator](images/react-collaborator.png)
+
+---
+
+### Collaborazione: le `issues`
+
+* File una **issue** online
+* Attribuisci alla issue una label appropiata
+* Assegna il tuo collaboratore alla issue
+
+---
+
+### Collaborazione: Adattamenti online
+
+* Fai un cambiamento online ad un file 
+* Proponi una **pull eequest** e assegnala ad un collaboratore
+* Unisci (merge) dei cambiamenti al `master` branch
+
+---
+
+### Collaborazione: cambiamenti locali
+
+Ricorda: **Lavora SEMPRE Localmente - Fai merge SEMPRE online**
+
+* Come collaboratore, `clone` la repo sul tuo laptop come hai già visto
+* Crea un nuovo `branch` con un nome cogente
+* Adatta i contenuti del file rispetto al cambiamento che vuoi apportare
+* `commit` i cambiamenti
+* `push` del `branch` alla repo remota
+* Vai online e proponi una `pull request`
+* Rivedi il lavoro e unisci `merge` online se lo ritieni opportuno
+* Aggiorna il master branch locale
+* Controlla che gli adattamenti siano stati portati al master in maniera corretta
+
+**Consiglio**: Tutto quello che c'è nell'elenco è stato affrontato nei punti precedenti
+
+---
+
+### Release
+
+Una volta che sei soddisfatto dello stato della tua analisi, può avere senso fare un **release**:
+
+* Per la pubblicazione di un paper (DOI)
+* Per versioni dev del codice/software
+* Per note del corso
+
+Segui [questo tutorial](https://help.github.com/articles/creating-releases/) per creare un release
+
+---
+
+### Alcuni altri **importanti** consigli:
+
+* Committa spesso e pochi files alla volta
+* Non fare minestroni di commits con tanti cambiamenti spuri
+* Pensa a sufficienza al messaggio di commit
+* Tieni un codice ed uno stile pulito.  `knitr::opts_chunk$set(tidy = "styler")`
+* Usa branches!
+* Una volta usati i branches cancellali
+
+---
+
+# Altre Risorse {data-background=#75aada}
+
+---
+
+* Webinars
+    - [Github and Rstudio management](https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/)
+    - [Collaboration and time travel: version control with git, github and RStudio](https://www.rstudio.com/resources/webinars/collaboration-and-time-travel-version-control-with-git-github-and-rstudio/)
+
+* Tutorials
+    - [Hadley Wickham R packages book](http://r-pkgs.had.co.nz/git.html)
+    - [Happy Git and GitHub for the useR](http://happygitwithr.com/index.html)
+
+---
+
+Informazioni combinate da [INBO Tutorials website](https://inbo.github.io/tutorials/) + [Niccolò Salvini](https://github.com/NiccoloSalvini). <br/> Se qualcosa non torna fammelo presente con una issue o mandami una **PR**
+
+
+
