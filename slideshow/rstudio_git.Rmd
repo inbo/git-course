@@ -247,6 +247,7 @@ E `xyz` può essere:
 - un `chunk` di codice
     - RStudio si occuperà di spezzare i cambiamenti in più chunks
     - I chunks sono definiti come 10 linee di codice non cambiate tra gli effettivi cambiamenti
+     
 ---
 
 ###  Crea un Conflitto ⚔️
@@ -536,6 +537,8 @@ Segui [questo tutorial](https://help.github.com/articles/creating-releases/) per
 # Altre Risorse {data-background=#75aada}
 
 ---
+
+## Risorse:
 
 * Webinars
     - [Github and Rstudio management](https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/)
