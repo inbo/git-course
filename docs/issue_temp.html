@@ -11,7 +11,7 @@
 
 <meta name="author" content="Niccolò Salvini" />
 
-<meta name="date" content="2021-05-05" />
+<meta name="date" content="2021-05-07" />
 
 <title>Varie Risorse utili</title>
 
@@ -431,7 +431,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Varie Risorse utili</h1>
 <h4 class="author">Niccolò Salvini</h4>
-<h4 class="date">2021-05-05</h4>
+<h4 class="date">2021-05-07</h4>
 
 </div>
 
@@ -447,20 +447,35 @@ div.tocify {
 </div>
 <div id="creazione-templates" class="section level2" number="0.2">
 <h2 number="0.2"><span class="header-section-number">0.2</span> Creazione Templates</h2>
-<p>Nel reindirizzamento dopo aver cliccato su <code>Set up templates</code> appare un opzione centrale “Add Tempalte” con un drop down menu.</p>
-<p><img src="" /></p>
-<p>Sotto ne sono stati creati due dall’autore sulla base di templates gia esistenti per azioni di <strong>Bug Reporting</strong> e di <strong>Pull Request</strong>. Niente vieta che tu ne possa scrivere altri per diverse azioni.</p>
-<p>Per modificarle quindi naviga nella cartella del progetto su GitHub</p>
-<p>e andando nel Issues pane, vediamo due templates che rispondono alle due azioni concesse dall’autore. Immaginiamo di trovare un <span style="color: red;">Bug</span> nel codice e di volerlo segnalare. Bug Report fa al caso nostro.</p>
-<p><img src="static/images/bug_report_temp.PNG" style="width:75.0%" alt="issues template" /></p>
-<hr />
-<p>E premendo su <span style="color: green;">Get Started</span> si arriva in:</p>
-<hr />
-<p><img src="static/images/md_bug_report_temp.PNG" style="width:75.0%" alt="bug report template" /></p>
-<p>Da qui è necessario riempire i campi suggeriti dall’autore seguendo la sua struttura, rendendoci facile la vita evitandoci di dare informazioni superflue (risparmiando tempo); e facile per lui ricevendo lo stretto necessario a riprodurre il problema <code>reprex</code> (qualche informazione in più su <strong>Rep</strong>roducible <strong>Ex</strong>ample, <a href="https://reprex.tidyverse.org/">pacchetto qui</a> e <a href="https://www.jessemaegan.com/post/so-you-ve-been-asked-to-make-a-reprex/">blog post qui</a>). Puoi verificare il funzionamento di Bug Reporting e di Pull Request</p>
+<p>Nel reindirizzamento dopo aver cliccato su <code>Set up templates</code> appare un’opzione centrale “Add Template” con un drop down menu.</p>
 </div>
-<div id="bug-report-temp" class="section level2" number="0.3">
-<h2 number="0.3"><span class="header-section-number">0.3</span> Bug Report temp:</h2>
+<div id="aggiungi-template" class="section level2" number="0.3">
+<h2 number="0.3"><span class="header-section-number">0.3</span> <img src="static/images/add_template.png" style="width:75.0%" alt="aggiungi template" /></h2>
+<p>Le tre default options proposte, per il momento sufficienti, sono:</p>
+<ul>
+<li>Bug Report</li>
+<li>Feature request</li>
+<li>Custom Template</li>
+</ul>
+<p>Selezionando <strong>Bug Report</strong> automaticamente viene aggiunto una piccola tab con due tasti: “Preview and edit” e un cestino. Cliccando sul primo otteniamo:</p>
+</div>
+<div id="bug-report" class="section level2" number="0.4">
+<h2 number="0.4"><span class="header-section-number">0.4</span> <img src="static/images/bug_report.png" alt="bug report" /></h2>
+<p>La icona accanto al titolo Bug report segnalata dalla mano permette di modificare il template in tutte le sue parti:</p>
+<ul>
+<li><strong>Template name</strong>: permettendoci di flettere il template a poter accogliere qualsiasi tipo di richiesta dell utente</li>
+<li><strong>About</strong>: una piccola descrizione di quello che è il template name</li>
+<li><strong>Template content</strong>: il più importante, permette di editare il contenuto del template con sintassi Markdown.</li>
+</ul>
+<p>Altre caratteristiche addizionali:</p>
+<ul>
+<li><strong>Issue Default Title</strong>: solitamente un acronimo o una parola corta che precederà il titolo, di modo che in situazioni con tanti templates e con tante issues sarà possibile ricollegare subito la issue alla fattispecie di problema e stabilire priorità.</li>
+<li><strong>Assignees</strong>: permette di assegnare collaboratori a determinate issues, compartimenta il lavoro e lo specializza.</li>
+<li>altre..</li>
+</ul>
+<p>Sotto sono stati riadattati due templates dall’autore per le azioni di <strong>Bug Report</strong> e di <strong>Pull Request</strong>. Niente vieta che tu possa scrivere le tue e formattarle come meglio credi sulle base delle esigenze che tu hai, per tutto il resto metto le mie. Sono aspecifiche e atematiche. E’ sufficiente copiarle ed incollarle nel <strong>Template content</strong>.</p>
+<div id="bug-report-temp" class="section level3" number="0.4.1">
+<h3 number="0.4.1"><span class="header-section-number">0.4.1</span> Bug Report temp:</h3>
 <pre><code># Prerequisites
 
 Please answer the following questions for yourself before submitting an issue. **YOU MAY DELETE THE PREREQUISITES SECTION.**
@@ -502,9 +517,10 @@ Please provide any relevant information about your setup. This is important in c
 ## Failure Logs
 
 Please include any relevant log snippets or files here.</code></pre>
+<hr />
 </div>
-<div id="pull-request-temp" class="section level2" number="0.4">
-<h2 number="0.4"><span class="header-section-number">0.4</span> Pull Request temp:</h2>
+<div id="pull-request-temp" class="section level3" number="0.4.2">
+<h3 number="0.4.2"><span class="header-section-number">0.4.2</span> Pull Request temp:</h3>
 <pre><code>### All Submissions:
 
 * [ ] Have you followed the guidelines in our Contributing document?
@@ -522,6 +538,9 @@ Please include any relevant log snippets or files here.</code></pre>
 * [ ] Have you added an explanation of what your changes do and why you&#39;d like us to include them?
 * [ ] Have you written new tests for your core changes, as applicable?
 * [ ] Have you successfully ran tests with your changes locally?</code></pre>
+<hr />
+<p>Fatto questo naviga dinuovo verso la tua cartella e apri l’ <code>issue</code> pane. Adesso è comparso il template del <code>bug report</code>.</p>
+</div>
 </div>
 
 
