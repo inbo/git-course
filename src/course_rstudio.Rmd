@@ -18,6 +18,8 @@ output:
 library(rvest, quietly = T, warn.conflicts = F)
 library(magrittr, quietly = T, warn.conflicts = F)
 
+knitr::opts_chunk$set(tidy = "styler")
+
 ```
 
 # Setup
