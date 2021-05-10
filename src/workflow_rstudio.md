@@ -1,6 +1,6 @@
 ---
-description: "Git collaborative workflow for Rstudio"
-title: Workflow Rstudio
+description: "Workflow Collaborativo per Git e Rstudio"
+title: Workflow di Git e Rstudio
 output:
   html_document:
     toc: true
@@ -10,16 +10,16 @@ output:
 
 ------------------------
 
-# BEFORE I START WORKING
+# Prima di cominciare a Lavorare/collaborare
 
 ------------------------
 
-## STEP 1: Update your code
+## STEP 1: Aggiorna il tuo codice
 
-**Choose your option:**
+**Scegli l'opzione:**
 
-### OPTION 1A: *I'll make a new branch to work with*  
-Create a new topic branch from master
+### OPZIONE 1A: *Farò un nuovo branch su cui lavoro*  
+Crea un nuovo _branch_ con un nome evocativo della funzione che vuoi aggiungere o modificare.
 
 Make sure you are working on the master branch:
 ![](./static/images/workflow_rstudio_1.png)
