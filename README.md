@@ -79,10 +79,11 @@ Questa dispensa ti darà una mano a familiarizzare con Git + GitHub e RStudio, p
 
 Il set up del progetto viene da [questo corso di git](https://inbo.github.io/git-course/index.html) promosso da [INBO](https://www.vlaanderen.be/inbo/home/), la [cui repo](https://github.com/inbo/git-course). Gli autori a cui vanno i miei ringraziamenti per la contribuzione open source sono [\@stijnvanhoey](https://github.com/stijnvanhoey), [\@peterdesmet](https://github.com/peterdesmet), [\@ThierryO](https://github.com/ThierryO). Si ringraziano anche gli ulteriori contributori ([\@ElsLommelen](https://github.com/ElsLommelen), [\@IPauwels](https://github.com/IPauwels), [\@damianooldoni](https://github.com/damianooldoni)) e le referenze della contribuzione e quelle della mia contribuzione:
 
-webinars:
+webinars & tutorials:
 
 * [Github and Rstudio management](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN)
 * [Collaboration and time travel: version control with git, github and RStudio](https://www.rstudio.com/resources/webinars/collaboration-and-time-travel-version-control-with-git-github-and-rstudio/) (un po' datata, 2016, ma sempre di grande interesse dato l'autore i.e. Wickham)
+* [Computing for the Social Sciences](https://cfss.uchicago.edu/setup/r/)
 
 books (e-books): 
 
