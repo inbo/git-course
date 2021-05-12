@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 All'interno della dispensa troverai ripetuti numerose volte i termini qua sotto, alcune volte riferiti a comandi eseguibili da shell o terminale (se preceduti da `git`), altre volte a lessico tecnico e di uso gergale nell'ambiente. E' molto importante _introdurre_ e _memorizzare_ questi termini perchè permette di risparmiare tempo nello sviluppo di codice in ambiente collaborativo. Auspicabilmente alla fine della dispensa **avrai una panoramica dall'alto del funzionamento di git** e un **modo di lavorare** che ti permetteranno di sperimentare, approfondire ed essere produttivo fin dall'inizio. Tutte le volte che incontrerai difficoltà nel ricordare un concetto ripassa qua!
 
-## Gergo
+## Gergo Ricorrente
 
 - `branch`: un branch è una linea indipendente/parallela di sviluppo del codice nella repo. Il branch è contenuto nella repo ma non colpice il "master" permettendo allo sviluppatore di lavorare liberamente senza danneggiare le versione stabile. Quando i cambiamenti sono stabili è necessario riunirli nel master.
 - `collaborator`: un colaborateore è una persona che ha accessi di tipo read and write (-rw) alla repo ed è stato invitato a contribuire dal mantenitore ufficiale/propietario della repo.
