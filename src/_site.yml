@@ -41,7 +41,7 @@ output:
     df_print: paged
     css: "static/css/git_intro.css"
     includes:
-      in_header: [header.html, hypothesis.html]
+      in_header: [header.html, hypothesis.html, ga_script.html]
       before_body: open_review_block.html
       after_body: footer.html
     
