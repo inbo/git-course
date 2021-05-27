@@ -13,7 +13,7 @@
 <meta name="author" content="Peter Desmet" />
 <meta name="author" content="Thierry Onkelinx" />
 
-<meta name="date" content="2020-03-13" />
+<meta name="date" content="2021-05-27" />
 
 <title>Git hands-on session within RStudio</title>
 
@@ -23,6 +23,15 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
@@ -34,12 +43,16 @@
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -52,32 +65,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 <link rel="stylesheet" href="static/css/inbo.css" type="text/css" />
 
@@ -88,10 +76,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -108,40 +92,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 45px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h2 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h3 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h4 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h5 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h6 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -169,7 +126,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -181,7 +138,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -192,10 +149,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -207,7 +177,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -333,13 +302,13 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
+<div class="row">
+<div class="col-sm-12 col-md-4 col-lg-3">
 <div id="TOC" class="tocify">
 </div>
 </div>
 
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+<div class="toc-content col-sm-12 col-md-8 col-lg-9">
 
 
 
@@ -381,13 +350,16 @@ div.tocify {
     <li>
       <a href="workflow_rstudio.html">Workflow Rstudio</a>
     </li>
+    <li>
+      <a href="workflow_review.html">Workflow collaboration</a>
+    </li>
   </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/inbo/git-course">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -396,7 +368,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -404,7 +376,7 @@ div.tocify {
 <h4 class="author">Stijn Van Hoey</h4>
 <h4 class="author">Peter Desmet</h4>
 <h4 class="author">Thierry Onkelinx</h4>
-<h4 class="date">2020-03-13</h4>
+<h4 class="date">2021-05-27</h4>
 
 </div>
 
@@ -486,7 +458,7 @@ Exercise:
 </div>
 <hr />
 <p>*If you do not know where Git is installed, open your command line (<code>cmd</code> in Start for Windows user). When the cmd is open, type <code>where git</code> and hit enter. The path should be something like: <code>C:/Program Files (x86)/Git/bin/git.exe</code>. Still in trouble? Check <a href="http://happygitwithr.com/rstudio-see-git.html#tell-rstudio-where-to-find-git">this out</a>.</p>
-<p><img src="static/images/RStudio-setup-git.png" alt="RStudio setup for git" style="width:50.0%" /></p>
+<p><img src="static/images/RStudio-setup-git.png" style="width:50.0%" alt="RStudio setup for git" /></p>
 <hr />
 <p>Next, we have to tell Github who we actually are, in order to make the connection to the online account. To do so, Git requires the configuration of your Github (!) username and GitHub email:</p>
 <div class="bs-callout bs-callout-exercise">
@@ -504,7 +476,7 @@ Exercise:
 <pre><code>git config --global user.email &quot;my.name@inbo.be&quot;</code></pre>
 </div>
 <hr />
-<p><img src="static/images/Rstudio-GitShell.png" alt="RStudio setup git shell" style="width:75.0%" /></p>
+<p><img src="static/images/Rstudio-GitShell.png" style="width:75.0%" alt="RStudio setup git shell" /></p>
 <p>Use your <strong>GitHub username</strong>! You can check if you’re set up correctly by typing <code>git config --global --list</code> in the same shell.</p>
 <p>When successful, the configuration is done. Congratulations!</p>
 <hr />
@@ -526,10 +498,10 @@ Exercise:
 </div>
 <hr />
 <p>To get the https link, you need to click the green button and make sure to copy paste the link with as title <code>Clone with HTTPS</code>:</p>
-<p><img src="static/images/copy-repo-link.png" alt="Copy the https link of a repo" style="width:75.0%" /></p>
+<p><img src="static/images/copy-repo-link.png" style="width:75.0%" alt="Copy the https link of a repo" /></p>
 <hr />
 <p>An example of the project setup using an existing Git repository:</p>
-<p><img src="static/images/create-project-rstudio.png" alt="Clone a repo in RStudio" style="width:75.0%" /></p>
+<p><img src="static/images/create-project-rstudio.png" style="width:75.0%" alt="Clone a repo in RStudio" /></p>
 <hr />
 <div class="bs-callout bs-callout-exercise">
 <h4>
@@ -555,7 +527,7 @@ Exercise:
 </div>
 <hr />
 <p>As our dummy project is called <code>favourite-fruit-color</code>, the <code>.Rproj</code> file is called <code>favourite-fruit-color.Rproj</code>. We right click on the file and select <code>Ignore...</code>:</p>
-<p><img src="static/images/gitignore-rstudio1.png" alt="Ignore a file" style="width:75.0%" /></p>
+<p><img src="static/images/gitignore-rstudio1.png" style="width:75.0%" alt="Ignore a file" /></p>
 <hr />
 <p>When to use <code>.gitignore</code>:</p>
 <ul>
@@ -566,10 +538,10 @@ Exercise:
 </ul>
 <hr />
 <p>Note that you can use wild cards e.g. <code>*.Rproj</code> to exclude a group of files from the version control:</p>
-<p><img src="static/images/gitignore-rstudio2.png" alt="Update .gitignore" style="width:75.0%" /></p>
+<p><img src="static/images/gitignore-rstudio2.png" style="width:75.0%" alt="Update .gitignore" /></p>
 <hr />
 <p>Check the content of the <code>.gitignore</code> file. If satisfied, click <code>Save</code>:</p>
-<p><img src="static/images/gitignore-rstudio2.png" alt="Update .gitignore" style="width:75.0%" /></p>
+<p><img src="static/images/gitignore-rstudio2.png" style="width:75.0%" alt="Update .gitignore" /></p>
 <hr />
 </div>
 <div id="make-commits" class="section level2">
@@ -589,13 +561,13 @@ Exercise:
 </div>
 <hr />
 <p>The status of the <code>.gitignore</code> file before the file was committed, with the yellow question mark saying that the file is yet unknown to Git:</p>
-<p><img src="static/images/commit-rstudio1.png" alt="Local commit" style="width:75.0%" /></p>
+<p><img src="static/images/commit-rstudio1.png" style="width:75.0%" alt="Local commit" /></p>
 <hr />
 <p>By checking the box and clicking commit, we add the file and commit this addition with a commit message:</p>
-<p><img src="static/images/commit-rstudio2.png" alt="Local commit" style="width:75.0%" /></p>
+<p><img src="static/images/commit-rstudio2.png" style="width:75.0%" alt="Local commit" /></p>
 <hr />
 <p>We get a small technical overview of the alterations we provided with this commit:</p>
-<p><img src="static/images/commit-rstudio3.png" alt="Local commit" style="width:75.0%" /></p>
+<p><img src="static/images/commit-rstudio3.png" style="width:75.0%" alt="Local commit" /></p>
 <hr />
 <p>It is good practice to <strong>commit often</strong>, so you will do this a lot. Each commit should only contain changes related to a single problem/element/… Each commit is a snapshot of your project and the messages describe the story of your project.</p>
 <p>As documentation is crucial, providing some more information in the <code>README.md</code> file will help others (and yourself in a couple of months/years) to understand the aim of the project. Just as we adapted the <code>README.md</code> file online earlier, we can do the same locally:</p>
@@ -610,7 +582,7 @@ Exercise:
 </div>
 <hr />
 <p>Remark the reporting of the changed lines linked to this commit with green and red colors:</p>
-<p><img src="static/images/commit-rstudio4.png" alt="Local commit" style="width:75.0%" /></p>
+<p><img src="static/images/commit-rstudio4.png" style="width:75.0%" alt="Local commit" /></p>
 <hr />
 </div>
 <div id="push-the-changes-to-github" class="section level2">
@@ -627,10 +599,10 @@ Exercise:
 </div>
 <hr />
 <p>Rstudio gives you a warning about the status of your local commits versus those stored on GitHub:</p>
-<p><img src="static/images/push-rstudio1.png" alt="Push" style="width:75.0%" /></p>
+<p><img src="static/images/push-rstudio1.png" style="width:75.0%" alt="Push" /></p>
 <hr />
 <p>Is the <code>README.md</code> adapted? Where do you find the Commits overview online?</p>
-<p><img src="static/images/local-commit-on-github.png" alt="Verify your commits on GitHub" style="width:75.0%" /></p>
+<p><img src="static/images/local-commit-on-github.png" style="width:75.0%" alt="Verify your commits on GitHub" /></p>
 <hr />
 </div>
 <div id="additional-configuration---store-your-password" class="section level2">
@@ -649,13 +621,13 @@ Exercise:
 <p>The next time <code>git</code> needs your credentials, it will ask them <strong>one more time and store them</strong>!</p>
 <hr />
 <p>The more button has a <code>wheel</code> symbol:</p>
-<p><img src="static/images/https-credentials-rstudio1.png" alt="Store credentials" style="width:75.0%" /></p>
+<p><img src="static/images/https-credentials-rstudio1.png" style="width:75.0%" alt="Store credentials" /></p>
 <hr />
 </div>
 <div id="create-logical-commits" class="section level2">
 <h2><span class="header-section-number">2.8</span> Create logical commits</h2>
 <p>As mentioned earlier, you should commit often and make sure each commit links to a specific change/problem. Sometimes, this means that you have to split the additions in a single file into two individual commits. Rstudio provides the interface to include specific lines of code into a commit message:</p>
-<p><img src="static/images/logical-commit-rstudio.png" alt="Logical commit 1" style="width:75.0%" /></p>
+<p><img src="static/images/logical-commit-rstudio.png" style="width:75.0%" alt="Logical commit 1" /></p>
 <hr />
 <p>To summarize, the following actions can be executed:</p>
 <ul>
@@ -701,7 +673,7 @@ Exercise:
 </div>
 <hr />
 <p>If you do not remember how to change files online, check again <a href="https://help.github.com/articles/create-a-repo/#commit-your-first-change">this online tutorial</a>. Check the result of your online commit, similar to:</p>
-<p><img src="static/images/commit-to-create-conflict.png" alt="Commit to create conflict" style="width:75.0%" /></p>
+<p><img src="static/images/commit-to-create-conflict.png" style="width:75.0%" alt="Commit to create conflict" /></p>
 <hr />
 <div class="bs-callout bs-callout-exercise">
 <h4>
@@ -711,7 +683,7 @@ Exercise:
 </div>
 <hr />
 <p>Git provides a warning about the remote changes on the same repository:</p>
-<p><img src="static/images/conflict-rstudio1.png" alt="Conflict" style="width:75.0%" /></p>
+<p><img src="static/images/conflict-rstudio1.png" style="width:75.0%" alt="Conflict" /></p>
 <hr />
 <div class="bs-callout bs-callout-exercise">
 <h4>
@@ -724,7 +696,7 @@ Exercise:
 <li>Fix conflicts</li>
 <li>Commit the result after fixing the conflict</li>
 </ol>
-<p><img src="static/images/conflict-rstudio2.png" alt="Conflict" style="width:75.0%" /></p>
+<p><img src="static/images/conflict-rstudio2.png" style="width:75.0%" alt="Conflict" /></p>
 <hr />
 <p>Keep calm and resolve conflict!</p>
 <p>Each conflict is always marked by the combination of the following elements:</p>
@@ -748,8 +720,8 @@ Exercise:
  &gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master</code></pre></li>
 <li><p>Choose what you want to keep and only keep that code in the file:</p>
 <pre><code> A simple analysis to discover my favourite fruit colour.</code></pre></li>
-<li>Commit the adaptation with a commit message</li>
-<li>Click <code>Push</code> to update GitHub</li>
+<li><p>Commit the adaptation with a commit message</p></li>
+<li><p>Click <code>Push</code> to update GitHub</p></li>
 </ol>
 </div>
 <p>If you encounter a conflict in the future, repeat this procedure.</p>
@@ -775,10 +747,10 @@ Exercise:
 <li><code>README.md</code> file is adapted (blue <em>Modified</em> box)</li>
 <li><code>data/</code> is currently unknown to Git (yellow <em>Question mark</em> box)</li>
 </ul>
-<p><img src="static/images/add-file-rstudio1.png" alt="Add a file" style="width:75.0%" /></p>
+<p><img src="static/images/add-file-rstudio1.png" style="width:75.0%" alt="Add a file" /></p>
 <hr />
 <p>Clicking both will make them ready to be committed. Remark, the <code>data/fruits.csv</code> file gets a green <em>Added</em> box:</p>
-<p><img src="static/images/add-file-rstudio2.png" alt="Add a file" style="width:75.0%" /></p>
+<p><img src="static/images/add-file-rstudio2.png" style="width:75.0%" alt="Add a file" /></p>
 <hr />
 </div>
 <div id="adapt-last-commit" class="section level2">
@@ -796,7 +768,7 @@ Exercise:
 <p><strong>Warning:</strong> don’t do this on commits that have been pushed. That would result in conflicts.</p>
 <hr />
 <p>Next to the <code>Commit</code> box, the <code>amend</code> option is available:</p>
-<p><img src="static/images/amend-commit-rstudio.png" alt="Add a file" style="width:75.0%" /></p>
+<p><img src="static/images/amend-commit-rstudio.png" style="width:75.0%" alt="Add a file" /></p>
 <hr />
 </div>
 <div id="view-history" class="section level2">
@@ -817,10 +789,10 @@ Exercise:
 <li>As a separate pane (your R command history): this has nothing to do with Git</li>
 <li>Within the <code>git</code> pane (the history of your commit messages)</li>
 </ul>
-<p><img src="static/images/history-rstudio1.png" alt="View history" style="width:75.0%" /></p>
+<p><img src="static/images/history-rstudio1.png" style="width:75.0%" alt="View history" /></p>
 <hr />
 <p>You can click on each of the commits to verify the adaptations that were part of the specific commit:</p>
-<p><img src="static/images/history-rstudio2.png" alt="View history" style="width:75.0%" /></p>
+<p><img src="static/images/history-rstudio2.png" style="width:75.0%" alt="View history" /></p>
 <hr />
 </div>
 <div id="create-a-branch-to-experiment" class="section level2">
@@ -843,7 +815,7 @@ Exercise:
 <p>*the create branch symbol looks as follows: <img src="static/images/rstudio_branch_symbol.png" /></p>
 <hr />
 <p>Make sure your branch name makes sense for the work you are planning to do. Use lower case characters and <code>-</code> in between words (NO spaces!). For this example, we decided to use the name <code>analysis-script</code> for the branch name.</p>
-<p><img src="static/images/branch-rstudio3.png" alt="Create branch" style="width:75.0%" /></p>
+<p><img src="static/images/branch-rstudio3.png" style="width:75.0%" alt="Create branch" /></p>
 <hr />
 <div class="alert alert-danger">
 <h4>
@@ -861,9 +833,9 @@ Shell based approach to create a new branch:
 <li>Get an overview of your branches: <code>git branch</code></li>
 <li>Type <code>git push -u origin analysis-script</code> to activate <code>Push</code>/<code>Pull</code> buttons</li>
 </ol>
-<p>Shell based approach to create a new branch: <img src="static/images/create-branch-rstudio.png" alt="Create branch" style="width:75.0%" /></p>
+<p>Shell based approach to create a new branch: <img src="static/images/create-branch-rstudio.png" style="width:75.0%" alt="Create branch" /></p>
 <p>This will also activate the <code>pull</code> and <code>push</code> buttons. From now on, you can commit as many times as you want/need to this branch and push the commits to GitHub, where it will be stored under the same branch name:</p>
-<p><img src="static/images/branch-first-push-rstudio.png" alt="First push branch" style="width:75.0%" /></p>
+<p><img src="static/images/branch-first-push-rstudio.png" style="width:75.0%" alt="First push branch" /></p>
 </div>
 <hr />
 <p>We can work on the just created branch and start making adaptations:</p>
@@ -897,10 +869,10 @@ Exercise:
 </div>
 <hr />
 <p>As in our example, the branch name is <code>analysis-script</code>, the dropdown defines this as the currently active branch. Clicking on the dropdown provides an overview of all branches:</p>
-<p><img src="static/images/branch-rstudio1.png" alt="Switch branch" style="width:75.0%" /></p>
+<p><img src="static/images/branch-rstudio1.png" style="width:75.0%" alt="Switch branch" /></p>
 <hr />
 <p>Rstudio provides you information about the switch to the <code>master</code> branch:</p>
-<p><img src="static/images/branch-rstudio2.png" alt="Switch branch" style="width:75.0%" /></p>
+<p><img src="static/images/branch-rstudio2.png" style="width:75.0%" alt="Switch branch" /></p>
 <div class="alert alert-danger">
 <p>Make sure you are currently working on your newly created branch (e.g. <code>analysis-script</code>) before you proceed!</p>
 </div>
@@ -925,10 +897,10 @@ Exercise:
 </div>
 <hr />
 <p>Github actually suggests you to <code>Compare &amp; Pull request</code> on the webpage in a new yellow box. If you do not see the messag, you can still initiate a <code>Pull request</code>. The <code>Pull request</code> aims to insert the adaptations in your branch into the <code>master</code> branch.</p>
-<p><img src="static/images/pull-request-intro.png" alt="Check Github message pull request" style="width:75.0%" /></p>
+<p><img src="static/images/pull-request-intro.png" style="width:75.0%" alt="Check Github message pull request" /></p>
 <hr />
 <p>In a new dialog, you can provide a short summary line about the <code>Pull request</code> with the option to add additional information. By clicking the <code>Create pull request</code> button, you actually propose the merge into the <code>master</code> branch.</p>
-<p><img src="static/images/pull-request_message.png" alt="Adapt Github message and start pull request" style="width:75.0%" /></p>
+<p><img src="static/images/pull-request_message.png" style="width:75.0%" alt="Adapt Github message and start pull request" /></p>
 <hr />
 </div>
 <div id="review-your-pull-request" class="section level3">
@@ -945,7 +917,7 @@ Exercise:
 </ol>
 </div>
 <hr />
-<p><img src="static/images/pr.png" alt="See pull request" style="width:75.0%" /></p>
+<p><img src="static/images/pr.png" style="width:75.0%" alt="See pull request" /></p>
 <hr />
 </div>
 <div id="include-your-accepted-work-to-local-master" class="section level3">
@@ -961,7 +933,7 @@ Exercise:
 <li>Remove the local branch as well (otherwise you will have a lot of them after a while). You need to open the Shell: <code>git branch -d analysis-script</code></li>
 </ol>
 </div>
-<p><img src="static/images/pull-rstudio.png" alt="git pull" style="width:75.0%" /></p>
+<p><img src="static/images/pull-rstudio.png" style="width:75.0%" alt="git pull" /></p>
 <hr />
 </div>
 </div>
@@ -983,10 +955,10 @@ Exercise:
 </div>
 <hr />
 <p>On your own repository, you have all admin rights to add <code>Collaborators</code> in the <code>Settings</code> section of GitHub:</p>
-<p><img src="static/images/invite-collaborator.png" alt="Invite collaborator" style="width:75.0%" /></p>
+<p><img src="static/images/invite-collaborator.png" style="width:75.0%" alt="Invite collaborator" /></p>
 <hr />
 <p>When invited to collaborate, you have to <code>Accept invitation</code> in order to start working on the repository:</p>
-<p><img src="static/images/react-collaborator.png" alt="react to collaborator" style="width:75.0%" /></p>
+<p><img src="static/images/react-collaborator.png" style="width:75.0%" alt="react to collaborator" /></p>
 <hr />
 </div>
 <div id="issues" class="section level2">
@@ -1109,7 +1081,7 @@ Exercise:
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -1127,7 +1099,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
@@ -1148,7 +1120,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
