@@ -148,7 +148,7 @@ It is done automatically after following [these configuration steps](https://inb
 once.
 But it can also be done manually:
 
-- hit `More` and choose `Shell...`
+- hit `More` on the `Git` tab and choose `Shell...`
 - type `git fetch -p` to remove branches that don't exist anymore on the origin
 - type `git branch -d <branch name>` to remove local branch `<branch name>`
 (branches that are merged can be listed with `git branch --merged`)
