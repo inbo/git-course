@@ -13,6 +13,7 @@
 
 <title>Workflow Collaboration</title>
 
+<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
@@ -297,12 +298,12 @@ div.tocify {
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row">
-<div class="col-sm-12 col-md-4 col-lg-3">
+<div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
 </div>
 
-<div class="toc-content col-sm-12 col-md-8 col-lg-9">
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -508,9 +509,9 @@ more code</code></pre>
 </div>
 <div id="branch-management" class="section level1">
 <h1>Branch management</h1>
-<p>After deleting branches on the remote, you may want to get rid of them as well in the selection list in the git pane in RStudio:</p>
+<p>After deleting branches on the remote, you may want to get rid of them as well in the selection list in the git pane in RStudio. It is done automatically after following <a href="https://inbo.github.io/tutorials/installation/user/user_install_git/">these configuration steps</a> once. But it can also be done manually:</p>
 <ul>
-<li>hit <code>More</code> and choose <code>Shell...</code></li>
+<li>hit <code>More</code> on the <code>Git</code> tab and choose <code>Shell...</code></li>
 <li>type <code>git fetch -p</code> to remove branches that don’t exist anymore on the origin</li>
 <li>type <code>git branch -d &lt;branch name&gt;</code> to remove local branch <code>&lt;branch name&gt;</code> (branches that are merged can be listed with <code>git branch --merged</code>)</li>
 </ul>
