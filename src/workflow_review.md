@@ -143,9 +143,12 @@ Once you are satisfied with a version, you can [create a release](https://docs.g
 # Branch management
 
 After deleting branches on the remote, you may want to get rid of them as well
-in the selection list in the git pane in RStudio:
+in the selection list in the git pane in RStudio.
+It is done automatically after following [these configuration steps](https://inbo.github.io/tutorials/installation/user/user_install_git/)
+once.
+But it can also be done manually:
 
-- hit `More` and choose `Shell...`
+- hit `More` on the `Git` tab and choose `Shell...`
 - type `git fetch -p` to remove branches that don't exist anymore on the origin
 - type `git branch -d <branch name>` to remove local branch `<branch name>`
 (branches that are merged can be listed with `git branch --merged`)
