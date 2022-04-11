@@ -601,7 +601,7 @@ When satisfied about the work done in a branch, it is time to bring these adapta
 
 ---
 
-Github actually suggests you to `Compare & Pull request` on the webpage in a new yellow box. If you do not see the messag, you can still initiate a `Pull request`. The `Pull request` aims to insert the adaptations in your branch into the `main` branch. 
+Github actually suggests you to `Compare & Pull request` on the webpage in a new yellow box. If you do not see the message, you can still initiate a `Pull request`. The `Pull request` aims to insert the adaptations in your branch into the `main` branch. 
 
 ![Check Github message pull request](./static/images/pull-request-intro.png){width=75%}
 
