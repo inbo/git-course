@@ -132,7 +132,7 @@ Try to push your local changes
         A simple analysis to visualize my favourite fruit colour.
         =======
         A simple analysis to discover my favourite fruit color.
-        >>>>>>> origin/master
+        >>>>>>> origin/main
 
 2. Choose what you want to keep:
 
@@ -268,7 +268,7 @@ TODO: adapt, as we do this ONLINE instead
 
 * Make an adaptation to an online file
 * Propose a **pull request** and assign your collaborator
-* Merge the adaptation to the `master` branch
+* Merge the adaptation to the `main` branch
 
 ---
 

@@ -13,8 +13,8 @@
 
 <title>Workflow Collaboration</title>
 
-<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -354,7 +354,7 @@ div.tocify {
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/inbo/git-course">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -402,7 +402,7 @@ div.tocify {
 <p>(If you don’t have the project locally, check the manual <a href="https://inbo.github.io/git-course/course_rstudio.html#23_clone_a_repo_to_work_locally">here</a>.)</p>
 <p>In RStudio on the <code>Git</code>tab:</p>
 <ul>
-<li>make sure the <code>master</code> branch is active and up to date (<code>Pull</code>)</li>
+<li>make sure the <code>main</code> branch is active and up to date (<code>Pull</code>)</li>
 <li>add a <code>New Branch</code> (hit button) and give it an informative name</li>
 <li>add new code or change code, and make a <code>Commit</code> for every change
 <ul>
@@ -426,7 +426,7 @@ div.tocify {
 </ul></li>
 <li>make sure the correct branches are indicated:
 <ul>
-<li>‘base’ mentions the branch where will merged to, often the master branch</li>
+<li>‘base’ mentions the branch where will merged to, often the main branch</li>
 <li>the ‘compare’ branch is your feature branch</li>
 </ul></li>
 <li>adapt the title if needed, and describe what you did (you can scroll down to check your commits)</li>
@@ -462,17 +462,17 @@ div.tocify {
 <li>the author can re-request a reviewer after solving all comments (only in <code>Conversation</code> tab)</li>
 </ul>
 </div>
-<div id="merge-changes-to-master" class="section level1">
-<h1>Merge changes to master</h1>
-<p>Once you and your coworkers agreed on the final version in your branch, it can be merged to the master branch:</p>
+<div id="merge-changes-to-main" class="section level1">
+<h1>Merge changes to main</h1>
+<p>Once you and your coworkers agreed on the final version in your branch, it can be merged to the main branch:</p>
 <ul>
-<li>in RStudio, make sure to include novel changes from the master branch:
+<li>in RStudio, make sure to include novel changes from the main branch:
 <ul>
-<li>switch to the master branch</li>
+<li>switch to the main branch</li>
 <li>hit <code>Pull</code></li>
 <li>switch back to your feature branch</li>
 <li>hit <code>More</code> and choose <code>Shell...</code></li>
-<li>type <code>git merge master</code> (or replace master by the name of the branch you want to merge to your branch)</li>
+<li>type <code>git merge main</code> (or replace main by the name of the branch you want to merge to your branch)</li>
 <li>you will be mentioned of any additions and/or conflicts</li>
 <li>close the shell again</li>
 <li>if conflicts have appeared,
@@ -484,8 +484,8 @@ div.tocify {
 &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 code in your active branch
 =======
-code in the master branch
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; master
+code in the main branch
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; main
 more code</code></pre>
 <ul>
 <li>solve the conflict: keep one of the code blocks or rewrite it to combine the 2 code blocks</li>
@@ -503,7 +503,7 @@ more code</code></pre>
 </ul>
 <p>For screenshots, see <a href="https://inbo.github.io/git-course/workflow_rstudio.html#step_5:_code_review">here</a>.</p>
 <div class="alert alert-danger">
-<p>When merging to the master branch or another important branch in the repo, always do this on GitHub by using a pull request. It is recommended to protect these branches to enforce this procedure.</p>
+<p>When merging to the main branch or another important branch in the repo, always do this on GitHub by using a pull request. It is recommended to protect these branches to enforce this procedure.</p>
 </div>
 <p>Once you are satisfied with a version, you can <a href="https://docs.github.com/en/github/administering-a-repository/managing-releases-in-a-repository">create a release</a>.</p>
 </div>
@@ -555,6 +555,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')

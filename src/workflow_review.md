@@ -42,7 +42,7 @@ Issues can be:
 
 In RStudio on the `Git`tab:
 
-- make sure the `master` branch is active and up to date (`Pull`)
+- make sure the `main` branch is active and up to date (`Pull`)
 - add a `New Branch` (hit button) and give it an informative name
 - add new code or change code, and make a `Commit` for every change
     - you can select specific lines or chunks, you don't have to commit all changes at once
@@ -63,7 +63,7 @@ In the GitHub repository:
     - using the `Compare & pull request` button that appears after recent pushes
     - selecting your new feature branch and hitting the `New pull request` button
 - make sure the correct branches are indicated:
-    - 'base' mentions the branch where will merged to, often the master branch
+    - 'base' mentions the branch where will merged to, often the main branch
     - the 'compare' branch is your feature branch
 - adapt the title if needed, and describe what you did (you can scroll down to check your commits)
 - hit `Create Pull request`
@@ -96,17 +96,17 @@ During this revision, in the Pull request on GitHub:
 - suggestions or comments can be discussed using the comment boxes
 - the author can re-request a reviewer after solving all comments (only in `Conversation` tab)
 
-# Merge changes to master
+# Merge changes to main
 
 Once you and your coworkers agreed on the final version in your branch, it can
-be merged to the master branch:
+be merged to the main branch:
 
-- in RStudio, make sure to include novel changes from the master branch:
-    - switch to the master branch
+- in RStudio, make sure to include novel changes from the main branch:
+    - switch to the main branch
     - hit `Pull`
     - switch back to your feature branch
     - hit `More` and choose `Shell...`
-    - type `git merge master` (or replace master by the name of the branch you want to merge to your branch)
+    - type `git merge main` (or replace main by the name of the branch you want to merge to your branch)
     - you will be mentioned of any additions and/or conflicts
     - close the shell again
     - if conflicts have appeared,
@@ -117,8 +117,8 @@ code
 <<<<<<< HEAD
 code in your active branch
 =======
-code in the master branch
->>>>>>> master
+code in the main branch
+>>>>>>> main
 more code
 ```
         - solve the conflict: keep one of the code blocks or rewrite it to combine the 2 code blocks
@@ -133,7 +133,7 @@ more code
 For screenshots, see [here](https://inbo.github.io/git-course/workflow_rstudio.html#step_5:_code_review).
 
 <div class="alert alert-danger">
-When merging to the master branch or another important branch in the repo,
+When merging to the main branch or another important branch in the repo,
 always do this on GitHub by using a pull request. It is recommended to protect
 these branches to enforce this procedure.
 </div>

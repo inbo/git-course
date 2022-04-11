@@ -19,12 +19,12 @@ output:
 **Choose your option:**
 
 ### OPTION 1A: *I'll make a new branch to work with*  
-Create a new topic branch from master
+Create a new topic branch from main
 
-Make sure you are working on the master branch:
+Make sure you are working on the main branch:
 ![](./static/images/workflow_rstudio_1.png)
 
-Update the master branch to make sure it is aligned with the remote master: Click `Pull`:
+Update the main branch to make sure it is aligned with the remote main: Click `Pull`:
 ![](./static/images/workflow_rstudio_2.png)
 
 Create a new branch: click on `New branch` and fill in a branch name:
@@ -35,10 +35,10 @@ Create a new branch: click on `New branch` and fill in a branch name:
 Switch to existing topic branch:
 ![](./static/images/workflow_rstudio_3.png)
 
-Update the topic branch to make sure is is aligned with the remote master: 
+Update the topic branch to make sure is is aligned with the remote main: 
 In the Git shell, type:
 ```
-git pull origin master
+git pull origin main
 ```
 ![](./static/images/workflow_rstudio_4.png)
 
@@ -79,7 +79,7 @@ Update the remote version of the topic branch. Click `Push`:
 
 ------------------------
 
-## STEP 4: Pull request to add your changes to the current master. 
+## STEP 4: Pull request to add your changes to the current main. 
 
 Update the remote version of the topic branch. Click `Push`:
 ![](./static/images/workflow_rstudio_9.png)
@@ -107,9 +107,9 @@ Delete the online branch after merge, since obsolete, click `Delete branch`
 
 ![](./static/images/workflow_rstudio_github_5.png)
 
-## STEP 6: Update the master branch on my PC
+## STEP 6: Update the main branch on my PC
 
-Make sure you are working on the master branch:
+Make sure you are working on the main branch:
 ![](./static/images/workflow_rstudio_1.png)
 
 Remove the local branch, since obsolete. In the Git shell, type:
@@ -118,5 +118,5 @@ git branch -d analysis-script
 ```
 ![](./static/images/workflow_rstudio_4.png)
 
-Update the local master branch: Click `Pull`:
+Update the local main branch: Click `Pull`:
 ![](./static/images/workflow_rstudio_2.png)
