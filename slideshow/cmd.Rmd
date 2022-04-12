@@ -198,7 +198,7 @@ git revert HEAD
 
 <br/><br/>
 <small>
-**Tip**: `git revert` can be applied for more functionality. <br/> See [this tutorial](https://inbo.github.io/tutorials/manual-git-undo-commits.html) for more in depth information on undoing commits. 
+**Tip**: `git revert` can be applied for more functionality. <br/> See [this tutorial](https://inbo.github.io/tutorials/tutorials/git_undo_commit/) for more in depth information on undoing commits. 
 
 **Tip**: `git checkout -- <file-name>` will undo changes <br/>to file since last commit (!no log of your changes)
 
