@@ -56,8 +56,8 @@ output:
 ### Git for RStudio setup
 
 1. [Download](https://git-scm.com/downloads) and install Git
-1. Install [RStudio](https://inbo.github.io/tutorials/installation-RStudio-admin.html)
-1. Open [RStudio](https://inbo.github.io/tutorials/installation-RStudio-user.html)
+1. Install [RStudio](https://inbo.github.io/tutorials/installation/administrator/admin_install_rstudio/)
+1. Open [RStudio](https://inbo.github.io/tutorials/installation/user/user_install_rstudio/)
 
 ---
 
