@@ -25,7 +25,7 @@ The morning session is provided using slideshows, split in two main sections:
 * [Git](https://inbo.github.io/git-course/static/presentations/git.pdf)
 * [GitHub](https://inbo.github.io/git-course/static/presentations/github.pdf) 
 
-We like to thank Alice Bartlett, as her [git-for-humans](https://speakerdeck.com/alicebartlett/git-for-humans) talk,  was a major source of inspiration to the course material.
+We like to thank Alice Bartlett, as her [git-for-humans](https://speakerdeck.com/alicebartlett/git-for-humans) talk, was a major source of inspiration to the course material.
 
 ### Afternoon session
 
