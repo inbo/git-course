@@ -771,7 +771,7 @@ Follow [this tutorial](https://help.github.com/articles/creating-releases/) to c
 ...but if you're hungry:
 
 * Webinars
-    - [Github and Rstudio management](https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/)
+    - [Github and Rstudio management](https://www.rstudio.com/resources/webinars/managing-part-2-github-and-rstudio/)
     - [Collaboration and time travel: version control with git, github and RStudio](https://www.rstudio.com/resources/webinars/collaboration-and-time-travel-version-control-with-git-github-and-rstudio/)
 
 * Tutorials
