@@ -65,15 +65,15 @@ Just to make sure, in case you did not already installed Git and Rstudio:
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Exercise:</h4>
-1. [Download](https://git-scm.com/downloads) and install Git
-1. Install [RStudio](https://inbo.github.io/tutorials/installation-RStudio-admin.html)
+1. [Download](https://git-scm.com/downloads) and [install](https://inbo.github.io/tutorials/installation/administrator/admin_install_git/) Git
+1. Install [RStudio](https://inbo.github.io/tutorials/installation/administrator/admin_install_rstudio/)
 </div>
 
 When installed properly:
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Exercise:</h4>
-1. Open [RStudio](https://inbo.github.io/tutorials/installation-RStudio-user.html)
+1. Open [RStudio](https://inbo.github.io/tutorials/installation/user/user_install_rstudio/)
 </div>
 
 ---
@@ -254,7 +254,7 @@ Remark the reporting of the changed lines linked to this commit with green and r
 
 ## Push the changes to GitHub
 
-Note that the `git` pane displays *your branch is ahead of 'origin/master' by 2 commits*. This is actually providing you a warning message that there is no backup of these two commits! In order to store these changes on GitHub as well, we have to `push` our changes to GitHub:
+Note that the `git` pane displays *your branch is ahead of 'origin/main' by 2 commits*. This is actually providing you a warning message that there is no backup of these two commits! In order to store these changes on GitHub as well, we have to `push` our changes to GitHub:
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Exercise:</h4>
@@ -385,7 +385,7 @@ Each conflict is always marked by the combination of the following elements:
 your local code
 =======
 the code as it exists on Github
->>>>>>> origin/master
+>>>>>>> origin/main
 ```
 
 To solve a conflict, you have to decide which version of the code you want to keep. 
@@ -400,7 +400,7 @@ To solve a conflict, you have to decide which version of the code you want to ke
         A simple analysis to visualize my favourite fruit colour.
         =======
         A simple analysis to discover my favourite fruit color.
-        >>>>>>> origin/master
+        >>>>>>> origin/main
 
 2. Choose what you want to keep and only keep that code in the file:
 
@@ -494,7 +494,7 @@ You can click on each of the commits to verify the adaptations that were part of
 
 ### How to make a new branch?
 
-It is good practice to ALWAYS work on (short-living) branches. It allows you to freely experiment until you are satisfied of the result and it ensures your `master` provides the last stable version of your analysis/project.
+It is good practice to ALWAYS work on (short-living) branches. It allows you to freely experiment until you are satisfied of the result and it ensures your `main` provides the last stable version of your analysis/project.
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Exercise:</h4>
@@ -560,7 +560,7 @@ The first time you switch branches and you see files disappearing, you might be 
 <div class="bs-callout bs-callout-exercise">
 <h4>Exercise:</h4>
 1. Click on the right-top dropdown in the `git` pane
-1. Switch to the status of the `master` branch by selecting `(LOCAL BRANCHES) -> master`
+1. Switch to the status of the `main` branch by selecting `(LOCAL BRANCHES) -> main`
 1. Verify your local directory structure in file explorer: where are your files?
 1. Switch back to the status of the new branch (in the example i.e. `analysis-script`)
 1. Verify your local directory structure in file explorer again: where are your files?
@@ -574,7 +574,7 @@ As in our example, the branch name is `analysis-script`, the dropdown defines th
 
 ---
 
-Rstudio provides you information about the switch to the `master` branch:
+Rstudio provides you information about the switch to the `main` branch:
 
 ![Switch branch](./static/images/branch-rstudio2.png){width=75%}
 
@@ -586,7 +586,7 @@ Make sure you are currently working on your newly created branch (e.g. `analysis
 
 ## Pull requests
 
-When satisfied about the work done in a branch, it is time to bring these adaptations to the `master` branch as part of the *stable* analysis. NEVER merge locally on your machine, we will ALWAYS merge a branch online, by making use of a `Pull request`!
+When satisfied about the work done in a branch, it is time to bring these adaptations to the `main` branch as part of the *stable* analysis. NEVER merge locally on your machine, we will ALWAYS merge a branch online, by making use of a `Pull request`!
 
 ---
 
@@ -601,13 +601,13 @@ When satisfied about the work done in a branch, it is time to bring these adapta
 
 ---
 
-Github actually suggests you to `Compare & Pull request` on the webpage in a new yellow box. If you do not see the messag, you can still initiate a `Pull request`. The `Pull request` aims to insert the adaptations in your branch into the `master` branch. 
+Github actually suggests you to `Compare & Pull request` on the webpage in a new yellow box. If you do not see the message, you can still initiate a `Pull request`. The `Pull request` aims to insert the adaptations in your branch into the `main` branch. 
 
 ![Check Github message pull request](./static/images/pull-request-intro.png){width=75%}
 
 ---
 
-In a new dialog, you can provide a short summary line about the `Pull request` with the option to add additional information. By clicking the `Create pull request` button, you actually propose the merge into the `master` branch.
+In a new dialog, you can provide a short summary line about the `Pull request` with the option to add additional information. By clicking the `Create pull request` button, you actually propose the merge into the `main` branch.
 
 ![Adapt Github message and start pull request](./static/images/pull-request_message.png){width=75%}
 
@@ -631,13 +631,13 @@ While working on your own and you are sure about the changes, you can actually m
 
 ---
 
-### Include your accepted work to local master
+### Include your accepted work to local main
 
-For the moment, your adaptations are integrated into the `master` branch online, but not yet on your local computer. So, you have to update the local `master` branch:
+For the moment, your adaptations are integrated into the `main` branch online, but not yet on your local computer. So, you have to update the local `main` branch:
 
 <div class="bs-callout bs-callout-exercise">
 <h4>Exercise:</h4>
-1. In Rstudio, switch to the `master` branch (right top in `Git` pane)
+1. In Rstudio, switch to the `main` branch (right top in `Git` pane)
 1. Click `Pull`
 1. Remove the local branch as well (otherwise you will have a lot of them after a while). You need to open the Shell:
     ```
@@ -698,7 +698,7 @@ When there is no coding involved, e.g. you just need to update a few text lines 
 <h4>Exercise:</h4>
 * Make an adaptation to an online file
 * Propose a `pull request` and assign your collaborator
-* Merge the adaptation to the `master` branch
+* Merge the adaptation to the `main` branch
 </div>
 
 ---
@@ -756,8 +756,8 @@ Follow [this tutorial](https://help.github.com/articles/creating-releases/) to c
 * Commit often, make small commits
 * Don't mix changes in 1 commit
 * Think about your commit messages
-* Always commit into a feature branch, never in the `master` branch.
-* Always start features branches from the `master` branch.
+* Always commit into a feature branch, never in the `main` branch.
+* Always start features branches from the `main` branch.
 * Only work in your own branches.
 * Never merge someone else's `pull request` without their consent.
 * Don't keep long-lived branches (form of technical debt)
@@ -771,7 +771,7 @@ Follow [this tutorial](https://help.github.com/articles/creating-releases/) to c
 ...but if you're hungry:
 
 * Webinars
-    - [Github and Rstudio management](https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/)
+    - [Github and Rstudio management](https://www.rstudio.com/resources/webinars/managing-part-2-github-and-rstudio/)
     - [Collaboration and time travel: version control with git, github and RStudio](https://www.rstudio.com/resources/webinars/collaboration-and-time-travel-version-control-with-git-github-and-rstudio/)
 
 * Tutorials

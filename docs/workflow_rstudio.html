@@ -13,8 +13,8 @@
 
 <title>Workflow Rstudio</title>
 
-<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -62,6 +62,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="static/css/inbo.css" type="text/css" />
 
 
@@ -86,6 +87,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -311,7 +315,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -324,7 +328,7 @@ div.tocify {
   <a href="index.html">Home</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Sessions
      
     <span class="caret"></span>
@@ -336,7 +340,7 @@ div.tocify {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Workflows
      
     <span class="caret"></span>
@@ -354,7 +358,7 @@ div.tocify {
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/inbo/git-course">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -381,16 +385,16 @@ div.tocify {
 <p><strong>Choose your option:</strong></p>
 <div id="option-1a-ill-make-a-new-branch-to-work-with" class="section level3">
 <h3>OPTION 1A: <em>I’ll make a new branch to work with</em></h3>
-<p>Create a new topic branch from master</p>
-<p>Make sure you are working on the master branch: <img src="static/images/workflow_rstudio_1.png" /></p>
-<p>Update the master branch to make sure it is aligned with the remote master: Click <code>Pull</code>: <img src="static/images/workflow_rstudio_2.png" /></p>
+<p>Create a new topic branch from main</p>
+<p>Make sure you are working on the main branch: <img src="static/images/workflow_rstudio_1.png" /></p>
+<p>Update the main branch to make sure it is aligned with the remote main: Click <code>Pull</code>: <img src="static/images/workflow_rstudio_2.png" /></p>
 <p>Create a new branch: click on <code>New branch</code> and fill in a branch name: <img src="static/images/workflow_rstudio_2b.png" /></p>
 </div>
 <div id="option-1b-i-already-have-a-branch-i-want-to-continue-working-on" class="section level3">
 <h3>OPTION 1B: <em>I already have a branch I want to continue working on</em>:</h3>
 <p>Switch to existing topic branch: <img src="static/images/workflow_rstudio_3.png" /></p>
-<p>Update the topic branch to make sure is is aligned with the remote master: In the Git shell, type:</p>
-<pre><code>git pull origin master</code></pre>
+<p>Update the topic branch to make sure is is aligned with the remote main: In the Git shell, type:</p>
+<pre><code>git pull origin main</code></pre>
 <p><img src="static/images/workflow_rstudio_4.png" /></p>
 <hr />
 </div>
@@ -421,8 +425,8 @@ div.tocify {
 <div id="edits-on-branch-are-ready" class="section level1">
 <h1>EDITS ON BRANCH ARE READY</h1>
 <hr />
-<div id="step-4-pull-request-to-add-your-changes-to-the-current-master." class="section level2">
-<h2>STEP 4: Pull request to add your changes to the current master.</h2>
+<div id="step-4-pull-request-to-add-your-changes-to-the-current-main." class="section level2">
+<h2>STEP 4: Pull request to add your changes to the current main.</h2>
 <p>Update the remote version of the topic branch. Click <code>Push</code>: <img src="static/images/workflow_rstudio_9.png" /></p>
 <p>Go to your repo on Github.com and click the <code>Compare &amp; pull request</code> button.</p>
 <p><img src="static/images/workflow_rstudio_github_1.png" /></p>
@@ -438,13 +442,13 @@ div.tocify {
 <p>Delete the online branch after merge, since obsolete, click <code>Delete branch</code></p>
 <p><img src="static/images/workflow_rstudio_github_5.png" /></p>
 </div>
-<div id="step-6-update-the-master-branch-on-my-pc" class="section level2">
-<h2>STEP 6: Update the master branch on my PC</h2>
-<p>Make sure you are working on the master branch: <img src="static/images/workflow_rstudio_1.png" /></p>
+<div id="step-6-update-the-main-branch-on-my-pc" class="section level2">
+<h2>STEP 6: Update the main branch on my PC</h2>
+<p>Make sure you are working on the main branch: <img src="static/images/workflow_rstudio_1.png" /></p>
 <p>Remove the local branch, since obsolete. In the Git shell, type:</p>
 <pre><code>git branch -d analysis-script</code></pre>
 <p><img src="static/images/workflow_rstudio_4.png" /></p>
-<p>Update the local master branch: Click <code>Pull</code>: <img src="static/images/workflow_rstudio_2.png" /></p>
+<p>Update the local main branch: Click <code>Pull</code>: <img src="static/images/workflow_rstudio_2.png" /></p>
 </div>
 </div>
 
@@ -486,6 +490,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')

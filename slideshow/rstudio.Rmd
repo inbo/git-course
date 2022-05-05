@@ -56,8 +56,8 @@ output:
 ### Git for RStudio setup
 
 1. [Download](https://git-scm.com/downloads) and install Git
-1. Install [RStudio](https://inbo.github.io/tutorials/installation-RStudio-admin.html)
-1. Open [RStudio](https://inbo.github.io/tutorials/installation-RStudio-user.html)
+1. Install [RStudio](https://inbo.github.io/tutorials/installation/administrator/admin_install_rstudio/)
+1. Open [RStudio](https://inbo.github.io/tutorials/installation/user/user_install_rstudio/)
 
 ---
 
@@ -165,7 +165,7 @@ Use your GitHub username!
 
 ### Push the changes to GitHub
 
-1. Note that the `git` pane displays _your branch is ahead of 'origin/master' by 2 commits_
+1. Note that the `git` pane displays _your branch is ahead of 'origin/main' by 2 commits_
 1. Click `push` in the `git` pane
 
 ![Push](images/push-rstudio1.png)
@@ -255,7 +255,7 @@ Try to push (click `push`) your local changes
         A simple analysis to visualize my favourite fruit colour.
         =======
         A simple analysis to discover my favourite fruit color.
-        >>>>>>> origin/master
+        >>>>>>> origin/main
 
 2. Choose what you want to keep:
 
@@ -332,8 +332,8 @@ Try to push (click `push`) your local changes
 
 Add a file to the repository in a `src`-directory (see earlier)
 
-1. Go back to the status of the `master` branch
-1. Click on `analysis-script` in the `git` pane and select `(LOCAL BRANCHES) -> master`
+1. Go back to the status of the `main` branch
+1. Click on `analysis-script` in the `git` pane and select `(LOCAL BRANCHES) -> main`
 ![Switch branch](images/branch-rstudio1.png)
 
 ![Switch branch](images/branch-rstudio2.png)
@@ -395,9 +395,9 @@ This will also activate the `pull` and `push` buttons
 
 ---
 
-### Include your accepted work to local master
+### Include your accepted work to local main
 
-1. Switch to `master` branch
+1. Switch to `main` branch
 2. Click `pull`.
 
 ![git pull](images/pull-rstudio.png)
@@ -460,7 +460,7 @@ Note that you can use wild cards e.g. `*.Rproj`
 
 * Make an adaptation to an online file
 * Propose a **pull request** and assign your collaborator
-* Merge the adaptation to the `master` branch
+* Merge the adaptation to the `main` branch
 
 ---
 

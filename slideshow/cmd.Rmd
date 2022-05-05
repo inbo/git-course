@@ -94,7 +94,7 @@ git config --global core.editor gedit
 
 * Command `git push`: 
 ```
-git push origin master
+git push origin main
 ```
 
 ---
@@ -135,7 +135,7 @@ on a line you also edited locally
 ### Conflict!
 
 ```
-git pull origin master
+git pull origin main
 ```
 
 ![Conflict cmd](images/conflict-cmd.png)
@@ -150,7 +150,7 @@ git pull origin master
         A simple analysis to visualize my favourite fruit colour.
         =======
         A simple analysis to discover my favourite fruit color.
-        >>>>>>> origin/master
+        >>>>>>> origin/main
 
 2. Choose what you want to keep:
 
@@ -160,7 +160,7 @@ git pull origin master
 
         git add <fixed files>
         git commit
-        git push origin master
+        git push origin main
 
 ---
 
@@ -185,7 +185,7 @@ takes all changes in a single commit
 ```
 git add data/fruits.csv
 git commit -am "Add data file"
-git push origin master
+git push origin main
 ```
 
 ---
@@ -198,7 +198,7 @@ git revert HEAD
 
 <br/><br/>
 <small>
-**Tip**: `git revert` can be applied for more functionality. <br/> See [this tutorial](https://inbo.github.io/tutorials/manual-git-undo-commits.html) for more in depth information on undoing commits. 
+**Tip**: `git revert` can be applied for more functionality. <br/> See [this tutorial](https://inbo.github.io/tutorials/tutorials/git_undo_commit/) for more in depth information on undoing commits. 
 
 **Tip**: `git checkout -- <file-name>` will undo changes <br/>to file since last commit (!no log of your changes)
 
@@ -213,7 +213,7 @@ git revert HEAD
 2. Copy a HASH
 3. `git checkout HASH`
 4. Check the local directory and files on your computer
-5. `git checkout master`
+5. `git checkout main`
 
 ---
 
@@ -234,9 +234,9 @@ git revert HEAD
     ```
 2. Get an overview of your branches: `git branch`
 3. `git add` a file to the repository
-4. Go back to the status of the master: 
+4. Go back to the status of the main: 
     ```
-    git checkout master
+    git checkout main
     ```
 5. Verify your local directory structure: where are your files?
 6. Go back to the status of the new branch: 
@@ -270,16 +270,16 @@ git push origin analysis-script
 
 ---
 
-### Update local master after remote merge
+### Update local main after remote merge
 
 ```
 git fetch origin
-git checkout master
-git merge --ff-only origin/master
+git checkout main
+git merge --ff-only origin/main
 git branch -d analysis-script
 ```
 
-**Cfr. local merge**: `git checkout master` and `git merge analysis-script`
+**Cfr. local merge**: `git checkout main` and `git merge analysis-script`
 
 ---
 
@@ -296,7 +296,7 @@ git branch -d analysis-script
 
 ### Exclude files: command line
 
-1. Go to master branch `git checkout master`
+1. Go to main branch `git checkout main`
 2. Create a new file `password.txt` with the words `SECRET`
 3. `git status` and `git diff`
 4. Create a file `.gitignore` to exclude the `password.txt` file
@@ -342,7 +342,7 @@ git branch -d analysis-script
 
 * Make an adaptation to an online file
 * Propose a **pull request** and assign your collaborator
-* Merge the adaptation to the `master` branch
+* Merge the adaptation to the `main` branch
 
 ---
 
@@ -399,9 +399,9 @@ alias gfo='git fetch origin'
 alias gm='git merge'
 alias gpl='git pull'
 alias gps='git push'
-alias gplom='git pull origin master'
-alias gpsom='git push origin master'
-alias gplfm='git fetch origin; git checkout master; git merge --ff-only origin/master'
+alias gplom='git pull origin main'
+alias gpsom='git push origin main'
+alias gplfm='git fetch origin; git checkout main; git merge --ff-only origin/main'
 
 alias glog="git log --graph --pretty=format:'%C(bold)%h%Creset%C(magenta)%d%Creset %s %C(yellow)<%an> %C(cyan)(%cr)%Creset' --abbrev-commit --date=relative"
 ```
