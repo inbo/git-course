@@ -1,5 +1,7 @@
 # INBO Git workshop
 
+github alerts are perfect for burnout
+
 ## Introduction
 
 At INBO, people do write code and require version control. As `git` is not the most straightforward environment to work with for non-IT specialists, we try to define our own sub-ecosystem with relevant practices and an achievable workflow.
