@@ -10,6 +10,8 @@ A workshop typically takes a whole day, with the morning session focused on gett
 
 ## Workshop content
 
+## Break
+
 ### Morning session
 
 We explain the main terminology of Git based on 5 important tasks:
