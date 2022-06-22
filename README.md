@@ -2,6 +2,8 @@
 
 ## Introduction
 
+This is very nice first introduction to git.
+
 At INBO, people do write code and require version control. As `git` is not the most straightforward environment to work with for non-IT specialists, we try to define our own sub-ecosystem with relevant practices and an achievable workflow.
 
 In this repository, we collect the material for workshops and courses given by/for INBO people, but for other interested researchers/... as well. 
