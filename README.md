@@ -51,4 +51,4 @@ rmarkdown::render_site("src")
 
 And the resulting `html` pages are updated to the `docs` folder. The `docs` folder of the main is used to [deploy the Github pages](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch).
 
-The source for the Git and GitHub presentations are Google Presentations by @stijnvanhoey and @peterdesmet. In the directory `slideshow`, there are a number of presentations not yet converted to course pages.
+The source for the Git and GitHub presentations are Google Presentations by @stijnvanhoey and @peterdesmet. In the directory `slideshow`, there are a number of presentations not yet converte to course pages.
